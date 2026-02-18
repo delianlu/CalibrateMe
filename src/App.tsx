@@ -1,18 +1,18 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import Dashboard from './components/Dashboard';
 import QuizContainer from './features/quiz/components/QuizContainer';
 import VocabularyList from './features/vocabulary/components/VocabularyList';
 import ProfileCard from './features/user/components/ProfileCard';
+import CalibrationDashboard from './features/analytics/components/CalibrationDashboard';
 import { useUserProfile } from './features/user/hooks/useUserProfile';
 import { essentialEnglish } from './data/vocabularyPacks/essential-english';
 import { academicEnglish } from './data/vocabularyPacks/academic-english';
 import { businessEnglish } from './data/vocabularyPacks/business-english';
-import { QuizItem } from './features/quiz/types';
+import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
-type AppTab = 'quiz' | 'vocabulary' | 'profile' | 'simulation';
+type AppTab = 'quiz' | 'vocabulary' | 'analytics' | 'profile' | 'simulation';
 
-/** Merge all built-in packs into a single flat vocabulary list for the quiz. */
 function getAllVocabulary(): QuizItem[] {
   return [
     ...essentialEnglish.items,
@@ -23,10 +23,19 @@ function getAllVocabulary(): QuizItem[] {
 
 function App() {
   const [tab, setTab] = useState<AppTab>('quiz');
+  const [allResponses, setAllResponses] = useState<QuizResponse[]>([]);
   const { profile, recordSessionResponses, exportData, importData, resetAll } =
     useUserProfile();
 
   const allVocabulary = useMemo(() => getAllVocabulary(), []);
+
+  const handleSessionComplete = useCallback(
+    (responses: QuizResponse[], kHat: number, betaHat: number) => {
+      setAllResponses(prev => [...prev, ...responses]);
+      recordSessionResponses(responses, kHat, betaHat);
+    },
+    [recordSessionResponses]
+  );
 
   return (
     <div className="app">
@@ -49,6 +58,12 @@ function App() {
           Vocabulary
         </button>
         <button
+          className={`app-nav__tab ${tab === 'analytics' ? 'app-nav__tab--active' : ''}`}
+          onClick={() => setTab('analytics')}
+        >
+          Analytics
+        </button>
+        <button
           className={`app-nav__tab ${tab === 'profile' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('profile')}
         >
@@ -66,10 +81,11 @@ function App() {
         {tab === 'quiz' && (
           <QuizContainer
             vocabulary={allVocabulary}
-            onSessionComplete={recordSessionResponses}
+            onSessionComplete={handleSessionComplete}
           />
         )}
         {tab === 'vocabulary' && <VocabularyList />}
+        {tab === 'analytics' && <CalibrationDashboard responses={allResponses} />}
         {tab === 'profile' && (
           <ProfileCard
             profile={profile}

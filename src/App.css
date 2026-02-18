@@ -1259,6 +1259,164 @@
 }
 
 /* =============================================================================
+   Analytics – Calibration Dashboard
+   ============================================================================= */
+.cal-dashboard {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cal-dashboard__title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.cal-dashboard__empty {
+  text-align: center;
+  color: #718096;
+  padding: 2rem;
+}
+
+.cal-dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.cal-dashboard__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem 0.5rem;
+}
+
+.cal-dashboard__stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.cal-dashboard__stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a0aec0;
+}
+
+.cal-dashboard__charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.cal-dashboard__chart {
+  padding: 1rem;
+}
+
+.analytics-empty {
+  text-align: center;
+  color: #a0aec0;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Chart tooltip */
+.chart-tooltip {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-tooltip p {
+  margin: 0.15rem 0;
+}
+
+/* Live calibration curve */
+.live-cal-curve__title,
+.conf-histogram__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 0.5rem;
+}
+
+.live-cal-curve__legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+}
+
+.live-cal-curve__legend-item--under {
+  color: #38a169;
+}
+
+.live-cal-curve__legend-item--over {
+  color: #e53e3e;
+}
+
+/* ECE Meter */
+.ece-meter {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.ece-meter__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 0.5rem;
+}
+
+.ece-meter__value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.ece-meter__bar-bg {
+  position: relative;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  overflow: visible;
+}
+
+.ece-meter__bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.ece-meter__marker {
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 16px;
+  background: #a0aec0;
+  border-radius: 1px;
+}
+
+.ece-meter__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.ece-meter__empty {
+  color: #a0aec0;
+  font-size: 0.85rem;
+}
+
+/* =============================================================================
    Responsive
    ============================================================================= */
 @media (max-width: 768px) {
@@ -1292,5 +1450,17 @@
 
   .profile-card__stats {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .cal-dashboard__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cal-dashboard__charts {
+    grid-template-columns: 1fr;
+  }
+
+  .app-nav {
+    flex-wrap: wrap;
   }
 }
