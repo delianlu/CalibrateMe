@@ -1379,14 +1379,32 @@
   color: #a0aec0;
 }
 
-.cal-dashboard__charts {
+.cal-dashboard__charts,
+.cal-dashboard__forecasts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .cal-dashboard__chart {
   padding: 1rem;
+}
+
+/* Retention forecast */
+.retention-forecast__title,
+.forgetting-curves__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 0.5rem;
+}
+
+.retention-forecast__alert {
+  font-size: 0.8rem;
+  color: #e53e3e;
+  margin: 0 0 0.5rem;
+  font-weight: 500;
 }
 
 .analytics-empty {
@@ -1527,7 +1545,8 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .cal-dashboard__charts {
+  .cal-dashboard__charts,
+  .cal-dashboard__forecasts {
     grid-template-columns: 1fr;
   }
 

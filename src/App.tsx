@@ -85,7 +85,12 @@ function App() {
           />
         )}
         {tab === 'vocabulary' && <VocabularyList />}
-        {tab === 'analytics' && <CalibrationDashboard responses={allResponses} />}
+        {tab === 'analytics' && (
+          <CalibrationDashboard
+            responses={allResponses}
+            itemStates={profile.itemStates}
+          />
+        )}
         {tab === 'profile' && (
           <ProfileCard
             profile={profile}
