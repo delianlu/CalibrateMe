@@ -129,11 +129,10 @@ export function runSimulation(
       },
     }));
 
-    // Select items for review
-    const itemsToReview = selectItemsForReview(
-      learner.items,
-      config.items_per_session
-    );
+    // Select items for review (coverage-aware for CalibrateMe)
+    const itemsToReview = scheduler instanceof CalibrateMeScheduler
+      ? scheduler.selectItems(learner.items, config.items_per_session)
+      : selectItemsForReview(learner.items, config.items_per_session);
 
     // Session tracking
     let correctCount = 0;
@@ -179,7 +178,20 @@ export function runSimulation(
       // Update system belief for BKT-based schedulers
       if (config.scheduler_type === SchedulerType.CALIBRATEME ||
           config.scheduler_type === SchedulerType.BKT_ONLY) {
+        // Update global belief (used for scheduling and beta_hat)
         systemBelief = updateBelief(response, systemBelief, config);
+
+        // Also update per-item K̂ using item-local prior (tracks K* better
+        // because each item's K̂ evolves based on its own evidence rather
+        // than being tied to the global average)
+        const itemLocalBelief: SystemBelief = {
+          K_hat: item.system_belief.K_hat,
+          beta_hat: systemBelief.beta_hat,
+          confidence_interval: systemBelief.confidence_interval,
+          last_updated: systemBelief.last_updated,
+        };
+        const updatedItemBelief = updateBelief(response, itemLocalBelief, config);
+        item.system_belief.K_hat = updatedItemBelief.K_hat;
 
         // Update beta_hat from recent responses
         const recentResponses = allResponses.slice(-20);
@@ -214,9 +226,30 @@ export function runSimulation(
       item.system_belief.next_review = scheduleResult.nextReview;
       item.system_belief.interval_days = scheduleResult.interval;
 
+      // Record review for coverage tracking (CalibrateMe only)
+      if (scheduler instanceof CalibrateMeScheduler) {
+        scheduler.recordReview(item.id);
+      }
+
       // Store response
       sessionResponses.push(processedResponse);
       allResponses.push(processedResponse);
+    }
+
+    // Propagate global K̂ to unreviewed items: blend stale per-item K̂
+    // toward the session-updated global estimate so unreviewed items
+    // don't drag down the mean with outdated values.
+    if (config.scheduler_type === SchedulerType.CALIBRATEME ||
+        config.scheduler_type === SchedulerType.BKT_ONLY) {
+      const reviewedIds = new Set(itemsToReview.map(i => i.id));
+      const blendFactor = 0.15;
+      for (const item of learner.items) {
+        if (!reviewedIds.has(item.id)) {
+          item.system_belief.K_hat =
+            item.system_belief.K_hat * (1 - blendFactor) +
+            systemBelief.K_hat * blendFactor;
+        }
+      }
     }
 
     // Calculate session metrics
@@ -226,7 +259,13 @@ export function runSimulation(
 
     const meanKStar = mean(learner.items.map(i => i.true_state.K_star));
     KStarTrajectory.push(meanKStar);
-    KHatTrajectory.push(systemBelief.K_hat);
+
+    // Use mean of per-item K̂ for tracking
+    const meanKHat = (config.scheduler_type === SchedulerType.CALIBRATEME ||
+                      config.scheduler_type === SchedulerType.BKT_ONLY)
+      ? mean(learner.items.map(i => i.system_belief.K_hat))
+      : systemBelief.K_hat;
+    KHatTrajectory.push(meanKHat);
 
     // Check mastery (K* > 0.9 sustained for 2 consecutive sessions)
     if (meanKStar > 0.9) {
@@ -249,7 +288,7 @@ export function runSimulation(
       type2_count: type2Count,
       scaffolds_delivered: scaffoldsDelivered,
       mean_K_star: meanKStar,
-      mean_K_hat: systemBelief.K_hat,
+      mean_K_hat: meanKHat,
       ece: metrics.ece,
       brier: metrics.brier_score,
     });
