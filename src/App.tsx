@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
 import QuizContainer from './features/quiz/components/QuizContainer';
 import VocabularyList from './features/vocabulary/components/VocabularyList';
@@ -24,10 +24,22 @@ function getAllVocabulary(): QuizItem[] {
 function App() {
   const [tab, setTab] = useState<AppTab>('quiz');
   const [allResponses, setAllResponses] = useState<QuizResponse[]>([]);
-  const { profile, recordSessionResponses, exportData, importData, resetAll } =
+  const { profile, recordSessionResponses, updatePreferences, exportData, importData, resetAll } =
     useUserProfile();
 
   const allVocabulary = useMemo(() => getAllVocabulary(), []);
+
+  // Dark mode: apply theme attribute to root element
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'data-theme',
+      profile.preferences.darkMode ? 'dark' : 'light'
+    );
+  }, [profile.preferences.darkMode]);
+
+  const toggleDarkMode = useCallback(() => {
+    updatePreferences({ darkMode: !profile.preferences.darkMode });
+  }, [profile.preferences.darkMode, updatePreferences]);
 
   const handleSessionComplete = useCallback(
     (responses: QuizResponse[], kHat: number, betaHat: number) => {
@@ -40,8 +52,17 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>CalibrateMe</h1>
-        <p>Metacognitive Calibration in Adaptive Learning</p>
+        <div className="app-header__content">
+          <h1>CalibrateMe</h1>
+          <p>Metacognitive Calibration in Adaptive Learning</p>
+        </div>
+        <button
+          className="app-header__theme-toggle"
+          onClick={toggleDarkMode}
+          title={profile.preferences.darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {profile.preferences.darkMode ? 'Light' : 'Dark'}
+        </button>
       </header>
 
       <nav className="app-nav">

@@ -1,3 +1,99 @@
+/* =============================================================================
+   Design System — CSS Custom Properties
+   ============================================================================= */
+:root {
+  /* Colors */
+  --color-primary-50: #ebf8ff;
+  --color-primary-100: #bee3f8;
+  --color-primary-500: #4299e1;
+  --color-primary-600: #3182ce;
+  --color-primary-700: #2b6cb0;
+  --color-primary-900: #1a365d;
+
+  --color-success: #38a169;
+  --color-warning: #d69e2e;
+  --color-error: #e53e3e;
+
+  --color-cal-over: #e53e3e;
+  --color-cal-under: #3182ce;
+  --color-cal-well: #38a169;
+
+  /* Surfaces */
+  --bg-app: #f7fafc;
+  --bg-card: #ffffff;
+  --bg-muted: #f7fafc;
+  --bg-header: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  --bg-footer: #2d3748;
+
+  /* Text */
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-faint: #a0aec0;
+  --text-on-primary: #ffffff;
+
+  /* Borders */
+  --border-color: #e2e8f0;
+  --border-radius-sm: 6px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-pill: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.7rem;
+  --font-size-sm: 0.8rem;
+  --font-size-base: 0.9rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Animation */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --bg-app: #1a202c;
+  --bg-card: #2d3748;
+  --bg-muted: #2d3748;
+  --bg-header: linear-gradient(135deg, #0d1117 0%, #1a202c 100%);
+  --bg-footer: #0d1117;
+
+  --text-primary: #e2e8f0;
+  --text-secondary: #cbd5e0;
+  --text-muted: #a0aec0;
+  --text-faint: #718096;
+
+  --border-color: #4a5568;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Apply design system to base elements */
+body {
+  font-family: var(--font-family);
+  background: var(--bg-app);
+  color: var(--text-primary);
+  transition: background var(--transition-normal), color var(--transition-normal);
+}
+
 .app {
   min-height: 100vh;
   display: flex;
@@ -5,21 +101,40 @@
 }
 
 .app-header {
-  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-  color: white;
+  background: var(--bg-header);
+  color: var(--text-on-primary);
   padding: 1.5rem 2rem;
   text-align: center;
+  position: relative;
 }
 
-.app-header h1 {
+.app-header__content h1 {
   margin: 0;
   font-size: 2rem;
 }
 
-.app-header p {
+.app-header__content p {
   margin: 0.5rem 0 0;
   opacity: 0.9;
   font-size: 1rem;
+}
+
+.app-header__theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-on-primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius-pill);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.app-header__theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .app-main {
@@ -31,8 +146,8 @@
 }
 
 .app-footer {
-  background: #2d3748;
-  color: #a0aec0;
+  background: var(--bg-footer);
+  color: var(--text-muted);
   text-align: center;
   padding: 1rem;
   font-size: 0.875rem;
@@ -59,10 +174,11 @@
 
 /* Card Component */
 .card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
   padding: 1.25rem;
+  transition: background var(--transition-normal);
 }
 
 .card-title {
@@ -272,8 +388,9 @@
 .app-nav {
   display: flex;
   gap: 0;
-  background: #1a365d;
+  background: var(--color-primary-900);
   justify-content: center;
+  overflow-x: auto;
 }
 
 .app-nav__tab {
@@ -1553,4 +1670,93 @@
   .app-nav {
     flex-wrap: wrap;
   }
+
+  .app-header__theme-toggle {
+    position: static;
+    margin-top: 0.5rem;
+  }
+}
+
+/* =============================================================================
+   Dark Mode Overrides
+   ============================================================================= */
+[data-theme="dark"] .vocab-card,
+[data-theme="dark"] .cal-dashboard__stat {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .vocab-card__word,
+[data-theme="dark"] .vocab-list__header h2,
+[data-theme="dark"] .cal-dashboard__title,
+[data-theme="dark"] .profile-card__title,
+[data-theme="dark"] .session-summary__title,
+[data-theme="dark"] .quiz-start__title,
+[data-theme="dark"] .live-cal-curve__title,
+[data-theme="dark"] .conf-histogram__title,
+[data-theme="dark"] .ece-meter__title,
+[data-theme="dark"] .retention-forecast__title,
+[data-theme="dark"] .forgetting-curves__title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .vocab-card__translation,
+[data-theme="dark"] .quiz-start__desc,
+[data-theme="dark"] .tag-filter__count,
+[data-theme="dark"] .session-summary__calibration-msg,
+[data-theme="dark"] .profile-card__learner-row {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .tag-filter__search,
+[data-theme="dark"] .tag-filter__select,
+[data-theme="dark"] .import-paste__textarea,
+[data-theme="dark"] .profile-card__import-textarea {
+  background: var(--bg-muted);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .flashcard {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal {
+  background: var(--bg-card);
+}
+
+[data-theme="dark"] .modal__header,
+[data-theme="dark"] .modal__tabs {
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .modal__header h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .chart-tooltip {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .tag-filter__chip {
+  background: var(--bg-muted);
+  border-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .profile-card__learner,
+[data-theme="dark"] .session-summary__calibration,
+[data-theme="dark"] .session-summary__recommendations {
+  background: var(--bg-muted);
+}
+
+[data-theme="dark"] .quiz-paused h2 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .quiz-paused p {
+  color: var(--text-secondary);
 }
