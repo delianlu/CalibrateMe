@@ -54,9 +54,11 @@ export function likelihoodRT(
 
 /**
  * Perform Bayesian belief update (Equation 1)
- * P(K̂|y,c,τ) ∝ P(y|K̂) × P(c|K̂) × P(τ|K̂) × P(K̂)
+ * P(K̂|y,c,τ) ∝ P(y|K̂)^w_y × P(c|K̂)^w_c × P(τ|K̂)^w_τ × P(K̂)
  *
- * Uses grid approximation for tractability
+ * Uses grid approximation for tractability.
+ * Likelihood weights downweight noisy channels (confidence depends on
+ * uncertain β̂; RT has high variance) to prevent systematic K̂ underestimation.
  */
 export function updateBelief(
   response: Response,
@@ -66,6 +68,14 @@ export function updateBelief(
 ): SystemBelief {
   const { slip_probability, guess_probability, confidence_noise_std, rt_noise_std, rt_base, rt_gamma } = config;
 
+  // Likelihood reliability weights:
+  // - Correctness (w=1.0): most reliable binary signal
+  // - Confidence (w=0.5): depends on uncertain β̂ estimate
+  // - Response time (w=0.3): high variance, weak knowledge signal
+  const w_y = 1.0;
+  const w_c = 0.5;
+  const w_tau = 0.3;
+
   // Create grid of K̂ values
   const K_values: number[] = [];
   const posteriors: number[] = [];
@@ -74,13 +84,14 @@ export function updateBelief(
     const K = i / (grid_points - 1);
     K_values.push(K);
 
-    // Prior: peaked at current belief
-    const prior = Math.exp(-0.5 * ((K - current_belief.K_hat) / 0.2) ** 2);
+    // Prior: peaked at current belief with wider spread (σ=0.3)
+    // to allow K̂ to respond more readily to new evidence
+    const prior = Math.exp(-0.5 * ((K - current_belief.K_hat) / 0.3) ** 2);
 
-    // Likelihoods
-    const L_y = likelihoodCorrectness(response.correctness, K, slip_probability, guess_probability);
-    const L_c = likelihoodConfidence(response.confidence, K, current_belief.beta_hat, confidence_noise_std);
-    const L_tau = likelihoodRT(response.response_time, K, rt_base, rt_gamma, rt_noise_std);
+    // Weighted likelihoods
+    const L_y = Math.pow(likelihoodCorrectness(response.correctness, K, slip_probability, guess_probability), w_y);
+    const L_c = Math.pow(likelihoodConfidence(response.confidence, K, current_belief.beta_hat, confidence_noise_std), w_c);
+    const L_tau = Math.pow(likelihoodRT(response.response_time, K, rt_base, rt_gamma, rt_noise_std), w_tau);
 
     // Posterior (unnormalized)
     posteriors.push(prior * L_y * L_c * L_tau);

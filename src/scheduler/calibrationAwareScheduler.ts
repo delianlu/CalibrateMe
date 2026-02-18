@@ -122,21 +122,43 @@ export function selectItemsForReview(
 }
 
 /**
- * CalibrateMe Scheduler (FIXED: removed space in class name)
+ * CalibrateMe Scheduler with coverage-aware item selection
+ *
+ * The coverage mechanism addresses a key design tension: calibration-aware
+ * interval adjustment shortens intervals for overconfident learners, causing
+ * the same items to be re-reviewed at the expense of item pool breadth.
+ *
+ * Solution: penalize items reviewed more than the pool average, ensuring
+ * that urgency is balanced against coverage diversity.
  */
 export class CalibrateMeScheduler {
   private lambda: number;
   private enableCalibration: boolean;
   private enableDualProcess: boolean;
+  private coverageWeight: number;
+  private reviewCounts: Map<string, number>;
+  private totalReviews: number;
 
   constructor(
     lambda: number = 0.1,
     enableCalibration: boolean = true,
-    enableDualProcess: boolean = true
+    enableDualProcess: boolean = true,
+    coverageWeight: number = 0.5
   ) {
     this.lambda = lambda;
     this.enableCalibration = enableCalibration;
     this.enableDualProcess = enableDualProcess;
+    this.coverageWeight = coverageWeight;
+    this.reviewCounts = new Map();
+    this.totalReviews = 0;
+  }
+
+  /**
+   * Record that an item was reviewed (for coverage tracking)
+   */
+  recordReview(itemId: string): void {
+    this.reviewCounts.set(itemId, (this.reviewCounts.get(itemId) || 0) + 1);
+    this.totalReviews++;
   }
 
   scheduleNext(
@@ -157,8 +179,27 @@ export class CalibrateMeScheduler {
     return { nextReview, interval };
   }
 
-  selectItems(items: Item[], count: number): Item[] {
-    return selectItemsForReview(items, count);
+  /**
+   * Select items for review with coverage-aware scoring.
+   *
+   * Combined score = urgency - coverageWeight × (reviewCount - expectedPerItem)
+   *
+   * Items reviewed more than the pool average are penalized, ensuring
+   * breadth of coverage even when calibration adjustment shortens intervals.
+   */
+  selectItems(items: Item[], count: number, now: Date = new Date()): Item[] {
+    const totalItems = items.length;
+    const expectedPerItem = totalItems > 0 ? this.totalReviews / totalItems : 0;
+
+    const scored = items.map(item => {
+      const urgency = calculateUrgency(item, now);
+      const reviewCount = this.reviewCounts.get(item.id) || 0;
+      const coveragePenalty = this.coverageWeight * (reviewCount - expectedPerItem);
+      return { item, score: urgency - coveragePenalty };
+    });
+
+    scored.sort((a, b) => b.score - a.score);
+    return scored.slice(0, count).map(s => s.item);
   }
 
   /**
