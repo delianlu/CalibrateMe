@@ -745,6 +745,77 @@
   line-height: 1.5;
 }
 
+.session-summary__calibration--overconfident {
+  border-left: 3px solid #e53e3e;
+}
+
+.session-summary__calibration--underconfident {
+  border-left: 3px solid #3182ce;
+}
+
+.session-summary__calibration--well-calibrated {
+  border-left: 3px solid #38a169;
+}
+
+.session-summary__calibration-detail {
+  font-size: 0.8rem;
+  color: #718096;
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
+
+.session-summary__section-title {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.session-summary__struggling {
+  background: #fff5f5;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.session-summary__struggling-desc {
+  font-size: 0.85rem;
+  color: #4a5568;
+  margin: 0 0 0.5rem;
+}
+
+.session-summary__struggling-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.session-summary__struggling-item {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  background: #fed7d7;
+  color: #9b2c2c;
+  border-radius: 10px;
+}
+
+.session-summary__recommendations {
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.session-summary__tips {
+  margin: 0;
+  padding: 0 0 0 1.25rem;
+  font-size: 0.85rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
 /* =============================================================================
    Vocabulary – List
    ============================================================================= */
