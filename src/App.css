@@ -1126,6 +1126,139 @@
 }
 
 /* =============================================================================
+   Profile Card
+   ============================================================================= */
+.profile-card {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.profile-card__title {
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.profile-card__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-card__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.profile-card__stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.profile-card__stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a0aec0;
+}
+
+.profile-card__learner {
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.profile-card__learner-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.profile-card__cal--overconfident {
+  color: #e53e3e;
+}
+
+.profile-card__cal--underconfident {
+  color: #3182ce;
+}
+
+.profile-card__cal--well-calibrated {
+  color: #38a169;
+}
+
+.profile-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.profile-card__reset {
+  color: #e53e3e;
+  border-color: #feb2b2;
+}
+
+.profile-card__import {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.profile-card__import-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+}
+
+.profile-card__import-input {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.profile-card__import-or {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  margin: 0.5rem 0;
+}
+
+.profile-card__import-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+
+.profile-card__confirm {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.profile-card__confirm p {
+  color: #e53e3e;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+}
+
+.profile-card__confirm-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* =============================================================================
    Responsive
    ============================================================================= */
 @media (max-width: 768px) {
@@ -1147,5 +1280,17 @@
 
   .app-main {
     padding: 1rem;
+  }
+
+  .vocab-card__meta {
+    display: none;
+  }
+
+  .tag-filter__row {
+    flex-direction: column;
+  }
+
+  .profile-card__stats {
+    grid-template-columns: 1fr 1fr;
   }
 }

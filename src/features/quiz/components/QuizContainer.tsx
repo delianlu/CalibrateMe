@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQuizSession } from '../hooks/useQuizSession';
 import Flashcard from './Flashcard';
 import ConfidenceSlider from './ConfidenceSlider';
 import AnswerButtons from './AnswerButtons';
 import QuizProgress from './QuizProgress';
 import SessionSummary from './SessionSummary';
-import { SAMPLE_VOCABULARY } from '../sampleVocabulary';
+import { QuizItem, QuizResponse } from '../types';
+
+interface QuizContainerProps {
+  vocabulary?: QuizItem[];
+  onSessionComplete?: (responses: QuizResponse[], kHat: number, betaHat: number) => void;
+}
 
 /**
  * Top-level quiz orchestrator.
@@ -16,7 +21,7 @@ import { SAMPLE_VOCABULARY } from '../sampleVocabulary';
  *   3. reveal-answer   → Flashcard back + AnswerButtons
  *   4. feedback        → brief flash then auto-advance
  */
-export default function QuizContainer() {
+export default function QuizContainer({ vocabulary, onSessionComplete }: QuizContainerProps) {
   const {
     session,
     currentItem,
@@ -34,9 +39,24 @@ export default function QuizContainer() {
 
   const [confidence, setConfidence] = useState(50);
   const [feedbackResult, setFeedbackResult] = useState<boolean | null>(null);
+  const completedRef = useRef(false);
+
+  // Fire onSessionComplete once when session ends
+  useEffect(() => {
+    if (isCompleted && session && !completedRef.current) {
+      completedRef.current = true;
+      const kHat = sessionStats?.calibrationMetrics?.ece ?? 0.3;
+      const betaHat = 0; // Placeholder — real value comes from QuizService
+      onSessionComplete?.(session.responses, kHat, betaHat);
+    }
+    if (!isCompleted) {
+      completedRef.current = false;
+    }
+  }, [isCompleted, session, sessionStats, onSessionComplete]);
 
   // ── Not started ──────────────────────────────────────────────────
   if (!session) {
+    const items = vocabulary ?? [];
     return (
       <div className="quiz-start card">
         <h2 className="quiz-start__title">Practice Mode</h2>
@@ -45,7 +65,7 @@ export default function QuizContainer() {
           CalibrateMe will track your calibration accuracy and adapt the schedule.
         </p>
         <div className="quiz-start__info">
-          <span>20 items per session</span>
+          <span>{Math.min(20, items.length)} items per session</span>
           <span>Self-grading mode</span>
         </div>
         <button
@@ -53,10 +73,11 @@ export default function QuizContainer() {
           onClick={() => {
             setConfidence(50);
             setFeedbackResult(null);
-            startSession(SAMPLE_VOCABULARY);
+            startSession(items);
           }}
+          disabled={items.length === 0}
         >
-          Start Quiz
+          {items.length === 0 ? 'No vocabulary loaded' : 'Start Quiz'}
         </button>
       </div>
     );
