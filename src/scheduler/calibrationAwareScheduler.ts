@@ -162,7 +162,7 @@ export class CalibrateMeScheduler {
   }
 
   scheduleNext(
-    item: Item,
+    _item: Item,
     belief: SystemBelief,
     response: ProcessedResponse
   ): { nextReview: Date; interval: number } {

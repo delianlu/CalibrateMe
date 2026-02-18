@@ -266,7 +266,488 @@
   }
 }
 
-/* Responsive */
+/* =============================================================================
+   Navigation Tabs
+   ============================================================================= */
+.app-nav {
+  display: flex;
+  gap: 0;
+  background: #1a365d;
+  justify-content: center;
+}
+
+.app-nav__tab {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.app-nav__tab:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.app-nav__tab--active {
+  color: white;
+  border-bottom-color: #4299e1;
+}
+
+/* =============================================================================
+   Quiz – Flashcard
+   ============================================================================= */
+.flashcard-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 420px;
+  height: 240px;
+  margin: 0 auto 1.5rem;
+  cursor: pointer;
+}
+
+.flashcard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.flashcard--flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.flashcard__front {
+  background: linear-gradient(135deg, #ebf4ff 0%, #c3dafe 100%);
+  border: 2px solid #a3bffa;
+}
+
+.flashcard__back {
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+  border: 2px solid #9ae6b4;
+  transform: rotateY(180deg);
+}
+
+.flashcard__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #718096;
+}
+
+.flashcard__word {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.flashcard__pronunciation {
+  font-size: 0.875rem;
+  color: #718096;
+  font-style: italic;
+}
+
+.flashcard__example {
+  font-size: 0.8rem;
+  color: #4a5568;
+  text-align: center;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.flashcard__hint {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  margin-top: 0.5rem;
+}
+
+/* =============================================================================
+   Quiz – Confidence Slider
+   ============================================================================= */
+.confidence-slider {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.confidence-slider__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.confidence-slider__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.confidence-slider__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.confidence-slider__label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  text-align: right;
+}
+
+.confidence-slider__track-wrapper {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.confidence-slider__input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.confidence-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #4299e1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.confidence-slider__input::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #4299e1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.confidence-slider__marks {
+  position: relative;
+  height: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.confidence-slider__mark {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.confidence-slider__mark-label {
+  font-size: 0.65rem;
+  color: #a0aec0;
+}
+
+.confidence-slider__submit {
+  margin-top: 1rem;
+}
+
+/* =============================================================================
+   Quiz – Answer Buttons
+   ============================================================================= */
+.answer-buttons {
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.answer-buttons__prompt {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 0.75rem;
+}
+
+.answer-buttons__row {
+  display: flex;
+  gap: 1rem;
+}
+
+.answer-buttons__btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.answer-buttons__btn--incorrect {
+  background: #fff5f5;
+  color: #c53030;
+  border-color: #fc8181;
+}
+
+.answer-buttons__btn--incorrect:hover {
+  background: #fed7d7;
+}
+
+.answer-buttons__btn--correct {
+  background: #f0fff4;
+  color: #276749;
+  border-color: #68d391;
+}
+
+.answer-buttons__btn--correct:hover {
+  background: #c6f6d5;
+}
+
+/* =============================================================================
+   Quiz – Progress Bar
+   ============================================================================= */
+.quiz-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.quiz-progress__bar {
+  flex: 1;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.quiz-progress__fill {
+  height: 100%;
+  background: #4299e1;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.quiz-progress__text {
+  font-size: 0.8rem;
+  color: #718096;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* =============================================================================
+   Quiz – Feedback Flash
+   ============================================================================= */
+.quiz-feedback {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.75rem;
+  border-radius: 8px;
+  max-width: 420px;
+  margin: 0 auto;
+  animation: feedbackPulse 0.4s ease;
+}
+
+.quiz-feedback--correct {
+  color: #276749;
+  background: #c6f6d5;
+}
+
+.quiz-feedback--incorrect {
+  color: #822727;
+  background: #fed7d7;
+}
+
+@keyframes feedbackPulse {
+  0% { transform: scale(0.95); opacity: 0; }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* =============================================================================
+   Quiz – Container Layout
+   ============================================================================= */
+.quiz-active {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.quiz-active__top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-active__pause {
+  flex-shrink: 0;
+}
+
+.quiz-active__controls {
+  min-height: 140px;
+}
+
+.quiz-active__instruction {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 0.875rem;
+}
+
+/* =============================================================================
+   Quiz – Start Screen
+   ============================================================================= */
+.quiz-start {
+  max-width: 420px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.quiz-start__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.quiz-start__desc {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.quiz-start__info {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  color: #a0aec0;
+  margin-bottom: 1.5rem;
+}
+
+/* =============================================================================
+   Quiz – Paused Screen
+   ============================================================================= */
+.quiz-paused {
+  max-width: 420px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.quiz-paused h2 {
+  margin: 0 0 0.5rem;
+  color: #2d3748;
+}
+
+.quiz-paused p {
+  color: #718096;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-paused__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* =============================================================================
+   Session Summary
+   ============================================================================= */
+.session-summary {
+  max-width: 420px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.session-summary__title {
+  margin: 0 0 1.25rem;
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.session-summary__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.session-summary__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.session-summary__stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.session-summary__stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a0aec0;
+}
+
+.session-summary__calibration {
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.session-summary__calibration-title {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #718096;
+  margin-bottom: 0.25rem;
+}
+
+.session-summary__calibration-ece {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.session-summary__calibration-msg {
+  font-size: 0.85rem;
+  color: #4a5568;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
 @media (max-width: 768px) {
   .dashboard {
     grid-template-columns: 1fr;
@@ -274,5 +755,17 @@
 
   .metrics-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .flashcard-container {
+    height: 200px;
+  }
+
+  .flashcard__word {
+    font-size: 1.5rem;
+  }
+
+  .app-main {
+    padding: 1rem;
   }
 }
