@@ -1760,3 +1760,116 @@ body {
 [data-theme="dark"] .quiz-paused p {
   color: var(--text-secondary);
 }
+
+/* =============================================================================
+   Scaffold Prompt Card
+   ============================================================================= */
+.scaffold-prompt {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-md);
+  border-left: 4px solid var(--color-primary-500);
+  background: var(--color-primary-50);
+  margin: var(--space-sm) 0;
+  animation: scaffoldSlideIn 0.3s ease-out;
+}
+
+@keyframes scaffoldSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scaffold-prompt--reflection {
+  border-left-color: var(--color-warning);
+  background: #fffff0;
+}
+
+.scaffold-prompt--encouragement {
+  border-left-color: var(--color-success);
+  background: #f0fff4;
+}
+
+.scaffold-prompt--strategy {
+  border-left-color: #805ad5;
+  background: #faf5ff;
+}
+
+.scaffold-prompt__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  flex-shrink: 0;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.scaffold-prompt--reflection .scaffold-prompt__icon {
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.scaffold-prompt--encouragement .scaffold-prompt__icon {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.scaffold-prompt--strategy .scaffold-prompt__icon {
+  border-color: #805ad5;
+  color: #805ad5;
+}
+
+.scaffold-prompt__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.scaffold-prompt__title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin: 0 0 2px;
+  color: var(--text-primary);
+}
+
+.scaffold-prompt__message {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.scaffold-prompt__action {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  font-size: var(--font-size-xs);
+  align-self: center;
+}
+
+/* Dark mode overrides for scaffold prompts */
+[data-theme="dark"] .scaffold-prompt {
+  background: var(--bg-muted);
+  border-left-color: var(--color-primary-500);
+}
+
+[data-theme="dark"] .scaffold-prompt--reflection {
+  border-left-color: var(--color-warning);
+}
+
+[data-theme="dark"] .scaffold-prompt--encouragement {
+  border-left-color: var(--color-success);
+}
+
+[data-theme="dark"] .scaffold-prompt--strategy {
+  border-left-color: #805ad5;
+}
+
+[data-theme="dark"] .scaffold-prompt__icon {
+  background: var(--bg-card);
+}

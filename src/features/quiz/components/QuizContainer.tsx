@@ -1,10 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useQuizSession } from '../hooks/useQuizSession';
 import Flashcard from './Flashcard';
 import ConfidenceSlider from './ConfidenceSlider';
 import AnswerButtons from './AnswerButtons';
 import QuizProgress from './QuizProgress';
 import SessionSummary from './SessionSummary';
+import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
+import {
+  createScaffoldState,
+  processResponse,
+  dismissPrompt,
+} from '../../scaffolding/scaffoldingEngine';
+import { ScaffoldState } from '../../scaffolding/types';
 import { QuizItem, QuizResponse } from '../types';
 
 interface QuizContainerProps {
@@ -13,13 +20,13 @@ interface QuizContainerProps {
 }
 
 /**
- * Top-level quiz orchestrator.
+ * Top-level quiz orchestrator with SRL scaffolding.
  *
  * Flow per item:
  *   1. show-word      → Flashcard front (tap to continue)
  *   2. rate-confidence → ConfidenceSlider
  *   3. reveal-answer   → Flashcard back + AnswerButtons
- *   4. feedback        → brief flash then auto-advance
+ *   4. feedback        → brief flash, scaffold prompt, then auto-advance
  */
 export default function QuizContainer({ vocabulary, onSessionComplete }: QuizContainerProps) {
   const {
@@ -39,6 +46,7 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
 
   const [confidence, setConfidence] = useState(50);
   const [feedbackResult, setFeedbackResult] = useState<boolean | null>(null);
+  const [scaffold, setScaffold] = useState<ScaffoldState>(createScaffoldState);
   const completedRef = useRef(false);
 
   // Fire onSessionComplete once when session ends
@@ -46,13 +54,46 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
     if (isCompleted && session && !completedRef.current) {
       completedRef.current = true;
       const kHat = sessionStats?.calibrationMetrics?.ece ?? 0.3;
-      const betaHat = 0; // Placeholder — real value comes from QuizService
+      const betaHat = 0;
       onSessionComplete?.(session.responses, kHat, betaHat);
     }
     if (!isCompleted) {
       completedRef.current = false;
     }
   }, [isCompleted, session, sessionStats, onSessionComplete]);
+
+  const handleDismissScaffold = useCallback(() => {
+    setScaffold(prev => dismissPrompt(prev));
+  }, []);
+
+  const handleAnswer = useCallback(
+    (correct: boolean) => {
+      setFeedbackResult(correct);
+      submitAnswer(correct);
+
+      // Process scaffolding
+      if (session) {
+        const response: QuizResponse = {
+          itemId: session.items[session.currentIndex].id,
+          correctness: correct,
+          confidence,
+          responseTime: 0,
+          timestamp: new Date(),
+        };
+        setScaffold(prev =>
+          processResponse(prev, response, session.responses.length + 1)
+        );
+      }
+
+      // Auto-advance after feedback (delayed if scaffold prompt shows)
+      setTimeout(() => {
+        setFeedbackResult(null);
+        setConfidence(50);
+        nextItem();
+      }, 600);
+    },
+    [submitAnswer, nextItem, session, confidence]
+  );
 
   // ── Not started ──────────────────────────────────────────────────
   if (!session) {
@@ -73,6 +114,7 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
           onClick={() => {
             setConfidence(50);
             setFeedbackResult(null);
+            setScaffold(createScaffoldState());
             startSession(items);
           }}
           disabled={items.length === 0}
@@ -127,6 +169,16 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
         </button>
       </div>
 
+      {/* Scaffold prompt (before-answer timing) */}
+      {scaffold.activePrompt &&
+        scaffold.activePrompt.timing === 'before-answer' &&
+        phase === 'show-word' && (
+          <ScaffoldPromptCard
+            prompt={scaffold.activePrompt}
+            onDismiss={handleDismissScaffold}
+          />
+        )}
+
       {/* Card */}
       <Flashcard
         item={currentItem}
@@ -154,32 +206,28 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
 
         {phase === 'reveal-answer' && (
           <AnswerButtons
-            onCorrect={() => {
-              setFeedbackResult(true);
-              submitAnswer(true);
-              // Auto-advance after brief feedback
-              setTimeout(() => {
-                setFeedbackResult(null);
-                setConfidence(50);
-                nextItem();
-              }, 600);
-            }}
-            onIncorrect={() => {
-              setFeedbackResult(false);
-              submitAnswer(false);
-              setTimeout(() => {
-                setFeedbackResult(null);
-                setConfidence(50);
-                nextItem();
-              }, 600);
-            }}
+            onCorrect={() => handleAnswer(true)}
+            onIncorrect={() => handleAnswer(false)}
           />
         )}
 
         {phase === 'feedback' && (
-          <div className={`quiz-feedback ${feedbackResult ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect'}`}>
-            {feedbackResult ? 'Correct!' : 'Incorrect'}
-          </div>
+          <>
+            <div
+              className={`quiz-feedback ${feedbackResult ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect'}`}
+            >
+              {feedbackResult ? 'Correct!' : 'Incorrect'}
+            </div>
+
+            {/* Scaffold prompt (after-answer timing) */}
+            {scaffold.activePrompt &&
+              scaffold.activePrompt.timing === 'after-answer' && (
+                <ScaffoldPromptCard
+                  prompt={scaffold.activePrompt}
+                  onDismiss={handleDismissScaffold}
+                />
+              )}
+          </>
         )}
       </div>
     </div>
