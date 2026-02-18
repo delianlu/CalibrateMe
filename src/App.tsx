@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Dashboard from './components/Dashboard';
 import QuizContainer from './features/quiz/components/QuizContainer';
+import VocabularyList from './features/vocabulary/components/VocabularyList';
 import './App.css';
 
-type AppTab = 'quiz' | 'simulation';
+type AppTab = 'quiz' | 'vocabulary' | 'simulation';
 
 function App() {
   const [tab, setTab] = useState<AppTab>('quiz');
@@ -23,6 +24,12 @@ function App() {
           Practice
         </button>
         <button
+          className={`app-nav__tab ${tab === 'vocabulary' ? 'app-nav__tab--active' : ''}`}
+          onClick={() => setTab('vocabulary')}
+        >
+          Vocabulary
+        </button>
+        <button
           className={`app-nav__tab ${tab === 'simulation' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('simulation')}
         >
@@ -31,7 +38,9 @@ function App() {
       </nav>
 
       <main className="app-main">
-        {tab === 'quiz' ? <QuizContainer /> : <Dashboard />}
+        {tab === 'quiz' && <QuizContainer />}
+        {tab === 'vocabulary' && <VocabularyList />}
+        {tab === 'simulation' && <Dashboard />}
       </main>
 
       <footer className="app-footer">
