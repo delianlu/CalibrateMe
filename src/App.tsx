@@ -12,6 +12,7 @@ import { academicEnglish } from './data/vocabularyPacks/academic-english';
 import { businessEnglish } from './data/vocabularyPacks/business-english';
 import { GamificationState, createDefaultGamificationState } from './features/gamification/types';
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
+import { saveSessionToProvider } from './features/api/apiClient';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
@@ -69,6 +70,24 @@ function App() {
     (responses: QuizResponse[], kHat: number, betaHat: number) => {
       setAllResponses(prev => [...prev, ...responses]);
       recordSessionResponses(responses, kHat, betaHat);
+
+      // Persist session via data provider
+      const now = new Date().toISOString();
+      saveSessionToProvider({
+        userId: profile.id,
+        responses: responses.map(r => ({
+          itemId: r.itemId,
+          correctness: r.correctness,
+          confidence: r.confidence,
+          responseTime: r.responseTime,
+          timestamp: r.timestamp.toISOString(),
+        })),
+        globalKHat: kHat,
+        globalBetaHat: betaHat,
+        sessionECE: kHat,
+        startedAt: now,
+        completedAt: now,
+      }).catch(console.error);
 
       // Update gamification
       setGamification(prev => {
