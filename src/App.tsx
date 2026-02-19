@@ -12,11 +12,12 @@ import { academicEnglish } from './data/vocabularyPacks/academic-english';
 import { businessEnglish } from './data/vocabularyPacks/business-english';
 import { GamificationState, createDefaultGamificationState } from './features/gamification/types';
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
+import { MiniGameContainer } from './features/minigame';
 import { saveSessionToProvider } from './features/api/apiClient';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
-type AppTab = 'quiz' | 'vocabulary' | 'analytics' | 'profile' | 'simulation';
+type AppTab = 'quiz' | 'vocabulary' | 'analytics' | 'profile' | 'simulation' | 'minigame';
 
 function getAllVocabulary(): QuizItem[] {
   return [
@@ -153,6 +154,12 @@ function App() {
           Profile
         </button>
         <button
+          className={`app-nav__tab ${tab === 'minigame' ? 'app-nav__tab--active' : ''}`}
+          onClick={() => setTab('minigame')}
+        >
+          Calibration Game
+        </button>
+        <button
           className={`app-nav__tab ${tab === 'simulation' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('simulation')}
         >
@@ -185,6 +192,7 @@ function App() {
             />
           </>
         )}
+        {tab === 'minigame' && <MiniGameContainer onClose={() => setTab('quiz')} />}
         {tab === 'simulation' && <Dashboard />}
       </main>
 
