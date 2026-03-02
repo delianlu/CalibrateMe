@@ -123,51 +123,64 @@ function App() {
           className="app-header__theme-toggle"
           onClick={toggleDarkMode}
           title={profile.preferences.darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-label={profile.preferences.darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {profile.preferences.darkMode ? 'Light' : 'Dark'}
         </button>
       </header>
 
-      <nav className="app-nav">
+      <nav className="app-nav" role="tablist" aria-label="Main navigation">
         <button
           className={`app-nav__tab ${tab === 'quiz' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('quiz')}
+          role="tab"
+          aria-selected={tab === 'quiz'}
         >
           Practice
         </button>
         <button
           className={`app-nav__tab ${tab === 'vocabulary' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('vocabulary')}
+          role="tab"
+          aria-selected={tab === 'vocabulary'}
         >
           Vocabulary
         </button>
         <button
           className={`app-nav__tab ${tab === 'analytics' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('analytics')}
+          role="tab"
+          aria-selected={tab === 'analytics'}
         >
           Analytics
         </button>
         <button
           className={`app-nav__tab ${tab === 'profile' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('profile')}
+          role="tab"
+          aria-selected={tab === 'profile'}
         >
           Profile
         </button>
         <button
           className={`app-nav__tab ${tab === 'minigame' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('minigame')}
+          role="tab"
+          aria-selected={tab === 'minigame'}
         >
           Calibration Game
         </button>
         <button
           className={`app-nav__tab ${tab === 'simulation' ? 'app-nav__tab--active' : ''}`}
           onClick={() => setTab('simulation')}
+          role="tab"
+          aria-selected={tab === 'simulation'}
         >
           Simulation Lab
         </button>
       </nav>
 
-      <main className="app-main">
+      <main className="app-main" role="tabpanel" aria-label={`${tab} content`}>
         {tab === 'quiz' && (
           <QuizContainer
             vocabulary={allVocabulary}

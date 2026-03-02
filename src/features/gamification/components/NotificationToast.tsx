@@ -35,7 +35,7 @@ export default function NotificationToast({ notifications, onDismiss }: Notifica
           onComplete={() => setConfettiActive(false)}
         />
       )}
-      <div className="notification-toast-container">
+      <div className="notification-toast-container" role="alert" aria-live="polite">
         {notifications.map(n => (
           <div key={n.id} className={`notification-toast notification-toast--${n.type}`}>
             <span className="notification-toast__icon">{getNotificationIcon(n.type)}</span>
@@ -45,10 +45,14 @@ export default function NotificationToast({ notifications, onDismiss }: Notifica
             </div>
           </div>
         ))}
-        <button className="notification-toast__dismiss btn btn-primary" onClick={() => {
-          setConfettiActive(true); // Reset for next time
-          onDismiss();
-        }}>
+        <button
+          className="notification-toast__dismiss btn btn-primary"
+          aria-label="Dismiss notifications"
+          onClick={() => {
+            setConfettiActive(true); // Reset for next time
+            onDismiss();
+          }}
+        >
           Dismiss
         </button>
       </div>

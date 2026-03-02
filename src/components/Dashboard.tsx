@@ -11,6 +11,7 @@ import MetricsDisplay from './MetricsDisplay';
 import CalibrationChart from './CalibrationChart';
 import CalibrationCurve from './CalibrationCurve';
 import ComparisonView from './ComparisonView';
+import HypothesisResults from './HypothesisResults';
 import ResponseHistory from './ResponseHistory';
 import ProgressBar from './ProgressBar';
 
@@ -18,6 +19,7 @@ const Dashboard: React.FC = () => {
   const {
     results,
     comparisonResults,
+    hypothesisResults,
     isRunning,
     error,
     progress,
@@ -63,7 +65,7 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Single Simulation Results */}
-        {results && !isRunning && !comparisonResults && (
+        {results && !isRunning && !comparisonResults && !hypothesisResults && (
           <>
             <MetricsDisplay results={results} />
 
@@ -102,15 +104,21 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Comparison Results */}
-        {comparisonResults && !isRunning && (
+        {comparisonResults && !isRunning && !hypothesisResults && (
           <ComparisonView results={comparisonResults} />
         )}
 
-        {!results && !comparisonResults && !isRunning && !error && (
+        {/* Hypothesis Test Results */}
+        {hypothesisResults && !isRunning && (
+          <HypothesisResults resultsByProfile={hypothesisResults} />
+        )}
+
+        {!results && !comparisonResults && !hypothesisResults && !isRunning && !error && (
           <div className="card" style={{ textAlign: 'center', padding: '3rem', color: '#718096' }}>
             <h3 style={{ marginBottom: '1rem' }}>Welcome to CalibrateMe</h3>
             <p>Select a learner profile and click "Run Simulation" to see results.</p>
             <p>Or click "Compare Schedulers" to compare CalibrateMe against baselines.</p>
+            <p>Or click "Run Hypothesis Tests" to evaluate H1/H2/H3 across all 9 profiles.</p>
           </div>
         )}
       </div>

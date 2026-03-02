@@ -13,6 +13,7 @@ const SimulationControls: React.FC = () => {
     setSchedulerType,
     runSimulation,
     runComparison,
+    runHypothesisTests,
     reset,
     isRunning
   } = useSimulationStore();
@@ -115,6 +116,15 @@ const SimulationControls: React.FC = () => {
           style={{ background: '#9f7aea', color: 'white' }}
         >
           Compare All Schedulers
+        </button>
+
+        <button
+          className="btn btn-secondary btn-block"
+          onClick={runHypothesisTests}
+          disabled={isRunning}
+          style={{ background: '#d69e2e', color: 'white' }}
+        >
+          Run Hypothesis Tests (H1/H2/H3)
         </button>
 
         <button

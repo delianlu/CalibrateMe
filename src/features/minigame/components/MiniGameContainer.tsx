@@ -246,6 +246,9 @@ export default function MiniGameContainer({ onClose }: MiniGameContainerProps) {
               value={confidence}
               onChange={e => handleConfidenceChange(Number(e.target.value))}
               className="confidence-slider__input"
+              aria-label="Confidence level"
+              aria-valuenow={confidence}
+              aria-valuetext={`${confidence}% confidence`}
               style={{
                 background: `linear-gradient(to right, ${getConfidenceColor(confidence)} ${confidence}%, #e2e8f0 ${confidence}%)`,
               }}
@@ -273,7 +276,7 @@ export default function MiniGameContainer({ onClose }: MiniGameContainerProps) {
 
       {/* Feedback flash */}
       {phase === 'feedback' && latestAnswer && (
-        <div className={`minigame__feedback ${latestAnswer.correct ? 'minigame__feedback--correct' : 'minigame__feedback--incorrect'}`}>
+        <div className={`minigame__feedback ${latestAnswer.correct ? 'minigame__feedback--correct' : 'minigame__feedback--incorrect'}`} role="status" aria-live="assertive">
           <div className="minigame__feedback-result">
             {latestAnswer.correct ? 'Correct!' : 'Incorrect'}
           </div>

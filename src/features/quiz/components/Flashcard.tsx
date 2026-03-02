@@ -12,7 +12,14 @@ interface FlashcardProps {
  */
 export default function Flashcard({ item, flipped, onFlip }: FlashcardProps) {
   return (
-    <div className="flashcard-container" onClick={!flipped ? onFlip : undefined}>
+    <div
+      className="flashcard-container"
+      onClick={!flipped ? onFlip : undefined}
+      onKeyDown={!flipped ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onFlip(); } } : undefined}
+      role="button"
+      tabIndex={!flipped ? 0 : -1}
+      aria-label={!flipped ? `Flashcard: ${item.word}. Press Enter to reveal answer` : `Answer: ${item.translation}`}
+    >
       <div className={`flashcard ${flipped ? 'flashcard--flipped' : ''}`}>
         {/* Front */}
         <div className="flashcard__face flashcard__front">
