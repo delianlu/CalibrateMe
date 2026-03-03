@@ -1,10 +1,10 @@
 import { VocabularyPack } from '../../features/vocabulary/types';
 
 export const businessEnglish: VocabularyPack = {
-  id: 'business-english-tr',
+  id: 'business-english-fr',
   name: 'Business English',
   description: 'Professional vocabulary for the workplace',
-  language: { from: 'en', to: 'tr' },
+  language: { from: 'en', to: 'fr' },
   items: [
     // =========================================================================
     // EASY (15 items) - difficulty 0.25-0.4
@@ -12,7 +12,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-001',
       word: 'meeting',
-      translation: 'toplanti',
+      translation: 'réunion',
       pronunciation: '/ˈmiːtɪŋ/',
       example: 'We have a meeting at 10 AM.',
       difficulty: 0.25,
@@ -21,7 +21,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-002',
       word: 'office',
-      translation: 'ofis',
+      translation: 'bureau',
       pronunciation: '/ˈɒfɪs/',
       example: 'She works in a large office downtown.',
       difficulty: 0.25,
@@ -30,7 +30,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-003',
       word: 'budget',
-      translation: 'butce',
+      translation: 'budget',
       pronunciation: '/ˈbʌdʒɪt/',
       example: 'The project is over budget.',
       difficulty: 0.3,
@@ -39,7 +39,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-004',
       word: 'salary',
-      translation: 'maas',
+      translation: 'salaire',
       pronunciation: '/ˈsæləri/',
       example: 'His salary was increased this year.',
       difficulty: 0.25,
@@ -48,7 +48,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-005',
       word: 'contract',
-      translation: 'sozlesme',
+      translation: 'contrat',
       pronunciation: '/ˈkɒntrækt/',
       example: 'Please sign the contract before Friday.',
       difficulty: 0.3,
@@ -57,7 +57,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-006',
       word: 'employee',
-      translation: 'calisan',
+      translation: 'employé',
       pronunciation: '/ɪmˈplɔɪiː/',
       example: 'The company has over 500 employees.',
       difficulty: 0.3,
@@ -66,7 +66,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-007',
       word: 'manager',
-      translation: 'mudur',
+      translation: 'directeur',
       pronunciation: '/ˈmænɪdʒər/',
       example: 'The manager approved the request.',
       difficulty: 0.25,
@@ -75,7 +75,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-008',
       word: 'customer',
-      translation: 'musteri',
+      translation: 'client',
       pronunciation: '/ˈkʌstəmər/',
       example: 'The customer placed a large order.',
       difficulty: 0.3,
@@ -84,7 +84,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-009',
       word: 'invoice',
-      translation: 'fatura',
+      translation: 'facture',
       pronunciation: '/ˈɪnvɔɪs/',
       example: 'Please send the invoice by email.',
       difficulty: 0.35,
@@ -93,7 +93,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-010',
       word: 'deadline',
-      translation: 'son tarih',
+      translation: 'date limite',
       pronunciation: '/ˈdɛdlaɪn/',
       example: 'The deadline for the report is Monday.',
       difficulty: 0.3,
@@ -102,7 +102,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-011',
       word: 'profit',
-      translation: 'kar',
+      translation: 'bénéfice',
       pronunciation: '/ˈprɒfɪt/',
       example: 'The company made a large profit this quarter.',
       difficulty: 0.35,
@@ -111,7 +111,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-012',
       word: 'hire',
-      translation: 'ise almak',
+      translation: 'embaucher',
       pronunciation: '/haɪər/',
       example: 'We need to hire two more developers.',
       difficulty: 0.35,
@@ -120,7 +120,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-013',
       word: 'company',
-      translation: 'sirket',
+      translation: 'entreprise',
       pronunciation: '/ˈkʌmpəni/',
       example: 'She started her own company last year.',
       difficulty: 0.25,
@@ -129,7 +129,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-014',
       word: 'report',
-      translation: 'rapor',
+      translation: 'rapport',
       pronunciation: '/rɪˈpɔːrt/',
       example: 'The annual report was published today.',
       difficulty: 0.3,
@@ -138,7 +138,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-015',
       word: 'schedule',
-      translation: 'takvim',
+      translation: 'calendrier',
       pronunciation: '/ˈʃɛdjuːl/',
       example: 'Let me check my schedule for next week.',
       difficulty: 0.4,
@@ -151,7 +151,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-016',
       word: 'negotiate',
-      translation: 'muzakere etmek',
+      translation: 'négocier',
       pronunciation: '/nɪˈɡoʊʃieɪt/',
       example: 'We need to negotiate better terms with the supplier.',
       difficulty: 0.5,
@@ -160,7 +160,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-017',
       word: 'revenue',
-      translation: 'gelir',
+      translation: 'revenu',
       pronunciation: '/ˈrɛvənjuː/',
       example: 'Annual revenue exceeded expectations.',
       difficulty: 0.5,
@@ -169,7 +169,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-018',
       word: 'stakeholder',
-      translation: 'paydas',
+      translation: 'partie prenante',
       pronunciation: '/ˈsteɪkhoʊldər/',
       example: 'All stakeholders must approve the proposal.',
       difficulty: 0.55,
@@ -178,7 +178,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-019',
       word: 'quarterly',
-      translation: 'uc aylik',
+      translation: 'trimestriel',
       pronunciation: '/ˈkwɔːrtərli/',
       example: 'The quarterly earnings report is due next week.',
       difficulty: 0.45,
@@ -187,7 +187,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-020',
       word: 'agenda',
-      translation: 'gundem',
+      translation: 'ordre du jour',
       pronunciation: '/əˈdʒɛndə/',
       example: 'What is on the agenda for today?',
       difficulty: 0.45,
@@ -196,7 +196,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-021',
       word: 'compliance',
-      translation: 'uyumluluk',
+      translation: 'conformité',
       pronunciation: '/kəmˈplaɪəns/',
       example: 'The firm must ensure regulatory compliance.',
       difficulty: 0.6,
@@ -205,7 +205,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-022',
       word: 'outsource',
-      translation: 'dis kaynak kullanmak',
+      translation: 'externaliser',
       pronunciation: '/ˈaʊtsɔːrs/',
       example: 'They decided to outsource the IT department.',
       difficulty: 0.55,
@@ -214,7 +214,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-023',
       word: 'merger',
-      translation: 'birlesme',
+      translation: 'fusion',
       pronunciation: '/ˈmɜːrdʒər/',
       example: 'The merger created the largest bank in the region.',
       difficulty: 0.55,
@@ -223,7 +223,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-024',
       word: 'liability',
-      translation: 'yukumluluk',
+      translation: 'responsabilité',
       pronunciation: '/ˌlaɪəˈbɪlɪti/',
       example: 'The company has significant tax liabilities.',
       difficulty: 0.6,
@@ -232,7 +232,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-025',
       word: 'procurement',
-      translation: 'tedarik',
+      translation: 'approvisionnement',
       pronunciation: '/prəˈkjʊərmənt/',
       example: 'The procurement team handles all supplier relations.',
       difficulty: 0.55,
@@ -241,7 +241,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-026',
       word: 'benchmark',
-      translation: 'kiyas olcutu',
+      translation: 'référence',
       pronunciation: '/ˈbɛntʃmɑːrk/',
       example: 'We use industry benchmarks to evaluate performance.',
       difficulty: 0.5,
@@ -250,7 +250,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-027',
       word: 'forecast',
-      translation: 'tahmin',
+      translation: 'prévision',
       pronunciation: '/ˈfɔːrkæst/',
       example: 'The sales forecast looks promising for Q3.',
       difficulty: 0.5,
@@ -259,7 +259,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-028',
       word: 'turnover',
-      translation: 'ciro',
+      translation: "chiffre d'affaires",
       pronunciation: '/ˈtɜːrnoʊvər/',
       example: 'The company reported a turnover of $2 million.',
       difficulty: 0.5,
@@ -268,7 +268,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-029',
       word: 'implement',
-      translation: 'uygulamak',
+      translation: 'mettre en œuvre',
       pronunciation: '/ˈɪmplɪmɛnt/',
       example: 'We plan to implement the new system next month.',
       difficulty: 0.45,
@@ -277,7 +277,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-030',
       word: 'delegate',
-      translation: 'yetki devretmek',
+      translation: 'déléguer',
       pronunciation: '/ˈdɛlɪɡeɪt/',
       example: 'A good leader knows how to delegate tasks.',
       difficulty: 0.5,
@@ -286,7 +286,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-031',
       word: 'inventory',
-      translation: 'envanter',
+      translation: 'inventaire',
       pronunciation: '/ˈɪnvəntɔːri/',
       example: 'We need to update the inventory list.',
       difficulty: 0.5,
@@ -295,7 +295,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-032',
       word: 'lease',
-      translation: 'kiralamak',
+      translation: 'louer',
       pronunciation: '/liːs/',
       example: 'The company decided to lease new office space.',
       difficulty: 0.45,
@@ -304,7 +304,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-033',
       word: 'allocate',
-      translation: 'tahsis etmek',
+      translation: 'allouer',
       pronunciation: '/ˈæləkeɪt/',
       example: 'We must allocate funds for the new project.',
       difficulty: 0.55,
@@ -313,7 +313,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-034',
       word: 'subsidiary',
-      translation: 'bagla ortaklik',
+      translation: 'filiale',
       pronunciation: '/səbˈsɪdiɛri/',
       example: 'The firm opened a subsidiary in Germany.',
       difficulty: 0.6,
@@ -322,7 +322,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-035',
       word: 'overhead',
-      translation: 'genel gider',
+      translation: 'frais généraux',
       pronunciation: '/ˈoʊvərhɛd/',
       example: 'Reducing overhead costs is a top priority.',
       difficulty: 0.55,
@@ -335,7 +335,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-036',
       word: 'amortization',
-      translation: 'amortisman',
+      translation: 'amortissement',
       pronunciation: '/ˌæmərtɪˈzeɪʃən/',
       example: 'The amortization schedule spans 15 years.',
       difficulty: 0.75,
@@ -344,7 +344,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-037',
       word: 'equity',
-      translation: 'ozsermaye',
+      translation: 'capitaux propres',
       pronunciation: '/ˈɛkwɪti/',
       example: 'The shareholders equity increased this fiscal year.',
       difficulty: 0.7,
@@ -353,7 +353,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-038',
       word: 'liquidity',
-      translation: 'likidite',
+      translation: 'liquidité',
       pronunciation: '/lɪˈkwɪdɪti/',
       example: 'The bank maintains high liquidity ratios.',
       difficulty: 0.75,
@@ -362,7 +362,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-039',
       word: 'collateral',
-      translation: 'teminat',
+      translation: 'garantie',
       pronunciation: '/kəˈlætərəl/',
       example: 'The loan requires collateral worth $50,000.',
       difficulty: 0.7,
@@ -371,7 +371,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-040',
       word: 'depreciation',
-      translation: 'deger kaybi',
+      translation: 'dépréciation',
       pronunciation: '/dɪˌpriːʃiˈeɪʃən/',
       example: 'Asset depreciation affects the balance sheet.',
       difficulty: 0.75,
@@ -380,7 +380,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-041',
       word: 'fiduciary',
-      translation: 'emanetci',
+      translation: 'fiduciaire',
       pronunciation: '/fɪˈduːʃiˌɛri/',
       example: 'A fiduciary duty requires acting in the client\'s best interest.',
       difficulty: 0.8,
@@ -389,7 +389,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-042',
       word: 'arbitration',
-      translation: 'tahkim',
+      translation: 'arbitrage',
       pronunciation: '/ˌɑːrbɪˈtreɪʃən/',
       example: 'The dispute was resolved through arbitration.',
       difficulty: 0.7,
@@ -398,7 +398,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-043',
       word: 'indemnity',
-      translation: 'tazminat',
+      translation: 'indemnité',
       pronunciation: '/ɪnˈdɛmnɪti/',
       example: 'The indemnity clause protects against financial loss.',
       difficulty: 0.8,
@@ -407,7 +407,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-044',
       word: 'divestiture',
-      translation: 'elden cikarma',
+      translation: 'cession',
       pronunciation: '/daɪˈvɛstɪtʃər/',
       example: 'The divestiture of the subsidiary was completed last quarter.',
       difficulty: 0.8,
@@ -416,7 +416,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-045',
       word: 'remuneration',
-      translation: 'ucret',
+      translation: 'rémunération',
       pronunciation: '/rɪˌmjuːnəˈreɪʃən/',
       example: 'The remuneration package includes bonuses and stock options.',
       difficulty: 0.7,
@@ -425,7 +425,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-046',
       word: 'prospectus',
-      translation: 'izahname',
+      translation: 'prospectus',
       pronunciation: '/prəˈspɛktəs/',
       example: 'Investors should review the prospectus carefully.',
       difficulty: 0.75,
@@ -434,7 +434,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-047',
       word: 'synergy',
-      translation: 'sinerji',
+      translation: 'synergie',
       pronunciation: '/ˈsɪnərdʒi/',
       example: 'The merger is expected to create significant synergies.',
       difficulty: 0.65,
@@ -443,7 +443,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-048',
       word: 'leverage',
-      translation: 'kaldirac',
+      translation: 'levier',
       pronunciation: '/ˈlɛvərɪdʒ/',
       example: 'The firm uses financial leverage to maximize returns.',
       difficulty: 0.65,
@@ -452,7 +452,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-049',
       word: 'insolvency',
-      translation: 'iflas',
+      translation: 'insolvabilité',
       pronunciation: '/ɪnˈsɒlvənsi/',
       example: 'The company filed for insolvency after years of losses.',
       difficulty: 0.75,
@@ -461,7 +461,7 @@ export const businessEnglish: VocabularyPack = {
     {
       id: 'biz-050',
       word: 'underwrite',
-      translation: 'sigorta etmek',
+      translation: 'souscrire',
       pronunciation: '/ˌʌndərˈraɪt/',
       example: 'The bank agreed to underwrite the bond issue.',
       difficulty: 0.8,

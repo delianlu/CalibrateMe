@@ -1,11 +1,11 @@
 import { VocabularyPack } from '../../features/vocabulary/types';
 
 export const essentialEnglish: VocabularyPack = {
-  id: 'essential-english-tr',
-  name: 'Essential English for Turkish Speakers',
+  id: 'essential-english-fr',
+  name: 'Essential English for French Speakers',
   description:
-    'A curated pack of 80 essential English words with accurate Turkish translations, covering everyday nouns, verbs, adjectives, and advanced vocabulary.',
-  language: { from: 'en', to: 'tr' },
+    'A curated pack of 80 essential English words with accurate French translations, covering everyday nouns, verbs, adjectives, and advanced vocabulary.',
+  language: { from: 'en', to: 'fr' },
   items: [
     // =========================================================================
     // EASY (30 items) — difficulty 0.2–0.35
@@ -14,7 +14,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-001',
       word: 'water',
-      translation: 'su',
+      translation: 'eau',
       pronunciation: '/ˈwɔːtər/',
       example: 'Can I have a glass of water?',
       difficulty: 0.2,
@@ -23,7 +23,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-002',
       word: 'bread',
-      translation: 'ekmek',
+      translation: 'pain',
       pronunciation: '/brɛd/',
       example: 'We buy fresh bread every morning.',
       difficulty: 0.2,
@@ -32,7 +32,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-003',
       word: 'house',
-      translation: 'ev',
+      translation: 'maison',
       pronunciation: '/haʊs/',
       example: 'They live in a big house.',
       difficulty: 0.2,
@@ -41,7 +41,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-004',
       word: 'book',
-      translation: 'kitap',
+      translation: 'livre',
       pronunciation: '/bʊk/',
       example: 'She is reading a book.',
       difficulty: 0.2,
@@ -50,7 +50,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-005',
       word: 'eat',
-      translation: 'yemek',
+      translation: 'manger',
       pronunciation: '/iːt/',
       example: 'I eat breakfast at seven.',
       difficulty: 0.22,
@@ -59,7 +59,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-006',
       word: 'go',
-      translation: 'gitmek',
+      translation: 'aller',
       pronunciation: '/ɡoʊ/',
       example: 'We go to school every day.',
       difficulty: 0.2,
@@ -68,7 +68,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-007',
       word: 'big',
-      translation: 'büyük',
+      translation: 'grand',
       pronunciation: '/bɪɡ/',
       example: 'The dog is very big.',
       difficulty: 0.2,
@@ -77,7 +77,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-008',
       word: 'small',
-      translation: 'küçük',
+      translation: 'petit',
       pronunciation: '/smɔːl/',
       example: 'She has a small cat.',
       difficulty: 0.2,
@@ -86,7 +86,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-009',
       word: 'friend',
-      translation: 'arkadaş',
+      translation: 'ami',
       pronunciation: '/frɛnd/',
       example: 'He is my best friend.',
       difficulty: 0.22,
@@ -95,7 +95,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-010',
       word: 'mother',
-      translation: 'anne',
+      translation: 'mère',
       pronunciation: '/ˈmʌðər/',
       example: 'My mother cooks delicious food.',
       difficulty: 0.2,
@@ -104,7 +104,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-011',
       word: 'father',
-      translation: 'baba',
+      translation: 'père',
       pronunciation: '/ˈfɑːðər/',
       example: 'My father works in an office.',
       difficulty: 0.2,
@@ -113,7 +113,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-012',
       word: 'come',
-      translation: 'gelmek',
+      translation: 'venir',
       pronunciation: '/kʌm/',
       example: 'Please come to my party.',
       difficulty: 0.22,
@@ -122,7 +122,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-013',
       word: 'day',
-      translation: 'gün',
+      translation: 'jour',
       pronunciation: '/deɪ/',
       example: 'It was a beautiful day.',
       difficulty: 0.2,
@@ -131,7 +131,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-014',
       word: 'night',
-      translation: 'gece',
+      translation: 'nuit',
       pronunciation: '/naɪt/',
       example: 'The stars shine at night.',
       difficulty: 0.2,
@@ -140,7 +140,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-015',
       word: 'see',
-      translation: 'görmek',
+      translation: 'voir',
       pronunciation: '/siː/',
       example: 'I can see the mountains from here.',
       difficulty: 0.25,
@@ -149,7 +149,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-016',
       word: 'good',
-      translation: 'iyi',
+      translation: 'bon',
       pronunciation: '/ɡʊd/',
       example: 'This is a good idea.',
       difficulty: 0.2,
@@ -158,7 +158,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-017',
       word: 'bad',
-      translation: 'kötü',
+      translation: 'mauvais',
       pronunciation: '/bæd/',
       example: 'The weather is bad today.',
       difficulty: 0.2,
@@ -167,7 +167,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-018',
       word: 'child',
-      translation: 'çocuk',
+      translation: 'enfant',
       pronunciation: '/tʃaɪld/',
       example: 'The child is playing in the park.',
       difficulty: 0.25,
@@ -176,7 +176,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-019',
       word: 'milk',
-      translation: 'süt',
+      translation: 'lait',
       pronunciation: '/mɪlk/',
       example: 'I drink milk every morning.',
       difficulty: 0.2,
@@ -185,7 +185,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-020',
       word: 'dog',
-      translation: 'köpek',
+      translation: 'chien',
       pronunciation: '/dɔːɡ/',
       example: 'The dog is barking loudly.',
       difficulty: 0.2,
@@ -194,7 +194,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-021',
       word: 'cat',
-      translation: 'kedi',
+      translation: 'chat',
       pronunciation: '/kæt/',
       example: 'The cat is sleeping on the sofa.',
       difficulty: 0.2,
@@ -203,7 +203,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-022',
       word: 'run',
-      translation: 'koşmak',
+      translation: 'courir',
       pronunciation: '/rʌn/',
       example: 'He likes to run in the park.',
       difficulty: 0.25,
@@ -212,7 +212,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-023',
       word: 'hand',
-      translation: 'el',
+      translation: 'main',
       pronunciation: '/hænd/',
       example: 'She washed her hands before eating.',
       difficulty: 0.22,
@@ -221,7 +221,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-024',
       word: 'eye',
-      translation: 'göz',
+      translation: 'œil',
       pronunciation: '/aɪ/',
       example: 'She has beautiful green eyes.',
       difficulty: 0.22,
@@ -230,7 +230,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-025',
       word: 'new',
-      translation: 'yeni',
+      translation: 'nouveau',
       pronunciation: '/njuː/',
       example: 'I bought a new phone.',
       difficulty: 0.2,
@@ -239,7 +239,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-026',
       word: 'old',
-      translation: 'eski',
+      translation: 'vieux',
       pronunciation: '/oʊld/',
       example: 'This is an old building.',
       difficulty: 0.2,
@@ -248,7 +248,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-027',
       word: 'give',
-      translation: 'vermek',
+      translation: 'donner',
       pronunciation: '/ɡɪv/',
       example: 'Please give me the salt.',
       difficulty: 0.3,
@@ -257,7 +257,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-028',
       word: 'take',
-      translation: 'almak',
+      translation: 'prendre',
       pronunciation: '/teɪk/',
       example: 'Take your umbrella with you.',
       difficulty: 0.3,
@@ -266,7 +266,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-029',
       word: 'school',
-      translation: 'okul',
+      translation: 'école',
       pronunciation: '/skuːl/',
       example: 'The children walk to school.',
       difficulty: 0.25,
@@ -275,7 +275,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-030',
       word: 'happy',
-      translation: 'mutlu',
+      translation: 'heureux',
       pronunciation: '/ˈhæpi/',
       example: 'She is very happy today.',
       difficulty: 0.25,
@@ -289,7 +289,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-031',
       word: 'knowledge',
-      translation: 'bilgi',
+      translation: 'connaissance',
       pronunciation: '/ˈnɒlɪdʒ/',
       example: 'Knowledge is power.',
       difficulty: 0.4,
@@ -298,7 +298,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-032',
       word: 'environment',
-      translation: 'çevre',
+      translation: 'environnement',
       pronunciation: '/ɪnˈvaɪrənmənt/',
       example: 'We must protect the environment.',
       difficulty: 0.45,
@@ -307,7 +307,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-033',
       word: 'discover',
-      translation: 'keşfetmek',
+      translation: 'découvrir',
       pronunciation: '/dɪˈskʌvər/',
       example: 'Scientists discover new species every year.',
       difficulty: 0.45,
@@ -316,7 +316,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-034',
       word: 'journey',
-      translation: 'yolculuk',
+      translation: 'voyage',
       pronunciation: '/ˈdʒɜːrni/',
       example: 'The journey took three hours.',
       difficulty: 0.4,
@@ -325,7 +325,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-035',
       word: 'explain',
-      translation: 'açıklamak',
+      translation: 'expliquer',
       pronunciation: '/ɪkˈspleɪn/',
       example: 'Can you explain this problem to me?',
       difficulty: 0.45,
@@ -334,7 +334,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-036',
       word: 'compare',
-      translation: 'karşılaştırmak',
+      translation: 'comparer',
       pronunciation: '/kəmˈpɛər/',
       example: 'You should compare prices before buying.',
       difficulty: 0.5,
@@ -343,7 +343,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-037',
       word: 'improve',
-      translation: 'geliştirmek',
+      translation: 'améliorer',
       pronunciation: '/ɪmˈpruːv/',
       example: 'She wants to improve her English.',
       difficulty: 0.45,
@@ -352,7 +352,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-038',
       word: 'perhaps',
-      translation: 'belki',
+      translation: 'peut-être',
       pronunciation: '/pərˈhæps/',
       example: 'Perhaps we should leave early.',
       difficulty: 0.4,
@@ -361,7 +361,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-039',
       word: 'necessary',
-      translation: 'gerekli',
+      translation: 'nécessaire',
       pronunciation: '/ˈnɛsəsɛri/',
       example: 'It is necessary to wear a seatbelt.',
       difficulty: 0.5,
@@ -370,7 +370,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-040',
       word: 'behavior',
-      translation: 'davranış',
+      translation: 'comportement',
       pronunciation: '/bɪˈheɪvjər/',
       example: 'His behavior in class was excellent.',
       difficulty: 0.5,
@@ -379,7 +379,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-041',
       word: 'ancient',
-      translation: 'antik',
+      translation: 'ancien',
       pronunciation: '/ˈeɪnʃənt/',
       example: 'They visited ancient ruins in Greece.',
       difficulty: 0.5,
@@ -388,7 +388,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-042',
       word: 'solution',
-      translation: 'çözüm',
+      translation: 'solution',
       pronunciation: '/səˈluːʃən/',
       example: 'We need to find a solution to this problem.',
       difficulty: 0.45,
@@ -397,7 +397,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-043',
       word: 'government',
-      translation: 'hükümet',
+      translation: 'gouvernement',
       pronunciation: '/ˈɡʌvərnmənt/',
       example: 'The government announced new policies.',
       difficulty: 0.5,
@@ -406,7 +406,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-044',
       word: 'suggest',
-      translation: 'önermek',
+      translation: 'suggérer',
       pronunciation: '/səˈdʒɛst/',
       example: 'I suggest we take a different route.',
       difficulty: 0.45,
@@ -415,7 +415,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-045',
       word: 'achieve',
-      translation: 'başarmak',
+      translation: 'accomplir',
       pronunciation: '/əˈtʃiːv/',
       example: 'She achieved her goals through hard work.',
       difficulty: 0.5,
@@ -424,7 +424,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-046',
       word: 'opportunity',
-      translation: 'fırsat',
+      translation: 'opportunité',
       pronunciation: '/ˌɒpərˈtjuːnɪti/',
       example: 'This is a great opportunity for you.',
       difficulty: 0.5,
@@ -433,7 +433,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-047',
       word: 'generous',
-      translation: 'cömert',
+      translation: 'généreux',
       pronunciation: '/ˈdʒɛnərəs/',
       example: 'He is a very generous person.',
       difficulty: 0.5,
@@ -442,7 +442,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-048',
       word: 'temperature',
-      translation: 'sıcaklık',
+      translation: 'température',
       pronunciation: '/ˈtɛmpərətʃər/',
       example: 'The temperature dropped below zero.',
       difficulty: 0.5,
@@ -451,7 +451,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-049',
       word: 'measure',
-      translation: 'ölçmek',
+      translation: 'mesurer',
       pronunciation: '/ˈmɛʒər/',
       example: 'We need to measure the length of the room.',
       difficulty: 0.5,
@@ -460,7 +460,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-050',
       word: 'nervous',
-      translation: 'gergin',
+      translation: 'nerveux',
       pronunciation: '/ˈnɜːrvəs/',
       example: 'She was nervous before the exam.',
       difficulty: 0.45,
@@ -469,7 +469,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-051',
       word: 'struggle',
-      translation: 'mücadele etmek',
+      translation: 'lutter',
       pronunciation: '/ˈstrʌɡəl/',
       example: 'They struggled to survive in the wilderness.',
       difficulty: 0.55,
@@ -478,7 +478,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-052',
       word: 'accurate',
-      translation: 'doğru',
+      translation: 'précis',
       pronunciation: '/ˈækjərət/',
       example: 'The report must be accurate.',
       difficulty: 0.55,
@@ -487,7 +487,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-053',
       word: 'demand',
-      translation: 'talep',
+      translation: 'demande',
       pronunciation: '/dɪˈmænd/',
       example: 'There is a high demand for skilled workers.',
       difficulty: 0.5,
@@ -496,7 +496,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-054',
       word: 'tradition',
-      translation: 'gelenek',
+      translation: 'tradition',
       pronunciation: '/trəˈdɪʃən/',
       example: 'It is a family tradition to gather on holidays.',
       difficulty: 0.45,
@@ -505,7 +505,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-055',
       word: 'influence',
-      translation: 'etki',
+      translation: 'influence',
       pronunciation: '/ˈɪnfluəns/',
       example: 'Music has a strong influence on people.',
       difficulty: 0.55,
@@ -514,7 +514,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-056',
       word: 'establish',
-      translation: 'kurmak',
+      translation: 'établir',
       pronunciation: '/ɪˈstæblɪʃ/',
       example: 'They established the company in 1990.',
       difficulty: 0.55,
@@ -523,7 +523,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-057',
       word: 'celebrate',
-      translation: 'kutlamak',
+      translation: 'célébrer',
       pronunciation: '/ˈsɛlɪbreɪt/',
       example: 'We celebrate birthdays with cake and candles.',
       difficulty: 0.45,
@@ -532,7 +532,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-058',
       word: 'responsibility',
-      translation: 'sorumluluk',
+      translation: 'responsabilité',
       pronunciation: '/rɪˌspɒnsɪˈbɪlɪti/',
       example: 'It is your responsibility to finish the task.',
       difficulty: 0.55,
@@ -541,7 +541,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-059',
       word: 'curious',
-      translation: 'meraklı',
+      translation: 'curieux',
       pronunciation: '/ˈkjʊəriəs/',
       example: 'Children are naturally curious about the world.',
       difficulty: 0.5,
@@ -550,7 +550,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-060',
       word: 'encourage',
-      translation: 'teşvik etmek',
+      translation: 'encourager',
       pronunciation: '/ɪnˈkʌrɪdʒ/',
       example: 'Teachers encourage students to ask questions.',
       difficulty: 0.55,
@@ -564,7 +564,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-061',
       word: 'consequence',
-      translation: 'sonuç',
+      translation: 'conséquence',
       pronunciation: '/ˈkɒnsɪkwəns/',
       example: 'Every action has a consequence.',
       difficulty: 0.65,
@@ -573,7 +573,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-062',
       word: 'exaggerate',
-      translation: 'abartmak',
+      translation: 'exagérer',
       pronunciation: '/ɪɡˈzædʒəreɪt/',
       example: 'He tends to exaggerate his achievements.',
       difficulty: 0.7,
@@ -582,7 +582,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-063',
       word: 'sophisticated',
-      translation: 'sofistike',
+      translation: 'sophistiqué',
       pronunciation: '/səˈfɪstɪkeɪtɪd/',
       example: 'She has a very sophisticated taste in art.',
       difficulty: 0.75,
@@ -591,7 +591,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-064',
       word: 'inevitable',
-      translation: 'kaçınılmaz',
+      translation: 'inévitable',
       pronunciation: '/ɪnˈɛvɪtəbəl/',
       example: 'Change is inevitable in life.',
       difficulty: 0.75,
@@ -600,7 +600,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-065',
       word: 'contemplate',
-      translation: 'düşünmek',
+      translation: 'contempler',
       pronunciation: '/ˈkɒntəmpleɪt/',
       example: 'She sat by the lake to contemplate her future.',
       difficulty: 0.7,
@@ -609,7 +609,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-066',
       word: 'reluctant',
-      translation: 'isteksiz',
+      translation: 'réticent',
       pronunciation: '/rɪˈlʌktənt/',
       example: 'He was reluctant to share his opinion.',
       difficulty: 0.7,
@@ -618,7 +618,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-067',
       word: 'ambiguous',
-      translation: 'belirsiz',
+      translation: 'ambigu',
       pronunciation: '/æmˈbɪɡjuəs/',
       example: 'The instructions were ambiguous and confusing.',
       difficulty: 0.75,
@@ -627,7 +627,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-068',
       word: 'perceive',
-      translation: 'algılamak',
+      translation: 'percevoir',
       pronunciation: '/pərˈsiːv/',
       example: 'People perceive the world differently.',
       difficulty: 0.7,
@@ -636,7 +636,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-069',
       word: 'prosperity',
-      translation: 'refah',
+      translation: 'prospérité',
       pronunciation: '/prɒˈspɛrɪti/',
       example: 'The country enjoyed a period of prosperity.',
       difficulty: 0.7,
@@ -645,7 +645,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-070',
       word: 'compromise',
-      translation: 'uzlaşma',
+      translation: 'compromis',
       pronunciation: '/ˈkɒmprəmaɪz/',
       example: 'They reached a compromise after long negotiations.',
       difficulty: 0.65,
@@ -654,7 +654,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-071',
       word: 'thoroughly',
-      translation: 'iyice',
+      translation: 'minutieusement',
       pronunciation: '/ˈθʌrəli/',
       example: 'Please read the document thoroughly.',
       difficulty: 0.7,
@@ -663,7 +663,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-072',
       word: 'suppress',
-      translation: 'bastırmak',
+      translation: 'réprimer',
       pronunciation: '/səˈprɛs/',
       example: 'He tried to suppress his anger.',
       difficulty: 0.75,
@@ -672,7 +672,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-073',
       word: 'eloquent',
-      translation: 'güzel konuşan',
+      translation: 'éloquent',
       pronunciation: '/ˈɛləkwənt/',
       example: 'She gave an eloquent speech at the ceremony.',
       difficulty: 0.8,
@@ -681,7 +681,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-074',
       word: 'diligent',
-      translation: 'çalışkan',
+      translation: 'diligent',
       pronunciation: '/ˈdɪlɪdʒənt/',
       example: 'He is a diligent student who always does his homework.',
       difficulty: 0.7,
@@ -690,7 +690,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-075',
       word: 'undermine',
-      translation: 'baltalamak',
+      translation: 'saper',
       pronunciation: '/ˌʌndərˈmaɪn/',
       example: 'His actions undermine our efforts.',
       difficulty: 0.75,
@@ -699,7 +699,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-076',
       word: 'resilience',
-      translation: 'dayanıklılık',
+      translation: 'résilience',
       pronunciation: '/rɪˈzɪliəns/',
       example: 'Resilience is key to overcoming challenges.',
       difficulty: 0.75,
@@ -708,7 +708,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-077',
       word: 'peculiar',
-      translation: 'tuhaf',
+      translation: 'particulier',
       pronunciation: '/pɪˈkjuːliər/',
       example: 'There was a peculiar smell coming from the kitchen.',
       difficulty: 0.7,
@@ -717,7 +717,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-078',
       word: 'diminish',
-      translation: 'azaltmak',
+      translation: 'diminuer',
       pronunciation: '/dɪˈmɪnɪʃ/',
       example: 'Nothing can diminish her accomplishments.',
       difficulty: 0.7,
@@ -726,7 +726,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-079',
       word: 'adversity',
-      translation: 'zorluk',
+      translation: 'adversité',
       pronunciation: '/ədˈvɜːrsɪti/',
       example: 'She showed great courage in the face of adversity.',
       difficulty: 0.75,
@@ -735,7 +735,7 @@ export const essentialEnglish: VocabularyPack = {
     {
       id: 'ess-080',
       word: 'scrutinize',
-      translation: 'incelemek',
+      translation: 'examiner',
       pronunciation: '/ˈskruːtɪnaɪz/',
       example: 'The auditor will scrutinize every transaction.',
       difficulty: 0.8,
