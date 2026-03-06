@@ -105,8 +105,9 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
     (selectedOption: string) => {
       if (!currentItem) return;
       const correct = selectedOption === currentItem.answer;
-      // Skip the confidence step for grammar — go straight to reveal + feedback
-      submitConfidence(70); // default confidence for grammar
+      // Advance through phases: show-word → rate-confidence → reveal-answer → feedback
+      flipCard(); // show-word → rate-confidence
+      submitConfidence(70); // rate-confidence → reveal-answer
       setFeedbackResult(correct);
       submitAnswer(correct);
 
@@ -123,7 +124,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
         );
       }
     },
-    [currentItem, submitConfidence, submitAnswer, session]
+    [currentItem, flipCard, submitConfidence, submitAnswer, session]
   );
 
   // Advance from grammar feedback to next item
