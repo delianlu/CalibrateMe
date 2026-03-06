@@ -10,6 +10,7 @@ import { useUserProfile } from './features/user/hooks/useUserProfile';
 import { essentialEnglish } from './data/vocabularyPacks/essential-english';
 import { academicEnglish } from './data/vocabularyPacks/academic-english';
 import { businessEnglish } from './data/vocabularyPacks/business-english';
+import { getOffGridActivities } from './data/offgridAdapter';
 import { GamificationState, createDefaultGamificationState } from './features/gamification/types';
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
 import { MiniGameContainer } from './features/minigame';
@@ -45,6 +46,7 @@ function App() {
     useUserProfile();
 
   const allVocabulary = useMemo(() => getAllVocabulary(), []);
+  const grammarActivities = useMemo(() => getOffGridActivities(), []);
 
   // Persist gamification state
   useEffect(() => {
@@ -184,6 +186,7 @@ function App() {
         {tab === 'quiz' && (
           <QuizContainer
             vocabulary={allVocabulary}
+            grammarActivities={grammarActivities}
             onSessionComplete={handleSessionComplete}
           />
         )}

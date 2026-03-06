@@ -2,6 +2,34 @@
 // Quiz Feature Types
 // =============================================================================
 
+export type QuizItemType = 'vocabulary' | 'multiple-choice' | 'error_correction';
+
+export interface FrenchComparison {
+  frenchStructure: string;
+  englishStructure: string;
+  whyDifficult: string;
+  visualHighlighting?: {
+    incorrect: string;
+    correct: string;
+  };
+}
+
+export interface ScenarioContext {
+  name: string;
+  icon: string;
+  context: string;
+  characters: string[];
+}
+
+export interface FalseCognateInfo {
+  englishWord: string;
+  frenchWord: string;
+  frenchMeaning: string;
+  englishMeaning: string;
+  commonMistake: string;
+  memoryTrick: string;
+}
+
 export interface QuizItem {
   id: string;
   word: string;
@@ -10,6 +38,19 @@ export interface QuizItem {
   example?: string;
   difficulty: number; // 0-1
   tags: string[];
+
+  // Grammar exercise fields (OffGrid activities)
+  itemType?: QuizItemType;
+  question?: string;
+  answer?: string;
+  options?: string[];
+  feedback?: string;
+  correction?: string | null;
+  category?: string;
+  moduleId?: string;
+  frenchComparison?: FrenchComparison;
+  scenario?: ScenarioContext;
+  falseCognate?: FalseCognateInfo;
 }
 
 export interface QuizResponse {
