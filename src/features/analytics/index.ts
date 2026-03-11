@@ -4,3 +4,8 @@ export { default as ECEMeter } from './components/ECEMeter';
 export { default as ConfidenceHistogram } from './components/ConfidenceHistogram';
 export { default as RetentionForecast } from './components/RetentionForecast';
 export { default as ForgettingCurves } from './components/ForgettingCurves';
+export { default as FinalReport } from './components/FinalReport';
+export { analyzeLongitudinal } from './longitudinalAnalysis';
+export { analyzePatterns } from './patternAnalysis';
+export { analyzeLearnerInsights } from './learnerInsights';
+export { analyzeScaffoldingImpact } from './scaffoldingImpact';

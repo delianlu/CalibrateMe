@@ -2,9 +2,11 @@
 // Dashboard Component (UPDATED)
 // =============================================================================
 
-import React from 'react';
+import React, { useState } from 'react';
+import { FileText, ArrowLeft } from 'lucide-react';
 import { useSimulationStore } from '../store/simulationStore';
 import { calculateCalibrationMetrics } from '../calibration/scoringModule';
+import { SchedulerType } from '../types';
 import LearnerProfileSelector from './LearnerProfileSelector';
 import SimulationControls from './SimulationControls';
 import MetricsDisplay from './MetricsDisplay';
@@ -14,9 +16,12 @@ import ComparisonView from './ComparisonView';
 import HypothesisResults from './HypothesisResults';
 import ResponseHistory from './ResponseHistory';
 import ProgressBar from './ProgressBar';
+import FinalReport from '../features/analytics/components/FinalReport';
 
 const Dashboard: React.FC = () => {
+  const [showReport, setShowReport] = useState(false);
   const {
+    profile,
     results,
     comparisonResults,
     hypothesisResults,
@@ -44,6 +49,38 @@ const Dashboard: React.FC = () => {
     return calculateCalibrationMetrics(mockResponses).bin_data;
   }, [results]);
 
+  // Get baseline (SM-2) results for comparison in the report
+  const baselineResults = React.useMemo(() => {
+    if (!comparisonResults) return undefined;
+    return comparisonResults.get(SchedulerType.SM2);
+  }, [comparisonResults]);
+
+  // Show full report view
+  if (showReport && results && profile) {
+    return (
+      <div className="dashboard">
+        <div className="dashboard-sidebar">
+          <LearnerProfileSelector />
+          <SimulationControls />
+        </div>
+        <div className="dashboard-content">
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => setShowReport(false)}
+            style={{ marginBottom: '1rem' }}
+          >
+            <ArrowLeft size={14} /> Back to Results
+          </button>
+          <FinalReport
+            results={results}
+            params={profile.params}
+            baselineResults={baselineResults}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="dashboard">
       <div className="dashboard-sidebar">
@@ -67,6 +104,15 @@ const Dashboard: React.FC = () => {
         {/* Single Simulation Results */}
         {results && !isRunning && !comparisonResults && !hypothesisResults && (
           <>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={() => setShowReport(true)}
+              >
+                <FileText size={14} /> View Full Report
+              </button>
+            </div>
+
             <MetricsDisplay results={results} />
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
