@@ -6,6 +6,7 @@ import ConfidenceSlider from './ConfidenceSlider';
 import AnswerButtons from './AnswerButtons';
 import QuizProgress from './QuizProgress';
 import SessionSummary from './SessionSummary';
+import OnboardingCard, { hasSeenOnboarding } from './OnboardingCard';
 import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
 import {
   createScaffoldState,
@@ -52,6 +53,9 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   const [feedbackResult, setFeedbackResult] = useState<boolean | null>(null);
   const [scaffold, setScaffold] = useState<ScaffoldState>(createScaffoldState);
   const [practiceMode, setPracticeMode] = useState<PracticeMode>('mixed');
+  const [showOnboarding, setShowOnboarding] = useState(!hasSeenOnboarding());
+  // Grammar: after user selects an option, show confidence slider before grading
+  const [grammarPendingOption, setGrammarPendingOption] = useState<string | null>(null);
   const completedRef = useRef(false);
 
   // Fire onSessionComplete once when session ends
@@ -100,22 +104,32 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
     [submitAnswer, nextItem, session, confidence]
   );
 
-  // Handler for grammar exercise answers (auto-graded)
+  // Handler for grammar exercise: user selects option, then rates confidence
   const handleGrammarAnswer = useCallback(
     (selectedOption: string) => {
       if (!currentItem) return;
-      const correct = selectedOption === currentItem.answer;
-      // Advance through phases: show-word → rate-confidence → reveal-answer → feedback
+      // Store selected option and show confidence slider
+      setGrammarPendingOption(selectedOption);
       flipCard(); // show-word → rate-confidence
-      submitConfidence(70); // rate-confidence → reveal-answer
+    },
+    [currentItem, flipCard]
+  );
+
+  // After grammar confidence is submitted, grade and advance
+  const handleGrammarConfidenceSubmit = useCallback(
+    (conf: number) => {
+      if (!currentItem || grammarPendingOption === null) return;
+      const correct = grammarPendingOption === currentItem.answer;
+      submitConfidence(conf); // rate-confidence → reveal-answer
       setFeedbackResult(correct);
       submitAnswer(correct);
+      setGrammarPendingOption(null);
 
       if (session) {
         const response: QuizResponse = {
           itemId: session.items[session.currentIndex].id,
           correctness: correct,
-          confidence: 70,
+          confidence: conf,
           responseTime: 0,
           timestamp: new Date(),
         };
@@ -124,13 +138,14 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
         );
       }
     },
-    [currentItem, flipCard, submitConfidence, submitAnswer, session]
+    [currentItem, grammarPendingOption, submitConfidence, submitAnswer, session]
   );
 
   // Advance from grammar feedback to next item
   const handleGrammarNext = useCallback(() => {
     setFeedbackResult(null);
     setConfidence(50);
+    setGrammarPendingOption(null);
     nextItem();
   }, [nextItem]);
 
@@ -147,6 +162,10 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
     const sessionItems = getSessionItems();
 
     return (
+      <>
+      {showOnboarding && (
+        <OnboardingCard onDismiss={() => setShowOnboarding(false)} />
+      )}
       <div className="quiz-start card">
         <h2 className="quiz-start__title">Practice Mode</h2>
         <p className="quiz-start__desc">
@@ -199,6 +218,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
           {sessionItems.length === 0 ? 'No items loaded' : 'Start Quiz'}
         </button>
       </div>
+      </>
     );
   }
 
@@ -207,6 +227,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
     return (
       <SessionSummary
         responses={session.responses}
+        items={session.items}
         calibrationECE={sessionStats?.calibrationMetrics?.ece ?? null}
         onClose={endSession}
       />
@@ -255,6 +276,16 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
             phase={phase as 'show-word' | 'rate-confidence' | 'reveal-answer' | 'feedback'}
             onAnswer={handleGrammarAnswer}
           />
+          {/* Confidence slider for grammar (after selecting option, before grading) */}
+          {phase === 'rate-confidence' && grammarPendingOption !== null && (
+            <div className="quiz-active__controls">
+              <ConfidenceSlider
+                value={confidence}
+                onChange={setConfidence}
+                onSubmit={handleGrammarConfidenceSubmit}
+              />
+            </div>
+          )}
           {(phase === 'feedback' || phase === 'reveal-answer') && (
             <div className="quiz-active__controls">
               <button className="btn btn-primary btn-block" onClick={handleGrammarNext}>

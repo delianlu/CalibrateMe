@@ -1,15 +1,17 @@
 import { useMemo } from 'react';
-import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight } from 'lucide-react';
-import { QuizResponse } from '../types';
+import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap } from 'lucide-react';
+import { QuizItem, QuizResponse } from '../types';
 
 interface SessionSummaryProps {
   responses: QuizResponse[];
+  items?: QuizItem[];
   calibrationECE: number | null;
   onClose: () => void;
 }
 
 interface StrugglingItem {
   itemId: string;
+  label: string;
   confidence: number;
   wasCorrect: boolean;
 }
@@ -67,7 +69,7 @@ function getRecommendations(
     );
   } else if (gap < -15) {
     tips.push(
-      'When you feel unsure, give yourself credit — your instincts are better than you think.'
+      'When you feel unsure, give yourself credit -- your instincts are better than you think.'
     );
   }
 
@@ -84,8 +86,37 @@ function getRecommendations(
   return tips;
 }
 
+function getItemLabel(itemId: string, items?: QuizItem[]): string {
+  if (!items) return itemId;
+  const item = items.find(i => i.id === itemId);
+  if (!item) return itemId;
+  // For grammar items, show the question; for vocab, show the word
+  if (item.question) return item.question.slice(0, 60) + (item.question.length > 60 ? '...' : '');
+  return item.word;
+}
+
+/** Classify responses as "fast + confident" (automatic) vs "slow + deliberate" */
+function classifyDualProcess(responses: QuizResponse[]): { automatic: number; deliberate: number } {
+  if (responses.length < 3) return { automatic: 0, deliberate: 0 };
+
+  const rts = responses.map(r => r.responseTime);
+  const meanRT = rts.reduce((a, b) => a + b, 0) / rts.length;
+
+  let automatic = 0;
+  let deliberate = 0;
+  for (const r of responses) {
+    if (r.correctness && r.responseTime < meanRT && r.confidence > 70) {
+      automatic++;
+    } else {
+      deliberate++;
+    }
+  }
+  return { automatic, deliberate };
+}
+
 export default function SessionSummary({
   responses,
+  items,
   calibrationECE,
   onClose,
 }: SessionSummaryProps) {
@@ -101,7 +132,12 @@ export default function SessionSummary({
 
     const struggling: StrugglingItem[] = responses
       .filter(r => !r.correctness && r.confidence > 50)
-      .map(r => ({ itemId: r.itemId, confidence: r.confidence, wasCorrect: false }));
+      .map(r => ({
+        itemId: r.itemId,
+        label: getItemLabel(r.itemId, items),
+        confidence: r.confidence,
+        wasCorrect: false,
+      }));
 
     const underconfidentHits = responses.filter(
       r => r.correctness && r.confidence < 40
@@ -109,6 +145,7 @@ export default function SessionSummary({
 
     const calFeedback = getCalibrationFeedback(gap);
     const recommendations = getRecommendations(accuracy, gap, struggling.length);
+    const dualProcess = classifyDualProcess(responses);
 
     return {
       total,
@@ -121,8 +158,9 @@ export default function SessionSummary({
       underconfidentHits,
       calFeedback,
       recommendations,
+      dualProcess,
     };
-  }, [responses]);
+  }, [responses, items]);
 
   const ecePct = calibrationECE !== null ? (calibrationECE * 100).toFixed(1) : null;
 
@@ -173,6 +211,25 @@ export default function SessionSummary({
         </div>
       </div>
 
+      {/* Dual-process insight */}
+      {(stats.dualProcess.automatic > 0 || stats.dualProcess.deliberate > 0) && (
+        <div className="session-summary__dual-process">
+          <span className="session-summary__section-title">
+            <Zap size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+            Response Patterns
+          </span>
+          <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+            <strong>{stats.dualProcess.automatic}</strong> automatic (fast + confident) &middot;{' '}
+            <strong>{stats.dualProcess.deliberate}</strong> deliberate (slower / less certain)
+          </p>
+          {stats.dualProcess.automatic > stats.dualProcess.deliberate && (
+            <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--text-faint)' }}>
+              Many automatized responses suggest strong familiarity. The scheduler will space these items further apart.
+            </p>
+          )}
+        </div>
+      )}
+
       {/* Calibration section */}
       <div
         className={`session-summary__calibration session-summary__calibration--${stats.calFeedback.type}`}
@@ -190,7 +247,7 @@ export default function SessionSummary({
         {stats.underconfidentHits > 0 && (
           <p className="session-summary__calibration-detail">
             You got {stats.underconfidentHits} item(s) correct despite low confidence
-            — trust yourself more!
+            -- trust yourself more!
           </p>
         )}
       </div>
@@ -208,7 +265,7 @@ export default function SessionSummary({
           <div className="session-summary__struggling-list">
             {stats.struggling.slice(0, 5).map(item => (
               <span key={item.itemId} className="session-summary__struggling-item">
-                {item.itemId} ({item.confidence}% conf)
+                {item.label} ({item.confidence}% conf)
               </span>
             ))}
           </div>

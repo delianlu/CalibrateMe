@@ -6,6 +6,7 @@ import ECEMeter from './ECEMeter';
 import ConfidenceHistogram from './ConfidenceHistogram';
 import RetentionForecast from './RetentionForecast';
 import ForgettingCurves from './ForgettingCurves';
+import SessionHistory from './SessionHistory';
 
 interface CalibrationDashboardProps {
   responses: QuizResponse[];
@@ -81,6 +82,13 @@ export default function CalibrationDashboard({
                 <ECEMeter responses={responses} />
                 <ConfidenceHistogram responses={responses} />
               </div>
+            </div>
+          )}
+
+          {/* ECE trend over sessions */}
+          {totalItems > 0 && (
+            <div className="cal-dashboard__chart card" style={{ marginBottom: 16 }}>
+              <SessionHistory responses={responses} />
             </div>
           )}
 

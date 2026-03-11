@@ -27,6 +27,8 @@ import { GamificationState, createDefaultGamificationState } from './features/ga
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
 import { MiniGameContainer } from './features/minigame';
 import { saveSessionToProvider } from './features/api/apiClient';
+import { getRecentResponses } from './features/user/services/storageService';
+import ErrorBoundary from './components/ErrorBoundary';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
@@ -74,6 +76,22 @@ function App() {
 
   const allVocabulary = useMemo(() => getAllVocabulary(), []);
   const grammarActivities = useMemo(() => getOffGridActivities(), []);
+
+  // Load persisted responses from IndexedDB on mount
+  useEffect(() => {
+    getRecentResponses(5000).then(records => {
+      if (records.length > 0) {
+        const restored: QuizResponse[] = records.map(r => ({
+          itemId: r.itemId,
+          correctness: r.correctness,
+          confidence: r.confidence,
+          responseTime: r.responseTime,
+          timestamp: new Date(r.timestamp),
+        }));
+        setAllResponses(restored);
+      }
+    }).catch(console.error);
+  }, []);
 
   // Persist gamification state
   useEffect(() => {
@@ -220,44 +238,46 @@ function App() {
 
         {/* Page content with transitions */}
         <main className="app-main">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={tab}
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ duration: 0.2, ease: 'easeOut' }}
-            >
-              {tab === 'quiz' && (
-                <QuizContainer
-                  vocabulary={allVocabulary}
-                  grammarActivities={grammarActivities}
-                  onSessionComplete={handleSessionComplete}
-                />
-              )}
-              {tab === 'vocabulary' && <VocabularyList />}
-              {tab === 'analytics' && (
-                <CalibrationDashboard
-                  responses={allResponses}
-                  itemStates={profile.itemStates}
-                />
-              )}
-              {tab === 'profile' && (
-                <>
-                  <GamificationPanel state={gamification} />
-                  <ProfileCard
-                    profile={profile}
-                    onExport={exportData}
-                    onImport={importData}
-                    onReset={resetAll}
+          <ErrorBoundary>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={tab}
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+              >
+                {tab === 'quiz' && (
+                  <QuizContainer
+                    vocabulary={allVocabulary}
+                    grammarActivities={grammarActivities}
+                    onSessionComplete={handleSessionComplete}
                   />
-                </>
-              )}
-              {tab === 'minigame' && <MiniGameContainer onClose={() => setTab('quiz')} />}
-              {tab === 'simulation' && <Dashboard />}
-            </motion.div>
-          </AnimatePresence>
+                )}
+                {tab === 'vocabulary' && <VocabularyList />}
+                {tab === 'analytics' && (
+                  <CalibrationDashboard
+                    responses={allResponses}
+                    itemStates={profile.itemStates}
+                  />
+                )}
+                {tab === 'profile' && (
+                  <>
+                    <GamificationPanel state={gamification} />
+                    <ProfileCard
+                      profile={profile}
+                      onExport={exportData}
+                      onImport={importData}
+                      onReset={resetAll}
+                    />
+                  </>
+                )}
+                {tab === 'minigame' && <MiniGameContainer onClose={() => setTab('quiz')} />}
+                {tab === 'simulation' && <Dashboard />}
+              </motion.div>
+            </AnimatePresence>
+          </ErrorBoundary>
         </main>
 
         <footer className="app-footer">
