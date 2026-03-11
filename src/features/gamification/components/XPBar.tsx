@@ -1,3 +1,4 @@
+import { Star } from 'lucide-react';
 import { xpForLevel } from '../types';
 
 interface XPBarProps {
@@ -15,7 +16,10 @@ export default function XPBar({ xp, level }: XPBarProps) {
   return (
     <div className="xp-bar">
       <div className="xp-bar__header">
-        <span className="xp-bar__level">Level {level}</span>
+        <span className="xp-bar__level">
+          <Star size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} />
+          Level {level}
+        </span>
         <span className="xp-bar__xp">{xp} / {nextLevelXP} XP</span>
       </div>
       <div className="xp-bar__track">

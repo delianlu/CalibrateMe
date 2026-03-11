@@ -1,3 +1,4 @@
+import { Award } from 'lucide-react';
 import { GamificationState } from '../types';
 import XPBar from './XPBar';
 import StreakDisplay from './StreakDisplay';
@@ -10,7 +11,10 @@ interface GamificationPanelProps {
 export default function GamificationPanel({ state }: GamificationPanelProps) {
   return (
     <div className="gamification-panel card">
-      <h3 className="gamification-panel__title">Progress & Achievements</h3>
+      <h3 className="gamification-panel__title">
+        <Award size={20} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+        Progress & Achievements
+      </h3>
 
       <div className="gamification-panel__top">
         <XPBar xp={state.xp} level={state.level} />

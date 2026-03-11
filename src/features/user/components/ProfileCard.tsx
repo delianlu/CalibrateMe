@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { User, Download, Upload, Trash2, BookOpen, Target, Brain, Flame } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface ProfileCardProps {
@@ -33,25 +34,32 @@ export default function ProfileCard({ profile, onExport, onImport, onReset }: Pr
 
   return (
     <div className="profile-card card">
-      <h2 className="profile-card__title">Your Profile</h2>
+      <h2 className="profile-card__title">
+        <User size={22} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+        Your Profile
+      </h2>
 
       {/* Stats grid */}
       <div className="profile-card__stats">
-        <div className="profile-card__stat">
+        <div className="profile-card__stat profile-card__stat--accent-blue">
+          <BookOpen size={16} className="profile-card__stat-icon" />
           <span className="profile-card__stat-value">{stats.totalReviews}</span>
           <span className="profile-card__stat-label">Total Reviews</span>
         </div>
-        <div className="profile-card__stat">
+        <div className="profile-card__stat profile-card__stat--accent-purple">
+          <Target size={16} className="profile-card__stat-icon" />
           <span className="profile-card__stat-value">{stats.totalSessions}</span>
           <span className="profile-card__stat-label">Sessions</span>
         </div>
-        <div className="profile-card__stat">
+        <div className="profile-card__stat profile-card__stat--accent-green">
+          <Brain size={16} className="profile-card__stat-icon" />
           <span className="profile-card__stat-value">
             {stats.totalReviews > 0 ? `${Math.round(stats.averageAccuracy * 100)}%` : '--'}
           </span>
           <span className="profile-card__stat-label">Accuracy</span>
         </div>
-        <div className="profile-card__stat">
+        <div className="profile-card__stat profile-card__stat--accent-amber">
+          <Flame size={16} className="profile-card__stat-icon" />
           <span className="profile-card__stat-value">{stats.currentStreak}</span>
           <span className="profile-card__stat-label">Day Streak</span>
         </div>
@@ -82,12 +90,15 @@ export default function ProfileCard({ profile, onExport, onImport, onReset }: Pr
       {/* Actions */}
       <div className="profile-card__actions">
         <button className="btn btn-secondary" onClick={onExport}>
-          Export Backup
+          <Download size={16} style={{ marginRight: 6 }} />
+          Export
         </button>
         <button className="btn btn-secondary" onClick={() => setShowImport(s => !s)}>
-          Import Backup
+          <Upload size={16} style={{ marginRight: 6 }} />
+          Import
         </button>
         <button className="btn btn-secondary profile-card__reset" onClick={() => setShowConfirm(true)}>
+          <Trash2 size={16} style={{ marginRight: 6 }} />
           Clear Data
         </button>
       </div>
@@ -125,6 +136,7 @@ export default function ProfileCard({ profile, onExport, onImport, onReset }: Pr
               }
             }}
           >
+            <Upload size={16} style={{ marginRight: 6 }} />
             Import
           </button>
         </div>

@@ -1,3 +1,5 @@
+import { Check, X } from 'lucide-react';
+
 interface AnswerButtonsProps {
   onCorrect: () => void;
   onIncorrect: () => void;
@@ -16,6 +18,7 @@ export default function AnswerButtons({ onCorrect, onIncorrect }: AnswerButtonsP
           onClick={onIncorrect}
           aria-label="I got it incorrect"
         >
+          <X size={20} />
           Incorrect
         </button>
         <button
@@ -23,6 +26,7 @@ export default function AnswerButtons({ onCorrect, onIncorrect }: AnswerButtonsP
           onClick={onCorrect}
           aria-label="I got it correct"
         >
+          <Check size={20} />
           Correct
         </button>
       </div>
