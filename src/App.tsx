@@ -260,6 +260,7 @@ function App() {
                   <CalibrationDashboard
                     responses={allResponses}
                     itemStates={profile.itemStates}
+                    betaHat={profile.learnerState.globalBetaHat}
                   />
                 )}
                 {tab === 'profile' && (

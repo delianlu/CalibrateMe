@@ -175,6 +175,7 @@ export interface SimulationConfig {
   scheduler_type: SchedulerType;
   enable_scaffolding: boolean;
   enable_dual_process: boolean;
+  enable_difficulty_sequencing: boolean;
   random_seed: number | null;
 
   // Model parameters
@@ -194,6 +195,7 @@ export const DEFAULT_SIMULATION_CONFIG: SimulationConfig = {
   scheduler_type: SchedulerType.CALIBRATEME,
   enable_scaffolding: true,
   enable_dual_process: true,
+  enable_difficulty_sequencing: false,
   random_seed: null,
   slip_probability: 0.1,
   guess_probability: 0.2,

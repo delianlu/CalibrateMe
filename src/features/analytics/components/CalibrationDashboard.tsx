@@ -7,10 +7,12 @@ import ConfidenceHistogram from './ConfidenceHistogram';
 import RetentionForecast from './RetentionForecast';
 import ForgettingCurves from './ForgettingCurves';
 import SessionHistory from './SessionHistory';
+import LearnerClassification from './LearnerClassification';
 
 interface CalibrationDashboardProps {
   responses: QuizResponse[];
   itemStates?: Record<string, ItemState>;
+  betaHat?: number;
 }
 
 const statIcons = [Activity, Target, Brain, Clock];
@@ -18,6 +20,7 @@ const statIcons = [Activity, Target, Brain, Clock];
 export default function CalibrationDashboard({
   responses,
   itemStates = {},
+  betaHat = 0,
 }: CalibrationDashboardProps) {
   const totalItems = responses.length;
   const correctCount = responses.filter(r => r.correctness).length;
@@ -90,6 +93,11 @@ export default function CalibrationDashboard({
             <div className="cal-dashboard__chart card" style={{ marginBottom: 16 }}>
               <SessionHistory responses={responses} />
             </div>
+          )}
+
+          {/* Learner classification */}
+          {totalItems >= 5 && (
+            <LearnerClassification responses={responses} betaHat={betaHat} />
           )}
 
           {/* Forecast section */}
