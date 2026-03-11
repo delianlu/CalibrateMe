@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+import { RotateCcw } from 'lucide-react';
 import { QuizItem } from '../types';
 
 interface FlashcardProps {
@@ -12,7 +14,16 @@ interface FlashcardProps {
  */
 export default function Flashcard({ item, flipped, onFlip }: FlashcardProps) {
   return (
-    <div className="flashcard-container" onClick={!flipped ? onFlip : undefined}>
+    <motion.div
+      className="flashcard-container"
+      onClick={!flipped ? onFlip : undefined}
+      onKeyDown={!flipped ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onFlip(); } } : undefined}
+      role="button"
+      tabIndex={!flipped ? 0 : -1}
+      aria-label={!flipped ? `Flashcard: ${item.word}. Press Enter to reveal answer` : `Answer: ${item.translation}`}
+      whileHover={!flipped ? { scale: 1.02 } : {}}
+      whileTap={!flipped ? { scale: 0.98 } : {}}
+    >
       <div className={`flashcard ${flipped ? 'flashcard--flipped' : ''}`}>
         {/* Front */}
         <div className="flashcard__face flashcard__front">
@@ -22,7 +33,10 @@ export default function Flashcard({ item, flipped, onFlip }: FlashcardProps) {
             <span className="flashcard__pronunciation">{item.pronunciation}</span>
           )}
           {!flipped && (
-            <span className="flashcard__hint">Tap to continue</span>
+            <span className="flashcard__hint">
+              <RotateCcw size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} />
+              Tap to reveal
+            </span>
           )}
         </div>
 
@@ -35,6 +49,6 @@ export default function Flashcard({ item, flipped, onFlip }: FlashcardProps) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

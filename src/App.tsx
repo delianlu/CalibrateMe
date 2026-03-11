@@ -1,4 +1,16 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Brain,
+  BookOpen,
+  BarChart3,
+  User,
+  Gamepad2,
+  FlaskConical,
+  Sun,
+  Moon,
+  GraduationCap,
+} from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import QuizContainer from './features/quiz/components/QuizContainer';
 import VocabularyList from './features/vocabulary/components/VocabularyList';
@@ -10,13 +22,26 @@ import { useUserProfile } from './features/user/hooks/useUserProfile';
 import { essentialEnglish } from './data/vocabularyPacks/essential-english';
 import { academicEnglish } from './data/vocabularyPacks/academic-english';
 import { businessEnglish } from './data/vocabularyPacks/business-english';
+import { getOffGridActivities } from './data/offgridAdapter';
 import { GamificationState, createDefaultGamificationState } from './features/gamification/types';
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
+import { MiniGameContainer } from './features/minigame';
 import { saveSessionToProvider } from './features/api/apiClient';
+import { getRecentResponses } from './features/user/services/storageService';
+import ErrorBoundary from './components/ErrorBoundary';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
-type AppTab = 'quiz' | 'vocabulary' | 'analytics' | 'profile' | 'simulation';
+type AppTab = 'quiz' | 'vocabulary' | 'analytics' | 'profile' | 'simulation' | 'minigame';
+
+const NAV_ITEMS: { id: AppTab; label: string; icon: typeof Brain }[] = [
+  { id: 'quiz', label: 'Practice', icon: Brain },
+  { id: 'vocabulary', label: 'Vocabulary', icon: BookOpen },
+  { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+  { id: 'profile', label: 'Profile', icon: User },
+  { id: 'minigame', label: 'Cal Game', icon: Gamepad2 },
+  { id: 'simulation', label: 'Sim Lab', icon: FlaskConical },
+];
 
 function getAllVocabulary(): QuizItem[] {
   return [
@@ -36,6 +61,12 @@ function loadGamification(): GamificationState {
   return createDefaultGamificationState();
 }
 
+const pageVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+};
+
 function App() {
   const [tab, setTab] = useState<AppTab>('quiz');
   const [allResponses, setAllResponses] = useState<QuizResponse[]>([]);
@@ -44,6 +75,23 @@ function App() {
     useUserProfile();
 
   const allVocabulary = useMemo(() => getAllVocabulary(), []);
+  const grammarActivities = useMemo(() => getOffGridActivities(), []);
+
+  // Load persisted responses from IndexedDB on mount
+  useEffect(() => {
+    getRecentResponses(5000).then(records => {
+      if (records.length > 0) {
+        const restored: QuizResponse[] = records.map(r => ({
+          itemId: r.itemId,
+          correctness: r.correctness,
+          confidence: r.confidence,
+          responseTime: r.responseTime,
+          timestamp: new Date(r.timestamp),
+        }));
+        setAllResponses(restored);
+      }
+    }).catch(console.error);
+  }, []);
 
   // Persist gamification state
   useEffect(() => {
@@ -111,92 +159,137 @@ function App() {
     [recordSessionResponses, profile.itemStates, profile.stats]
   );
 
+  const isDark = profile.preferences.darkMode;
+
   return (
     <div className="app">
-      <header className="app-header">
-        <div className="app-header__content">
-          <h1>CalibrateMe</h1>
-          <p>Metacognitive Calibration in Adaptive Learning</p>
+      {/* ── Sidebar Navigation (desktop) ── */}
+      <aside className="app-sidebar" role="navigation" aria-label="Main navigation">
+        <div className="app-sidebar__brand">
+          <div className="app-sidebar__logo">
+            <GraduationCap size={24} />
+          </div>
+          <span className="app-sidebar__brand-text">CalibrateMe</span>
         </div>
-        <button
-          className="app-header__theme-toggle"
-          onClick={toggleDarkMode}
-          title={profile.preferences.darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {profile.preferences.darkMode ? 'Light' : 'Dark'}
-        </button>
-      </header>
 
-      <nav className="app-nav">
-        <button
-          className={`app-nav__tab ${tab === 'quiz' ? 'app-nav__tab--active' : ''}`}
-          onClick={() => setTab('quiz')}
-        >
-          Practice
-        </button>
-        <button
-          className={`app-nav__tab ${tab === 'vocabulary' ? 'app-nav__tab--active' : ''}`}
-          onClick={() => setTab('vocabulary')}
-        >
-          Vocabulary
-        </button>
-        <button
-          className={`app-nav__tab ${tab === 'analytics' ? 'app-nav__tab--active' : ''}`}
-          onClick={() => setTab('analytics')}
-        >
-          Analytics
-        </button>
-        <button
-          className={`app-nav__tab ${tab === 'profile' ? 'app-nav__tab--active' : ''}`}
-          onClick={() => setTab('profile')}
-        >
-          Profile
-        </button>
-        <button
-          className={`app-nav__tab ${tab === 'simulation' ? 'app-nav__tab--active' : ''}`}
-          onClick={() => setTab('simulation')}
-        >
-          Simulation Lab
-        </button>
+        <nav className="app-sidebar__nav">
+          {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              className={`app-sidebar__item ${tab === id ? 'app-sidebar__item--active' : ''}`}
+              onClick={() => setTab(id)}
+              aria-selected={tab === id}
+              title={label}
+            >
+              <Icon size={20} />
+              <span className="app-sidebar__item-label">{label}</span>
+            </button>
+          ))}
+        </nav>
+
+        <div className="app-sidebar__footer">
+          <button
+            className="app-sidebar__theme-toggle"
+            onClick={toggleDarkMode}
+            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
+      </aside>
+
+      {/* ── Bottom Navigation (mobile) ── */}
+      <nav className="app-bottomnav" role="navigation" aria-label="Mobile navigation">
+        {NAV_ITEMS.map(({ id, label, icon: Icon }) => (
+          <button
+            key={id}
+            className={`app-bottomnav__item ${tab === id ? 'app-bottomnav__item--active' : ''}`}
+            onClick={() => setTab(id)}
+          >
+            <Icon size={20} />
+            <span>{label}</span>
+          </button>
+        ))}
       </nav>
 
-      <main className="app-main">
-        {tab === 'quiz' && (
-          <QuizContainer
-            vocabulary={allVocabulary}
-            onSessionComplete={handleSessionComplete}
-          />
-        )}
-        {tab === 'vocabulary' && <VocabularyList />}
-        {tab === 'analytics' && (
-          <CalibrationDashboard
-            responses={allResponses}
-            itemStates={profile.itemStates}
-          />
-        )}
-        {tab === 'profile' && (
-          <>
-            <GamificationPanel state={gamification} />
-            <ProfileCard
-              profile={profile}
-              onExport={exportData}
-              onImport={importData}
-              onReset={resetAll}
-            />
-          </>
-        )}
-        {tab === 'simulation' && <Dashboard />}
-      </main>
+      {/* ── Main Content ── */}
+      <div className="app-content">
+        {/* Top bar */}
+        <header className="app-topbar">
+          <div className="app-topbar__left">
+            <h1 className="app-topbar__title">
+              {NAV_ITEMS.find(n => n.id === tab)?.label}
+            </h1>
+            <span className="app-topbar__subtitle">
+              Metacognitive Calibration in Adaptive Learning
+            </span>
+          </div>
+          <div className="app-topbar__right">
+            <button
+              className="app-topbar__theme-btn"
+              onClick={toggleDarkMode}
+              title={isDark ? 'Light mode' : 'Dark mode'}
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
+        </header>
+
+        {/* Page content with transitions */}
+        <main className="app-main">
+          <ErrorBoundary>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={tab}
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+              >
+                {tab === 'quiz' && (
+                  <QuizContainer
+                    vocabulary={allVocabulary}
+                    grammarActivities={grammarActivities}
+                    onSessionComplete={handleSessionComplete}
+                  />
+                )}
+                {tab === 'vocabulary' && <VocabularyList />}
+                {tab === 'analytics' && (
+                  <CalibrationDashboard
+                    responses={allResponses}
+                    itemStates={profile.itemStates}
+                  />
+                )}
+                {tab === 'profile' && (
+                  <>
+                    <GamificationPanel state={gamification} />
+                    <ProfileCard
+                      profile={profile}
+                      onExport={exportData}
+                      onImport={importData}
+                      onReset={resetAll}
+                    />
+                  </>
+                )}
+                {tab === 'minigame' && <MiniGameContainer onClose={() => setTab('quiz')} />}
+                {tab === 'simulation' && <Dashboard />}
+              </motion.div>
+            </AnimatePresence>
+          </ErrorBoundary>
+        </main>
+
+        <footer className="app-footer">
+          <p>CS 6795 - Cognitive Science | Georgia Tech | Spring 2026</p>
+        </footer>
+      </div>
 
       {/* Gamification notifications */}
       <NotificationToast
         notifications={gamification.pendingNotifications}
         onDismiss={handleDismissNotifications}
       />
-
-      <footer className="app-footer">
-        <p>CS 6795 - Cognitive Science | Georgia Tech | Spring 2026</p>
-      </footer>
     </div>
   );
 }

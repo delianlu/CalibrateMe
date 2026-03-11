@@ -2,22 +2,29 @@
 // Dashboard Component (UPDATED)
 // =============================================================================
 
-import React from 'react';
+import React, { useState } from 'react';
+import { FileText, ArrowLeft } from 'lucide-react';
 import { useSimulationStore } from '../store/simulationStore';
 import { calculateCalibrationMetrics } from '../calibration/scoringModule';
+import { SchedulerType } from '../types';
 import LearnerProfileSelector from './LearnerProfileSelector';
 import SimulationControls from './SimulationControls';
 import MetricsDisplay from './MetricsDisplay';
 import CalibrationChart from './CalibrationChart';
 import CalibrationCurve from './CalibrationCurve';
 import ComparisonView from './ComparisonView';
+import HypothesisResults from './HypothesisResults';
 import ResponseHistory from './ResponseHistory';
 import ProgressBar from './ProgressBar';
+import FinalReport from '../features/analytics/components/FinalReport';
 
 const Dashboard: React.FC = () => {
+  const [showReport, setShowReport] = useState(false);
   const {
+    profile,
     results,
     comparisonResults,
+    hypothesisResults,
     isRunning,
     error,
     progress,
@@ -42,6 +49,38 @@ const Dashboard: React.FC = () => {
     return calculateCalibrationMetrics(mockResponses).bin_data;
   }, [results]);
 
+  // Get baseline (SM-2) results for comparison in the report
+  const baselineResults = React.useMemo(() => {
+    if (!comparisonResults) return undefined;
+    return comparisonResults.get(SchedulerType.SM2);
+  }, [comparisonResults]);
+
+  // Show full report view
+  if (showReport && results && profile) {
+    return (
+      <div className="dashboard">
+        <div className="dashboard-sidebar">
+          <LearnerProfileSelector />
+          <SimulationControls />
+        </div>
+        <div className="dashboard-content">
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => setShowReport(false)}
+            style={{ marginBottom: '1rem' }}
+          >
+            <ArrowLeft size={14} /> Back to Results
+          </button>
+          <FinalReport
+            results={results}
+            params={profile.params}
+            baselineResults={baselineResults}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="dashboard">
       <div className="dashboard-sidebar">
@@ -63,8 +102,17 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Single Simulation Results */}
-        {results && !isRunning && !comparisonResults && (
+        {results && !isRunning && !comparisonResults && !hypothesisResults && (
           <>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={() => setShowReport(true)}
+              >
+                <FileText size={14} /> View Full Report
+              </button>
+            </div>
+
             <MetricsDisplay results={results} />
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
@@ -102,15 +150,21 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Comparison Results */}
-        {comparisonResults && !isRunning && (
+        {comparisonResults && !isRunning && !hypothesisResults && (
           <ComparisonView results={comparisonResults} />
         )}
 
-        {!results && !comparisonResults && !isRunning && !error && (
+        {/* Hypothesis Test Results */}
+        {hypothesisResults && !isRunning && (
+          <HypothesisResults resultsByProfile={hypothesisResults} />
+        )}
+
+        {!results && !comparisonResults && !hypothesisResults && !isRunning && !error && (
           <div className="card" style={{ textAlign: 'center', padding: '3rem', color: '#718096' }}>
             <h3 style={{ marginBottom: '1rem' }}>Welcome to CalibrateMe</h3>
             <p>Select a learner profile and click "Run Simulation" to see results.</p>
             <p>Or click "Compare Schedulers" to compare CalibrateMe against baselines.</p>
+            <p>Or click "Run Hypothesis Tests" to evaluate H1/H2/H3 across all 9 profiles.</p>
           </div>
         )}
       </div>

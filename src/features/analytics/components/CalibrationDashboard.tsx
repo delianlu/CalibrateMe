@@ -1,3 +1,4 @@
+import { Activity, Target, Brain, Clock } from 'lucide-react';
 import { QuizResponse } from '../../quiz/types';
 import { ItemState } from '../../user/types';
 import LiveCalibrationCurve from './LiveCalibrationCurve';
@@ -5,11 +6,14 @@ import ECEMeter from './ECEMeter';
 import ConfidenceHistogram from './ConfidenceHistogram';
 import RetentionForecast from './RetentionForecast';
 import ForgettingCurves from './ForgettingCurves';
+import SessionHistory from './SessionHistory';
 
 interface CalibrationDashboardProps {
   responses: QuizResponse[];
   itemStates?: Record<string, ItemState>;
 }
+
+const statIcons = [Activity, Target, Brain, Clock];
 
 export default function CalibrationDashboard({
   responses,
@@ -29,12 +33,23 @@ export default function CalibrationDashboard({
 
   const hasItemData = Object.keys(itemStates).length > 0;
 
+  const statData = [
+    { value: totalItems, label: 'Responses', accent: 'blue' },
+    { value: `${(accuracy * 100).toFixed(0)}%`, label: 'Accuracy', accent: 'green' },
+    { value: `${avgConf.toFixed(0)}%`, label: 'Avg Confidence', accent: 'purple' },
+    { value: `${(avgRT / 1000).toFixed(1)}s`, label: 'Avg RT', accent: 'amber' },
+  ];
+
   return (
     <div className="cal-dashboard">
-      <h2 className="cal-dashboard__title">Calibration Analytics</h2>
+      <h2 className="cal-dashboard__title">
+        <Activity size={24} style={{ marginRight: 10, verticalAlign: 'middle' }} />
+        Calibration Analytics
+      </h2>
 
       {totalItems === 0 && !hasItemData ? (
         <div className="cal-dashboard__empty card">
+          <Target size={48} style={{ color: 'var(--text-faint)', marginBottom: 12 }} />
           <p>Complete a quiz session to see your calibration analytics.</p>
         </div>
       ) : (
@@ -42,28 +57,18 @@ export default function CalibrationDashboard({
           {/* Quick stats row */}
           {totalItems > 0 && (
             <div className="cal-dashboard__stats">
-              <div className="cal-dashboard__stat">
-                <span className="cal-dashboard__stat-value">{totalItems}</span>
-                <span className="cal-dashboard__stat-label">Responses</span>
-              </div>
-              <div className="cal-dashboard__stat">
-                <span className="cal-dashboard__stat-value">
-                  {(accuracy * 100).toFixed(0)}%
-                </span>
-                <span className="cal-dashboard__stat-label">Accuracy</span>
-              </div>
-              <div className="cal-dashboard__stat">
-                <span className="cal-dashboard__stat-value">
-                  {avgConf.toFixed(0)}%
-                </span>
-                <span className="cal-dashboard__stat-label">Avg Confidence</span>
-              </div>
-              <div className="cal-dashboard__stat">
-                <span className="cal-dashboard__stat-value">
-                  {(avgRT / 1000).toFixed(1)}s
-                </span>
-                <span className="cal-dashboard__stat-label">Avg RT</span>
-              </div>
+              {statData.map((stat, i) => {
+                const Icon = statIcons[i];
+                return (
+                  <div key={stat.label} className={`cal-dashboard__stat cal-dashboard__stat--${stat.accent}`}>
+                    <div className="cal-dashboard__stat-icon">
+                      <Icon size={16} />
+                    </div>
+                    <span className="cal-dashboard__stat-value">{stat.value}</span>
+                    <span className="cal-dashboard__stat-label">{stat.label}</span>
+                  </div>
+                );
+              })}
             </div>
           )}
 
@@ -77,6 +82,13 @@ export default function CalibrationDashboard({
                 <ECEMeter responses={responses} />
                 <ConfidenceHistogram responses={responses} />
               </div>
+            </div>
+          )}
+
+          {/* ECE trend over sessions */}
+          {totalItems > 0 && (
+            <div className="cal-dashboard__chart card" style={{ marginBottom: 16 }}>
+              <SessionHistory responses={responses} />
             </div>
           )}
 

@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useQuizSession } from '../hooks/useQuizSession';
 import Flashcard from './Flashcard';
+import GrammarExercise from './GrammarExercise';
 import ConfidenceSlider from './ConfidenceSlider';
 import AnswerButtons from './AnswerButtons';
 import QuizProgress from './QuizProgress';
 import SessionSummary from './SessionSummary';
+import OnboardingCard, { hasSeenOnboarding } from './OnboardingCard';
 import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
 import {
   createScaffoldState,
@@ -14,8 +16,11 @@ import {
 import { ScaffoldState } from '../../scaffolding/types';
 import { QuizItem, QuizResponse } from '../types';
 
+type PracticeMode = 'vocabulary' | 'grammar' | 'mixed';
+
 interface QuizContainerProps {
   vocabulary?: QuizItem[];
+  grammarActivities?: QuizItem[];
   onSessionComplete?: (responses: QuizResponse[], kHat: number, betaHat: number) => void;
 }
 
@@ -28,7 +33,7 @@ interface QuizContainerProps {
  *   3. reveal-answer   → Flashcard back + AnswerButtons
  *   4. feedback        → brief flash, scaffold prompt, then auto-advance
  */
-export default function QuizContainer({ vocabulary, onSessionComplete }: QuizContainerProps) {
+export default function QuizContainer({ vocabulary, grammarActivities, onSessionComplete }: QuizContainerProps) {
   const {
     session,
     currentItem,
@@ -47,6 +52,10 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
   const [confidence, setConfidence] = useState(50);
   const [feedbackResult, setFeedbackResult] = useState<boolean | null>(null);
   const [scaffold, setScaffold] = useState<ScaffoldState>(createScaffoldState);
+  const [practiceMode, setPracticeMode] = useState<PracticeMode>('mixed');
+  const [showOnboarding, setShowOnboarding] = useState(!hasSeenOnboarding());
+  // Grammar: after user selects an option, show confidence slider before grading
+  const [grammarPendingOption, setGrammarPendingOption] = useState<string | null>(null);
   const completedRef = useRef(false);
 
   // Fire onSessionComplete once when session ends
@@ -95,19 +104,106 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
     [submitAnswer, nextItem, session, confidence]
   );
 
+  // Handler for grammar exercise: user selects option, then rates confidence
+  const handleGrammarAnswer = useCallback(
+    (selectedOption: string) => {
+      if (!currentItem) return;
+      // Store selected option and show confidence slider
+      setGrammarPendingOption(selectedOption);
+      flipCard(); // show-word → rate-confidence
+    },
+    [currentItem, flipCard]
+  );
+
+  // After grammar confidence is submitted, grade and advance
+  const handleGrammarConfidenceSubmit = useCallback(
+    (conf: number) => {
+      if (!currentItem || grammarPendingOption === null) return;
+      const correct = grammarPendingOption === currentItem.answer;
+      submitConfidence(conf); // rate-confidence → reveal-answer
+      setFeedbackResult(correct);
+      submitAnswer(correct);
+      setGrammarPendingOption(null);
+
+      if (session) {
+        const response: QuizResponse = {
+          itemId: session.items[session.currentIndex].id,
+          correctness: correct,
+          confidence: conf,
+          responseTime: 0,
+          timestamp: new Date(),
+        };
+        setScaffold(prev =>
+          processResponse(prev, response, session.responses.length + 1)
+        );
+      }
+    },
+    [currentItem, grammarPendingOption, submitConfidence, submitAnswer, session]
+  );
+
+  // Advance from grammar feedback to next item
+  const handleGrammarNext = useCallback(() => {
+    setFeedbackResult(null);
+    setConfidence(50);
+    setGrammarPendingOption(null);
+    nextItem();
+  }, [nextItem]);
+
   // ── Not started ──────────────────────────────────────────────────
   if (!session) {
-    const items = vocabulary ?? [];
+    const vocabItems = vocabulary ?? [];
+    const grammarItems = grammarActivities ?? [];
+    const getSessionItems = (): QuizItem[] => {
+      if (practiceMode === 'vocabulary') return vocabItems;
+      if (practiceMode === 'grammar') return grammarItems;
+      // mixed: interleave both
+      return [...vocabItems, ...grammarItems];
+    };
+    const sessionItems = getSessionItems();
+
     return (
+      <>
+      {showOnboarding && (
+        <OnboardingCard onDismiss={() => setShowOnboarding(false)} />
+      )}
       <div className="quiz-start card">
         <h2 className="quiz-start__title">Practice Mode</h2>
         <p className="quiz-start__desc">
-          Answer vocabulary questions and rate your confidence.
-          CalibrateMe will track your calibration accuracy and adapt the schedule.
+          Practice vocabulary and grammar exercises designed for French speakers learning English.
+          CalibrateMe tracks your calibration accuracy and adapts the schedule.
         </p>
+
+        {/* Mode selector */}
+        <div className="quiz-start__mode-selector" role="radiogroup" aria-label="Practice mode">
+          <button
+            className={`quiz-start__mode-btn ${practiceMode === 'mixed' ? 'quiz-start__mode-btn--active' : ''}`}
+            onClick={() => setPracticeMode('mixed')}
+            role="radio"
+            aria-checked={practiceMode === 'mixed'}
+          >
+            Mixed ({vocabItems.length + grammarItems.length})
+          </button>
+          <button
+            className={`quiz-start__mode-btn ${practiceMode === 'vocabulary' ? 'quiz-start__mode-btn--active' : ''}`}
+            onClick={() => setPracticeMode('vocabulary')}
+            role="radio"
+            aria-checked={practiceMode === 'vocabulary'}
+          >
+            Vocabulary ({vocabItems.length})
+          </button>
+          <button
+            className={`quiz-start__mode-btn ${practiceMode === 'grammar' ? 'quiz-start__mode-btn--active' : ''}`}
+            onClick={() => setPracticeMode('grammar')}
+            role="radio"
+            aria-checked={practiceMode === 'grammar'}
+          >
+            Grammar ({grammarItems.length})
+          </button>
+        </div>
+
         <div className="quiz-start__info">
-          <span>{Math.min(20, items.length)} items per session</span>
-          <span>Self-grading mode</span>
+          <span>{Math.min(20, sessionItems.length)} items per session</span>
+          <span>{practiceMode === 'vocabulary' ? 'Self-grading mode' : 'Auto-graded'}</span>
         </div>
         <button
           className="btn btn-primary btn-block"
@@ -115,13 +211,14 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
             setConfidence(50);
             setFeedbackResult(null);
             setScaffold(createScaffoldState());
-            startSession(items);
+            startSession(sessionItems);
           }}
-          disabled={items.length === 0}
+          disabled={sessionItems.length === 0}
         >
-          {items.length === 0 ? 'No vocabulary loaded' : 'Start Quiz'}
+          {sessionItems.length === 0 ? 'No items loaded' : 'Start Quiz'}
         </button>
       </div>
+      </>
     );
   }
 
@@ -130,6 +227,7 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
     return (
       <SessionSummary
         responses={session.responses}
+        items={session.items}
         calibrationECE={sessionStats?.calibrationMetrics?.ece ?? null}
         onClose={endSession}
       />
@@ -157,6 +255,7 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
   if (!currentItem) return null;
 
   const phase = session.phase;
+  const isGrammarItem = currentItem.itemType === 'multiple-choice' || currentItem.itemType === 'error_correction';
 
   // ── Active quiz ──────────────────────────────────────────────────
   return (
@@ -169,67 +268,98 @@ export default function QuizContainer({ vocabulary, onSessionComplete }: QuizCon
         </button>
       </div>
 
-      {/* Scaffold prompt (before-answer timing) */}
-      {scaffold.activePrompt &&
-        scaffold.activePrompt.timing === 'before-answer' &&
-        phase === 'show-word' && (
-          <ScaffoldPromptCard
-            prompt={scaffold.activePrompt}
-            onDismiss={handleDismissScaffold}
+      {isGrammarItem ? (
+        /* ── Grammar exercise flow ─────────────────────────────── */
+        <>
+          <GrammarExercise
+            item={currentItem}
+            phase={phase as 'show-word' | 'rate-confidence' | 'reveal-answer' | 'feedback'}
+            onAnswer={handleGrammarAnswer}
           />
-        )}
-
-      {/* Card */}
-      <Flashcard
-        item={currentItem}
-        flipped={phase === 'reveal-answer' || phase === 'feedback'}
-        onFlip={phase === 'show-word' ? flipCard : () => {}}
-      />
-
-      {/* Phase-specific controls */}
-      <div className="quiz-active__controls">
-        {phase === 'show-word' && (
-          <p className="quiz-active__instruction">
-            Think about the meaning, then tap the card
-          </p>
-        )}
-
-        {phase === 'rate-confidence' && (
-          <ConfidenceSlider
-            value={confidence}
-            onChange={setConfidence}
-            onSubmit={(val) => {
-              submitConfidence(val);
-            }}
-          />
-        )}
-
-        {phase === 'reveal-answer' && (
-          <AnswerButtons
-            onCorrect={() => handleAnswer(true)}
-            onIncorrect={() => handleAnswer(false)}
-          />
-        )}
-
-        {phase === 'feedback' && (
-          <>
-            <div
-              className={`quiz-feedback ${feedbackResult ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect'}`}
-            >
-              {feedbackResult ? 'Correct!' : 'Incorrect'}
+          {/* Confidence slider for grammar (after selecting option, before grading) */}
+          {phase === 'rate-confidence' && grammarPendingOption !== null && (
+            <div className="quiz-active__controls">
+              <ConfidenceSlider
+                value={confidence}
+                onChange={setConfidence}
+                onSubmit={handleGrammarConfidenceSubmit}
+              />
             </div>
+          )}
+          {(phase === 'feedback' || phase === 'reveal-answer') && (
+            <div className="quiz-active__controls">
+              <button className="btn btn-primary btn-block" onClick={handleGrammarNext}>
+                Next
+              </button>
+            </div>
+          )}
+        </>
+      ) : (
+        /* ── Vocabulary flashcard flow ─────────────────────────── */
+        <>
+          {/* Scaffold prompt (before-answer timing) */}
+          {scaffold.activePrompt &&
+            scaffold.activePrompt.timing === 'before-answer' &&
+            phase === 'show-word' && (
+              <ScaffoldPromptCard
+                prompt={scaffold.activePrompt}
+                onDismiss={handleDismissScaffold}
+              />
+            )}
 
-            {/* Scaffold prompt (after-answer timing) */}
-            {scaffold.activePrompt &&
-              scaffold.activePrompt.timing === 'after-answer' && (
-                <ScaffoldPromptCard
-                  prompt={scaffold.activePrompt}
-                  onDismiss={handleDismissScaffold}
-                />
-              )}
-          </>
-        )}
-      </div>
+          {/* Card */}
+          <Flashcard
+            item={currentItem}
+            flipped={phase === 'reveal-answer' || phase === 'feedback'}
+            onFlip={phase === 'show-word' ? flipCard : () => {}}
+          />
+
+          {/* Phase-specific controls */}
+          <div className="quiz-active__controls">
+            {phase === 'show-word' && (
+              <p className="quiz-active__instruction">
+                Think about the meaning, then tap the card
+              </p>
+            )}
+
+            {phase === 'rate-confidence' && (
+              <ConfidenceSlider
+                value={confidence}
+                onChange={setConfidence}
+                onSubmit={(val) => {
+                  submitConfidence(val);
+                }}
+              />
+            )}
+
+            {phase === 'reveal-answer' && (
+              <AnswerButtons
+                onCorrect={() => handleAnswer(true)}
+                onIncorrect={() => handleAnswer(false)}
+              />
+            )}
+
+            {phase === 'feedback' && (
+              <>
+                <div
+                  className={`quiz-feedback ${feedbackResult ? 'quiz-feedback--correct' : 'quiz-feedback--incorrect'}`}
+                >
+                  {feedbackResult ? 'Correct!' : 'Incorrect'}
+                </div>
+
+                {/* Scaffold prompt (after-answer timing) */}
+                {scaffold.activePrompt &&
+                  scaffold.activePrompt.timing === 'after-answer' && (
+                    <ScaffoldPromptCard
+                      prompt={scaffold.activePrompt}
+                      onDismiss={handleDismissScaffold}
+                    />
+                  )}
+              </>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

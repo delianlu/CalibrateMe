@@ -10,7 +10,7 @@ export default function QuizProgress({ current, total }: QuizProgressProps) {
   const pct = total > 0 ? (current / total) * 100 : 0;
 
   return (
-    <div className="quiz-progress">
+    <div className="quiz-progress" role="progressbar" aria-valuenow={current} aria-valuemin={0} aria-valuemax={total} aria-label={`Question ${current} of ${total}`}>
       <div className="quiz-progress__bar">
         <div
           className="quiz-progress__fill"

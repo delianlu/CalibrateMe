@@ -10,7 +10,7 @@ import {
   SchedulerType,
   DEFAULT_SIMULATION_CONFIG,
 } from '../types';
-import { createLearnerProfile } from '../profiles/learnerProfiles';
+import { createLearnerProfile, getAllProfileNames } from '../profiles/learnerProfiles';
 import { runSimulationAsync } from '../simulation/simulationEngine';
 
 interface SimulationStore {
@@ -20,6 +20,7 @@ interface SimulationStore {
   profile: LearnerProfile | null;
   results: SimulationResults | null;
   comparisonResults: Map<SchedulerType, SimulationResults> | null;
+  hypothesisResults: Map<string, Map<SchedulerType, SimulationResults[]>> | null;
   isRunning: boolean;
   progress: number;
   progressMessage: string;
@@ -31,6 +32,7 @@ interface SimulationStore {
   setConfig: (config: Partial<SimulationConfig>) => void;
   runSimulation: () => Promise<void>;
   runComparison: () => Promise<void>;
+  runHypothesisTests: () => Promise<void>;
   reset: () => void;
 }
 
@@ -41,6 +43,7 @@ export const useSimulationStore = create<SimulationStore>((set, get) => ({
   profile: null,
   results: null,
   comparisonResults: null,
+  hypothesisResults: null,
   isRunning: false,
   progress: 0,
   progressMessage: '',
@@ -133,11 +136,72 @@ export const useSimulationStore = create<SimulationStore>((set, get) => ({
     }
   },
 
+  runHypothesisTests: async () => {
+    const { config } = get();
+
+    set({
+      isRunning: true,
+      error: null,
+      progress: 0,
+      progressMessage: 'Running hypothesis tests across all profiles...',
+      results: null,
+      comparisonResults: null,
+      hypothesisResults: null,
+    });
+
+    try {
+      const profileNames = getAllProfileNames();
+      const schedulerTypes = [
+        SchedulerType.CALIBRATEME,
+        SchedulerType.SM2,
+        SchedulerType.BKT_ONLY,
+        SchedulerType.DECAY_BASED,
+      ];
+
+      const totalRuns = profileNames.length * schedulerTypes.length;
+      let completed = 0;
+
+      const hypothesisResults = new Map<string, Map<SchedulerType, SimulationResults[]>>();
+
+      for (const profileName of profileNames) {
+        const schedulerMap = new Map<SchedulerType, SimulationResults[]>();
+        const profile = createLearnerProfile(profileName, config.num_items);
+
+        for (const schedulerType of schedulerTypes) {
+          set({
+            progress: (completed / totalRuns) * 100,
+            progressMessage: `${profileName} / ${schedulerType}...`,
+          });
+
+          const simConfig = { ...config, scheduler_type: schedulerType };
+          const result = await runSimulationAsync(profile, simConfig);
+          schedulerMap.set(schedulerType, [result]);
+          completed++;
+        }
+
+        hypothesisResults.set(profileName, schedulerMap);
+      }
+
+      set({
+        hypothesisResults,
+        isRunning: false,
+        progress: 100,
+        progressMessage: 'Hypothesis tests complete',
+      });
+    } catch (err) {
+      set({
+        error: err instanceof Error ? err.message : 'Hypothesis tests failed',
+        isRunning: false,
+      });
+    }
+  },
+
   reset: () => {
     set({
       profile: null,
       results: null,
       comparisonResults: null,
+      hypothesisResults: null,
       error: null,
       progress: 0,
       progressMessage: '',

@@ -1,10 +1,10 @@
 import { VocabularyPack } from '../../features/vocabulary/types';
 
 export const academicEnglish: VocabularyPack = {
-  id: 'academic-english-tr',
+  id: 'academic-english-fr',
   name: 'Academic English',
   description: 'Essential academic vocabulary for university-level study',
-  language: { from: 'en', to: 'tr' },
+  language: { from: 'en', to: 'fr' },
   items: [
     // =========================================================================
     // EASY (20 items) — difficulty 0.3–0.4
@@ -12,7 +12,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-001',
       word: 'research',
-      translation: 'araştırma',
+      translation: 'recherche',
       pronunciation: '/rɪˈsɜːrtʃ/',
       example: 'The research was conducted over a period of two years.',
       difficulty: 0.3,
@@ -21,7 +21,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-002',
       word: 'method',
-      translation: 'yöntem',
+      translation: 'méthode',
       pronunciation: '/ˈmeθəd/',
       example: 'We used a qualitative method to gather the data.',
       difficulty: 0.3,
@@ -30,7 +30,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-003',
       word: 'theory',
-      translation: 'teori',
+      translation: 'théorie',
       pronunciation: '/ˈθɪəri/',
       example: 'Darwin proposed the theory of evolution by natural selection.',
       difficulty: 0.3,
@@ -39,7 +39,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-004',
       word: 'analysis',
-      translation: 'analiz',
+      translation: 'analyse',
       pronunciation: '/əˈnæləsɪs/',
       example: 'A detailed analysis of the results revealed new patterns.',
       difficulty: 0.3,
@@ -48,7 +48,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-005',
       word: 'data',
-      translation: 'veri',
+      translation: 'données',
       pronunciation: '/ˈdeɪtə/',
       example: 'The data were collected from multiple sources.',
       difficulty: 0.3,
@@ -57,7 +57,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-006',
       word: 'evidence',
-      translation: 'kanıt',
+      translation: 'preuve',
       pronunciation: '/ˈevɪdəns/',
       example: 'There is strong evidence to support this claim.',
       difficulty: 0.3,
@@ -66,7 +66,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-007',
       word: 'conclusion',
-      translation: 'sonuç',
+      translation: 'conclusion',
       pronunciation: '/kənˈkluːʒən/',
       example: 'The conclusion of the study was unexpected.',
       difficulty: 0.35,
@@ -75,7 +75,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-008',
       word: 'define',
-      translation: 'tanımlamak',
+      translation: 'définir',
       pronunciation: '/dɪˈfaɪn/',
       example: 'It is important to define all key terms clearly.',
       difficulty: 0.35,
@@ -84,7 +84,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-009',
       word: 'explain',
-      translation: 'açıklamak',
+      translation: 'expliquer',
       pronunciation: '/ɪkˈspleɪn/',
       example: 'The professor will explain the concept in the next lecture.',
       difficulty: 0.3,
@@ -93,7 +93,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-010',
       word: 'process',
-      translation: 'süreç',
+      translation: 'processus',
       pronunciation: '/ˈprɒses/',
       example: 'The review process takes approximately six weeks.',
       difficulty: 0.3,
@@ -102,7 +102,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-011',
       word: 'result',
-      translation: 'sonuç',
+      translation: 'résultat',
       pronunciation: '/rɪˈzʌlt/',
       example: 'The result of the experiment confirmed our hypothesis.',
       difficulty: 0.3,
@@ -111,7 +111,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-012',
       word: 'evaluate',
-      translation: 'değerlendirmek',
+      translation: 'évaluer',
       pronunciation: '/ɪˈvæljueɪt/',
       example: 'Students must evaluate the sources they use in their essays.',
       difficulty: 0.35,
@@ -120,7 +120,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-013',
       word: 'significant',
-      translation: 'önemli',
+      translation: 'significatif',
       pronunciation: '/sɪɡˈnɪfɪkənt/',
       example: 'There was a significant difference between the two groups.',
       difficulty: 0.35,
@@ -129,7 +129,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-014',
       word: 'source',
-      translation: 'kaynak',
+      translation: 'source',
       pronunciation: '/sɔːrs/',
       example: 'Always cite your sources when writing an academic paper.',
       difficulty: 0.3,
@@ -138,7 +138,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-015',
       word: 'approach',
-      translation: 'yaklaşım',
+      translation: 'approche',
       pronunciation: '/əˈproʊtʃ/',
       example: 'A multidisciplinary approach was adopted for this project.',
       difficulty: 0.35,
@@ -147,7 +147,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-016',
       word: 'concept',
-      translation: 'kavram',
+      translation: 'concept',
       pronunciation: '/ˈkɒnsept/',
       example: 'The concept of democracy has evolved over centuries.',
       difficulty: 0.35,
@@ -156,7 +156,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-017',
       word: 'factor',
-      translation: 'faktör',
+      translation: 'facteur',
       pronunciation: '/ˈfæktər/',
       example: 'Economic growth is influenced by many different factors.',
       difficulty: 0.3,
@@ -165,7 +165,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-018',
       word: 'structure',
-      translation: 'yapı',
+      translation: 'structure',
       pronunciation: '/ˈstrʌktʃər/',
       example: 'The structure of the essay should follow a clear pattern.',
       difficulty: 0.35,
@@ -174,7 +174,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-019',
       word: 'context',
-      translation: 'bağlam',
+      translation: 'contexte',
       pronunciation: '/ˈkɒntekst/',
       example: 'You need to understand the historical context of the event.',
       difficulty: 0.4,
@@ -183,7 +183,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-020',
       word: 'identify',
-      translation: 'belirlemek',
+      translation: 'identifier',
       pronunciation: '/aɪˈdentɪfaɪ/',
       example: 'The study aimed to identify the main causes of the problem.',
       difficulty: 0.4,
@@ -196,7 +196,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-021',
       word: 'hypothesis',
-      translation: 'hipotez',
+      translation: 'hypothèse',
       pronunciation: '/haɪˈpɒθəsɪs/',
       example: 'The hypothesis was tested through a series of experiments.',
       difficulty: 0.45,
@@ -205,7 +205,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-022',
       word: 'criterion',
-      translation: 'ölçüt',
+      translation: 'critère',
       pronunciation: '/kraɪˈtɪəriən/',
       example: 'Each application was judged against the same criterion.',
       difficulty: 0.5,
@@ -214,7 +214,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-023',
       word: 'implication',
-      translation: 'çıkarım',
+      translation: 'implication',
       pronunciation: '/ˌɪmplɪˈkeɪʃən/',
       example: 'The findings have important implications for public policy.',
       difficulty: 0.5,
@@ -223,7 +223,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-024',
       word: 'phenomenon',
-      translation: 'olgu',
+      translation: 'phénomène',
       pronunciation: '/fəˈnɒmɪnən/',
       example: 'This phenomenon has been observed in several countries.',
       difficulty: 0.5,
@@ -232,7 +232,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-025',
       word: 'methodology',
-      translation: 'metodoloji',
+      translation: 'méthodologie',
       pronunciation: '/ˌmeθəˈdɒlədʒi/',
       example: 'The methodology section describes how the study was designed.',
       difficulty: 0.5,
@@ -241,7 +241,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-026',
       word: 'variable',
-      translation: 'değişken',
+      translation: 'variable',
       pronunciation: '/ˈveəriəbl/',
       example: 'The independent variable was manipulated by the researchers.',
       difficulty: 0.45,
@@ -250,7 +250,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-027',
       word: 'correlate',
-      translation: 'ilişkilendirmek',
+      translation: 'corréler',
       pronunciation: '/ˈkɒrəleɪt/',
       example: 'Higher education levels correlate with higher income.',
       difficulty: 0.55,
@@ -259,7 +259,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-028',
       word: 'paradigm',
-      translation: 'paradigma',
+      translation: 'paradigme',
       pronunciation: '/ˈpærədaɪm/',
       example: 'A new paradigm emerged in the field of cognitive science.',
       difficulty: 0.55,
@@ -268,7 +268,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-029',
       word: 'qualitative',
-      translation: 'nitel',
+      translation: 'qualitatif',
       pronunciation: '/ˈkwɒlɪtətɪv/',
       example: 'Qualitative research focuses on understanding human behavior.',
       difficulty: 0.5,
@@ -277,7 +277,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-030',
       word: 'quantitative',
-      translation: 'nicel',
+      translation: 'quantitatif',
       pronunciation: '/ˈkwɒntɪtətɪv/',
       example: 'Quantitative data were analyzed using statistical software.',
       difficulty: 0.5,
@@ -286,7 +286,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-031',
       word: 'interpret',
-      translation: 'yorumlamak',
+      translation: 'interpréter',
       pronunciation: '/ɪnˈtɜːrprɪt/',
       example: 'Scholars continue to interpret the text in different ways.',
       difficulty: 0.45,
@@ -295,7 +295,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-032',
       word: 'synthesize',
-      translation: 'sentezlemek',
+      translation: 'synthétiser',
       pronunciation: '/ˈsɪnθəsaɪz/',
       example: 'The review aimed to synthesize findings from multiple studies.',
       difficulty: 0.55,
@@ -304,7 +304,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-033',
       word: 'empirical',
-      translation: 'deneysel',
+      translation: 'empirique',
       pronunciation: '/ɪmˈpɪrɪkəl/',
       example: 'The claim is supported by empirical evidence.',
       difficulty: 0.55,
@@ -313,7 +313,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-034',
       word: 'abstract',
-      translation: 'özet',
+      translation: 'résumé',
       pronunciation: '/ˈæbstrækt/',
       example: 'The abstract should summarize the key findings of the paper.',
       difficulty: 0.45,
@@ -322,7 +322,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-035',
       word: 'cite',
-      translation: 'alıntılamak',
+      translation: 'citer',
       pronunciation: '/saɪt/',
       example: 'You must cite all references used in your dissertation.',
       difficulty: 0.45,
@@ -331,7 +331,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-036',
       word: 'coherent',
-      translation: 'tutarlı',
+      translation: 'cohérent',
       pronunciation: '/koʊˈhɪərənt/',
       example: 'The argument must be coherent and well-structured.',
       difficulty: 0.5,
@@ -340,7 +340,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-037',
       word: 'derive',
-      translation: 'türetmek',
+      translation: 'dériver',
       pronunciation: '/dɪˈraɪv/',
       example: 'The formula can be derived from first principles.',
       difficulty: 0.5,
@@ -349,7 +349,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-038',
       word: 'comprehensive',
-      translation: 'kapsamlı',
+      translation: 'exhaustif',
       pronunciation: '/ˌkɒmprɪˈhensɪv/',
       example: 'A comprehensive review of the literature was conducted.',
       difficulty: 0.5,
@@ -358,7 +358,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-039',
       word: 'constitute',
-      translation: 'oluşturmak',
+      translation: 'constituer',
       pronunciation: '/ˈkɒnstɪtjuːt/',
       example: 'These findings constitute a major breakthrough.',
       difficulty: 0.55,
@@ -367,7 +367,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-040',
       word: 'framework',
-      translation: 'çerçeve',
+      translation: 'cadre',
       pronunciation: '/ˈfreɪmwɜːrk/',
       example: 'The theoretical framework guides the entire study.',
       difficulty: 0.45,
@@ -376,7 +376,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-041',
       word: 'subsequent',
-      translation: 'sonraki',
+      translation: 'ultérieur',
       pronunciation: '/ˈsʌbsɪkwənt/',
       example: 'Subsequent studies confirmed the initial findings.',
       difficulty: 0.5,
@@ -385,7 +385,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-042',
       word: 'validity',
-      translation: 'geçerlilik',
+      translation: 'validité',
       pronunciation: '/vəˈlɪdɪti/',
       example: 'The validity of the instrument was tested rigorously.',
       difficulty: 0.55,
@@ -394,7 +394,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-043',
       word: 'assert',
-      translation: 'ileri sürmek',
+      translation: 'affirmer',
       pronunciation: '/əˈsɜːrt/',
       example: 'The author asserts that poverty is the root cause.',
       difficulty: 0.5,
@@ -403,7 +403,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-044',
       word: 'contradict',
-      translation: 'çelişmek',
+      translation: 'contredire',
       pronunciation: '/ˌkɒntrəˈdɪkt/',
       example: 'These results contradict earlier findings in the field.',
       difficulty: 0.5,
@@ -412,7 +412,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-045',
       word: 'allocate',
-      translation: 'tahsis etmek',
+      translation: 'allouer',
       pronunciation: '/ˈæləkeɪt/',
       example: 'Funds were allocated to each department based on need.',
       difficulty: 0.55,
@@ -421,7 +421,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-046',
       word: 'preliminary',
-      translation: 'ön',
+      translation: 'préliminaire',
       pronunciation: '/prɪˈlɪmɪnəri/',
       example: 'Preliminary results suggest a positive correlation.',
       difficulty: 0.55,
@@ -430,7 +430,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-047',
       word: 'facilitate',
-      translation: 'kolaylaştırmak',
+      translation: 'faciliter',
       pronunciation: '/fəˈsɪlɪteɪt/',
       example: 'Technology can facilitate collaborative learning.',
       difficulty: 0.5,
@@ -439,7 +439,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-048',
       word: 'inherent',
-      translation: 'doğal',
+      translation: 'inhérent',
       pronunciation: '/ɪnˈhɪərənt/',
       example: 'There are inherent risks in any experimental procedure.',
       difficulty: 0.55,
@@ -448,7 +448,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-049',
       word: 'infer',
-      translation: 'çıkarım yapmak',
+      translation: 'déduire',
       pronunciation: '/ɪnˈfɜːr/',
       example: 'We can infer from the data that the treatment was effective.',
       difficulty: 0.5,
@@ -457,7 +457,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-050',
       word: 'predominantly',
-      translation: 'ağırlıklı olarak',
+      translation: 'principalement',
       pronunciation: '/prɪˈdɒmɪnəntli/',
       example: 'The sample was predominantly female.',
       difficulty: 0.6,
@@ -470,7 +470,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-051',
       word: 'epistemology',
-      translation: 'epistemoloji',
+      translation: 'épistémologie',
       pronunciation: '/ɪˌpɪstɪˈmɒlədʒi/',
       example: 'Epistemology examines the nature and scope of knowledge.',
       difficulty: 0.75,
@@ -479,7 +479,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-052',
       word: 'ontological',
-      translation: 'ontolojik',
+      translation: 'ontologique',
       pronunciation: '/ˌɒntəˈlɒdʒɪkəl/',
       example: 'The study raises important ontological questions about existence.',
       difficulty: 0.8,
@@ -488,7 +488,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-053',
       word: 'extrapolate',
-      translation: 'öngörüde bulunmak',
+      translation: 'extrapoler',
       pronunciation: '/ɪkˈstræpəleɪt/',
       example: 'It is difficult to extrapolate these findings to the general population.',
       difficulty: 0.7,
@@ -497,7 +497,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-054',
       word: 'corroborate',
-      translation: 'doğrulamak',
+      translation: 'corroborer',
       pronunciation: '/kəˈrɒbəreɪt/',
       example: 'Additional experiments were needed to corroborate the results.',
       difficulty: 0.7,
@@ -506,7 +506,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-055',
       word: 'dichotomy',
-      translation: 'ikilem',
+      translation: 'dichotomie',
       pronunciation: '/daɪˈkɒtəmi/',
       example: 'The dichotomy between nature and nurture is well known.',
       difficulty: 0.7,
@@ -515,7 +515,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-056',
       word: 'ubiquitous',
-      translation: 'her yerde bulunan',
+      translation: 'omniprésent',
       pronunciation: '/juːˈbɪkwɪtəs/',
       example: 'Smartphones have become ubiquitous in modern society.',
       difficulty: 0.7,
@@ -524,7 +524,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-057',
       word: 'juxtapose',
-      translation: 'yan yana koymak',
+      translation: 'juxtaposer',
       pronunciation: '/ˌdʒʌkstəˈpoʊz/',
       example: 'The author juxtaposes traditional and modern approaches.',
       difficulty: 0.75,
@@ -533,7 +533,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-058',
       word: 'elucidate',
-      translation: 'aydınlatmak',
+      translation: 'élucider',
       pronunciation: '/ɪˈluːsɪdeɪt/',
       example: 'The purpose of this paper is to elucidate the mechanism.',
       difficulty: 0.75,
@@ -542,7 +542,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-059',
       word: 'ameliorate',
-      translation: 'iyileştirmek',
+      translation: 'améliorer',
       pronunciation: '/əˈmiːliəreɪt/',
       example: 'Policies were introduced to ameliorate working conditions.',
       difficulty: 0.75,
@@ -551,7 +551,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-060',
       word: 'conflate',
-      translation: 'birbirine karıştırmak',
+      translation: 'confondre',
       pronunciation: '/kənˈfleɪt/',
       example: 'Critics argue that the study conflates correlation with causation.',
       difficulty: 0.7,
@@ -560,7 +560,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-061',
       word: 'exacerbate',
-      translation: 'şiddetlendirmek',
+      translation: 'exacerber',
       pronunciation: '/ɪɡˈzæsərbeɪt/',
       example: 'Climate change may exacerbate existing inequalities.',
       difficulty: 0.7,
@@ -569,7 +569,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-062',
       word: 'postulate',
-      translation: 'varsaymak',
+      translation: 'postuler',
       pronunciation: '/ˈpɒstjʊleɪt/',
       example: 'Euclid postulated five fundamental axioms of geometry.',
       difficulty: 0.7,
@@ -578,7 +578,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-063',
       word: 'heterogeneous',
-      translation: 'heterojen',
+      translation: 'hétérogène',
       pronunciation: '/ˌhetərəˈdʒiːniəs/',
       example: 'The sample was highly heterogeneous in terms of age and background.',
       difficulty: 0.75,
@@ -587,7 +587,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-064',
       word: 'antithetical',
-      translation: 'karşıt',
+      translation: 'antithétique',
       pronunciation: '/ˌæntɪˈθetɪkəl/',
       example: 'His views are antithetical to the mainstream academic position.',
       difficulty: 0.8,
@@ -596,7 +596,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-065',
       word: 'perfunctory',
-      translation: 'üstünkörü',
+      translation: 'superficiel',
       pronunciation: '/pərˈfʌŋktəri/',
       example: 'The review was perfunctory and missed several critical errors.',
       difficulty: 0.8,
@@ -605,7 +605,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-066',
       word: 'promulgate',
-      translation: 'ilan etmek',
+      translation: 'promulguer',
       pronunciation: '/ˈprɒməlɡeɪt/',
       example: 'The government promulgated new regulations on data privacy.',
       difficulty: 0.8,
@@ -614,7 +614,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-067',
       word: 'recapitulate',
-      translation: 'özetlemek',
+      translation: 'récapituler',
       pronunciation: '/ˌriːkəˈpɪtʃʊleɪt/',
       example: 'Let me recapitulate the main points of the argument.',
       difficulty: 0.75,
@@ -623,7 +623,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-068',
       word: 'supposition',
-      translation: 'varsayım',
+      translation: 'supposition',
       pronunciation: '/ˌsʌpəˈzɪʃən/',
       example: 'This supposition has yet to be verified empirically.',
       difficulty: 0.7,
@@ -632,7 +632,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-069',
       word: 'disambiguate',
-      translation: 'anlam belirsizliğini gidermek',
+      translation: 'désambiguïser',
       pronunciation: '/ˌdɪsæmˈbɪɡjueɪt/',
       example: 'Context is often needed to disambiguate polysemous words.',
       difficulty: 0.8,
@@ -641,7 +641,7 @@ export const academicEnglish: VocabularyPack = {
     {
       id: 'acad-070',
       word: 'axiom',
-      translation: 'aksiyom',
+      translation: 'axiome',
       pronunciation: '/ˈæksiəm/',
       example: 'This axiom forms the foundation of Euclidean geometry.',
       difficulty: 0.65,

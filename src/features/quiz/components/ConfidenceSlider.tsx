@@ -73,6 +73,11 @@ export default function ConfidenceSlider({
           onTouchEnd={() => setIsDragging(false)}
           disabled={disabled}
           className="confidence-slider__input"
+          aria-label="Confidence level"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={value}
+          aria-valuetext={`${value}% - ${getConfidenceLabel(value)}`}
           style={{
             background: `linear-gradient(to right, ${color} ${value}%, #e2e8f0 ${value}%)`,
           }}

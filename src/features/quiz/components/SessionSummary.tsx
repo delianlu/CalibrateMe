@@ -1,14 +1,17 @@
 import { useMemo } from 'react';
-import { QuizResponse } from '../types';
+import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap } from 'lucide-react';
+import { QuizItem, QuizResponse } from '../types';
 
 interface SessionSummaryProps {
   responses: QuizResponse[];
+  items?: QuizItem[];
   calibrationECE: number | null;
   onClose: () => void;
 }
 
 interface StrugglingItem {
   itemId: string;
+  label: string;
   confidence: number;
   wasCorrect: boolean;
 }
@@ -66,7 +69,7 @@ function getRecommendations(
     );
   } else if (gap < -15) {
     tips.push(
-      'When you feel unsure, give yourself credit — your instincts are better than you think.'
+      'When you feel unsure, give yourself credit -- your instincts are better than you think.'
     );
   }
 
@@ -83,8 +86,37 @@ function getRecommendations(
   return tips;
 }
 
+function getItemLabel(itemId: string, items?: QuizItem[]): string {
+  if (!items) return itemId;
+  const item = items.find(i => i.id === itemId);
+  if (!item) return itemId;
+  // For grammar items, show the question; for vocab, show the word
+  if (item.question) return item.question.slice(0, 60) + (item.question.length > 60 ? '...' : '');
+  return item.word;
+}
+
+/** Classify responses as "fast + confident" (automatic) vs "slow + deliberate" */
+function classifyDualProcess(responses: QuizResponse[]): { automatic: number; deliberate: number } {
+  if (responses.length < 3) return { automatic: 0, deliberate: 0 };
+
+  const rts = responses.map(r => r.responseTime);
+  const meanRT = rts.reduce((a, b) => a + b, 0) / rts.length;
+
+  let automatic = 0;
+  let deliberate = 0;
+  for (const r of responses) {
+    if (r.correctness && r.responseTime < meanRT && r.confidence > 70) {
+      automatic++;
+    } else {
+      deliberate++;
+    }
+  }
+  return { automatic, deliberate };
+}
+
 export default function SessionSummary({
   responses,
+  items,
   calibrationECE,
   onClose,
 }: SessionSummaryProps) {
@@ -98,18 +130,22 @@ export default function SessionSummary({
       total > 0 ? responses.reduce((s, r) => s + r.responseTime, 0) / total : 0;
     const gap = avgConf - accuracy;
 
-    // Find high-confidence incorrect (overconfident misses)
     const struggling: StrugglingItem[] = responses
       .filter(r => !r.correctness && r.confidence > 50)
-      .map(r => ({ itemId: r.itemId, confidence: r.confidence, wasCorrect: false }));
+      .map(r => ({
+        itemId: r.itemId,
+        label: getItemLabel(r.itemId, items),
+        confidence: r.confidence,
+        wasCorrect: false,
+      }));
 
-    // Find low-confidence correct (underconfident hits)
     const underconfidentHits = responses.filter(
       r => r.correctness && r.confidence < 40
     ).length;
 
     const calFeedback = getCalibrationFeedback(gap);
     const recommendations = getRecommendations(accuracy, gap, struggling.length);
+    const dualProcess = classifyDualProcess(responses);
 
     return {
       total,
@@ -122,36 +158,52 @@ export default function SessionSummary({
       underconfidentHits,
       calFeedback,
       recommendations,
+      dualProcess,
     };
-  }, [responses]);
+  }, [responses, items]);
 
   const ecePct = calibrationECE !== null ? (calibrationECE * 100).toFixed(1) : null;
 
   return (
     <div className="session-summary card">
-      <h2 className="session-summary__title">Session Complete</h2>
+      <div className="session-summary__header">
+        <Trophy size={32} className="session-summary__trophy" />
+        <h2 className="session-summary__title">Session Complete!</h2>
+      </div>
 
       {/* Stats grid */}
       <div className="session-summary__grid">
-        <div className="session-summary__stat">
+        <div className="session-summary__stat session-summary__stat--accent-green">
+          <div className="session-summary__stat-icon">
+            <Target size={18} />
+          </div>
           <span className="session-summary__stat-value">
             {stats.correct}/{stats.total}
           </span>
           <span className="session-summary__stat-label">Correct</span>
         </div>
-        <div className="session-summary__stat">
+        <div className="session-summary__stat session-summary__stat--accent-blue">
+          <div className="session-summary__stat-icon">
+            <Trophy size={18} />
+          </div>
           <span className="session-summary__stat-value">
             {stats.accuracy.toFixed(0)}%
           </span>
           <span className="session-summary__stat-label">Accuracy</span>
         </div>
-        <div className="session-summary__stat">
+        <div className="session-summary__stat session-summary__stat--accent-purple">
+          <div className="session-summary__stat-icon">
+            <Brain size={18} />
+          </div>
           <span className="session-summary__stat-value">
             {stats.avgConf.toFixed(0)}%
           </span>
           <span className="session-summary__stat-label">Avg Confidence</span>
         </div>
-        <div className="session-summary__stat">
+        <div className="session-summary__stat session-summary__stat--accent-amber">
+          <div className="session-summary__stat-icon">
+            <Clock size={18} />
+          </div>
           <span className="session-summary__stat-value">
             {(stats.avgRT / 1000).toFixed(1)}s
           </span>
@@ -159,11 +211,33 @@ export default function SessionSummary({
         </div>
       </div>
 
+      {/* Dual-process insight */}
+      {(stats.dualProcess.automatic > 0 || stats.dualProcess.deliberate > 0) && (
+        <div className="session-summary__dual-process">
+          <span className="session-summary__section-title">
+            <Zap size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+            Response Patterns
+          </span>
+          <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+            <strong>{stats.dualProcess.automatic}</strong> automatic (fast + confident) &middot;{' '}
+            <strong>{stats.dualProcess.deliberate}</strong> deliberate (slower / less certain)
+          </p>
+          {stats.dualProcess.automatic > stats.dualProcess.deliberate && (
+            <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--text-faint)' }}>
+              Many automatized responses suggest strong familiarity. The scheduler will space these items further apart.
+            </p>
+          )}
+        </div>
+      )}
+
       {/* Calibration section */}
       <div
         className={`session-summary__calibration session-summary__calibration--${stats.calFeedback.type}`}
       >
-        <span className="session-summary__calibration-title">Calibration</span>
+        <span className="session-summary__calibration-title">
+          <Target size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+          Calibration
+        </span>
         {ecePct !== null && (
           <span className="session-summary__calibration-ece">ECE: {ecePct}%</span>
         )}
@@ -173,7 +247,7 @@ export default function SessionSummary({
         {stats.underconfidentHits > 0 && (
           <p className="session-summary__calibration-detail">
             You got {stats.underconfidentHits} item(s) correct despite low confidence
-            — trust yourself more!
+            -- trust yourself more!
           </p>
         )}
       </div>
@@ -181,14 +255,17 @@ export default function SessionSummary({
       {/* Struggling items */}
       {stats.struggling.length > 0 && (
         <div className="session-summary__struggling">
-          <span className="session-summary__section-title">Needs Review</span>
+          <span className="session-summary__section-title">
+            <AlertTriangle size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+            Needs Review
+          </span>
           <p className="session-summary__struggling-desc">
             {stats.struggling.length} item(s) you rated high confidence but got wrong:
           </p>
           <div className="session-summary__struggling-list">
             {stats.struggling.slice(0, 5).map(item => (
               <span key={item.itemId} className="session-summary__struggling-item">
-                {item.itemId} ({item.confidence}% conf)
+                {item.label} ({item.confidence}% conf)
               </span>
             ))}
           </div>
@@ -197,7 +274,10 @@ export default function SessionSummary({
 
       {/* Recommendations */}
       <div className="session-summary__recommendations">
-        <span className="session-summary__section-title">Recommendations</span>
+        <span className="session-summary__section-title">
+          <Lightbulb size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+          Recommendations
+        </span>
         <ul className="session-summary__tips">
           {stats.recommendations.map((tip, i) => (
             <li key={i}>{tip}</li>
@@ -206,7 +286,8 @@ export default function SessionSummary({
       </div>
 
       <button className="btn btn-primary btn-block" onClick={onClose}>
-        Done
+        Continue
+        <ArrowRight size={16} style={{ marginLeft: 8 }} />
       </button>
     </div>
   );
