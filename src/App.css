@@ -4257,3 +4257,332 @@ body {
 .report-recommendations li span {
   line-height: 1.5;
 }
+
+/* =============================================================================
+   Advanced Analytics — Ablation, Sensitivity, Dose-Response
+   ============================================================================= */
+
+/* Ablation Table */
+.ablation-table-container { margin-bottom: 1.5rem; }
+
+.ablation-table__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ablation-table__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ablation-table__subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+.ablation-profile-block { margin-bottom: 1.5rem; }
+
+.ablation-profile-block__title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 0.5rem;
+}
+
+.ablation-table-scroll { overflow-x: auto; }
+
+.ablation-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs);
+}
+
+.ablation-table th {
+  text-align: left;
+  padding: 0.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.ablation-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.ablation-row--highlight {
+  background: rgba(99, 102, 241, 0.06);
+}
+
+.ablation-condition-name {
+  font-weight: 500;
+  min-width: 130px;
+}
+
+.ablation-stat-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ablation-stat-cell__mean { font-weight: 600; }
+.ablation-stat-cell__ci {
+  font-size: 0.7em;
+  color: var(--text-faint);
+}
+
+/* Sensitivity Heatmap */
+.sensitivity-container { margin-bottom: 1.5rem; }
+
+.sensitivity__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.sensitivity__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.sensitivity__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sensitivity__legend {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.sensitivity-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs);
+}
+
+.sensitivity-table th {
+  text-align: center;
+  padding: 0.4rem 0.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.sensitivity-table td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.sensitivity-cell {
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  border-radius: 2px;
+}
+
+/* Dose-Response Chart */
+.dose-response-container { margin-bottom: 1.5rem; }
+
+.dose-response__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dose-response__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.dose-response__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dose-response__note {
+  font-size: var(--font-size-xs);
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Mastery Comparison */
+.mastery-comparison { margin-bottom: 1.5rem; }
+
+.mastery-comparison__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
+/* Learner Classification */
+.learner-classification { margin-bottom: 1rem; }
+
+.learner-classification__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem;
+}
+
+.learner-classification__summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.learner-classification__badge {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  padding: 0.25rem 0.75rem;
+  border: 2px solid;
+  border-radius: 999px;
+}
+
+.learner-classification__beta {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.learner-classification__beta-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.learner-classification__beta-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.learner-classification__trend {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--font-size-xs);
+}
+
+.learner-classification__desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Schedule Comparison */
+.schedule-comparison { margin-bottom: 1.5rem; }
+
+.schedule-comparison__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+}
+
+.schedule-comparison__desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.schedule-comparison__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.schedule-comparison__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.schedule-comparison__item-label {
+  min-width: 80px;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.schedule-comparison__item-counts {
+  display: block;
+  font-size: 0.7em;
+  color: var(--text-faint);
+}
+
+.schedule-comparison__timeline {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.schedule-comparison__row {
+  display: flex;
+  gap: 1px;
+  height: 8px;
+}
+
+.schedule-comparison__cell {
+  flex: 1;
+  background: var(--bg-muted);
+  border-radius: 1px;
+}
+
+.schedule-comparison__cell--cm {
+  background: #6366F1;
+}
+
+.schedule-comparison__cell--sm2 {
+  background: #EF4444;
+}

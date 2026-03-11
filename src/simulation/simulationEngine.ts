@@ -91,7 +91,9 @@ export function runSimulation(
       scheduler = new CalibrateMeScheduler(
         learner.params.lambda,
         true,
-        config.enable_dual_process
+        config.enable_dual_process,
+        0.5,
+        config.enable_difficulty_sequencing ?? false
       );
       break;
   }
@@ -128,6 +130,11 @@ export function runSimulation(
         ),
       },
     }));
+
+    // Update scheduler's K̂ for difficulty sequencing
+    if (scheduler instanceof CalibrateMeScheduler) {
+      scheduler.updateKHat(systemBelief.K_hat);
+    }
 
     // Select items for review (coverage-aware for CalibrateMe)
     const itemsToReview = scheduler instanceof CalibrateMeScheduler

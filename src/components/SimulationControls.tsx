@@ -100,6 +100,18 @@ const SimulationControls: React.FC = () => {
         </label>
       </div>
 
+      <div className="form-group">
+        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={config.enable_difficulty_sequencing}
+            onChange={(e) => setConfig({ enable_difficulty_sequencing: e.target.checked })}
+            disabled={isRunning}
+          />
+          <span className="form-label" style={{ margin: 0 }}>Difficulty Sequencing</span>
+        </label>
+      </div>
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
         <button
           className="btn btn-primary btn-block"

@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSimulationStore } from '../store/simulationStore';
-import { getAllProfileNames, PROFILE_PARAMS } from '../profiles/learnerProfiles';
+import { CORE_PROFILE_NAMES, EXTENDED_PROFILE_NAMES, PROFILE_PARAMS } from '../profiles/learnerProfiles';
 
 const LearnerProfileSelector: React.FC = () => {
   const { selectedProfile, setSelectedProfile } = useSimulationStore();
-  const profiles = getAllProfileNames();
   const params = PROFILE_PARAMS[selectedProfile];
 
   return (
@@ -18,9 +17,16 @@ const LearnerProfileSelector: React.FC = () => {
           value={selectedProfile}
           onChange={(e) => setSelectedProfile(e.target.value)}
         >
-          {profiles.map(name => (
-            <option key={name} value={name}>{name}</option>
-          ))}
+          <optgroup label="Core Profiles (3×3)">
+            {CORE_PROFILE_NAMES.map(name => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+          </optgroup>
+          <optgroup label="Extended (Boundary Testing)">
+            {EXTENDED_PROFILE_NAMES.map(name => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+          </optgroup>
         </select>
       </div>
 

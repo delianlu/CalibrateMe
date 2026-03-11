@@ -135,22 +135,37 @@ export class CalibrateMeScheduler {
   private lambda: number;
   private enableCalibration: boolean;
   private enableDualProcess: boolean;
+  private enableDifficultySequencing: boolean;
   private coverageWeight: number;
+  private difficultyWeight: number;
   private reviewCounts: Map<string, number>;
   private totalReviews: number;
+  private currentKHat: number;
 
   constructor(
     lambda: number = 0.1,
     enableCalibration: boolean = true,
     enableDualProcess: boolean = true,
-    coverageWeight: number = 0.5
+    coverageWeight: number = 0.5,
+    enableDifficultySequencing: boolean = false,
+    difficultyWeight: number = 0.3
   ) {
     this.lambda = lambda;
     this.enableCalibration = enableCalibration;
     this.enableDualProcess = enableDualProcess;
+    this.enableDifficultySequencing = enableDifficultySequencing;
     this.coverageWeight = coverageWeight;
+    this.difficultyWeight = difficultyWeight;
     this.reviewCounts = new Map();
     this.totalReviews = 0;
+    this.currentKHat = 0.3;
+  }
+
+  /**
+   * Update the current knowledge estimate (for difficulty targeting)
+   */
+  updateKHat(kHat: number): void {
+    this.currentKHat = kHat;
   }
 
   /**
@@ -191,11 +206,25 @@ export class CalibrateMeScheduler {
     const totalItems = items.length;
     const expectedPerItem = totalItems > 0 ? this.totalReviews / totalItems : 0;
 
+    // Target difficulty based on current K̂
+    const targetDifficulty = this.currentKHat < 0.4 ? 0.17
+      : this.currentKHat < 0.7 ? 0.50
+      : 0.83;
+
     const scored = items.map(item => {
       const urgency = calculateUrgency(item, now);
       const reviewCount = this.reviewCounts.get(item.id) || 0;
       const coveragePenalty = this.coverageWeight * (reviewCount - expectedPerItem);
-      return { item, score: urgency - coveragePenalty };
+
+      let score = urgency - coveragePenalty;
+
+      // Difficulty bonus: prefer items near the target difficulty
+      if (this.enableDifficultySequencing) {
+        const difficultyBonus = -Math.abs(item.difficulty - targetDifficulty);
+        score += this.difficultyWeight * difficultyBonus;
+      }
+
+      return { item, score };
     });
 
     scored.sort((a, b) => b.score - a.score);

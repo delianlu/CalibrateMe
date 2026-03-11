@@ -80,6 +80,49 @@ export const PROFILE_PARAMS: Record<string, LearnerProfileParams> = {
     lambda: 0.05,
     beta_star: 0.00,
   },
+  // Extended profiles for boundary/robustness testing
+  'Extreme-Over': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.OVERCONFIDENT,
+    alpha: 0.15,
+    lambda: 0.12,
+    beta_star: 0.35,
+  },
+  'Extreme-Under': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.UNDERCONFIDENT,
+    alpha: 0.15,
+    lambda: 0.12,
+    beta_star: -0.30,
+  },
+  'Fast-Forget-Over': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.OVERCONFIDENT,
+    alpha: 0.20,
+    lambda: 0.20,
+    beta_star: 0.25,
+  },
+  'Noisy-Confidence': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.OVERCONFIDENT,
+    alpha: 0.20,
+    lambda: 0.10,
+    beta_star: 0.15,
+  },
+  'HighAb-Extreme-Over': {
+    ability: AbilityLevel.HIGH,
+    calibration: CalibrationType.OVERCONFIDENT,
+    alpha: 0.30,
+    lambda: 0.05,
+    beta_star: 0.30,
+  },
+  'Minimal-Bias': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.WELL_CALIBRATED,
+    alpha: 0.20,
+    lambda: 0.10,
+    beta_star: 0.05,
+  },
 };
 
 /**
@@ -154,15 +197,35 @@ export function createItem(id: string, difficulty: number): Item {
   };
 }
 
+/** The original 9 core profiles (3×3 ability × calibration grid) */
+export const CORE_PROFILE_NAMES = [
+  'Low-Over', 'Low-Under', 'Low-Well',
+  'Med-Over', 'Med-Under', 'Med-Well',
+  'High-Over', 'High-Under', 'High-Well',
+];
+
+/** The 6 extended boundary-testing profiles */
+export const EXTENDED_PROFILE_NAMES = [
+  'Extreme-Over', 'Extreme-Under', 'Fast-Forget-Over',
+  'Noisy-Confidence', 'HighAb-Extreme-Over', 'Minimal-Bias',
+];
+
 /**
- * Get all profile names
+ * Get all profile names (core + extended)
  */
 export function getAllProfileNames(): string[] {
   return Object.keys(PROFILE_PARAMS);
 }
 
 /**
- * Create all 9 profiles
+ * Get only the core 9 profile names
+ */
+export function getCoreProfileNames(): string[] {
+  return [...CORE_PROFILE_NAMES];
+}
+
+/**
+ * Create all profiles
  */
 export function createAllProfiles(numItems: number = 100): LearnerProfile[] {
   return getAllProfileNames().map(name => createLearnerProfile(name, numItems));

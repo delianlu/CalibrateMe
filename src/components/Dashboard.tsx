@@ -3,10 +3,12 @@
 // =============================================================================
 
 import React, { useState } from 'react';
-import { FileText, ArrowLeft } from 'lucide-react';
+import { FileText, ArrowLeft, FlaskConical, Thermometer, Sliders } from 'lucide-react';
 import { useSimulationStore } from '../store/simulationStore';
+import { useAdvancedAnalyticsStore } from '../store/advancedAnalyticsStore';
 import { calculateCalibrationMetrics } from '../calibration/scoringModule';
 import { SchedulerType } from '../types';
+import { DEFAULT_SWEEPS } from '../simulation/sensitivityAnalysis';
 import LearnerProfileSelector from './LearnerProfileSelector';
 import SimulationControls from './SimulationControls';
 import MetricsDisplay from './MetricsDisplay';
@@ -17,25 +19,47 @@ import HypothesisResults from './HypothesisResults';
 import ResponseHistory from './ResponseHistory';
 import ProgressBar from './ProgressBar';
 import FinalReport from '../features/analytics/components/FinalReport';
+import AblationTable from '../features/simulation/components/AblationTable';
+import SensitivityHeatmap from '../features/simulation/components/SensitivityHeatmap';
+import DoseResponseChart from '../features/simulation/components/DoseResponseChart';
+import MasteryComparison from '../features/simulation/components/MasteryComparison';
+
+type DashboardView = 'main' | 'report' | 'advanced';
 
 const Dashboard: React.FC = () => {
-  const [showReport, setShowReport] = useState(false);
+  const [view, setView] = useState<DashboardView>('main');
+  const [selectedSweep, setSelectedSweep] = useState(0);
+
+  const simStore = useSimulationStore();
+  const advStore = useAdvancedAnalyticsStore();
+
   const {
     profile,
     results,
     comparisonResults,
     hypothesisResults,
-    isRunning,
-    error,
-    progress,
-    progressMessage,
-  } = useSimulationStore();
+    isRunning: simRunning,
+    error: simError,
+    progress: simProgress,
+    progressMessage: simProgressMessage,
+  } = simStore;
+
+  const {
+    ablationResults,
+    sensitivityReports,
+    deltaSweepReport,
+    isRunning: advRunning,
+    progress: advProgress,
+    progressMessage: advProgressMessage,
+    error: advError,
+  } = advStore;
+
+  const isRunning = simRunning || advRunning;
+  const error = simError || advError;
 
   // Calculate calibration bins from session data for calibration curve
   const calibrationBins = React.useMemo(() => {
     if (!results) return [];
-
-    // Aggregate all responses across sessions for binning
     const mockResponses = results.session_data.flatMap(session => {
       return Array(session.items_reviewed).fill(null).map((_, i) => ({
         item_id: `${session.session_number}-${i}`,
@@ -45,18 +69,16 @@ const Dashboard: React.FC = () => {
         timestamp: new Date(),
       }));
     });
-
     return calculateCalibrationMetrics(mockResponses).bin_data;
   }, [results]);
 
-  // Get baseline (SM-2) results for comparison in the report
   const baselineResults = React.useMemo(() => {
     if (!comparisonResults) return undefined;
     return comparisonResults.get(SchedulerType.SM2);
   }, [comparisonResults]);
 
-  // Show full report view
-  if (showReport && results && profile) {
+  // --- Report View ---
+  if (view === 'report' && results && profile) {
     return (
       <div className="dashboard">
         <div className="dashboard-sidebar">
@@ -64,23 +86,123 @@ const Dashboard: React.FC = () => {
           <SimulationControls />
         </div>
         <div className="dashboard-content">
-          <button
-            className="btn btn-secondary btn-sm"
-            onClick={() => setShowReport(false)}
-            style={{ marginBottom: '1rem' }}
-          >
+          <button className="btn btn-secondary btn-sm" onClick={() => setView('main')} style={{ marginBottom: '1rem' }}>
             <ArrowLeft size={14} /> Back to Results
           </button>
-          <FinalReport
-            results={results}
-            params={profile.params}
-            baselineResults={baselineResults}
-          />
+          <FinalReport results={results} params={profile.params} baselineResults={baselineResults} />
         </div>
       </div>
     );
   }
 
+  // --- Advanced Analytics View ---
+  if (view === 'advanced') {
+    return (
+      <div className="dashboard">
+        <div className="dashboard-sidebar">
+          <LearnerProfileSelector />
+          <div className="card">
+            <h3 className="card-title">Advanced Analytics</h3>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.75rem' }}>
+              <button
+                className="btn btn-primary btn-block"
+                onClick={() => advStore.runAblation(30)}
+                disabled={isRunning}
+                style={{ background: '#6366F1' }}
+              >
+                <FlaskConical size={14} /> {advRunning ? 'Running...' : 'Run Ablation (30 seeds)'}
+              </button>
+
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <select
+                  className="form-select"
+                  value={selectedSweep}
+                  onChange={e => setSelectedSweep(Number(e.target.value))}
+                  disabled={isRunning}
+                  style={{ flex: 1 }}
+                >
+                  {DEFAULT_SWEEPS.map((s, i) => (
+                    <option key={s.parameterName} value={i}>{s.parameterName}</option>
+                  ))}
+                </select>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => advStore.runSensitivity(DEFAULT_SWEEPS[selectedSweep], 10)}
+                  disabled={isRunning}
+                  style={{ whiteSpace: 'nowrap' }}
+                >
+                  <Thermometer size={14} /> Sweep
+                </button>
+              </div>
+
+              <button
+                className="btn btn-secondary btn-block"
+                onClick={() => advStore.runDeltaSweep(15)}
+                disabled={isRunning}
+                style={{ background: '#D97706', color: 'white' }}
+              >
+                <Sliders size={14} /> Run δ Dose-Response
+              </button>
+
+              <button className="btn btn-secondary btn-block" onClick={() => setView('main')} disabled={isRunning}>
+                <ArrowLeft size={14} /> Back to Sim Lab
+              </button>
+
+              <button className="btn btn-secondary btn-block" onClick={advStore.reset} disabled={isRunning}>
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="dashboard-content">
+          {error && (
+            <div className="card" style={{ background: '#fed7d7', color: '#822727' }}>
+              <p><strong>Error:</strong> {error}</p>
+            </div>
+          )}
+
+          {advRunning && (
+            <div className="card" style={{ padding: '2rem' }}>
+              <ProgressBar progress={advProgress} message={advProgressMessage} />
+            </div>
+          )}
+
+          {!advRunning && !ablationResults && !deltaSweepReport && sensitivityReports.length === 0 && (
+            <div className="card" style={{ textAlign: 'center', padding: '3rem', color: '#718096' }}>
+              <h3 style={{ marginBottom: '1rem' }}>Advanced Analytics</h3>
+              <p>Run multi-seed ablation studies, parameter sensitivity sweeps, and δ dose-response analyses.</p>
+              <p>Results include 95% confidence intervals and Cohen's d effect sizes.</p>
+            </div>
+          )}
+
+          {ablationResults && !advRunning && (
+            <>
+              <AblationTable results={ablationResults} />
+              <div style={{ marginTop: '1.5rem' }}>
+                <MasteryComparison results={ablationResults} />
+              </div>
+            </>
+          )}
+
+          {sensitivityReports.length > 0 && !advRunning && (
+            <div style={{ marginTop: '1.5rem' }}>
+              <SensitivityHeatmap reports={sensitivityReports} />
+            </div>
+          )}
+
+          {deltaSweepReport && !advRunning && (
+            <div style={{ marginTop: '1.5rem' }}>
+              <DoseResponseChart report={deltaSweepReport} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // --- Main View ---
   return (
     <div className="dashboard">
       <div className="dashboard-sidebar">
@@ -95,20 +217,20 @@ const Dashboard: React.FC = () => {
           </div>
         )}
 
-        {isRunning && (
+        {simRunning && (
           <div className="card" style={{ padding: '2rem' }}>
-            <ProgressBar progress={progress} message={progressMessage} />
+            <ProgressBar progress={simProgress} message={simProgressMessage} />
           </div>
         )}
 
         {/* Single Simulation Results */}
-        {results && !isRunning && !comparisonResults && !hypothesisResults && (
+        {results && !simRunning && !comparisonResults && !hypothesisResults && (
           <>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.75rem' }}>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={() => setShowReport(true)}
-              >
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              <button className="btn btn-secondary btn-sm" onClick={() => setView('advanced')}>
+                <FlaskConical size={14} /> Advanced Analytics
+              </button>
+              <button className="btn btn-primary btn-sm" onClick={() => setView('report')}>
                 <FileText size={14} /> View Full Report
               </button>
             </div>
@@ -150,16 +272,16 @@ const Dashboard: React.FC = () => {
         )}
 
         {/* Comparison Results */}
-        {comparisonResults && !isRunning && !hypothesisResults && (
+        {comparisonResults && !simRunning && !hypothesisResults && (
           <ComparisonView results={comparisonResults} />
         )}
 
         {/* Hypothesis Test Results */}
-        {hypothesisResults && !isRunning && (
+        {hypothesisResults && !simRunning && (
           <HypothesisResults resultsByProfile={hypothesisResults} />
         )}
 
-        {!results && !comparisonResults && !hypothesisResults && !isRunning && !error && (
+        {!results && !comparisonResults && !hypothesisResults && !simRunning && !error && (
           <div className="card" style={{ textAlign: 'center', padding: '3rem', color: '#718096' }}>
             <h3 style={{ marginBottom: '1rem' }}>Welcome to CalibrateMe</h3>
             <p>Select a learner profile and click "Run Simulation" to see results.</p>
