@@ -48,7 +48,7 @@
       "feedback": "Excellent! The phrase \"Please be quiet!\" tells us the action is happening right now. For actions happening now, we use the Present Continuous ('are sleeping').",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"S'il vous pla\u00eet, soyez silencieux ! Les enfants dorment.\"\n(French uses the Pr\u00e9sent Simple: \"dorment\" to describe an action happening right now.)",
+        "frenchStructure": "\"S'il vous plaît, soyez silencieux ! Les enfants dorment.\"\n(French uses the Présent Simple: \"dorment\" to describe an action happening right now.)",
         "englishStructure": "\"Please be quiet! The children are sleeping.\"\n(English *must* use the Present Continuous: \"are + -ing\" for an action in progress at this exact moment.)",
         "whyDifficult": "French uses the same simple present tense for both habits (\"Ils dorment la nuit\") and actions happening now (\"Ils dorment\"). English speakers *must* choose. French speakers often use the Present Simple (\"The children sleep\") because it's a direct translation of \"Les enfants dorment.\"",
         "visualHighlighting": {
@@ -81,7 +81,7 @@
       "feedback": "That's right. When 'think' means 'believe' or 'have an opinion', we use the Present Simple. We don't say \"I am thinking\" for opinions. (Note: 'Think' CAN use continuous form when it means 'consider', like \"I'm thinking about my future,\" but not when expressing belief.)",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Je pense que cet exercice n'est pas tr\u00e8s difficile.\"\n(French uses the simple present \"Je pense\" for an opinion.)",
+        "frenchStructure": "\"Je pense que cet exercice n'est pas très difficile.\"\n(French uses the simple present \"Je pense\" for an opinion.)",
         "englishStructure": "\"I think this exercise is not very difficult.\"\n(English also uses the Present Simple for opinions, beliefs, and \"stative\" verbs. We do not use the continuous form.)",
         "whyDifficult": "After learning the \"be + -ing\" rule (from the item above), students often *over-use* it. They apply it to all verbs, including \"stative\" (state) verbs like 'think', 'know', 'like', and 'want'. In this case, the French \"Je pense\" is a good clue to use the simple \"I think.\"",
         "visualHighlighting": {
@@ -114,9 +114,9 @@
       "feedback": "Correct! The question \"Where is Muna?\" asks about his location right now. The answer describes what he is doing at this moment.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"O\u00f9 est Muna ?\" \"Il joue au football...\"\n(Again, French uses the *Pr\u00e9sent Simple* (\"joue\") to describe the action happening now.)",
+        "frenchStructure": "\"Où est Muna ?\" \"Il joue au football...\"\n(Again, French uses the *Présent Simple* (\"joue\") to describe the action happening now.)",
         "englishStructure": "\"Where is Muna?\" \"He is playing football...\"\n(English *must* use the Present Continuous (\"is playing\") to answer a question about what someone is doing *at this moment*.)",
-        "whyDifficult": "This is a high-frequency example of the \"Pr\u00e9sent Simple vs. Present Continuous\" error. The French \"Il joue\" is translated directly to \"He plays\", which in English means he plays habitually (e.g., \"He plays for the school team\"), not right now.",
+        "whyDifficult": "This is a high-frequency example of the \"Présent Simple vs. Present Continuous\" error. The French \"Il joue\" is translated directly to \"He plays\", which in English means he plays habitually (e.g., \"He plays for the school team\"), not right now.",
         "visualHighlighting": {
           "incorrect": "He plays football...",
           "correct": "He is playing football..."
@@ -126,12 +126,12 @@
     {
       "id": "tense-form-5-A",
       "type": "error_correction",
-      "question": "Find the error: \"Atangana not live in Yaound\u00e9.\"",
+      "question": "Find the error: \"Atangana not live in Yaoundé.\"",
       "answer": "not live",
       "options": [
         "Atangana",
         "not live",
-        "in Yaound\u00e9",
+        "in Yaoundé",
         "No error"
       ],
       "difficulty": 0.5,
@@ -172,9 +172,9 @@
       "feedback": "Perfect! The word \"yesterday\" is a finished past time, so we must use the Past Simple. The past of 'see' is the irregular verb 'saw'.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Hier, j'ai vu mon oncle \u00e0 la gare routi\u00e8re.\"\n(French uses the *Pass\u00e9 Compos\u00e9* (\"j'ai vu\") for almost all completed past actions.)",
+        "frenchStructure": "\"Hier, j'ai vu mon oncle à la gare routière.\"\n(French uses the *Passé Composé* (\"j'ai vu\") for almost all completed past actions.)",
         "englishStructure": "\"Yesterday, I saw my uncle at the motor park.\"\n(English *must* use the Past Simple (\"saw\") because the time \"Yesterday\" is specific and finished.)",
-        "whyDifficult": "The French *Pass\u00e9 Compos\u00e9* (\"j'ai vu\") looks identical to the English *Present Perfect* (\"I have seen\"). Students translate directly and use the Present Perfect, but English *requires* the Past Simple for any action with a finished time (like yesterday, last week, in 2010).",
+        "whyDifficult": "The French *Passé Composé* (\"j'ai vu\") looks identical to the English *Present Perfect* (\"I have seen\"). Students translate directly and use the Present Perfect, but English *requires* the Past Simple for any action with a finished time (like yesterday, last week, in 2010).",
         "visualHighlighting": {
           "incorrect": "Yesterday, I have seen my uncle...",
           "correct": "Yesterday, I saw my uncle..."
@@ -275,12 +275,12 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "You spotted the error! \"In 2018\" is a specific, finished time in the past. We must use the Past Simple ('moved'), not the Present Perfect ('has moved'). This is a common error because of the French pass\u00e9 compos\u00e9.",
+      "feedback": "You spotted the error! \"In 2018\" is a specific, finished time in the past. We must use the Past Simple ('moved'), not the Present Perfect ('has moved'). This is a common error because of the French passé composé.",
       "correction": "moved",
       "frenchComparison": {
-        "frenchStructure": "\"Ma famille a d\u00e9m\u00e9nag\u00e9 \u00e0 Bafoussam en 2018.\"\n(French uses the *Pass\u00e9 Compos\u00e9* (\"a d\u00e9m\u00e9nag\u00e9\") for this finished action.)",
+        "frenchStructure": "\"Ma famille a déménagé à Bafoussam en 2018.\"\n(French uses the *Passé Composé* (\"a déménagé\") for this finished action.)",
         "englishStructure": "\"My family moved to Bafoussam in 2018.\"\n(English *must* use the *Past Simple* (\"moved\") because \"in 2018\" is a specific, finished time in the past.)",
-        "whyDifficult": "This is the same error as `tense-6-A`. The French *Pass\u00e9 Compos\u00e9* (\"a d\u00e9m\u00e9nag\u00e9\") looks like the English *Present Perfect* (\"has moved\"). Students use this form by default, forgetting that if a specific finished time is mentioned, the Past Simple is required.",
+        "whyDifficult": "This is the same error as `tense-6-A`. The French *Passé Composé* (\"a déménagé\") looks like the English *Present Perfect* (\"has moved\"). Students use this form by default, forgetting that if a specific finished time is mentioned, the Past Simple is required.",
         "visualHighlighting": {
           "incorrect": "...has moved to Bafoussam in 2018.",
           "correct": "...moved to Bafoussam in 2018."
@@ -290,7 +290,7 @@
     {
       "id": "tense-form-11-A",
       "type": "multiple-choice",
-      "question": "___ you ever eaten poisson brais\u00e9 in Limbe?",
+      "question": "___ you ever eaten poisson braisé in Limbe?",
       "answer": "Have",
       "options": [
         "Did",
@@ -314,7 +314,7 @@
     {
       "id": "tense-form-12-A",
       "type": "multiple-choice",
-      "question": "My brother ___ at the University of Yaound\u00e9 for three years.",
+      "question": "My brother ___ at the University of Yaoundé for three years.",
       "answer": "has studied",
       "options": [
         "studies",
@@ -332,10 +332,10 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! The phrase \"for three years\" shows an action that started in the past and continues now. We must use the Present Perfect ('has studied'). In French, you might use the pr\u00e9sent simple with \"depuis\", but English uses the Present Perfect with \"for\" or \"since\".",
+      "feedback": "Excellent! The phrase \"for three years\" shows an action that started in the past and continues now. We must use the Present Perfect ('has studied'). In French, you might use the présent simple with \"depuis\", but English uses the Present Perfect with \"for\" or \"since\".",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"M. Foncha est professeur depuis 1995.\"\n(French uses the *Pr\u00e9sent Simple* (\"est\") + \"depuis\" to describe an action that started in the past and continues to the present.)",
+        "frenchStructure": "\"M. Foncha est professeur depuis 1995.\"\n(French uses the *Présent Simple* (\"est\") + \"depuis\" to describe an action that started in the past and continues to the present.)",
         "englishStructure": "\"Mr. Foncha has been a teacher since 1995.\"\n(English *must* use the *Present Perfect* (\"has been\") + \"since\" for this situation.)",
         "whyDifficult": "This is one of the most common and direct structural interferences. Translating \"est... depuis\" directly results in the error \"He is... since\". English *requires* the Present Perfect (have/has + participle) to connect the past to the present in this way.",
         "visualHighlighting": {
@@ -414,7 +414,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Good! When we use \"since\" with a starting point in the past, we must use the Present Perfect. The correct sentence is \"My grandparents have been married since 1985.\" French uses \"depuis\" with the pr\u00e9sent, but English uses the Present Perfect.",
+      "feedback": "Good! When we use \"since\" with a starting point in the past, we must use the Present Perfect. The correct sentence is \"My grandparents have been married since 1985.\" French uses \"depuis\" with the présent, but English uses the Present Perfect.",
       "correction": "have been married"
     },
     {
@@ -441,7 +441,7 @@
       "feedback": "Perfect! This is a plan that was decided before now (we already have tickets). We use 'be going to' for plans. 'Will' is for instant decisions made at the moment of speaking.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Nous allons visiter notre grand-m\u00e8re... (Futur Proche)\n\"Nous visiterons notre grand-m\u00e8re... (Futur Simple)",
+        "frenchStructure": "\"Nous allons visiter notre grand-mère... (Futur Proche)\n\"Nous visiterons notre grand-mère... (Futur Simple)",
         "englishStructure": "\"We are going to visit our grandmother...\"\n(English uses \"be going to\" for a *plan* that was made *before* the moment of speaking. \"We bought the tickets\" proves it's a plan.)",
         "whyDifficult": "French \"futur simple\" (\"visiterons\") is often taught as the translation for \"will visit\". Students use \"will\" for all future actions. However, English distinguishes between a plan ('be going to') and an instant decision/promise ('will').",
         "visualHighlighting": {
@@ -474,7 +474,7 @@
       "feedback": "That's right! This is an instant decision (you decide to make food right now because someone is hungry). We use 'will' for decisions made at the moment of speaking.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Il fait tr\u00e8s chaud...\" \"Tu as raison. Je vais ouvrir la fen\u00eatre.\"\n(French often uses the *Futur Proche* (\"je vais ouvrir\") for an instant decision made at the moment of speaking.)",
+        "frenchStructure": "\"Il fait très chaud...\" \"Tu as raison. Je vais ouvrir la fenêtre.\"\n(French often uses the *Futur Proche* (\"je vais ouvrir\") for an instant decision made at the moment of speaking.)",
         "englishStructure": "\"I will open the window.\"\n(English *must* use \"will\" for an *instant decision* or offer made at the moment of speaking.)",
         "whyDifficult": "This is the reverse of the previous item. Students translate the *Futur Proche* (\"je vais\") directly to \"I am going to\", but English reserves \"will\" for this specific situation of a spontaneous decision.",
         "visualHighlighting": {
@@ -686,7 +686,7 @@
       "feedback": "Excellent! Modals never take an '-s' for the third person (he/she/it). We say \"She can speak\" (NOT \"She cans speak\"). All modals stay the same for all persons: I can, you can, he can, we can, they can.",
       "correction": "can speak",
       "frenchComparison": {
-        "frenchStructure": "\"Mon p\u00e8re peut conduire un grand camion.\"\n(French modal-like verbs are conjugated. The verb \"pouvoir\" changes from the infinitive to \"peut\" for the 3rd person \"il\".)",
+        "frenchStructure": "\"Mon père peut conduire un grand camion.\"\n(French modal-like verbs are conjugated. The verb \"pouvoir\" changes from the infinitive to \"peut\" for the 3rd person \"il\".)",
         "englishStructure": "\"My father can drive a large truck.\"\n(English modal verbs (can, must, should) *never* change. They do not take an \"-s\" for the third person.)",
         "whyDifficult": "French speakers learn to conjugate all verbs for the subject (je peux, tu peux, il peut). They apply this rule to English modals and add an \"-s\" for \"he/she/it\", resulting in \"cans\", \"musts\", or \"shoulds\".",
         "visualHighlighting": {
@@ -698,7 +698,7 @@
     {
       "id": "tense-form-1-B",
       "type": "multiple-choice",
-      "question": "My father ___ ndol\u00e9 every Sunday.",
+      "question": "My father ___ ndolé every Sunday.",
       "answer": "cooks",
       "options": [
         "is cooking",
@@ -1303,7 +1303,7 @@
     {
       "id": "subject-verb-agreement-1-A",
       "type": "multiple-choice",
-      "question": "My uncle ___ in Yaound\u00e9.",
+      "question": "My uncle ___ in Yaoundé.",
       "answer": "lives",
       "options": [
         "live",
@@ -1324,8 +1324,8 @@
       "feedback": "Correct! The subject is 'My uncle' (he). For He, She, or It in the present simple, we must add '-s' to the verb.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Mon oncle habite \u00e0 Yaound\u00e9.\"\n(The verb \"habiter\" is conjugated: \"j'habite\", \"tu habites\", \"il habite\". The sound of \"habite\" (il) is the same as \"habite\" (je).)",
-        "englishStructure": "\"My uncle lives in Yaound\u00e9.\"\n(English adds a very clear \"-s\" sound to the verb for the 3rd person singular: He, She, It. \"I live\" vs. \"He lives\".)",
+        "frenchStructure": "\"Mon oncle habite à Yaoundé.\"\n(The verb \"habiter\" is conjugated: \"j'habite\", \"tu habites\", \"il habite\". The sound of \"habite\" (il) is the same as \"habite\" (je).)",
+        "englishStructure": "\"My uncle lives in Yaoundé.\"\n(English adds a very clear \"-s\" sound to the verb for the 3rd person singular: He, She, It. \"I live\" vs. \"He lives\".)",
         "whyDifficult": "In spoken French, the 1st, 2nd, and 3rd person singular forms of many verbs sound identical (e.g., \"je parle\", \"tu parles\", \"il parle\" all sound like \"parl\"). French speakers are not used to listening for or pronouncing a final 's' to show the 3rd person, so they forget to add it.",
         "visualHighlighting": {
           "incorrect": "My uncle live...",
@@ -1438,7 +1438,7 @@
       "feedback": "Correct! The subject 'The students' is plural ('they'). We only add '-s' to the verb for singular subjects (he, she, it).",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Les \u00e9tudiants portent leur uniforme...\"\n(The 3rd person plural verb \"portent\" is used. It sounds different from the singular \"porte\".)",
+        "frenchStructure": "\"Les étudiants portent leur uniforme...\"\n(The 3rd person plural verb \"portent\" is used. It sounds different from the singular \"porte\".)",
         "englishStructure": "\"The students wear their uniforms...\"\n(The English plural subject \"students\" (they) uses the *base verb* \"wear\". There is *no* \"-s\".)",
         "whyDifficult": "This is the *reverse* of the first error. After learning the \"He/She + -s\" rule, students get confused and think a plural subject (students) should have a plural verb (with -s). This is the opposite of English logic. In English: Plural Noun (students) = Singular Verb (wear).",
         "visualHighlighting": {
@@ -1544,7 +1544,7 @@
       "feedback": "Correct! In French, you say \"Il y a\", but in English, we look at the noun. 'Bendskins' is plural, so we must use \"There are\".",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Il y a beaucoup de bendskins \u00e0 Douala.\"\n(French uses \"Il y a\" for *both* singular (\"Il y a un probl\u00e8me\") and plural (\"Il y a des probl\u00e8mes\"). The verb \"a\" never changes.)",
+        "frenchStructure": "\"Il y a beaucoup de bendskins à Douala.\"\n(French uses \"Il y a\" for *both* singular (\"Il y a un problème\") and plural (\"Il y a des problèmes\"). The verb \"a\" never changes.)",
         "englishStructure": "\"There are a lot of bendskins in Douala.\"\n(English *must* change the verb to match the noun that follows. \"There is\" for singular, \"There are\" for plural.)",
         "whyDifficult": "French speakers are used to the fixed phrase \"Il y a\" and translate it directly to \"There is\" in all situations. They forget to check if the noun (\"bendskins\") is plural and change the verb to \"are\".",
         "visualHighlighting": {
@@ -1682,9 +1682,9 @@
       "feedback": "Well done! 'Team' is a collective noun. When we talk about the team as one unit, we use a singular verb ('has').",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Notre \u00e9quipe de football joue un match...\"\n(French \"\u00e9quipe\" (team) is a singular noun and takes a singular verb, \"joue\".)",
+        "frenchStructure": "\"Notre équipe de football joue un match...\"\n(French \"équipe\" (team) is a singular noun and takes a singular verb, \"joue\".)",
         "englishStructure": "\"Our football team is playing a match...\"\n(In English, collective nouns (team, family, government, class) are *usually* treated as a single singular unit (\"it\"). Therefore, they take a singular verb \"is\".)",
-        "whyDifficult": "This is a point of confusion. While French also uses a singular verb here (\"l'\u00e9quipe est...\"), students often get confused by the *idea* of many players. They think \"team = many people\" and incorrectly choose the plural verb \"are\".",
+        "whyDifficult": "This is a point of confusion. While French also uses a singular verb here (\"l'équipe est...\"), students often get confused by the *idea* of many players. They think \"team = many people\" and incorrectly choose the plural verb \"are\".",
         "visualHighlighting": {
           "incorrect": "Our football team are playing...",
           "correct": "Our football team is playing..."
@@ -1789,7 +1789,7 @@
       "feedback": "Perfect! The subject is 'One' (singular), not 'the boys' (plural). The phrase 'of the boys in my class' is an interrupter. We must use the singular verb 'comes'.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Un des \u00e9tudiants a laiss\u00e9 son livre.\"\n(The subject is \"Un\" (One) and it takes the singular verb \"a\" (has). \"des \u00e9tudiants\" is a prepositional phrase.)",
+        "frenchStructure": "\"Un des étudiants a laissé son livre.\"\n(The subject is \"Un\" (One) and it takes the singular verb \"a\" (has). \"des étudiants\" is a prepositional phrase.)",
         "englishStructure": "\"One of the students has left his book.\"\n(The true subject is \"One\" (singular). The verb must agree with \"One\", not with the nearby plural noun \"students\". Therefore, we use \"has\".)",
         "whyDifficult": "The plural noun \"students\" is right next to the verb, which acts as a \"distractor\". Students see \"students\" and automatically choose the plural verb \"have\". This is a common error even though the French structure (\"Un... a\") is logically the same.",
         "visualHighlighting": {
@@ -1822,7 +1822,7 @@
       "feedback": "Excellent! The subject is 'The price' (singular), not 'mangoes' (plural). The phrase 'of mangoes' is an interrupter. The verb must agree with 'price', so we use 'is'.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Le prix de ces plantains est trop \u00e9lev\u00e9.\"\n(The subject is \"Le prix\" (The price), which is singular. The verb \"est\" (is) agrees with \"prix\", not with \"plantains\".)",
+        "frenchStructure": "\"Le prix de ces plantains est trop élevé.\"\n(The subject is \"Le prix\" (The price), which is singular. The verb \"est\" (is) agrees with \"prix\", not with \"plantains\".)",
         "englishStructure": "\"The price of these plantains is too high.\"\n(This is the same logic as the item above. The subject is \"price\" (singular). The phrase \"of these plantains\" is an interrupter. The verb \"is\" must agree with \"price\".)",
         "whyDifficult": "This is another \"distractor\" problem. The plural noun \"plantains\" is the closest word to the verb, so students make the verb agree with it (\"plantains are...\"). They must be trained to find the *true* subject (\"price\").",
         "visualHighlighting": {
@@ -2053,7 +2053,7 @@
     {
       "id": "subject-verb-agreement-9-B",
       "type": "multiple-choice",
-      "question": "___ many different quartiers in Yaound\u00e9.",
+      "question": "___ many different quartiers in Yaoundé.",
       "answer": "There are",
       "options": [
         "There is",
@@ -2345,11 +2345,11 @@
       "id": "articles-1-A",
       "type": "multiple-choice",
       "question": "In general, ___ plantains are expensive in the dry season.",
-      "answer": "\u00d8 (no article)",
+      "answer": "Ø (no article)",
       "options": [
         "the",
         "a",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Articles",
@@ -2362,10 +2362,10 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! We are talking about 'plantains' in general, not specific plantains. In French, you say \"Les bananes...\", but in English, we use the zero article (\u00d8) for general plural nouns.",
+      "feedback": "Correct! We are talking about 'plantains' in general, not specific plantains. In French, you say \"Les bananes...\", but in English, we use the zero article (Ø) for general plural nouns.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"En g\u00e9n\u00e9ral, les plantains co\u00fbtent cher...\"\n(French *must* use the definite article \"les\" (the) when making a general statement about a plural noun.)",
+        "frenchStructure": "\"En général, les plantains coûtent cher...\"\n(French *must* use the definite article \"les\" (the) when making a general statement about a plural noun.)",
         "englishStructure": "\"In general, plantains are expensive...\"\n(English *must* use the \"zero article\" (no article) when making a general statement about a plural noun.)",
         "whyDifficult": "This is a core, opposite rule. French speakers are trained to use \"les\" for general plurals (\"J'aime les chiens\"), so they translate this directly and say \"I like the dogs\" or \"The plantains are expensive\".",
         "visualHighlighting": {
@@ -2377,12 +2377,12 @@
     {
       "id": "articles-2-A",
       "type": "multiple-choice",
-      "question": "___ life in Yaound\u00e9 is very fast.",
-      "answer": "\u00d8 (no article)",
+      "question": "___ life in Yaoundé is very fast.",
+      "answer": "Ø (no article)",
       "options": [
         "The",
         "A",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Articles",
@@ -2395,15 +2395,15 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "That's right. We are talking about 'life' as a general, abstract concept. French says \"La vie...\", but English must use the zero article (\u00d8).",
+      "feedback": "That's right. We are talking about 'life' as a general, abstract concept. French says \"La vie...\", but English must use the zero article (Ø).",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"La vie \u00e0 Yaound\u00e9 est tr\u00e8s rapide.\"\n(French *must* use the definite article \"la\" (the) when making a general statement about an abstract noun like 'life'.)",
-        "englishStructure": "\"Life in Yaound\u00e9 is very fast.\"\n(English *must* use the \"zero article\" (no article) for abstract nouns used in a general sense.)",
-        "whyDifficult": "This is the same error as the one above, but for abstract nouns. French \"La vie est belle\" or \"L'\u00e9ducation est importante\" is translated directly to \"The life is beautiful\" or \"The education is important\", which is incorrect in English.",
+        "frenchStructure": "\"La vie à Yaoundé est très rapide.\"\n(French *must* use the definite article \"la\" (the) when making a general statement about an abstract noun like 'life'.)",
+        "englishStructure": "\"Life in Yaoundé is very fast.\"\n(English *must* use the \"zero article\" (no article) for abstract nouns used in a general sense.)",
+        "whyDifficult": "This is the same error as the one above, but for abstract nouns. French \"La vie est belle\" or \"L'éducation est importante\" is translated directly to \"The life is beautiful\" or \"The education is important\", which is incorrect in English.",
         "visualHighlighting": {
-          "incorrect": "*The life* in Yaound\u00e9...",
-          "correct": "*Life* in Yaound\u00e9..."
+          "incorrect": "*The life* in Yaoundé...",
+          "correct": "*Life* in Yaoundé..."
         }
       }
     },
@@ -2413,7 +2413,7 @@
       "question": "My aunt is ___ nurse.",
       "answer": "a",
       "options": [
-        "\u00d8 (no article)",
+        "Ø (no article)",
         "a",
         "an"
       ],
@@ -2428,12 +2428,12 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! In English, we must use 'a' or 'an' before a singular job or profession. In French, you say \"Elle est infirmi\u00e8re\" (no article), but this is a mistake in English.",
+      "feedback": "Excellent! In English, we must use 'a' or 'an' before a singular job or profession. In French, you say \"Elle est infirmière\" (no article), but this is a mistake in English.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Ma tante est infirmi\u00e8re.\"\n(French does *not* use an article (\"un\" or \"une\") after the verb \"\u00eatre\" (to be) when stating a profession.)",
+        "frenchStructure": "\"Ma tante est infirmière.\"\n(French does *not* use an article (\"un\" or \"une\") after the verb \"être\" (to be) when stating a profession.)",
         "englishStructure": "\"My aunt is a nurse.\"\n(English *requires* the article \"a\" or \"an\" before a singular, countable noun like a profession.)",
-        "whyDifficult": "This is another opposite rule. Students directly translate the French \"est infirmi\u00e8re\" (\"is nurse\") and omit the article \"a\".",
+        "whyDifficult": "This is another opposite rule. Students directly translate the French \"est infirmière\" (\"is nurse\") and omit the article \"a\".",
         "visualHighlighting": {
           "incorrect": "My aunt is *nurse*.",
           "correct": "My aunt is *a nurse*."
@@ -2448,7 +2448,7 @@
       "options": [
         "a",
         "an",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Articles",
@@ -2529,7 +2529,7 @@
       "options": [
         "An",
         "The",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Articles",
@@ -2574,9 +2574,9 @@
       "id": "articles-9-A",
       "type": "multiple-choice",
       "question": "Muna is sick. He is in ___ hospital.",
-      "answer": "\u00d8 (no article)",
+      "answer": "Ø (no article)",
       "options": [
-        "\u00d8 (no article)",
+        "Ø (no article)",
         "the",
         "a"
       ],
@@ -2591,12 +2591,12 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! When we talk about going to an institution (like hospital, school, church, prison) for its main purpose (to be a patient, to learn, to worship), we use the zero article (\u00d8). (Note: In American English, people say \"in the hospital\", but in British/Cameroonian English, we use zero article.)",
+      "feedback": "Correct! When we talk about going to an institution (like hospital, school, church, prison) for its main purpose (to be a patient, to learn, to worship), we use the zero article (Ø). (Note: In American English, people say \"in the hospital\", but in British/Cameroonian English, we use zero article.)",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Muna est malade. Il est \u00e0 l'h\u00f4pital.\" (\u00e0 + le)\n(French uses the definite article \"l'h\u00f4pital\" (the hospital) when talking about being at this institution.)",
+        "frenchStructure": "\"Muna est malade. Il est à l'hôpital.\" (à + le)\n(French uses the definite article \"l'hôpital\" (the hospital) when talking about being at this institution.)",
         "englishStructure": "\"Muna is sick. He is in hospital.\"\n(English uses the \"zero article\" (no article) for institutions like 'hospital', 'school', 'church', and 'prison' when referring to their *purpose* (being a patient, student, etc.) rather than the specific building.)",
-        "whyDifficult": "Students translate the French \"\u00e0 l'h\u00f4pital\" (\"at the hospital\") or \"\u00e0 l'\u00e9cole\" (\"at the school\") directly and include \"the\". (Saying \"He is in *the* hospital\" is not wrong, but it means he is *physically inside the building*, perhaps just visiting. \"In hospital\" means he is a patient.)",
+        "whyDifficult": "Students translate the French \"à l'hôpital\" (\"at the hospital\") or \"à l'école\" (\"at the school\") directly and include \"the\". (Saying \"He is in *the* hospital\" is not wrong, but it means he is *physically inside the building*, perhaps just visiting. \"In hospital\" means he is a patient.)",
         "visualHighlighting": {
           "incorrect": "He is in *the hospital*.",
           "correct": "He is *in hospital*."
@@ -2609,7 +2609,7 @@
       "question": "___ President of Cameroon is visiting Garoua.",
       "answer": "The",
       "options": [
-        "\u00d8 (no article)",
+        "Ø (no article)",
         "A",
         "The"
       ],
@@ -2631,11 +2631,11 @@
       "id": "articles-1-B",
       "type": "multiple-choice",
       "question": "In my family, we think ___ children should obey their parents.",
-      "answer": "\u00d8 (no article)",
+      "answer": "Ø (no article)",
       "options": [
         "the",
         "a",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Articles",
@@ -2648,18 +2648,18 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! We are talking about 'children' in general (as a category), not specific children. In French, you say \"Les enfants...\", but in English, we use the zero article (\u00d8) for general plural nouns.",
+      "feedback": "Correct! We are talking about 'children' in general (as a category), not specific children. In French, you say \"Les enfants...\", but in English, we use the zero article (Ø) for general plural nouns.",
       "correction": null
     },
     {
       "id": "articles-2-B",
       "type": "multiple-choice",
       "question": "___ honesty is a very important quality.",
-      "answer": "\u00d8 (no article)",
+      "answer": "Ø (no article)",
       "options": [
         "The",
         "An",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Articles",
@@ -2672,7 +2672,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "That's right. We are talking about 'honesty' as a general, abstract concept. French says \"L'honn\u00eatet\u00e9...\", but English must use the zero article (\u00d8).",
+      "feedback": "That's right. We are talking about 'honesty' as a general, abstract concept. French says \"L'honnêteté...\", but English must use the zero article (Ø).",
       "correction": null
     },
     {
@@ -2681,7 +2681,7 @@
       "question": "My cousin is ___ engineer.",
       "answer": "an",
       "options": [
-        "\u00d8 (no article)",
+        "Ø (no article)",
         "a",
         "an"
       ],
@@ -2707,7 +2707,7 @@
       "options": [
         "a",
         "an",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Articles",
@@ -2842,8 +2842,8 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Good catch! When we talk about going to an institution (university, school, church, hospital) for its main purpose (to study, to learn), we use the zero article (\u00d8). We say \"goes to university\" not \"goes to the university\".",
-      "correction": "to \u00d8 university"
+      "feedback": "Good catch! When we talk about going to an institution (university, school, church, hospital) for its main purpose (to study, to learn), we use the zero article (Ø). We say \"goes to university\" not \"goes to the university\".",
+      "correction": "to Ø university"
     },
     {
       "id": "articles-10-B",
@@ -2851,7 +2851,7 @@
       "question": "What is ___ capital of the North-West region?",
       "answer": "the",
       "options": [
-        "\u00d8 (no article)",
+        "Ø (no article)",
         "a",
         "the"
       ],
@@ -2917,7 +2917,7 @@
       "feedback": "Good job! Because the question asks \"How many,\" we need the plural form. We add '-s' ('brothers'). Forgetting this 's' is common because the French 's' is silent.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Combien de fr\u00e8res as-tu dans ta famille ?\"\n(The plural 's' on \"fr\u00e8res\" is silent. \"fr\u00e8re\" and \"fr\u00e8res\" are pronounced exactly the same.)",
+        "frenchStructure": "\"Combien de frères as-tu dans ta famille ?\"\n(The plural 's' on \"frères\" is silent. \"frère\" and \"frères\" are pronounced exactly the same.)",
         "englishStructure": "\"How many brothers do you have in your family?\"\n(The plural 's' on \"brothers\" is *required* and must be pronounced.)",
         "whyDifficult": "Because the plural 's' is silent in spoken French, students are not used to hearing or pronouncing it. They often forget to add the 's' in English (both in writing and speaking) when a noun is plural.",
         "visualHighlighting": {
@@ -3041,7 +3041,7 @@
       "feedback": "Perfect! This is a very common error. In English, 'information' is uncountable and never has an 's'. This is different from French \"des informations\". (Other common uncountable nouns: advice, furniture, luggage, equipment, news.)",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Le professeur nous a donn\u00e9 des informations sur le test.\"\n(French treats \"information\" as a countable noun. It can be plural: \"une information\" (one piece) or \"des informations\" (some information).)",
+        "frenchStructure": "\"Le professeur nous a donné des informations sur le test.\"\n(French treats \"information\" as a countable noun. It can be plural: \"une information\" (one piece) or \"des informations\" (some information).)",
         "englishStructure": "\"The teacher gave us some information about the test.\"\n(English \"information\" is *uncountable*. It *never* takes an '-s' and cannot be used with 'a/an'.)",
         "whyDifficult": "This is a major structural difference. Students directly translate the French plural \"des informations\" to the English error \"informations\". They must learn that \"information\" is *always* singular in English.",
         "visualHighlighting": {
@@ -3074,7 +3074,7 @@
       "feedback": "Correct! Like 'information', 'advice' is uncountable in English. We cannot say \"an advice\" or \"advices\". This is different from the French \"des conseils\".",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Tu devrais demander des conseils \u00e0 ton p\u00e8re.\"\n(French \"un conseil\" is countable. The plural is \"des conseils\" (some advice / pieces of advice).)",
+        "frenchStructure": "\"Tu devrais demander des conseils à ton père.\"\n(French \"un conseil\" is countable. The plural is \"des conseils\" (some advice / pieces of advice).)",
         "englishStructure": "\"...you should ask your father for advice.\"\n(Like 'information', English \"advice\" is *uncountable*. It *never* takes an '-s' and cannot be used with 'a/an'.)",
         "whyDifficult": "This is the same error as 'information'. The French plural \"des conseils\" is directly translated to \"advices\". Students must memorize that \"advice\" is always singular. To count it, they must say \"a *piece of* advice\".",
         "visualHighlighting": {
@@ -3505,7 +3505,7 @@
       "feedback": "Correct! Adverbs of frequency (like 'always', 'often') go before the main verb ('goes'). In French, you say \"va toujours\", but in English, it's \"always goes\".",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Ma m\u00e8re va toujours au march\u00e9 le samedi.\"\n(In French, adverbs of frequency like \"toujours\" (always) or \"souvent\" (often) typically come *after* the verb they modify: \"va toujours\".)",
+        "frenchStructure": "\"Ma mère va toujours au marché le samedi.\"\n(In French, adverbs of frequency like \"toujours\" (always) or \"souvent\" (often) typically come *after* the verb they modify: \"va toujours\".)",
         "englishStructure": "\"My mother always goes to the market on Saturdays.\"\n(In English, these adverbs *almost always* come *before* the main verb: \"always goes\".)",
         "whyDifficult": "This is another direct translation of sentence structure. The French \"verb + adverb\" order is applied to English, creating the \"goes always\" error.",
         "visualHighlighting": {
@@ -3538,7 +3538,7 @@
       "feedback": "Excellent! This is the exception: adverbs of frequency come after the verb 'to be' (am, is, are).",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Les \u00e9tudiants ne sont jamais en retard...\"\n(In French, \"ne...jamais\" (never) is placed *around* the verb \"sont\" (are).)",
+        "frenchStructure": "\"Les étudiants ne sont jamais en retard...\"\n(In French, \"ne...jamais\" (never) is placed *around* the verb \"sont\" (are).)",
         "englishStructure": "\"The students are never late for class.\"\n(This is the main exception to the previous rule: adverbs of frequency come *after* the verb \"to be\" (am, is, are, was, were).)",
         "whyDifficult": "The English rules for adverbs are confusing. Students learn \"adverb *before* the verb\" (from Q4) and apply it here, saying \"never are\". The \"ne...jamais\" structure in French doesn't help, as it's completely different.",
         "visualHighlighting": {
@@ -3629,9 +3629,9 @@
       "feedback": "That's it! For a question in the Present Simple about 'Ngono' (she), we must use the auxiliary verb 'Does'.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"O\u00f9 est-ce que Ngono habite ?\" or \"O\u00f9 Ngono habite-t-elle ?\"\n(French either uses \"Est-ce que\" (which requires no inversion) or inverts the main verb and subject: \"habite-t-elle\".)",
+        "frenchStructure": "\"Où est-ce que Ngono habite ?\" or \"Où Ngono habite-t-elle ?\"\n(French either uses \"Est-ce que\" (which requires no inversion) or inverts the main verb and subject: \"habite-t-elle\".)",
         "englishStructure": "\"Where does Ngono live?\"\n(English *must* use the auxiliary \"do/does\" for a simple present question. The structure is: **Wh-Word + Auxiliary (Does) + Subject (Ngono) + Verb (live)**.)",
-        "whyDifficult": "French *never* uses \"do/does\". Students forget this auxiliary completely and try to invert the main verb (\"Where lives Ngono?\"), which is archaic, or they don't invert at all (\"Where Ngono lives?\"), which is a direct translation of the \"O\u00f9 est-ce que...\" structure.",
+        "whyDifficult": "French *never* uses \"do/does\". Students forget this auxiliary completely and try to invert the main verb (\"Where lives Ngono?\"), which is archaic, or they don't invert at all (\"Where Ngono lives?\"), which is a direct translation of the \"Où est-ce que...\" structure.",
         "visualHighlighting": {
           "incorrect": "Where Ngono lives?",
           "correct": "Where does Ngono live?"
@@ -3916,7 +3916,7 @@
     {
       "id": "word-order-5-B",
       "type": "multiple-choice",
-      "question": "The bus from Yaound\u00e9 ___ on time.",
+      "question": "The bus from Yaoundé ___ on time.",
       "answer": "is rarely",
       "options": [
         "rarely is",
@@ -4205,8 +4205,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4238,8 +4238,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4271,8 +4271,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4304,8 +4304,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4337,8 +4337,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4370,8 +4370,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4403,8 +4403,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4436,8 +4436,8 @@
       "correction": null,
       "scenario": {
         "name": "At Mokolo Market",
-        "icon": "\ud83c\udfea",
-        "context": "You are at the busy Mokolo Market in Yaound\u00e9. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
+        "icon": "🏪",
+        "context": "You are at the busy Mokolo Market in Yaoundé. You need to buy ingredients (tomatoes, onions, and rice) for the evening meal. You find a seller, Mama Ngono, who is arranging her vegetables.",
         "characters": [
           "You (the customer)",
           "Mama Ngono (vegetable seller, friendly)"
@@ -4469,8 +4469,8 @@
       "correction": null,
       "scenario": {
         "name": "Taking a Moto-Taxi",
-        "icon": "\ud83c\udfcd\ufe0f",
-        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaound\u00e9. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
+        "icon": "🏍️",
+        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaoundé. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
         "characters": [
           "You (passenger)",
           "Jean-Pierre (moto driver)"
@@ -4502,8 +4502,8 @@
       "correction": null,
       "scenario": {
         "name": "Taking a Moto-Taxi",
-        "icon": "\ud83c\udfcd\ufe0f",
-        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaound\u00e9. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
+        "icon": "🏍️",
+        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaoundé. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
         "characters": [
           "You (passenger)",
           "Jean-Pierre (moto driver)"
@@ -4535,8 +4535,8 @@
       "correction": null,
       "scenario": {
         "name": "Taking a Moto-Taxi",
-        "icon": "\ud83c\udfcd\ufe0f",
-        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaound\u00e9. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
+        "icon": "🏍️",
+        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaoundé. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
         "characters": [
           "You (passenger)",
           "Jean-Pierre (moto driver)"
@@ -4568,8 +4568,8 @@
       "correction": null,
       "scenario": {
         "name": "Taking a Moto-Taxi",
-        "icon": "\ud83c\udfcd\ufe0f",
-        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaound\u00e9. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
+        "icon": "🏍️",
+        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaoundé. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
         "characters": [
           "You (passenger)",
           "Jean-Pierre (moto driver)"
@@ -4601,8 +4601,8 @@
       "correction": null,
       "scenario": {
         "name": "Taking a Moto-Taxi",
-        "icon": "\ud83c\udfcd\ufe0f",
-        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaound\u00e9. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
+        "icon": "🏍️",
+        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaoundé. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
         "characters": [
           "You (passenger)",
           "Jean-Pierre (moto driver)"
@@ -4634,8 +4634,8 @@
       "correction": null,
       "scenario": {
         "name": "Taking a Moto-Taxi",
-        "icon": "\ud83c\udfcd\ufe0f",
-        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaound\u00e9. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
+        "icon": "🏍️",
+        "context": "You need to get from Carrefour Nlongkak to the Ministry of Education (MINEDUB) building in Yaoundé. It's 4 PM, and traffic is heavy. You see a moto-taxi driver (whom we'll call Jean-Pierre) waiting at the roadside.",
         "characters": [
           "You (passenger)",
           "Jean-Pierre (moto driver)"
@@ -4667,8 +4667,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4700,8 +4700,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4733,8 +4733,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4766,8 +4766,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4799,8 +4799,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4832,8 +4832,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4865,8 +4865,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4898,8 +4898,8 @@
       "correction": null,
       "scenario": {
         "name": "Health Clinic Visit",
-        "icon": "\ud83c\udfe5",
-        "context": "You are not feeling well and have gone to a local health clinic (Centre de Sant\u00e9). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
+        "icon": "🏥",
+        "context": "You are not feeling well and have gone to a local health clinic (Centre de Santé). You are now speaking to the doctor, Dr. Bertrand, to describe your symptoms.",
         "characters": [
           "You (the patient)",
           "Dr. Bertrand (the doctor)"
@@ -4931,7 +4931,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -4964,7 +4964,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -4980,7 +4980,7 @@
       "options": [
         "a",
         "an",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Real-World Cameroonian Scenarios",
@@ -4997,7 +4997,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -5030,7 +5030,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -5063,7 +5063,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -5096,7 +5096,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -5129,7 +5129,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -5162,7 +5162,7 @@
       "correction": null,
       "scenario": {
         "name": "School Enrollment",
-        "icon": "\ud83c\udfeb",
+        "icon": "🏫",
         "context": "Ngono has come to a local government secondary school in Bamenda to register her son, Muna, for Form 1. She is speaking with the Headmaster, Mr. Foncha, in his office.",
         "characters": [
           "Ngono (Parent)",
@@ -5195,7 +5195,7 @@
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5206,7 +5206,7 @@
     {
       "id": "scenario-5-q2-A",
       "type": "multiple-choice",
-      "question": "Mrs. Ekane: \"And where ___ you currently live?\"\nTchamba: \"I live in the Bonab\u00e9ri quartier.\"",
+      "question": "Mrs. Ekane: \"And where ___ you currently live?\"\nTchamba: \"I live in the Bonabéri quartier.\"",
       "answer": "do",
       "options": [
         "are",
@@ -5228,7 +5228,7 @@
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5261,7 +5261,7 @@
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5294,7 +5294,7 @@
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5327,7 +5327,7 @@
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5360,7 +5360,7 @@
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5393,7 +5393,7 @@
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5422,11 +5422,11 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! 'Health insurance' (like 'information' or 'advice') is an uncountable noun. We cannot use 'a' or 'an' with it. We must use the zero article (\u00d8) or 'some'.",
+      "feedback": "Correct! 'Health insurance' (like 'information' or 'advice') is an uncountable noun. We cannot use 'a' or 'an' with it. We must use the zero article (Ø) or 'some'.",
       "correction": null,
       "scenario": {
         "name": "Job Interview",
-        "icon": "\ud83d\udc54",
+        "icon": "👔",
         "context": "Tchamba has been invited for a job interview for an administrative assistant position at a small business in Douala. He is now speaking with the manager, Mrs. Ekane.",
         "characters": [
           "Mrs. Ekane (The Manager)",
@@ -5459,7 +5459,7 @@
       "correction": null,
       "scenario": {
         "name": "Mobile Money Transaction",
-        "icon": "\ud83d\udcb0",
+        "icon": "💰",
         "context": "You are at a small \"call box\" or \"momo\" kiosk in Douala to send 10,000 francs to your cousin in Bafoussam using MTN Mobile Money (MoMo).",
         "characters": [
           "You (Customer)",
@@ -5492,7 +5492,7 @@
       "correction": null,
       "scenario": {
         "name": "Mobile Money Transaction",
-        "icon": "\ud83d\udcb0",
+        "icon": "💰",
         "context": "You are at a small \"call box\" or \"momo\" kiosk in Douala to send 10,000 francs to your cousin in Bafoussam using MTN Mobile Money (MoMo).",
         "characters": [
           "You (Customer)",
@@ -5525,7 +5525,7 @@
       "correction": null,
       "scenario": {
         "name": "Mobile Money Transaction",
-        "icon": "\ud83d\udcb0",
+        "icon": "💰",
         "context": "You are at a small \"call box\" or \"momo\" kiosk in Douala to send 10,000 francs to your cousin in Bafoussam using MTN Mobile Money (MoMo).",
         "characters": [
           "You (Customer)",
@@ -5558,7 +5558,7 @@
       "correction": null,
       "scenario": {
         "name": "Mobile Money Transaction",
-        "icon": "\ud83d\udcb0",
+        "icon": "💰",
         "context": "You are at a small \"call box\" or \"momo\" kiosk in Douala to send 10,000 francs to your cousin in Bafoussam using MTN Mobile Money (MoMo).",
         "characters": [
           "You (Customer)",
@@ -5591,7 +5591,7 @@
       "correction": null,
       "scenario": {
         "name": "Mobile Money Transaction",
-        "icon": "\ud83d\udcb0",
+        "icon": "💰",
         "context": "You are at a small \"call box\" or \"momo\" kiosk in Douala to send 10,000 francs to your cousin in Bafoussam using MTN Mobile Money (MoMo).",
         "characters": [
           "You (Customer)",
@@ -5607,7 +5607,7 @@
       "options": [
         "an",
         "the",
-        "\u00d8 (no article)"
+        "Ø (no article)"
       ],
       "difficulty": 0.5,
       "category": "Real-World Cameroonian Scenarios",
@@ -5624,7 +5624,7 @@
       "correction": null,
       "scenario": {
         "name": "Mobile Money Transaction",
-        "icon": "\ud83d\udcb0",
+        "icon": "💰",
         "context": "You are at a small \"call box\" or \"momo\" kiosk in Douala to send 10,000 francs to your cousin in Bafoussam using MTN Mobile Money (MoMo).",
         "characters": [
           "You (Customer)",
@@ -5635,7 +5635,7 @@
     {
       "id": "scenario-7-q1-A",
       "type": "multiple-choice",
-      "question": "Waiter: \"Good afternoon. Are you ready to order?\"\nMuna: \"Yes, I ___ to have the ndol\u00e9 with plantains, please.\"",
+      "question": "Waiter: \"Good afternoon. Are you ready to order?\"\nMuna: \"Yes, I ___ to have the ndolé with plantains, please.\"",
       "answer": "would like",
       "options": [
         "want",
@@ -5657,7 +5657,7 @@
       "correction": null,
       "scenario": {
         "name": "Restaurant/Chop Bar",
-        "icon": "\ud83c\udf72",
+        "icon": "🍲",
         "context": "You are at a small, popular restaurant (a \"chop bar\") in Limbe for lunch. You are looking at the menu, and the waiter comes to take your order.",
         "characters": [
           "Muna (You, the customer)",
@@ -5686,11 +5686,11 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "That's right! When talking about uncountable food items like 'rice', 'fufu', or 'water' in general, we use the zero article (\u00d8) (no article). We only say 'the rice' if we mean specific rice (e.g., 'the rice on my plate').",
+      "feedback": "That's right! When talking about uncountable food items like 'rice', 'fufu', or 'water' in general, we use the zero article (Ø) (no article). We only say 'the rice' if we mean specific rice (e.g., 'the rice on my plate').",
       "correction": null,
       "scenario": {
         "name": "Restaurant/Chop Bar",
-        "icon": "\ud83c\udf72",
+        "icon": "🍲",
         "context": "You are at a small, popular restaurant (a \"chop bar\") in Limbe for lunch. You are looking at the menu, and the waiter comes to take your order.",
         "characters": [
           "Muna (You, the customer)",
@@ -5701,7 +5701,7 @@
     {
       "id": "scenario-7-q3-A",
       "type": "multiple-choice",
-      "question": "Waiter: \"No, it does not come with rice. It's only with plantains.\"\nMuna: \"I see. And how much ___ the poisson brais\u00e9 (grilled fish)?\"",
+      "question": "Waiter: \"No, it does not come with rice. It's only with plantains.\"\nMuna: \"I see. And how much ___ the poisson braisé (grilled fish)?\"",
       "answer": "is",
       "options": [
         "is",
@@ -5719,11 +5719,11 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! We use 'is' because the subject, 'the poisson brais\u00e9', is a single dish (it). We ask 'How much is...?' for singular items.",
+      "feedback": "Correct! We use 'is' because the subject, 'the poisson braisé', is a single dish (it). We ask 'How much is...?' for singular items.",
       "correction": null,
       "scenario": {
         "name": "Restaurant/Chop Bar",
-        "icon": "\ud83c\udf72",
+        "icon": "🍲",
         "context": "You are at a small, popular restaurant (a \"chop bar\") in Limbe for lunch. You are looking at the menu, and the waiter comes to take your order.",
         "characters": [
           "Muna (You, the customer)",
@@ -5734,7 +5734,7 @@
     {
       "id": "scenario-7-q4-A",
       "type": "multiple-choice",
-      "question": "Waiter: \"The fish is 3,500 francs.\"\nMuna: \"Okay, I will just take the ndol\u00e9. But it ___ come with meat?\"",
+      "question": "Waiter: \"The fish is 3,500 francs.\"\nMuna: \"Okay, I will just take the ndolé. But it ___ come with meat?\"",
       "answer": "doesn't",
       "options": [
         "don't",
@@ -5752,11 +5752,11 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! The subject is 'the ndol\u00e9' (it). To make a question or negative sentence with 'it', we must use the auxiliary verb 'does' or 'doesn't'.",
+      "feedback": "Perfect! The subject is 'the ndolé' (it). To make a question or negative sentence with 'it', we must use the auxiliary verb 'does' or 'doesn't'.",
       "correction": null,
       "scenario": {
         "name": "Restaurant/Chop Bar",
-        "icon": "\ud83c\udf72",
+        "icon": "🍲",
         "context": "You are at a small, popular restaurant (a \"chop bar\") in Limbe for lunch. You are looking at the menu, and the waiter comes to take your order.",
         "characters": [
           "Muna (You, the customer)",
@@ -5789,7 +5789,7 @@
       "correction": null,
       "scenario": {
         "name": "Restaurant/Chop Bar",
-        "icon": "\ud83c\udf72",
+        "icon": "🍲",
         "context": "You are at a small, popular restaurant (a \"chop bar\") in Limbe for lunch. You are looking at the menu, and the waiter comes to take your order.",
         "characters": [
           "Muna (You, the customer)",
@@ -5800,7 +5800,7 @@
     {
       "id": "scenario-7-q6-A",
       "type": "multiple-choice",
-      "question": "Waiter: \"One ndol\u00e9 and one cold drink. I will be back with your food ___ about 15 minutes.\"\nMuna: \"Thank you.\"",
+      "question": "Waiter: \"One ndolé and one cold drink. I will be back with your food ___ about 15 minutes.\"\nMuna: \"Thank you.\"",
       "answer": "in",
       "options": [
         "in",
@@ -5822,7 +5822,7 @@
       "correction": null,
       "scenario": {
         "name": "Restaurant/Chop Bar",
-        "icon": "\ud83c\udf72",
+        "icon": "🍲",
         "context": "You are at a small, popular restaurant (a \"chop bar\") in Limbe for lunch. You are looking at the menu, and the waiter comes to take your order.",
         "characters": [
           "Muna (You, the customer)",
@@ -5854,12 +5854,12 @@
       "feedback": "Correct! 'I would like' is a polite and professional way to make a request. 'I want' is also correct, but 'I would like' is better in a service situation.",
       "correction": null,
       "scenario": {
-        "name": "Internet Caf\u00e9",
-        "icon": "\ud83d\udda8\ufe0f",
-        "context": "You are at an internet caf\u00e9 (or \"cybercaf\u00e9\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
+        "name": "Internet Café",
+        "icon": "🖨️",
+        "context": "You are at an internet café (or \"cybercafé\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
         "characters": [
           "You (Customer)",
-          "Attendant (The person working at the caf\u00e9)"
+          "Attendant (The person working at the café)"
         ]
       }
     },
@@ -5887,12 +5887,12 @@
       "feedback": "That's right! Because 'how many' asks about a number greater than one, we must use the plural form 'copies'. 'Copys' is never the correct spelling.",
       "correction": null,
       "scenario": {
-        "name": "Internet Caf\u00e9",
-        "icon": "\ud83d\udda8\ufe0f",
-        "context": "You are at an internet caf\u00e9 (or \"cybercaf\u00e9\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
+        "name": "Internet Café",
+        "icon": "🖨️",
+        "context": "You are at an internet café (or \"cybercafé\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
         "characters": [
           "You (Customer)",
-          "Attendant (The person working at the caf\u00e9)"
+          "Attendant (The person working at the café)"
         ]
       }
     },
@@ -5920,12 +5920,12 @@
       "feedback": "Correct! The subject 'the document' is singular (it), so we must use the singular verb 'is' to ask about its state ('is it color...?').",
       "correction": null,
       "scenario": {
-        "name": "Internet Caf\u00e9",
-        "icon": "\ud83d\udda8\ufe0f",
-        "context": "You are at an internet caf\u00e9 (or \"cybercaf\u00e9\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
+        "name": "Internet Café",
+        "icon": "🖨️",
+        "context": "You are at an internet café (or \"cybercafé\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
         "characters": [
           "You (Customer)",
-          "Attendant (The person working at the caf\u00e9)"
+          "Attendant (The person working at the café)"
         ]
       }
     },
@@ -5953,12 +5953,12 @@
       "feedback": "Excellent! The subject 'the printing' is a singular activity (it). In the present tense, 'he', 'she', or 'it' must take an '-s' on the verb. So, 'it costs'.",
       "correction": null,
       "scenario": {
-        "name": "Internet Caf\u00e9",
-        "icon": "\ud83d\udda8\ufe0f",
-        "context": "You are at an internet caf\u00e9 (or \"cybercaf\u00e9\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
+        "name": "Internet Café",
+        "icon": "🖨️",
+        "context": "You are at an internet café (or \"cybercafé\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
         "characters": [
           "You (Customer)",
-          "Attendant (The person working at the caf\u00e9)"
+          "Attendant (The person working at the café)"
         ]
       }
     },
@@ -5986,12 +5986,12 @@
       "feedback": "Good! We use 'Can' to ask for permission ('Can I pay...?') or to ask about ability. This is the most common way to ask about payment methods.",
       "correction": null,
       "scenario": {
-        "name": "Internet Caf\u00e9",
-        "icon": "\ud83d\udda8\ufe0f",
-        "context": "You are at an internet caf\u00e9 (or \"cybercaf\u00e9\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
+        "name": "Internet Café",
+        "icon": "🖨️",
+        "context": "You are at an internet café (or \"cybercafé\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
         "characters": [
           "You (Customer)",
-          "Attendant (The person working at the caf\u00e9)"
+          "Attendant (The person working at the café)"
         ]
       }
     },
@@ -6019,12 +6019,12 @@
       "feedback": "That's right! To make a negative sentence in the present simple, we must use an auxiliary verb. The subject 'our machine' (it) needs 'doesn't' (does not). Saying 'it not work' is a common error from French ('il ne marche pas').",
       "correction": null,
       "scenario": {
-        "name": "Internet Caf\u00e9",
-        "icon": "\ud83d\udda8\ufe0f",
-        "context": "You are at an internet caf\u00e9 (or \"cybercaf\u00e9\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
+        "name": "Internet Café",
+        "icon": "🖨️",
+        "context": "You are at an internet café (or \"cybercafé\") in Bafoussam. You need to print a document from your USB key and make some photocopies of your ID card.",
         "characters": [
           "You (Customer)",
-          "Attendant (The person working at the caf\u00e9)"
+          "Attendant (The person working at the café)"
         ]
       }
     },
@@ -6053,7 +6053,7 @@
       "correction": null,
       "scenario": {
         "name": "Church/Community Meeting",
-        "icon": "\u26ea",
+        "icon": "⛪",
         "context": "You are attending the weekly Sunday service, which is followed by a short community meeting at the church hall to discuss an upcoming tontine (community savings meeting).",
         "characters": [
           "Pastor Tchinda (Leading the meeting)",
@@ -6087,7 +6087,7 @@
       "correction": null,
       "scenario": {
         "name": "Church/Community Meeting",
-        "icon": "\u26ea",
+        "icon": "⛪",
         "context": "You are attending the weekly Sunday service, which is followed by a short community meeting at the church hall to discuss an upcoming tontine (community savings meeting).",
         "characters": [
           "Pastor Tchinda (Leading the meeting)",
@@ -6121,7 +6121,7 @@
       "correction": null,
       "scenario": {
         "name": "Church/Community Meeting",
-        "icon": "\u26ea",
+        "icon": "⛪",
         "context": "You are attending the weekly Sunday service, which is followed by a short community meeting at the church hall to discuss an upcoming tontine (community savings meeting).",
         "characters": [
           "Pastor Tchinda (Leading the meeting)",
@@ -6151,11 +6151,11 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! 'Kindness' is an abstract noun, like 'love', 'life', or 'honesty'. When we talk about these concepts in general, we use the zero article (\u00d8) (no article). This is a common error from French, which would say 'la gentillesse' ('the kindness').",
+      "feedback": "Correct! 'Kindness' is an abstract noun, like 'love', 'life', or 'honesty'. When we talk about these concepts in general, we use the zero article (Ø) (no article). This is a common error from French, which would say 'la gentillesse' ('the kindness').",
       "correction": null,
       "scenario": {
         "name": "Church/Community Meeting",
-        "icon": "\u26ea",
+        "icon": "⛪",
         "context": "You are attending the weekly Sunday service, which is followed by a short community meeting at the church hall to discuss an upcoming tontine (community savings meeting).",
         "characters": [
           "Pastor Tchinda (Leading the meeting)",
@@ -6189,7 +6189,7 @@
       "correction": null,
       "scenario": {
         "name": "Church/Community Meeting",
-        "icon": "\u26ea",
+        "icon": "⛪",
         "context": "You are attending the weekly Sunday service, which is followed by a short community meeting at the church hall to discuss an upcoming tontine (community savings meeting).",
         "characters": [
           "Pastor Tchinda (Leading the meeting)",
@@ -6223,7 +6223,7 @@
       "correction": null,
       "scenario": {
         "name": "Church/Community Meeting",
-        "icon": "\u26ea",
+        "icon": "⛪",
         "context": "You are attending the weekly Sunday service, which is followed by a short community meeting at the church hall to discuss an upcoming tontine (community savings meeting).",
         "characters": [
           "Pastor Tchinda (Leading the meeting)",
@@ -6257,7 +6257,7 @@
       "correction": null,
       "scenario": {
         "name": "Church/Community Meeting",
-        "icon": "\u26ea",
+        "icon": "⛪",
         "context": "You are attending the weekly Sunday service, which is followed by a short community meeting at the church hall to discuss an upcoming tontine (community savings meeting).",
         "characters": [
           "Pastor Tchinda (Leading the meeting)",
@@ -6291,7 +6291,7 @@
       "correction": null,
       "scenario": {
         "name": "Visiting a Neighbor",
-        "icon": "\ud83c\udfe0",
+        "icon": "🏠",
         "context": "It's a Saturday afternoon in the quartier. You decide to visit your neighbor, Mama Atangana, to say hello and return a bowl she lent you. You knock on her door.",
         "characters": [
           "You (The visitor)",
@@ -6324,7 +6324,7 @@
       "correction": null,
       "scenario": {
         "name": "Visiting a Neighbor",
-        "icon": "\ud83c\udfe0",
+        "icon": "🏠",
         "context": "It's a Saturday afternoon in the quartier. You decide to visit your neighbor, Mama Atangana, to say hello and return a bowl she lent you. You knock on her door.",
         "characters": [
           "You (The visitor)",
@@ -6335,7 +6335,7 @@
     {
       "id": "scenario-10-q3-A",
       "type": "multiple-choice",
-      "question": "You: \"Thank you for letting me borrow this bowl. I ___ it last night for the ndol\u00e9.\"\nMama Atangana: \"It's no problem at all.\"",
+      "question": "You: \"Thank you for letting me borrow this bowl. I ___ it last night for the ndolé.\"\nMama Atangana: \"It's no problem at all.\"",
       "answer": "used",
       "options": [
         "used",
@@ -6357,7 +6357,7 @@
       "correction": null,
       "scenario": {
         "name": "Visiting a Neighbor",
-        "icon": "\ud83c\udfe0",
+        "icon": "🏠",
         "context": "It's a Saturday afternoon in the quartier. You decide to visit your neighbor, Mama Atangana, to say hello and return a bowl she lent you. You knock on her door.",
         "characters": [
           "You (The visitor)",
@@ -6390,7 +6390,7 @@
       "correction": null,
       "scenario": {
         "name": "Visiting a Neighbor",
-        "icon": "\ud83c\udfe0",
+        "icon": "🏠",
         "context": "It's a Saturday afternoon in the quartier. You decide to visit your neighbor, Mama Atangana, to say hello and return a bowl she lent you. You knock on her door.",
         "characters": [
           "You (The visitor)",
@@ -6423,7 +6423,7 @@
       "correction": null,
       "scenario": {
         "name": "Visiting a Neighbor",
-        "icon": "\ud83c\udfe0",
+        "icon": "🏠",
         "context": "It's a Saturday afternoon in the quartier. You decide to visit your neighbor, Mama Atangana, to say hello and return a bowl she lent you. You knock on her door.",
         "characters": [
           "You (The visitor)",
@@ -6456,7 +6456,7 @@
       "correction": null,
       "scenario": {
         "name": "Visiting a Neighbor",
-        "icon": "\ud83c\udfe0",
+        "icon": "🏠",
         "context": "It's a Saturday afternoon in the quartier. You decide to visit your neighbor, Mama Atangana, to say hello and return a bowl she lent you. You knock on her door.",
         "characters": [
           "You (The visitor)",
@@ -6488,9 +6488,9 @@
       "feedback": "Correct! We use IN for long periods of time, including months (in August), years (in 2025), and seasons (in the dry season).",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Mon anniversaire est en ao\u00fbt.\"\n(French uses \"en\" for months, which is a common equivalent for \"in\".)",
+        "frenchStructure": "\"Mon anniversaire est en août.\"\n(French uses \"en\" for months, which is a common equivalent for \"in\".)",
         "englishStructure": "\"My birthday is in August.\"\n(English uses \"in\" for long periods like months, seasons, and years.)",
-        "whyDifficult": "This is not the hardest error, as \"en\" often maps to \"in\". The confusion arises when students mix this up with \"on\" (for days) and \"at\" (for times). The French \"au mois d'ao\u00fbt\" (in the month of August) can also add confusion.",
+        "whyDifficult": "This is not the hardest error, as \"en\" often maps to \"in\". The confusion arises when students mix this up with \"on\" (for days) and \"at\" (for times). The French \"au mois d'août\" (in the month of August) can also add confusion.",
         "visualHighlighting": {
           "incorrect": "My birthday is *on* August",
           "correct": "My birthday is *in* August"
@@ -6521,7 +6521,7 @@
       "feedback": "Excellent! We use ON for specific days and dates. Because this is a full date (September 15th), we must use 'on'.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"L'\u00e9cole rouvre le 15 septembre.\"\n(French uses the definite article \"le\" (the) before a specific date.)",
+        "frenchStructure": "\"L'école rouvre le 15 septembre.\"\n(French uses the definite article \"le\" (the) before a specific date.)",
         "englishStructure": "\"The school re-opens on September 15th.\"\n(English *must* use the preposition \"on\" for all specific days and dates.)",
         "whyDifficult": "French does not use a preposition like \"on\" in this case (\"le 15\"). Students translating this logic either use \"the\" (a direct translation of \"le\") or no preposition at all. They must learn the English rule: **Day/Date = ON**.",
         "visualHighlighting": {
@@ -6615,7 +6615,7 @@
     {
       "id": "prepositions-6-A",
       "type": "multiple-choice",
-      "question": "I live ___ a small neighborhood ___ Yaound\u00e9.",
+      "question": "I live ___ a small neighborhood ___ Yaoundé.",
       "answer": "in / in",
       "options": [
         "at / in",
@@ -6633,15 +6633,15 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! We use IN for cities (in Yaound\u00e9) and also for enclosed areas like a neighborhood (in a neighborhood). French uses \"\u00e0 Yaound\u00e9\", which is why this is tricky.",
+      "feedback": "Perfect! We use IN for cities (in Yaoundé) and also for enclosed areas like a neighborhood (in a neighborhood). French uses \"à Yaoundé\", which is why this is tricky.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"J'habite dans un petit quartier \u00e0 Yaound\u00e9.\"\n(French uses \"dans\" (in) for an enclosed area, but \"\u00e0\" for a city.)",
-        "englishStructure": "\"I live in a small neighborhood in Yaound\u00e9.\"\n(English uses \"in\" for both the enclosed area (neighborhood) and the large area (city, country).)",
-        "whyDifficult": "This is a major, high-frequency error. French *always* uses \"\u00e0\" before a city name (\"\u00e0 Yaound\u00e9\", \"\u00e0 Douala\"). Students translate \"\u00e0\" directly to \"at\". They *must* learn the English rule: **Cities & Countries = IN**.",
+        "frenchStructure": "\"J'habite dans un petit quartier à Yaoundé.\"\n(French uses \"dans\" (in) for an enclosed area, but \"à\" for a city.)",
+        "englishStructure": "\"I live in a small neighborhood in Yaoundé.\"\n(English uses \"in\" for both the enclosed area (neighborhood) and the large area (city, country).)",
+        "whyDifficult": "This is a major, high-frequency error. French *always* uses \"à\" before a city name (\"à Yaoundé\", \"à Douala\"). Students translate \"à\" directly to \"at\". They *must* learn the English rule: **Cities & Countries = IN**.",
         "visualHighlighting": {
-          "incorrect": "I live *at* Yaound\u00e9.",
-          "correct": "I live *in* Yaound\u00e9."
+          "incorrect": "I live *at* Yaoundé.",
+          "correct": "I live *in* Yaoundé."
         }
       }
     },
@@ -6715,7 +6715,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Good catch! The correct expression is \"at the front of\" (meaning \"\u00e0 l'avant de\"). \"In the front of\" is not correct in this context.",
+      "feedback": "Good catch! The correct expression is \"at the front of\" (meaning \"à l'avant de\"). \"In the front of\" is not correct in this context.",
       "correction": "at the front of"
     },
     {
@@ -6739,12 +6739,12 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Yes! When we talk about movement towards a destination, we use TO. French \"aller \u00e0...\" often causes students to use 'at' by mistake.",
+      "feedback": "Yes! When we talk about movement towards a destination, we use TO. French \"aller à...\" often causes students to use 'at' by mistake.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Nous voyageons \u00e0 Bamenda demain.\"\n(French uses \"\u00e0\" to show direction/destination.)",
+        "frenchStructure": "\"Nous voyageons à Bamenda demain.\"\n(French uses \"à\" to show direction/destination.)",
         "englishStructure": "\"We are travelling to Bamenda tomorrow.\"\n(English *must* use \"to\" to show movement or direction towards a destination.)",
-        "whyDifficult": "This is the *other* \"\u00e0\" problem. Students confuse the French \"\u00e0\" (destination) with the English \"at\" (location). They mean \"to\" but say \"at\". (e.g., \"I go *at* school\" instead of \"I go *to* school\").",
+        "whyDifficult": "This is the *other* \"à\" problem. Students confuse the French \"à\" (destination) with the English \"at\" (location). They mean \"to\" but say \"at\". (e.g., \"I go *at* school\" instead of \"I go *to* school\").",
         "visualHighlighting": {
           "incorrect": "We are travelling *at* Bamenda.",
           "correct": "We are travelling *to* Bamenda."
@@ -6799,9 +6799,9 @@
       "feedback": "Excellent! This is tricky. We say \"go TO\" a place, but \"arrive AT\" a place. This is a fixed English pattern you must memorize.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Mon p\u00e8re est arriv\u00e9 au village (\u00e0 + le) tard hier soir.\"\n(French uses \"\u00e0\" (in its 'au' form) for \"arriver\".)",
+        "frenchStructure": "\"Mon père est arrivé au village (à + le) tard hier soir.\"\n(French uses \"à\" (in its 'au' form) for \"arriver\".)",
         "englishStructure": "\"My father arrived at the village...\"\n(English uses \"arrive at\" for a specific point/location and \"arrive in\" for a large area (city/country). We do *not* use \"arrive to\".)",
-        "whyDifficult": "Because \"go to\", \"travel to\", and \"come to\" are correct, students assume \"arrive to\" is also correct. This is reinforced by the French \"arriver \u00e0\". They must learn that \"arrive\" is a special verb that takes \"at\" or \"in\".",
+        "whyDifficult": "Because \"go to\", \"travel to\", and \"come to\" are correct, students assume \"arrive to\" is also correct. This is reinforced by the French \"arriver à\". They must learn that \"arrive\" is a special verb that takes \"at\" or \"in\".",
         "visualHighlighting": {
           "incorrect": "My father arrived *to* the village...",
           "correct": "My father arrived *at* the village..."
@@ -6829,12 +6829,12 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "That's right! The verb 'listen' must be followed by the preposition 'to'. We say \"listen to someone\". French says \"\u00e9couter quelqu'un\" (no preposition), which causes this error.",
+      "feedback": "That's right! The verb 'listen' must be followed by the preposition 'to'. We say \"listen to someone\". French says \"écouter quelqu'un\" (no preposition), which causes this error.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Tu dois \u00e9couter tes parents.\"\n(The French verb \"\u00e9couter\" (to listen to) is a transitive verb and does not require a preposition. It directly takes an object.)",
+        "frenchStructure": "\"Tu dois écouter tes parents.\"\n(The French verb \"écouter\" (to listen to) is a transitive verb and does not require a preposition. It directly takes an object.)",
         "englishStructure": "\"You must listen to your parents.\"\n(The English verb \"listen\" is intransitive in this context and *must* be followed by the preposition \"to\" before its object.)",
-        "whyDifficult": "This is a \"verb + preposition\" (phrasal verb) error. Students translate \"\u00e9couter\" directly to \"listen\" and omit the \"to\" because it's not needed in French.",
+        "whyDifficult": "This is a \"verb + preposition\" (phrasal verb) error. Students translate \"écouter\" directly to \"listen\" and omit the \"to\" because it's not needed in French.",
         "visualHighlighting": {
           "incorrect": "You must *listen your parents*.",
           "correct": "You must *listen to your parents*."
@@ -6862,10 +6862,10 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! This is a common error. French says \"mari\u00e9 avec\" (\"with\"), but the correct English phrase is \"married TO\".",
+      "feedback": "Correct! This is a common error. French says \"marié avec\" (\"with\"), but the correct English phrase is \"married TO\".",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Mon fr\u00e8re est mari\u00e9 avec une enseignante.\"\n(French uses the preposition \"avec\" (with) for this expression.)",
+        "frenchStructure": "\"Mon frère est marié avec une enseignante.\"\n(French uses the preposition \"avec\" (with) for this expression.)",
         "englishStructure": "\"My brother is married to a teacher.\"\n(English *must* use the fixed expression \"be married to\".)",
         "whyDifficult": "This is a direct translation error of a fixed expression. \"Avec\" = \"with\", so students say \"married with\". This is a very common and noticeable mistake.",
         "visualHighlighting": {
@@ -6896,10 +6896,10 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "You found it! French says \"d\u00e9pend de\" (\"of\"), but the correct English verb phrase is \"to depend ON\".",
+      "feedback": "You found it! French says \"dépend de\" (\"of\"), but the correct English verb phrase is \"to depend ON\".",
       "correction": "depends on",
       "frenchComparison": {
-        "frenchStructure": "\"Cette le\u00e7on d\u00e9pend du (de + le) professeur.\"\n(French uses the preposition \"de\" (of/from) in the expression \"d\u00e9pendre de\".)",
+        "frenchStructure": "\"Cette leçon dépend du (de + le) professeur.\"\n(French uses the preposition \"de\" (of/from) in the expression \"dépendre de\".)",
         "englishStructure": "\"This lesson depends on the teacher.\"\n(English *must* use the fixed expression \"to depend on\".)",
         "whyDifficult": "Another direct translation of a fixed \"verb + preposition\" phrase. \"De\" = \"of\", so students say \"depends of\".",
         "visualHighlighting": {
@@ -7122,7 +7122,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Good catch! The correct expression is \"at the back of\" (meaning \"\u00e0 l'arri\u00e8re de\"). \"In the back of\" is not correct in this context.",
+      "feedback": "Good catch! The correct expression is \"at the back of\" (meaning \"à l'arrière de\"). \"In the back of\" is not correct in this context.",
       "correction": "at the back of"
     },
     {
@@ -7146,7 +7146,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Yes! When we talk about movement towards a destination, we use TO. French \"aller \u00e0...\" often causes students to use 'at' by mistake.",
+      "feedback": "Yes! When we talk about movement towards a destination, we use TO. French \"aller à...\" often causes students to use 'at' by mistake.",
       "correction": null
     },
     {
@@ -7242,7 +7242,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! The correct English phrase is \"related TO\". French uses \"li\u00e9 \u00e0\" or \"apparent\u00e9 \u00e0\", so the preposition 'to' is similar.",
+      "feedback": "Correct! The correct English phrase is \"related TO\". French uses \"lié à\" or \"apparenté à\", so the preposition 'to' is similar.",
       "correction": null
     },
     {
@@ -7267,7 +7267,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "You found it! French says \"d\u00e9pend de\" (\"of\"), but the correct English verb phrase is \"to depend ON\".",
+      "feedback": "You found it! French says \"dépend de\" (\"of\"), but the correct English verb phrase is \"to depend ON\".",
       "correction": "depends on"
     },
     {
@@ -7323,7 +7323,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! To be present at a meeting or event, use 'attend' (assister \u00e0). 'Assist' means 'to help someone' (aider). Example: 'The nurse will assist the doctor' (help), but 'I will attend the meeting' (be present).",
+      "feedback": "Perfect! To be present at a meeting or event, use 'attend' (assister à). 'Assist' means 'to help someone' (aider). Example: 'The nurse will assist the doctor' (help), but 'I will attend the meeting' (be present).",
       "correction": null,
       "falseCognate": {
         "englishWord": "assist",
@@ -7331,7 +7331,7 @@
         "frenchMeaning": "to attend, be present at",
         "englishMeaning": "to help, give support to",
         "commonMistake": "Saying 'I will assist the meeting' when you mean 'attend'",
-        "memoryTrick": "Assist = Aider (to help) | Attend = Assister \u00e0 (to be present)"
+        "memoryTrick": "Assist = Aider (to help) | Attend = Assister à (to be present)"
       }
     },
     {
@@ -7355,7 +7355,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! The verb 'attendre' in French means 'to wait (for)' in English. 'Attend' means 'to be present at' (assister \u00e0). Example: 'I attend school' (I go to school), but 'I am waiting for my friend' (j'attends mon ami).",
+      "feedback": "Correct! The verb 'attendre' in French means 'to wait (for)' in English. 'Attend' means 'to be present at' (assister à). Example: 'I attend school' (I go to school), but 'I am waiting for my friend' (j'attends mon ami).",
       "correction": null,
       "falseCognate": {
         "englishWord": "attend",
@@ -7363,7 +7363,7 @@
         "frenchMeaning": "to wait, to wait for",
         "englishMeaning": "to be present at, to go to",
         "commonMistake": "Saying 'I am attending my friend' when you mean 'waiting for'",
-        "memoryTrick": "Attend = Assister \u00e0 (be present) | Wait for = Attendre"
+        "memoryTrick": "Attend = Assister à (be present) | Wait for = Attendre"
       }
     },
     {
@@ -7387,15 +7387,15 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! A 'librairie' in French is a 'bookstore' in English (where you BUY books). A 'library' is a 'biblioth\u00e8que' where you BORROW books for free. Memory trick: Library = Borrow, Bookstore = Buy.",
+      "feedback": "Excellent! A 'librairie' in French is a 'bookstore' in English (where you BUY books). A 'library' is a 'bibliothèque' where you BORROW books for free. Memory trick: Library = Borrow, Bookstore = Buy.",
       "correction": null,
       "falseCognate": {
         "englishWord": "library",
         "frenchWord": "librairie",
         "frenchMeaning": "bookstore (a shop where you buy books)",
-        "englishMeaning": "biblioth\u00e8que (a place to borrow books for free)",
+        "englishMeaning": "bibliothèque (a place to borrow books for free)",
         "commonMistake": "Saying 'I bought books at the library' when you mean 'bookstore'",
-        "memoryTrick": "Library = Biblioth\u00e8que (Borrow) | Bookstore = Librairie (Buy)"
+        "memoryTrick": "Library = Bibliothèque (Borrow) | Bookstore = Librairie (Buy)"
       }
     },
     {
@@ -7413,21 +7413,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Conference/Conf\u00e9rence",
+        "Conference/Conférence",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! A 'conference' in English is a large, multi-day event with many speakers (un congr\u00e8s or colloque). A single academic talk is a 'lecture' or 'presentation'. 'Conf\u00e9rence' in French often means a single lecture.",
+      "feedback": "Correct! A 'conference' in English is a large, multi-day event with many speakers (un congrès or colloque). A single academic talk is a 'lecture' or 'presentation'. 'Conférence' in French often means a single lecture.",
       "correction": null,
       "falseCognate": {
         "englishWord": "conference",
-        "frenchWord": "conf\u00e9rence",
+        "frenchWord": "conférence",
         "frenchMeaning": "a lecture, academic talk, or press conference",
         "englishMeaning": "a large, multi-day meeting with many speakers",
         "commonMistake": "Saying 'I am going to the conference hall' when you mean a single lecture",
-        "memoryTrick": "Conference = Big multi-day event (congr\u00e8s) | Lecture = Single talk (conf\u00e9rence)"
+        "memoryTrick": "Conference = Big multi-day event (congrès) | Lecture = Single talk (conférence)"
       }
     },
     {
@@ -7451,7 +7451,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! Use 'introduce' when presenting one person to another (pr\u00e9senter). 'Introduire' in French means 'to insert' or 'to put inside'. Example: 'He inserted the key' (Il a introduit la cl\u00e9), but 'Let me introduce you' (pr\u00e9senter).",
+      "feedback": "Perfect! Use 'introduce' when presenting one person to another (présenter). 'Introduire' in French means 'to insert' or 'to put inside'. Example: 'He inserted the key' (Il a introduit la clé), but 'Let me introduce you' (présenter).",
       "correction": null,
       "falseCognate": {
         "englishWord": "introduce",
@@ -7459,7 +7459,7 @@
         "frenchMeaning": "to insert, to put inside, to bring in",
         "englishMeaning": "to present one person to another",
         "commonMistake": "Saying 'He introduced the USB key' when you mean 'inserted'",
-        "memoryTrick": "Introduce = Pr\u00e9senter (people) | Insert = Introduire (objects)"
+        "memoryTrick": "Introduce = Présenter (people) | Insert = Introduire (objects)"
       }
     },
     {
@@ -7477,21 +7477,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Eventually/\u00c9ventuellement",
+        "Eventually/Éventuellement",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! '\u00c9ventuellement' means 'possibly' or 'perhaps'. 'Eventually' means 'finally' or 'in the end' after a long time. Example: 'If you study hard, you will eventually pass' (finalement).",
+      "feedback": "Correct! 'Éventuellement' means 'possibly' or 'perhaps'. 'Eventually' means 'finally' or 'in the end' after a long time. Example: 'If you study hard, you will eventually pass' (finalement).",
       "correction": null,
       "falseCognate": {
         "englishWord": "eventually",
-        "frenchWord": "\u00e9ventuellement",
+        "frenchWord": "éventuellement",
         "frenchMeaning": "possibly, perhaps",
         "englishMeaning": "in the end, finally (after a long time)",
         "commonMistake": "Saying 'I will eventually come' when you mean 'possibly'",
-        "memoryTrick": "Eventually = Finalement (Finally) | Possibly = \u00c9ventuellement"
+        "memoryTrick": "Eventually = Finalement (Finally) | Possibly = Éventuellement"
       }
     },
     {
@@ -7541,21 +7541,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Deceive/D\u00e9cevoir",
+        "Deceive/Décevoir",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "That's right! 'D\u00e9cevoir' means 'to disappoint'. 'Deceive' means 'to trick' or 'to lie to' (tromper). Example: 'The seller deceived me' (he tricked me), but 'I disappointed my teacher' (I let them down).",
+      "feedback": "That's right! 'Décevoir' means 'to disappoint'. 'Deceive' means 'to trick' or 'to lie to' (tromper). Example: 'The seller deceived me' (he tricked me), but 'I disappointed my teacher' (I let them down).",
       "correction": null,
       "falseCognate": {
         "englishWord": "deceive",
-        "frenchWord": "d\u00e9cevoir",
+        "frenchWord": "décevoir",
         "frenchMeaning": "to disappoint",
         "englishMeaning": "to trick, to lie to",
         "commonMistake": "Saying 'I deceived my teacher' when you mean 'disappointed'",
-        "memoryTrick": "Deceive = Tromper (to trick) | Disappoint = D\u00e9cevoir"
+        "memoryTrick": "Deceive = Tromper (to trick) | Disappoint = Décevoir"
       }
     },
     {
@@ -7593,7 +7593,7 @@
     {
       "id": "false-cog-11-A",
       "type": "multiple-choice",
-      "question": "\"The ___ from Yaound\u00e9 to Bamenda takes many hours by bus.\"",
+      "question": "\"The ___ from Yaoundé to Bamenda takes many hours by bus.\"",
       "answer": "journey",
       "options": [
         "journey",
@@ -7605,21 +7605,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Journey/Journ\u00e9e",
+        "Journey/Journée",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! A 'journey' is a trip (voyage). 'Journ\u00e9e' in French means 'day'. Example: 'Bonne journ\u00e9e!' = 'Have a good day!' (not 'good journey'). 'Journey' is for travel.",
+      "feedback": "Excellent! A 'journey' is a trip (voyage). 'Journée' in French means 'day'. Example: 'Bonne journée!' = 'Have a good day!' (not 'good journey'). 'Journey' is for travel.",
       "correction": null,
       "falseCognate": {
         "englishWord": "journey",
-        "frenchWord": "journ\u00e9e",
+        "frenchWord": "journée",
         "frenchMeaning": "day (the duration of the day)",
         "englishMeaning": "a trip (the act of traveling)",
         "commonMistake": "Saying 'I had a long journey' when you mean 'a long day'",
-        "memoryTrick": "Journey = Voyage (a trip) | Day = Journ\u00e9e (the time)"
+        "memoryTrick": "Journey = Voyage (a trip) | Day = Journée (the time)"
       }
     },
     {
@@ -7643,7 +7643,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! A 'lecture' is an academic talk by a professor (un cours magistral or conf\u00e9rence). 'Lecture' in French means 'reading' (the activity). Example: 'I like reading' = 'J'aime la lecture'.",
+      "feedback": "Correct! A 'lecture' is an academic talk by a professor (un cours magistral or conférence). 'Lecture' in French means 'reading' (the activity). Example: 'I like reading' = 'J'aime la lecture'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "lecture",
@@ -7707,7 +7707,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! 'Occasion' in English means 'a special event' (\u00e9v\u00e9nement). 'Occasion' in French often means 'second-hand' or 'a bargain'. Example: 'J'ai achet\u00e9 cette voiture d'occasion' = 'I bought this car second-hand'.",
+      "feedback": "Excellent! 'Occasion' in English means 'a special event' (événement). 'Occasion' in French often means 'second-hand' or 'a bargain'. Example: 'J'ai acheté cette voiture d'occasion' = 'I bought this car second-hand'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "occasion",
@@ -7715,7 +7715,7 @@
         "frenchMeaning": "second-hand, a bargain, a deal",
         "englishMeaning": "a special event or particular time",
         "commonMistake": "Saying 'I bought this for a good occasion' when you mean 'for a good price'",
-        "memoryTrick": "Occasion = \u00c9v\u00e9nement (an event) | Bargain/Second-hand = Occasion"
+        "memoryTrick": "Occasion = Événement (an event) | Bargain/Second-hand = Occasion"
       }
     },
     {
@@ -7733,21 +7733,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Resume/R\u00e9sumer",
+        "Resume/Résumer",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! 'Resume' (or r\u00e9sum\u00e9) in English means a CV for job applications. 'R\u00e9sumer' in French is a verb meaning 'to summarize', and 'un r\u00e9sum\u00e9' means 'a summary'. Use 'summary' for book summaries.",
+      "feedback": "Correct! 'Resume' (or résumé) in English means a CV for job applications. 'Résumer' in French is a verb meaning 'to summarize', and 'un résumé' means 'a summary'. Use 'summary' for book summaries.",
       "correction": null,
       "falseCognate": {
         "englishWord": "resume",
-        "frenchWord": "r\u00e9sumer",
-        "frenchMeaning": "to summarize (verb); un r\u00e9sum\u00e9 = a summary",
+        "frenchWord": "résumer",
+        "frenchMeaning": "to summarize (verb); un résumé = a summary",
         "englishMeaning": "a CV (for job applications)",
         "commonMistake": "Saying 'The teacher asked for a resume of the book' when you mean 'summary'",
-        "memoryTrick": "Resume (CV) = CV (for a job) | Summary = R\u00e9sum\u00e9 (short version)"
+        "memoryTrick": "Resume (CV) = CV (for a job) | Summary = Résumé (short version)"
       }
     },
     {
@@ -7797,21 +7797,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Succeed/Succ\u00e9der",
+        "Succeed/Succéder",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! 'Succeed' in English means 'to be successful' (r\u00e9ussir). 'Succ\u00e9der' in French means 'to follow' or 'to come after'. Example: 'The Prince will succeed the King' (follow in sequence), but 'I hope you succeed' (be successful).",
+      "feedback": "Excellent! 'Succeed' in English means 'to be successful' (réussir). 'Succéder' in French means 'to follow' or 'to come after'. Example: 'The Prince will succeed the King' (follow in sequence), but 'I hope you succeed' (be successful).",
       "correction": null,
       "falseCognate": {
         "englishWord": "succeed",
-        "frenchWord": "succ\u00e9der",
+        "frenchWord": "succéder",
         "frenchMeaning": "to follow, to come after (in a sequence)",
         "englishMeaning": "to be successful, to achieve a goal",
         "commonMistake": "Saying 'The sunshine succeeded the rain' when you mean 'followed'",
-        "memoryTrick": "Succeed = R\u00e9ussir (to be successful) | Follow = Succ\u00e9der"
+        "memoryTrick": "Succeed = Réussir (to be successful) | Follow = Succéder"
       }
     },
     {
@@ -7867,7 +7867,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! 'Sympathetic' in English means 'showing compassion or pity' (compatissant). 'Sympathique' in French means 'nice' or 'friendly'. Example: 'Your friend is very nice' = 'Ton ami est tr\u00e8s sympathique'.",
+      "feedback": "Perfect! 'Sympathetic' in English means 'showing compassion or pity' (compatissant). 'Sympathique' in French means 'nice' or 'friendly'. Example: 'Your friend is very nice' = 'Ton ami est très sympathique'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "sympathetic",
@@ -7963,7 +7963,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! 'Achieve' means 'to accomplish' or 'succeed in doing' something (r\u00e9ussir/accomplir). 'Achever' in French means 'to finish' or 'to complete'. Example: 'I finished my homework' not 'I achieved my homework'.",
+      "feedback": "Perfect! 'Achieve' means 'to accomplish' or 'succeed in doing' something (réussir/accomplir). 'Achever' in French means 'to finish' or 'to complete'. Example: 'I finished my homework' not 'I achieved my homework'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "achieve",
@@ -7971,7 +7971,7 @@
         "frenchMeaning": "to finish, to complete",
         "englishMeaning": "to accomplish, to succeed in doing something",
         "commonMistake": "Saying 'I achieved my homework' when you mean 'finished'",
-        "memoryTrick": "Achieve = R\u00e9ussir/Accomplir (to accomplish) | Finish = Achever"
+        "memoryTrick": "Achieve = Réussir/Accomplir (to accomplish) | Finish = Achever"
       }
     },
     {
@@ -7995,7 +7995,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! 'Actual' in English means 'real' or 'true' (r\u00e9el/vrai). 'Actuel' in French means 'current' or 'present-day'. Example: 'What is your current address?' not 'actual address' (unless emphasizing it's the real one).",
+      "feedback": "Excellent! 'Actual' in English means 'real' or 'true' (réel/vrai). 'Actuel' in French means 'current' or 'present-day'. Example: 'What is your current address?' not 'actual address' (unless emphasizing it's the real one).",
       "correction": null,
       "falseCognate": {
         "englishWord": "actual",
@@ -8003,7 +8003,7 @@
         "frenchMeaning": "current or present-day",
         "englishMeaning": "real or true (not imaginary)",
         "commonMistake": "Saying 'What is your actual address?' when you mean 'current'",
-        "memoryTrick": "Actual = R\u00e9el/Vrai (Real) | Current = Actuel (Present)"
+        "memoryTrick": "Actual = Réel/Vrai (Real) | Current = Actuel (Present)"
       }
     },
     {
@@ -8117,21 +8117,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Camera/Cam\u00e9ra",
+        "Camera/Caméra",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! 'Camera' in English is general, but most often means a photo camera (appareil photo). 'Cam\u00e9ra' in French specifically means a video camera (for moving pictures). Specify 'video camera' for filming.",
+      "feedback": "Perfect! 'Camera' in English is general, but most often means a photo camera (appareil photo). 'Caméra' in French specifically means a video camera (for moving pictures). Specify 'video camera' for filming.",
       "correction": null,
       "falseCognate": {
         "englishWord": "camera",
-        "frenchWord": "cam\u00e9ra",
+        "frenchWord": "caméra",
         "frenchMeaning": "video camera (for moving pictures)",
         "englishMeaning": "photo camera (for still pictures)",
         "commonMistake": "Confusing photo camera with video camera",
-        "memoryTrick": "Camera = Appareil photo (for photos) | Video camera = Cam\u00e9ra"
+        "memoryTrick": "Camera = Appareil photo (for photos) | Video camera = Caméra"
       }
     },
     {
@@ -8245,21 +8245,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "College/Coll\u00e8ge",
+        "College/Collège",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! 'College' in English (especially American English) means 'university' (higher education). 'Coll\u00e8ge' in French means 'middle school' (ages 11-15). Example: 'I finished middle school when I was 15'.",
+      "feedback": "Correct! 'College' in English (especially American English) means 'university' (higher education). 'Collège' in French means 'middle school' (ages 11-15). Example: 'I finished middle school when I was 15'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "college",
-        "frenchWord": "coll\u00e8ge",
+        "frenchWord": "collège",
         "frenchMeaning": "middle school or junior high (ages 11-15)",
         "englishMeaning": "university (higher education after secondary school)",
         "commonMistake": "Saying 'I finished college at 15' when you mean 'middle school'",
-        "memoryTrick": "College (English) = Universit\u00e9 | Coll\u00e8ge (French) = Middle School"
+        "memoryTrick": "College (English) = Université | Collège (French) = Middle School"
       }
     },
     {
@@ -8315,7 +8315,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! 'Complet' in French means 'full' (no more space). 'Complete' in English means 'finished' or 'having all parts' (fini/achev\u00e9). Example: 'My homework is complete' (finished), but 'The bus is full'.",
+      "feedback": "Excellent! 'Complet' in French means 'full' (no more space). 'Complete' in English means 'finished' or 'having all parts' (fini/achevé). Example: 'My homework is complete' (finished), but 'The bus is full'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "complete",
@@ -8323,7 +8323,7 @@
         "frenchMeaning": "full (no more space) or booked",
         "englishMeaning": "finished or having all parts",
         "commonMistake": "Saying 'The bus is complete' when you mean 'full'",
-        "memoryTrick": "Complete = Fini/Achev\u00e9 (finished) | Full = Complet/Plein"
+        "memoryTrick": "Complete = Fini/Achevé (finished) | Full = Complet/Plein"
       }
     },
     {
@@ -8347,7 +8347,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! 'Consistent' in English means 'regular' or 'steady' (r\u00e9gulier/constant). 'Consistant' in French means 'thick' or 'solid' for food (\u00e9pais). Example: 'This sauce is very thick' not 'consistent'.",
+      "feedback": "Correct! 'Consistent' in English means 'regular' or 'steady' (régulier/constant). 'Consistant' in French means 'thick' or 'solid' for food (épais). Example: 'This sauce is very thick' not 'consistent'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "consistent",
@@ -8355,7 +8355,7 @@
         "frenchMeaning": "thick, solid, or heavy (for food)",
         "englishMeaning": "regular, steady, or unchanging",
         "commonMistake": "Saying 'The fufu is very consistent' when you mean 'thick'",
-        "memoryTrick": "Consistent = R\u00e9gulier/Constant (steady) | Thick = Consistant/\u00c9pais"
+        "memoryTrick": "Consistent = Régulier/Constant (steady) | Thick = Consistant/Épais"
       }
     },
     {
@@ -8373,21 +8373,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Delay/D\u00e9lai",
+        "Delay/Délai",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! 'D\u00e9lai' in French means 'deadline' or 'time limit' (date limite). 'Delay' in English means 'postponement' or 'something being late' (retard). Example: 'I'm sorry for the delay' (being late).",
+      "feedback": "Perfect! 'Délai' in French means 'deadline' or 'time limit' (date limite). 'Delay' in English means 'postponement' or 'something being late' (retard). Example: 'I'm sorry for the delay' (being late).",
       "correction": null,
       "falseCognate": {
         "englishWord": "delay",
-        "frenchWord": "d\u00e9lai",
+        "frenchWord": "délai",
         "frenchMeaning": "deadline or time limit",
         "englishMeaning": "postponement or being late",
         "commonMistake": "Saying 'What is the delay for this project?' when you mean 'deadline'",
-        "memoryTrick": "Delay = Retard (late) | Deadline = D\u00e9lai/Date limite"
+        "memoryTrick": "Delay = Retard (late) | Deadline = Délai/Date limite"
       }
     },
     {
@@ -8405,21 +8405,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Deliver/D\u00e9livrer",
+        "Deliver/Délivrer",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! 'Deliver' means 'to bring or hand over' goods (livrer). 'D\u00e9livrer' in French means 'to set free', 'to liberate', or 'to issue' a document. Example: 'The government issued my ID card' not 'delivered'.",
+      "feedback": "Excellent! 'Deliver' means 'to bring or hand over' goods (livrer). 'Délivrer' in French means 'to set free', 'to liberate', or 'to issue' a document. Example: 'The government issued my ID card' not 'delivered'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "deliver",
-        "frenchWord": "d\u00e9livrer",
+        "frenchWord": "délivrer",
         "frenchMeaning": "to set free, to liberate, or to issue (document)",
         "englishMeaning": "to bring or hand over goods",
         "commonMistake": "Saying 'The government delivered my ID' when you mean 'issued'",
-        "memoryTrick": "Deliver = Livrer (bring goods) | Issue/Set free = D\u00e9livrer"
+        "memoryTrick": "Deliver = Livrer (bring goods) | Issue/Set free = Délivrer"
       }
     },
     {
@@ -8469,21 +8469,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Engaged/Engag\u00e9",
+        "Engaged/Engagé",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! Use 'busy' for 'occup\u00e9'. 'Engaged' in English most commonly means 'promised to be married' (fianc\u00e9). 'Engag\u00e9' in French means 'committed' to a cause or 'hired'. Avoid 'engaged' for 'busy' to prevent confusion!",
+      "feedback": "Perfect! Use 'busy' for 'occupé'. 'Engaged' in English most commonly means 'promised to be married' (fiancé). 'Engagé' in French means 'committed' to a cause or 'hired'. Avoid 'engaged' for 'busy' to prevent confusion!",
       "correction": null,
       "falseCognate": {
         "englishWord": "engaged",
-        "frenchWord": "engag\u00e9",
+        "frenchWord": "engagé",
         "frenchMeaning": "committed (to a cause), hired, or involved",
         "englishMeaning": "promised to be married, or busy/occupied",
         "commonMistake": "Saying 'I am engaged' when you mean 'busy' (sounds like marriage!)",
-        "memoryTrick": "Engaged = Fianc\u00e9 (to be married) | Busy = Occup\u00e9 | Committed = Engag\u00e9"
+        "memoryTrick": "Engaged = Fiancé (to be married) | Busy = Occupé | Committed = Engagé"
       }
     },
     {
@@ -8501,21 +8501,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Eventual/\u00c9ventuel",
+        "Eventual/Éventuel",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! '\u00c9ventuel' in French means 'possible' or 'potential'. 'Eventual' in English means 'final' or 'ultimate' (happening at the end). Example: 'The eventual winner was from Bamenda' (the final winner).",
+      "feedback": "Correct! 'Éventuel' in French means 'possible' or 'potential'. 'Eventual' in English means 'final' or 'ultimate' (happening at the end). Example: 'The eventual winner was from Bamenda' (the final winner).",
       "correction": null,
       "falseCognate": {
         "englishWord": "eventual",
-        "frenchWord": "\u00e9ventuel",
+        "frenchWord": "éventuel",
         "frenchMeaning": "possible or potential",
         "englishMeaning": "final or ultimate (at the end of a process)",
         "commonMistake": "Saying 'an eventual problem' when you mean 'a possible problem'",
-        "memoryTrick": "Eventual = Final (at the end) | Possible = \u00c9ventuel"
+        "memoryTrick": "Eventual = Final (at the end) | Possible = Éventuel"
       }
     },
     {
@@ -8533,21 +8533,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Experience/Exp\u00e9rience",
+        "Experience/Expérience",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! 'Exp\u00e9rience' in French can mean 'experience' OR 'experiment'. In English, they're different words! Use 'experiment' for scientific tests and 'experience' for life knowledge. Example: 'Visiting Waza Park was an amazing experience'.",
+      "feedback": "Excellent! 'Expérience' in French can mean 'experience' OR 'experiment'. In English, they're different words! Use 'experiment' for scientific tests and 'experience' for life knowledge. Example: 'Visiting Waza Park was an amazing experience'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "experience",
-        "frenchWord": "exp\u00e9rience",
+        "frenchWord": "expérience",
         "frenchMeaning": "experience (from life) OR experiment (in science)",
         "englishMeaning": "knowledge or skill from doing something",
         "commonMistake": "Saying 'We did an experience' when you mean 'experiment'",
-        "memoryTrick": "Experience = Exp\u00e9rience v\u00e9cue (life) | Experiment = Exp\u00e9rience scientifique"
+        "memoryTrick": "Experience = Expérience vécue (life) | Experiment = Expérience scientifique"
       }
     },
     {
@@ -8571,15 +8571,15 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! 'Physician' in English means 'medical doctor' (m\u00e9decin). 'Physicien' in French means 'physicist' (a scientist who studies physics). Example: 'Albert Einstein was a great physicist'. Use 'doctor' to avoid confusion!",
+      "feedback": "Perfect! 'Physician' in English means 'medical doctor' (médecin). 'Physicien' in French means 'physicist' (a scientist who studies physics). Example: 'Albert Einstein was a great physicist'. Use 'doctor' to avoid confusion!",
       "correction": null,
       "falseCognate": {
         "englishWord": "physician",
         "frenchWord": "physicien",
         "frenchMeaning": "physicist (a scientist who studies physics)",
-        "englishMeaning": "medical doctor (m\u00e9decin)",
+        "englishMeaning": "medical doctor (médecin)",
         "commonMistake": "Confusing medical doctor with physics scientist",
-        "memoryTrick": "Physician = M\u00e9decin (Medical Doctor) | Physicist = Physicien"
+        "memoryTrick": "Physician = Médecin (Medical Doctor) | Physicist = Physicien"
       }
     },
     {
@@ -8629,21 +8629,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Medicine/M\u00e9decin",
+        "Medicine/Médecin",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Perfect! 'M\u00e9decin' in French means 'doctor' (the person). 'Medicine' in English means 'medication' or 'drug' (le m\u00e9dicament). Example: 'Take this medicine three times a day' (the drug), not 'see a medicine'.",
+      "feedback": "Perfect! 'Médecin' in French means 'doctor' (the person). 'Medicine' in English means 'medication' or 'drug' (le médicament). Example: 'Take this medicine three times a day' (the drug), not 'see a medicine'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "medicine",
-        "frenchWord": "m\u00e9decin",
+        "frenchWord": "médecin",
         "frenchMeaning": "medical doctor (the person)",
-        "englishMeaning": "a drug or medication (le m\u00e9dicament)",
+        "englishMeaning": "a drug or medication (le médicament)",
         "commonMistake": "Saying 'I need to see a medicine' when you mean 'doctor'",
-        "memoryTrick": "Medicine = M\u00e9dicament (The drug) | Doctor = M\u00e9decin (The person)"
+        "memoryTrick": "Medicine = Médicament (The drug) | Doctor = Médecin (The person)"
       }
     },
     {
@@ -8667,7 +8667,7 @@
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Excellent! Use 'medicine' or 'medication' for m\u00e9dicament. 'Drug' can mean medicine, but also illegal drugs. 'Drogue' in French almost always means illegal drugs. Say 'medicine' to be clear and avoid confusion!",
+      "feedback": "Excellent! Use 'medicine' or 'medication' for médicament. 'Drug' can mean medicine, but also illegal drugs. 'Drogue' in French almost always means illegal drugs. Say 'medicine' to be clear and avoid confusion!",
       "correction": null,
       "falseCognate": {
         "englishWord": "drug",
@@ -8675,7 +8675,7 @@
         "frenchMeaning": "illegal drugs (almost always)",
         "englishMeaning": "medicine/medication OR illegal drugs",
         "commonMistake": "Saying 'The doctor gave me drugs' (sounds like illegal substances)",
-        "memoryTrick": "Drug (English) = M\u00e9dicament OR Drogue | Drogue (French) = Illegal | Use 'medicine' for m\u00e9dicament"
+        "memoryTrick": "Drug (English) = Médicament OR Drogue | Drogue (French) = Illegal | Use 'medicine' for médicament"
       }
     },
     {
@@ -8693,21 +8693,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Preservative/Pr\u00e9servatif",
+        "Preservative/Préservatif",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! 'Preservative' in English means a food chemical (conservateur). 'Pr\u00e9servatif' in French means 'condom'. This is a very embarrassing false cognate! Always say 'preservatives' for food, never 'pr\u00e9servatifs'.",
+      "feedback": "Correct! 'Preservative' in English means a food chemical (conservateur). 'Préservatif' in French means 'condom'. This is a very embarrassing false cognate! Always say 'preservatives' for food, never 'préservatifs'.",
       "correction": null,
       "falseCognate": {
         "englishWord": "preservative",
-        "frenchWord": "pr\u00e9servatif",
+        "frenchWord": "préservatif",
         "frenchMeaning": "condom",
         "englishMeaning": "chemical added to food to keep it fresh (conservateur)",
         "commonMistake": "Very embarrassing confusion between food chemicals and condoms!",
-        "memoryTrick": "Preservative = Conservateur (Food chemical) | Condom = Pr\u00e9servatif"
+        "memoryTrick": "Preservative = Conservateur (Food chemical) | Condom = Préservatif"
       }
     },
     {
@@ -8789,21 +8789,21 @@
       "moduleId": "false-cognates",
       "tags": [
         "vocabulary",
-        "Process/Proc\u00e8s",
+        "Process/Procès",
         "negative",
         "A"
       ],
       "sourceLanguage": "en",
       "targetLanguage": "fr",
-      "feedback": "Correct! 'Proc\u00e8s' in French means a court 'trial'. 'Process' in English means a 'method' or 'series of steps' (processus/m\u00e9thode). Example: 'Sending mobile money is a simple process' (method), but 'trial' for court cases.",
+      "feedback": "Correct! 'Procès' in French means a court 'trial'. 'Process' in English means a 'method' or 'series of steps' (processus/méthode). Example: 'Sending mobile money is a simple process' (method), but 'trial' for court cases.",
       "correction": null,
       "falseCognate": {
         "englishWord": "process",
-        "frenchWord": "proc\u00e8s",
+        "frenchWord": "procès",
         "frenchMeaning": "trial (in a court of law)",
         "englishMeaning": "method or series of steps",
         "commonMistake": "Saying 'He is in court for his process' when you mean 'trial'",
-        "memoryTrick": "Process = Processus/M\u00e9thode (A method) | Trial = Proc\u00e8s (In court)"
+        "memoryTrick": "Process = Processus/Méthode (A method) | Trial = Procès (In court)"
       }
     },
     {
@@ -8873,7 +8873,7 @@
     {
       "id": "auxiliaries-1-A",
       "type": "multiple-choice",
-      "question": "My father ___ work in Douala; he works in Yaound\u00e9.",
+      "question": "My father ___ work in Douala; he works in Yaoundé.",
       "answer": "doesn't",
       "options": [
         "not",
@@ -8894,7 +8894,7 @@
       "feedback": "Correct! The subject is 'My father' (he). To make a negative in the Present Simple, we must use 'doesn't' (does not).",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Mon p\u00e8re ne travaille pas \u00e0 Douala...\"\n(French forms the negative by placing \"ne...pas\" *around* the main verb \"travaille\".)",
+        "frenchStructure": "\"Mon père ne travaille pas à Douala...\"\n(French forms the negative by placing \"ne...pas\" *around* the main verb \"travaille\".)",
         "englishStructure": "\"My father doesn't (do not) work in Douala...\"\n(English *must* use the auxiliary \"helper\" verb \"do\" or \"does\" + \"not\" *before* the main verb.)",
         "whyDifficult": "French has no \"do/does\" auxiliary. Students directly translate the \"ne...pas\" structure and say \"My father *works not*...\" or \"My father *not work*...\". They must learn to *always* add \"do\" or \"does\" for a simple present negative.",
         "visualHighlighting": {
@@ -8951,7 +8951,7 @@
       "feedback": "Perfect! For a negative in the past ('yesterday'), we must use 'didn't' + base verb ('see'). \"Didn't saw\" is a common error, but it's incorrect.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Je n'ai pas vu Muna au march\u00e9 hier.\"\n(French uses \"ne...pas\" around the auxiliary \"ai\" (have) from the *Pass\u00e9 Compos\u00e9*.)",
+        "frenchStructure": "\"Je n'ai pas vu Muna au marché hier.\"\n(French uses \"ne...pas\" around the auxiliary \"ai\" (have) from the *Passé Composé*.)",
         "englishStructure": "\"I didn't (did not) see Muna at the market yesterday.\"\n(English *must* use the past auxiliary \"did\" + \"not\", and it *must* be followed by the *base verb* (\"see\"), not the past tense form (\"saw\").)",
         "whyDifficult": "This has two problems. First, students forget \"did\" (like they forget \"do\"). Second, after they use \"didn't\", they *also* put the main verb in the past (\"didn't saw\"), which is incorrect. They must learn: **didn't + see**.",
         "visualHighlighting": {
@@ -9009,7 +9009,7 @@
       "feedback": "Yes! To ask a simple question in the Present Simple with the subject 'you', we must start with 'Do'. Asking \"You live...?\" is a common error from French spoken style.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"Tu habites pr\u00e8s de l'\u00e9cole ?\" (Statement with rising intonation)\n\"Est-ce que tu habites pr\u00e8s de l'\u00e9cole ?\" (Using \"Est-ce que\")",
+        "frenchStructure": "\"Tu habites près de l'école ?\" (Statement with rising intonation)\n\"Est-ce que tu habites près de l'école ?\" (Using \"Est-ce que\")",
         "englishStructure": "\"Do you live near the school compound?\"\n(English *must* use the auxiliary \"Do\" or \"Does\" to start a simple \"yes/no\" question in the present.)",
         "whyDifficult": "The most common way to ask a question in spoken French is to just raise the voice on a statement (\"Tu habites...?\"). Students translate this directly and say \"You live...?\", which is not a grammatically correct question in English.",
         "visualHighlighting": {
@@ -9042,7 +9042,7 @@
       "feedback": "Correct! The subject is 'the lesson' (it). For a question with 'it', we must use the auxiliary 'does'.",
       "correction": null,
       "frenchComparison": {
-        "frenchStructure": "\"\u00c0 quelle heure est-ce que la le\u00e7on finit ?\" or \"...finit la le\u00e7on ?\"\n(French uses \"est-ce que\" or inverts the main verb. There is no auxiliary.)",
+        "frenchStructure": "\"À quelle heure est-ce que la leçon finit ?\" or \"...finit la leçon ?\"\n(French uses \"est-ce que\" or inverts the main verb. There is no auxiliary.)",
         "englishStructure": "\"What time does the lesson finish?\"\n(English *must* use the auxiliary \"do\" or \"does\" *after* the question word. The pattern is: **QW + Auxiliary (does) + Subject (the lesson) + Verb (finish)**.)",
         "whyDifficult": "As with \"do\", students forget to add \"does\". They translate the \"est-ce que\" structure and say \"What time *the lesson finishes*?\" or they try to invert the main verb, \"What time *finishes the lesson*?\".",
         "visualHighlighting": {
@@ -9112,7 +9112,7 @@
     {
       "id": "auxiliaries-9-A",
       "type": "multiple-choice",
-      "question": "My brother ___ finished his ndol\u00e9.",
+      "question": "My brother ___ finished his ndolé.",
       "answer": "has",
       "options": [
         "have",
