@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { useMemo, useCallback } from 'react';
+import ExportableChart from '../../../components/ExportableChart';
 import { Download, FlaskConical } from 'lucide-react';
 import { AblationResults, ablationToCSV } from '../../../simulation/ablationRunner';
 import { StatisticalResult, EffectSize } from '../../../simulation/statisticalAnalysis';
@@ -64,6 +65,7 @@ export default function AblationTable({ results }: AblationTableProps) {
   }, [results]);
 
   return (
+    <ExportableChart id="chart-ablation" title="ablation_results">
     <div className="ablation-table-container">
       <div className="ablation-table__header">
         <h3 className="ablation-table__title">
@@ -117,5 +119,6 @@ export default function AblationTable({ results }: AblationTableProps) {
         </div>
       ))}
     </div>
+    </ExportableChart>
   );
 }

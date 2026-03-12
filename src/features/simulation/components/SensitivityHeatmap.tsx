@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { useMemo, useState, useCallback } from 'react';
+import ExportableChart from '../../../components/ExportableChart';
 import { Download, Thermometer } from 'lucide-react';
 import { SensitivityReport, sensitivityToCSV } from '../../../simulation/sensitivityAnalysis';
 import { downloadFile } from '../../../utils/export';
@@ -49,6 +50,7 @@ export default function SensitivityHeatmap({ reports }: SensitivityHeatmapProps)
   if (reports.length === 0) return null;
 
   return (
+    <ExportableChart id="chart-sensitivity" title="sensitivity_heatmap">
     <div className="sensitivity-container">
       <div className="sensitivity__header">
         <h3 className="sensitivity__title">
@@ -109,5 +111,6 @@ export default function SensitivityHeatmap({ reports }: SensitivityHeatmapProps)
         </table>
       </div>
     </div>
+    </ExportableChart>
   );
 }

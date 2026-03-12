@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { useMemo } from 'react';
+import ExportableChart from '../../../components/ExportableChart';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Legend,
@@ -60,6 +61,7 @@ export default function MasteryComparison({ results }: MasteryComparisonProps) {
   const keyConditions = ['Full CalibrateMe', 'SM-2 Baseline', 'BKT-Only'];
 
   return (
+    <ExportableChart id="chart-mastery" title="mastery_comparison">
     <div className="mastery-comparison">
       <h3 className="mastery-comparison__title">
         <Clock size={18} /> Time-to-Mastery & Review Efficiency
@@ -113,5 +115,6 @@ export default function MasteryComparison({ results }: MasteryComparisonProps) {
         </div>
       </div>
     </div>
+    </ExportableChart>
   );
 }

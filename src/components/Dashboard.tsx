@@ -23,6 +23,7 @@ import AblationTable from '../features/simulation/components/AblationTable';
 import SensitivityHeatmap from '../features/simulation/components/SensitivityHeatmap';
 import DoseResponseChart from '../features/simulation/components/DoseResponseChart';
 import MasteryComparison from '../features/simulation/components/MasteryComparison';
+import ExportableChart from './ExportableChart';
 
 type DashboardView = 'main' | 'report' | 'advanced';
 
@@ -270,10 +271,12 @@ const Dashboard: React.FC = () => {
             </div>
 
             {calibrationBins.length > 0 && (
-              <CalibrationCurve
-                bins={calibrationBins}
-                title="Calibration Curve (Confidence vs Accuracy)"
-              />
+              <ExportableChart id="chart-calibration-curve" title="calibration_curve">
+                <CalibrationCurve
+                  bins={calibrationBins}
+                  title="Calibration Curve (Confidence vs Accuracy)"
+                />
+              </ExportableChart>
             )}
 
             <ResponseHistory sessionData={results.session_data} />

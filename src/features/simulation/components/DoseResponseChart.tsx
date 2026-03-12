@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { useMemo, useState, useCallback } from 'react';
+import ExportableChart from '../../../components/ExportableChart';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Legend,
@@ -93,6 +94,7 @@ export default function DoseResponseChart({ report }: DoseResponseChartProps) {
   const displayData = groupBy === 'calibration' ? aggregatedData! : chartData;
 
   return (
+    <ExportableChart id="chart-dose-response" title="dose_response">
     <div className="dose-response-container">
       <div className="dose-response__header">
         <h3 className="dose-response__title">
@@ -161,5 +163,6 @@ export default function DoseResponseChart({ report }: DoseResponseChartProps) {
         {report.nSeeds} seeds per point · δ = 0.00 is the no-scaffolding baseline
       </p>
     </div>
+    </ExportableChart>
   );
 }
