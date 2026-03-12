@@ -50,6 +50,8 @@ const HypothesisResults: React.FC<HypothesisResultsProps> = ({ resultsByProfile 
               <span
                 className={`badge ${h.supported ? 'badge-success' : 'badge-error'}`}
                 style={{ fontSize: '0.875rem', padding: '0.25rem 0.75rem' }}
+                role="status"
+                aria-label={`${h.hypothesis}: ${h.supported ? 'Supported' : 'Not Supported'}`}
               >
                 {h.supported ? 'Supported' : 'Not Supported'}
               </span>

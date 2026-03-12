@@ -26,6 +26,7 @@ const ExportableChart: React.FC<ExportableChartProps> = ({ id, title, children }
           className="export-btn"
           onClick={() => exportAsPNG(id, filename, 3)}
           title="Export as PNG"
+          aria-label={`Export ${title} as PNG`}
         >
           PNG
         </button>
@@ -33,6 +34,7 @@ const ExportableChart: React.FC<ExportableChartProps> = ({ id, title, children }
           className="export-btn"
           onClick={() => exportAsSVG(id, filename)}
           title="Export as SVG"
+          aria-label={`Export ${title} as SVG`}
         >
           SVG
         </button>

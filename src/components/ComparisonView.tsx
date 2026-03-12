@@ -46,7 +46,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ results }) => {
       <h3 className="card-title">Scheduler Comparison</h3>
 
       {/* Retention Comparison */}
-      <div className="chart-container" style={{ marginBottom: '1.5rem' }}>
+      <div className="chart-container" role="figure" aria-label="Retention rates comparison" style={{ marginBottom: '1.5rem' }}>
         <h4 className="chart-title">Retention Rates</h4>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={retentionData} layout="vertical">
@@ -63,7 +63,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ results }) => {
       </div>
 
       {/* Efficiency Comparison */}
-      <div className="chart-container" style={{ marginBottom: '1.5rem' }}>
+      <div className="chart-container" role="figure" aria-label="Learning efficiency comparison" style={{ marginBottom: '1.5rem' }}>
         <h4 className="chart-title">Learning Efficiency</h4>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={efficiencyData}>
@@ -79,7 +79,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ results }) => {
       </div>
 
       {/* Calibration Error Comparison */}
-      <div className="chart-container">
+      <div className="chart-container" role="figure" aria-label="Calibration error comparison">
         <h4 className="chart-title">Calibration Error (Lower is Better)</h4>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={calibrationData}>
@@ -97,16 +97,16 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ results }) => {
       {/* Summary Table */}
       <div className="card" style={{ marginTop: '1.5rem' }}>
         <h4 className="chart-title">Summary Statistics</h4>
-        <table className="response-table">
+        <table className="response-table" aria-label="Scheduler comparison summary">
           <thead>
             <tr>
-              <th>Scheduler</th>
-              <th>Ret. (1d)</th>
-              <th>Ret. (7d)</th>
-              <th>Ret. (30d)</th>
-              <th>Mastery</th>
-              <th>Efficiency</th>
-              <th>ECE</th>
+              <th scope="col">Scheduler</th>
+              <th scope="col">Ret. (1d)</th>
+              <th scope="col">Ret. (7d)</th>
+              <th scope="col">Ret. (30d)</th>
+              <th scope="col">Mastery</th>
+              <th scope="col">Efficiency</th>
+              <th scope="col">ECE</th>
             </tr>
           </thead>
           <tbody>

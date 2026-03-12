@@ -4738,3 +4738,73 @@ body {
 [data-theme="dark"] .error-boundary { background: #1E293B; border-color: #991B1B; }
 [data-theme="dark"] .error-boundary h2 { color: #FCA5A5; }
 [data-theme="dark"] .error-boundary p { color: var(--text-secondary); }
+
+/* =============================================================================
+   Accessibility — Focus Styles & Keyboard Navigation
+   ============================================================================= */
+
+/* Focus-visible ring for all buttons */
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: 2px;
+}
+
+/* Export buttons focus */
+.export-btn:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: 2px;
+}
+
+/* Navigation items focus */
+.app-sidebar__item:focus-visible,
+.app-bottomnav__item:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: -2px;
+  border-radius: var(--border-radius-md, 8px);
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-primary-500, #6366F1);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 10000;
+  font-size: var(--font-size-sm);
+  border-radius: 0 0 var(--border-radius-md) 0;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Ensure disabled buttons have no pointer events */
+.btn:disabled {
+  pointer-events: none;
+}
+
+/* High contrast mode: ensure badge text is readable */
+@media (forced-colors: active) {
+  .badge-success,
+  .badge-warning,
+  .badge-error {
+    border: 1px solid;
+  }
+  .sensitivity-cell {
+    border: 1px solid;
+  }
+}
+
+/* Reduced motion: disable transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

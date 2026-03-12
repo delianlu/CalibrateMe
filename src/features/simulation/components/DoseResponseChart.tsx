@@ -95,7 +95,7 @@ export default function DoseResponseChart({ report }: DoseResponseChartProps) {
 
   return (
     <ExportableChart id="chart-dose-response" title="dose_response">
-    <div className="dose-response-container">
+    <div className="dose-response-container" role="figure" aria-label="Scaffolding dose-response chart">
       <div className="dose-response__header">
         <h3 className="dose-response__title">
           <Sliders size={18} /> Scaffolding Dose-Response (δ Sweep)
@@ -106,6 +106,7 @@ export default function DoseResponseChart({ report }: DoseResponseChartProps) {
             value={metric}
             onChange={e => setMetric(e.target.value as MetricKey)}
             style={{ maxWidth: 200 }}
+            aria-label="Select outcome metric"
           >
             {METRIC_OPTIONS.map(m => (
               <option key={m.key} value={m.key}>{m.label}</option>
@@ -116,6 +117,7 @@ export default function DoseResponseChart({ report }: DoseResponseChartProps) {
             value={groupBy}
             onChange={e => setGroupBy(e.target.value as 'all' | 'calibration')}
             style={{ maxWidth: 170 }}
+            aria-label="Group profiles by"
           >
             <option value="calibration">Group by Calibration</option>
             <option value="all">All Profiles</option>

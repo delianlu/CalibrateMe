@@ -163,6 +163,7 @@ function App() {
 
   return (
     <div className="app">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       {/* ── Sidebar Navigation (desktop) ── */}
       <aside className="app-sidebar" role="navigation" aria-label="Main navigation">
         <div className="app-sidebar__brand">
@@ -178,7 +179,7 @@ function App() {
               key={id}
               className={`app-sidebar__item ${tab === id ? 'app-sidebar__item--active' : ''}`}
               onClick={() => setTab(id)}
-              aria-selected={tab === id}
+              aria-current={tab === id ? 'page' : undefined}
               title={label}
             >
               <Icon size={20} />
@@ -206,6 +207,8 @@ function App() {
             key={id}
             className={`app-bottomnav__item ${tab === id ? 'app-bottomnav__item--active' : ''}`}
             onClick={() => setTab(id)}
+            aria-label={label}
+            aria-current={tab === id ? 'page' : undefined}
           >
             <Icon size={20} />
             <span>{label}</span>
@@ -230,6 +233,7 @@ function App() {
               className="app-topbar__theme-btn"
               onClick={toggleDarkMode}
               title={isDark ? 'Light mode' : 'Dark mode'}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -237,7 +241,7 @@ function App() {
         </header>
 
         {/* Page content with transitions */}
-        <main className="app-main">
+        <main id="main-content" className="app-main">
           <ErrorBoundary>
             <AnimatePresence mode="wait">
               <motion.div
