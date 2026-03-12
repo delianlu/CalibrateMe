@@ -1,5 +1,6 @@
 // =============================================================================
 // Zustand Store for Advanced Analytics (Ablation, Sensitivity, δ-Sweep)
+// Uses Web Worker for non-blocking execution when available
 // =============================================================================
 
 import { create } from 'zustand';
@@ -31,8 +32,64 @@ interface AdvancedAnalyticsStore {
   runAblation: (nSeeds?: number, config?: SimulationConfig) => Promise<void>;
   runSensitivity: (sweep: SensitivitySweepConfig, nSeeds?: number, config?: SimulationConfig) => Promise<void>;
   runDeltaSweep: (nSeeds?: number, config?: SimulationConfig) => Promise<void>;
+  cancel: () => void;
   reset: () => void;
 }
+
+// Worker instance shared across store actions
+let worker: Worker | null = null;
+let workerResolve: ((value: any) => void) | null = null;
+let workerReject: ((reason: any) => void) | null = null;
+
+function getOrCreateWorker(onProgress: (pct: number, msg: string) => void): Worker {
+  if (!worker) {
+    worker = new Worker(
+      new URL('../workers/simulationWorker.ts', import.meta.url),
+      { type: 'module' }
+    );
+  }
+
+  worker.onmessage = (event) => {
+    const msg = event.data;
+    switch (msg.type) {
+      case 'progress': {
+        const pct = msg.total > 0 ? (msg.completed / msg.total) * 100 : 0;
+        onProgress(pct, msg.currentTask);
+        break;
+      }
+      case 'result':
+        workerResolve?.(msg.data);
+        workerResolve = null;
+        workerReject = null;
+        break;
+      case 'error':
+        workerReject?.(new Error(msg.message));
+        workerResolve = null;
+        workerReject = null;
+        break;
+    }
+  };
+
+  worker.onerror = (err) => {
+    workerReject?.(new Error(err.message || 'Worker error'));
+    workerResolve = null;
+    workerReject = null;
+  };
+
+  return worker;
+}
+
+function terminateWorker(): void {
+  if (worker) {
+    worker.terminate();
+    worker = null;
+    workerResolve = null;
+    workerReject = null;
+  }
+}
+
+// Check if we're in a browser environment with Worker support
+const supportsWorker = typeof window !== 'undefined' && typeof Worker !== 'undefined';
 
 export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) => ({
   ablationResults: null,
@@ -50,15 +107,29 @@ export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) =>
     });
 
     try {
-      // Use setTimeout to yield to UI
-      const results = await new Promise<AblationResults>((resolve) => {
-        setTimeout(() => {
-          const r = runAblationStudy(nSeeds, config, DEFAULT_CONDITIONS, getCoreProfileNames(), (pct, msg) => {
-            set({ progress: pct, progressMessage: msg });
-          });
-          resolve(r);
-        }, 0);
-      });
+      let results: AblationResults;
+
+      if (supportsWorker) {
+        const w = getOrCreateWorker((pct, msg) => {
+          set({ progress: pct, progressMessage: msg });
+        });
+
+        results = await new Promise<AblationResults>((resolve, reject) => {
+          workerResolve = resolve;
+          workerReject = reject;
+          w.postMessage({ type: 'ablation', nSeeds, config });
+        });
+      } else {
+        // Fallback: run on main thread
+        results = await new Promise<AblationResults>((resolve) => {
+          setTimeout(() => {
+            const r = runAblationStudy(nSeeds, config, DEFAULT_CONDITIONS, getCoreProfileNames(), (pct, msg) => {
+              set({ progress: pct, progressMessage: msg });
+            });
+            resolve(r);
+          }, 0);
+        });
+      }
 
       set({
         ablationResults: results,
@@ -79,16 +150,29 @@ export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) =>
     });
 
     try {
-      const report = await new Promise<SensitivityReport>((resolve) => {
-        setTimeout(() => {
-          // Use representative subset for speed
-          const profiles = ['Med-Over', 'Med-Under', 'Med-Well'];
-          const r = runSensitivitySweep(sweep, nSeeds, config, profiles, (pct, msg) => {
-            set({ progress: pct, progressMessage: msg });
-          });
-          resolve(r);
-        }, 0);
-      });
+      let report: SensitivityReport;
+
+      if (supportsWorker) {
+        const w = getOrCreateWorker((pct, msg) => {
+          set({ progress: pct, progressMessage: msg });
+        });
+
+        report = await new Promise<SensitivityReport>((resolve, reject) => {
+          workerResolve = resolve;
+          workerReject = reject;
+          w.postMessage({ type: 'sensitivity', sweep, nSeeds, config });
+        });
+      } else {
+        report = await new Promise<SensitivityReport>((resolve) => {
+          setTimeout(() => {
+            const profiles = ['Med-Over', 'Med-Under', 'Med-Well'];
+            const r = runSensitivitySweep(sweep, nSeeds, config, profiles, (pct, msg) => {
+              set({ progress: pct, progressMessage: msg });
+            });
+            resolve(r);
+          }, 0);
+        });
+      }
 
       set(state => ({
         sensitivityReports: [...state.sensitivityReports.filter(r => r.parameterName !== sweep.parameterName), report],
@@ -109,16 +193,29 @@ export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) =>
     });
 
     try {
-      const report = await new Promise<DeltaSweepReport>((resolve) => {
-        setTimeout(() => {
-          // Use representative profiles for speed
-          const profiles = ['Med-Over', 'Med-Under', 'Med-Well', 'High-Over', 'Low-Over'];
-          const r = runDeltaSweep(DEFAULT_DELTAS, nSeeds, config, profiles, (pct, msg) => {
-            set({ progress: pct, progressMessage: msg });
-          });
-          resolve(r);
-        }, 0);
-      });
+      let report: DeltaSweepReport;
+
+      if (supportsWorker) {
+        const w = getOrCreateWorker((pct, msg) => {
+          set({ progress: pct, progressMessage: msg });
+        });
+
+        report = await new Promise<DeltaSweepReport>((resolve, reject) => {
+          workerResolve = resolve;
+          workerReject = reject;
+          w.postMessage({ type: 'deltaSweep', nSeeds, config });
+        });
+      } else {
+        report = await new Promise<DeltaSweepReport>((resolve) => {
+          setTimeout(() => {
+            const profiles = ['Med-Over', 'Med-Under', 'Med-Well', 'High-Over', 'Low-Over'];
+            const r = runDeltaSweep(DEFAULT_DELTAS, nSeeds, config, profiles, (pct, msg) => {
+              set({ progress: pct, progressMessage: msg });
+            });
+            resolve(r);
+          }, 0);
+        });
+      }
 
       set({
         deltaSweepReport: report,
@@ -132,7 +229,18 @@ export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) =>
     }
   },
 
+  cancel: () => {
+    terminateWorker();
+    set({
+      isRunning: false,
+      progress: 0,
+      progressMessage: '',
+      error: null,
+    });
+  },
+
   reset: () => {
+    terminateWorker();
     set({
       ablationResults: null,
       sensitivityReports: [],

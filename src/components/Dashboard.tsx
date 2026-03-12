@@ -166,6 +166,15 @@ const Dashboard: React.FC = () => {
           {advRunning && (
             <div className="card" style={{ padding: '2rem' }}>
               <ProgressBar progress={advProgress} message={advProgressMessage} />
+              <div style={{ textAlign: 'center', marginTop: '0.75rem' }}>
+                <button
+                  className="btn btn-secondary btn-sm"
+                  onClick={advStore.cancel}
+                  style={{ background: '#e53e3e', color: 'white' }}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           )}
 
