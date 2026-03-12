@@ -4623,3 +4623,118 @@ body {
   color: white;
   border-color: #4a5568;
 }
+
+/* =============================================================================
+   Dark Mode — New Components (Ablation, Sensitivity, Dose-Response, etc.)
+   ============================================================================= */
+
+/* --- Ablation Table --- */
+[data-theme="dark"] .ablation-table-container { background: var(--bg-card); }
+[data-theme="dark"] .ablation-table__header { background: #1a1a2e; border-color: var(--border-color); }
+[data-theme="dark"] .ablation-table__title { color: var(--text-primary); }
+[data-theme="dark"] .ablation-table__subtitle { color: var(--text-muted); }
+[data-theme="dark"] .ablation-table th { background: #1E293B; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .ablation-table td { border-color: var(--border-color); color: var(--text-primary); }
+[data-theme="dark"] .ablation-table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.03); }
+[data-theme="dark"] .ablation-table tr:hover td { background: rgba(99, 102, 241, 0.1); }
+
+[data-theme="dark"] .stat-cell { color: var(--text-primary); }
+[data-theme="dark"] .stat-cell__ci { color: var(--text-muted); }
+[data-theme="dark"] .effect-cell--negligible { background: rgba(148, 163, 184, 0.15); color: #94A3B8; }
+[data-theme="dark"] .effect-cell--small { background: rgba(250, 204, 21, 0.15); color: #FCD34D; }
+[data-theme="dark"] .effect-cell--medium { background: rgba(96, 165, 250, 0.15); color: #93C5FD; }
+[data-theme="dark"] .effect-cell--large { background: rgba(52, 211, 153, 0.15); color: #34D399; }
+
+/* --- Sensitivity Heatmap --- */
+[data-theme="dark"] .sensitivity-container { background: var(--bg-card); }
+[data-theme="dark"] .sensitivity__header { background: #1a1a2e; border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity__title { color: var(--text-primary); }
+[data-theme="dark"] .sensitivity__controls button { background: #334155; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity__controls button.active { background: #6366F1; color: white; }
+[data-theme="dark"] .sensitivity-table th { background: #1E293B; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity-table td { border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity-cell { color: var(--text-primary); }
+
+/* --- Dose-Response Chart --- */
+[data-theme="dark"] .dose-response-container { background: var(--bg-card); }
+[data-theme="dark"] .dose-response__header { background: #1a1a2e; border-color: var(--border-color); }
+[data-theme="dark"] .dose-response__title { color: var(--text-primary); }
+[data-theme="dark"] .dose-response__controls select,
+[data-theme="dark"] .dose-response__controls label { color: var(--text-secondary); }
+[data-theme="dark"] .dose-response__note { color: var(--text-muted); }
+[data-theme="dark"] .recharts-cartesian-axis-tick-value { fill: var(--text-muted) !important; }
+[data-theme="dark"] .recharts-legend-item-text { color: var(--text-secondary) !important; }
+[data-theme="dark"] .recharts-tooltip-wrapper .recharts-default-tooltip { background: #1E293B !important; border-color: var(--border-color) !important; }
+[data-theme="dark"] .recharts-tooltip-label { color: var(--text-primary) !important; }
+[data-theme="dark"] .recharts-tooltip-item { color: var(--text-secondary) !important; }
+
+/* --- Mastery Comparison --- */
+[data-theme="dark"] .mastery-comparison { background: var(--bg-card); }
+[data-theme="dark"] .mastery-comparison__title { color: var(--text-primary); }
+[data-theme="dark"] .mastery-comparison__charts { background: var(--bg-card); }
+
+/* --- Learner Classification --- */
+[data-theme="dark"] .learner-classification { background: var(--bg-card); border-color: var(--border-color); }
+[data-theme="dark"] .learner-classification__title { color: var(--text-primary); }
+[data-theme="dark"] .learner-classification__description { color: var(--text-secondary); }
+[data-theme="dark"] .learner-classification__badge { border-color: var(--border-color); }
+
+/* --- Schedule Comparison --- */
+[data-theme="dark"] .schedule-comparison { background: var(--bg-card); }
+[data-theme="dark"] .schedule-comparison__title { color: var(--text-primary); }
+[data-theme="dark"] .schedule-comparison__item { border-color: var(--border-color); }
+[data-theme="dark"] .schedule-comparison__item-label { color: var(--text-secondary); }
+[data-theme="dark"] .schedule-comparison__timeline { background: #0F172A; }
+
+/* --- Final Report --- */
+[data-theme="dark"] .final-report { background: var(--bg-card); }
+[data-theme="dark"] .final-report__header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+[data-theme="dark"] .final-report__title { color: #F1F5F9; }
+[data-theme="dark"] .final-report__subtitle { color: #CBD5E1; }
+[data-theme="dark"] .final-report-section { border-color: var(--border-color); }
+[data-theme="dark"] .final-report-section h3 { color: var(--text-primary); }
+[data-theme="dark"] .final-report-section p { color: var(--text-secondary); }
+
+[data-theme="dark"] .metric-tile { background: #1E293B; border-color: var(--border-color); }
+[data-theme="dark"] .metric-tile__label { color: var(--text-muted); }
+[data-theme="dark"] .metric-tile__value { color: var(--text-primary); }
+
+[data-theme="dark"] .param-card { background: #1E293B; border-color: var(--border-color); }
+[data-theme="dark"] .param-card__label { color: var(--text-muted); }
+[data-theme="dark"] .param-card__value { color: var(--text-primary); }
+[data-theme="dark"] .param-card__interpretation { color: var(--text-secondary); }
+
+[data-theme="dark"] .strength-card,
+[data-theme="dark"] .weakness-card { background: #1E293B; border-color: var(--border-color); }
+[data-theme="dark"] .strength-card__area,
+[data-theme="dark"] .weakness-card__area { color: var(--text-primary); }
+[data-theme="dark"] .strength-card__evidence,
+[data-theme="dark"] .weakness-card__evidence { color: var(--text-secondary); }
+
+[data-theme="dark"] .comparison-table th { background: #1E293B; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .comparison-table td { color: var(--text-primary); border-color: var(--border-color); }
+[data-theme="dark"] .comparison-table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.03); }
+
+[data-theme="dark"] .recommendation-list li { color: var(--text-secondary); }
+
+/* --- Export Buttons (dark) --- */
+[data-theme="dark"] .export-btn {
+  background: rgba(30, 41, 59, 0.9);
+  color: #94A3B8;
+  border-color: #475569;
+}
+[data-theme="dark"] .export-btn:hover {
+  background: #475569;
+  color: white;
+  border-color: #64748B;
+}
+
+/* --- Onboarding Card --- */
+[data-theme="dark"] .onboarding-card { background: var(--bg-card); border-color: var(--border-color); }
+[data-theme="dark"] .onboarding-card h2 { color: var(--text-primary); }
+[data-theme="dark"] .onboarding-card p { color: var(--text-secondary); }
+
+/* --- Error Boundary --- */
+[data-theme="dark"] .error-boundary { background: #1E293B; border-color: #991B1B; }
+[data-theme="dark"] .error-boundary h2 { color: #FCA5A5; }
+[data-theme="dark"] .error-boundary p { color: var(--text-secondary); }
