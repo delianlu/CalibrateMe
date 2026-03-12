@@ -10,6 +10,7 @@ import {
 } from 'recharts';
 import { TrendingDown, Calendar } from 'lucide-react';
 import { QuizResponse } from '../../quiz/types';
+import HeuristicTooltip from '../../../components/HeuristicTooltip';
 
 interface SessionHistoryProps {
   responses: QuizResponse[];
@@ -116,7 +117,7 @@ export default function SessionHistory({ responses }: SessionHistoryProps) {
     <div className="session-history">
       <h4 style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <TrendingDown size={18} />
-        Calibration Trend (ECE Over Sessions)
+        Calibration Trend (ECE Over Sessions) <HeuristicTooltip label="Sessions are split using a 10-minute gap heuristic. ECE is computed per-session with 5 bins. Small sessions may yield noisy estimates." />
       </h4>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={sessionRecords} margin={{ top: 5, right: 20, bottom: 20, left: 10 }}>

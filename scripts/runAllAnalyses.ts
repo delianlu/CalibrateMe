@@ -27,6 +27,10 @@ import {
   DeltaSweepReport,
   deltaSweepToCSV,
 } from '../src/simulation/deltaSweep';
+import {
+  runMatchedScaffoldComparison,
+  matchedScaffoldToCSV,
+} from '../src/simulation/matchedScaffoldAnalysis';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -281,10 +285,33 @@ function main(): void {
   totalRuns += DEFAULT_DELTAS.length * CORE_PROFILES.length * DELTA_SEEDS;
 
   // =========================================================================
-  // 5. Summary JSON
+  // 5. Matched Scaffold Comparison
+  // =========================================================================
+  const MATCHED_SEEDS = 30;
+  console.log('\n========================================');
+  console.log('5. MATCHED SCAFFOLD COMPARISON');
+  console.log(`   ${CORE_PROFILES.length} profiles × ${MATCHED_SEEDS} seeds × 2 conditions`);
+  console.log('========================================');
+
+  const matchedReport = runMatchedScaffoldComparison(
+    MATCHED_SEEDS,
+    BASE_CONFIG,
+    CORE_PROFILES,
+    (pct, msg) => {
+      if (Math.floor(pct) % 10 === 0) {
+        process.stdout.write(`\r  Matched scaffold: ${pct.toFixed(0)}% — ${msg}   `);
+      }
+    }
+  );
+  console.log('\r  Matched scaffold: 100% — Complete                              ');
+  writeCSV('matched_scaffold_comparison.csv', matchedScaffoldToCSV(matchedReport));
+  totalRuns += CORE_PROFILES.length * MATCHED_SEEDS * 2;
+
+  // =========================================================================
+  // 6. Summary JSON
   // =========================================================================
   console.log('\n========================================');
-  console.log('5. GENERATING SUMMARY');
+  console.log('6. GENERATING SUMMARY');
   console.log('========================================');
 
   // Find best Cohen's d from core ablation
@@ -343,6 +370,8 @@ function main(): void {
         advantage: parseFloat(strongestAdvantage.toFixed(4)),
       },
     },
+    experiment_config_version: '1.0.0',
+    experiment_config_path: 'config/experiment_config.json',
     files_generated: [
       'ablation_core_profiles.csv',
       'ablation_extended_profiles.csv',
@@ -352,6 +381,7 @@ function main(): void {
       'sensitivity_noise.csv',
       'sensitivity_beta.csv',
       'delta_sweep.csv',
+      'matched_scaffold_comparison.csv',
       'summary.json',
     ],
   };

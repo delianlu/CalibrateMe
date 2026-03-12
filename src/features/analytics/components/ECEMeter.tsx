@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { QuizResponse } from '../../quiz/types';
+import HeuristicTooltip from '../../../components/HeuristicTooltip';
 
 interface ECEMeterProps {
   responses: QuizResponse[];
@@ -75,7 +76,7 @@ export default function ECEMeter({ responses }: ECEMeterProps) {
         <div className="ece-meter__marker" style={{ left: '20%' }} />
       </div>
       <div className="ece-meter__label" style={{ color }}>
-        {getECELabel(ece)}
+        {getECELabel(ece)} <HeuristicTooltip label="ECE severity labels use heuristic thresholds: < 10% = Well Calibrated, < 20% = Moderate. These are researcher-chosen conventions." />
       </div>
     </div>
   );
