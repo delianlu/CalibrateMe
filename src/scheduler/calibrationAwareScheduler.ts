@@ -8,6 +8,7 @@ import {
   ProcessedResponse,
   SystemBelief,
   ResponseType,
+  ItemType,
 } from '../types';
 
 /**
@@ -232,14 +233,24 @@ export class CalibrateMeScheduler {
   }
 
   /**
-   * Process a response and return scheduling result
+   * Process a response and return scheduling result.
+   * When domain-split is enabled, uses the domain-specific β̂ for the item's domain.
    */
   processResponse(
     response: ProcessedResponse,
     belief: SystemBelief
   ): { nextReview: Date; interval: number } {
+    // Use domain-specific β̂ if available
+    let effectiveBelief = belief;
+    if (belief.domain_calibration && response.item_type) {
+      const domainBetaHat = response.item_type === ItemType.VOCABULARY
+        ? belief.domain_calibration.beta_hat_vocab
+        : belief.domain_calibration.beta_hat_grammar;
+      effectiveBelief = { ...belief, beta_hat: domainBetaHat };
+    }
+
     const interval = computeNextReviewInterval(
-      belief,
+      effectiveBelief,
       response,
       this.lambda,
       this.enableCalibration,

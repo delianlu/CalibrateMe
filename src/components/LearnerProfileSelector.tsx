@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSimulationStore } from '../store/simulationStore';
-import { CORE_PROFILE_NAMES, EXTENDED_PROFILE_NAMES, PROFILE_PARAMS } from '../profiles/learnerProfiles';
+import { CORE_PROFILE_NAMES, EXTENDED_PROFILE_NAMES, DOMAIN_SPLIT_PROFILE_NAMES, PROFILE_PARAMS } from '../profiles/learnerProfiles';
 
 const LearnerProfileSelector: React.FC = () => {
   const { selectedProfile, setSelectedProfile } = useSimulationStore();
@@ -24,6 +24,11 @@ const LearnerProfileSelector: React.FC = () => {
           </optgroup>
           <optgroup label="Extended (Boundary Testing)">
             {EXTENDED_PROFILE_NAMES.map(name => (
+              <option key={name} value={name}>{name}</option>
+            ))}
+          </optgroup>
+          <optgroup label="Domain-Asymmetric">
+            {DOMAIN_SPLIT_PROFILE_NAMES.map(name => (
               <option key={name} value={name}>{name}</option>
             ))}
           </optgroup>

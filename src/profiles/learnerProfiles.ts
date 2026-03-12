@@ -11,6 +11,7 @@ import {
   TrueLearnerState,
   SystemBelief,
   Item,
+  ItemType,
 } from '../types';
 
 /**
@@ -123,6 +124,55 @@ export const PROFILE_PARAMS: Record<string, LearnerProfileParams> = {
     lambda: 0.10,
     beta_star: 0.05,
   },
+  // Crammer's Crash profile: high overconfidence, fast forgetting, slow learning
+  'Crammer': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.OVERCONFIDENT,
+    alpha: 0.10,
+    lambda: 0.25,
+    beta_star: 0.30,
+    initial_k_star: 0.5,
+    rt_base: 2.0,
+    rt_gamma: 1.5,
+    confidence_noise_std: 0.08,
+  },
+  // Domain-asymmetric profiles for domain-split calibration testing
+  'Vocab-Over-Grammar-Under': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.OVERCONFIDENT, // dominant direction
+    alpha: 0.20,
+    lambda: 0.10,
+    beta_star: 0.05, // mild global bias
+    beta_star_vocab: 0.25,
+    beta_star_grammar: -0.15,
+  },
+  'Vocab-Under-Grammar-Over': {
+    ability: AbilityLevel.MEDIUM,
+    calibration: CalibrationType.UNDERCONFIDENT,
+    alpha: 0.20,
+    lambda: 0.10,
+    beta_star: 0.05,
+    beta_star_vocab: -0.15,
+    beta_star_grammar: 0.25,
+  },
+  'Vocab-Well-Grammar-Over': {
+    ability: AbilityLevel.HIGH,
+    calibration: CalibrationType.OVERCONFIDENT,
+    alpha: 0.25,
+    lambda: 0.08,
+    beta_star: 0.10,
+    beta_star_vocab: 0.00,
+    beta_star_grammar: 0.20,
+  },
+  'Both-Over-Asymmetric': {
+    ability: AbilityLevel.LOW,
+    calibration: CalibrationType.OVERCONFIDENT,
+    alpha: 0.15,
+    lambda: 0.12,
+    beta_star: 0.20,
+    beta_star_vocab: 0.30,
+    beta_star_grammar: 0.10,
+  },
 };
 
 /**
@@ -137,8 +187,10 @@ export function createLearnerProfile(
     throw new Error(`Unknown profile: ${profileName}`);
   }
 
+  const initialKStar = params.initial_k_star ?? 0.3;
+
   const trueState: TrueLearnerState = {
-    K_star: 0.3, // Initial global knowledge
+    K_star: initialKStar,
     beta_star: params.beta_star,
     alpha: params.alpha,
     alpha_err: params.alpha * 0.5,
@@ -146,17 +198,19 @@ export function createLearnerProfile(
   };
 
   const systemBelief: SystemBelief = {
-    K_hat: 0.3,
+    K_hat: initialKStar,
     beta_hat: 0, // System starts with no calibration estimate
     confidence_interval: 0.2,
     last_updated: new Date(),
   };
 
-  // Create item pool
+  // Create item pool — alternate between vocabulary and grammar items
   const items: Item[] = [];
+  const itemInitialK = params.initial_k_star ? params.initial_k_star * 0.3 : 0.1;
   for (let i = 0; i < numItems; i++) {
     const difficulty = (i % 3) * 0.33 + 0.17; // Easy/Medium/Hard
-    items.push(createItem(`item-${i}`, difficulty));
+    const itemType = i % 2 === 0 ? ItemType.VOCABULARY : ItemType.GRAMMAR;
+    items.push(createItem(`item-${i}`, difficulty, itemInitialK, itemType));
   }
 
   return {
@@ -174,7 +228,7 @@ export function createLearnerProfile(
 /**
  * Create an item
  */
-export function createItem(id: string, difficulty: number): Item {
+export function createItem(id: string, difficulty: number, initialKStar: number = 0.1, itemType?: ItemType): Item {
   const now = new Date();
   const tomorrow = new Date(now);
   tomorrow.setDate(tomorrow.getDate() + 1);
@@ -182,12 +236,13 @@ export function createItem(id: string, difficulty: number): Item {
   return {
     id,
     difficulty,
+    item_type: itemType,
     true_state: {
-      K_star: 0.1, // Start with low knowledge
+      K_star: initialKStar,
       last_review: null,
     },
     system_belief: {
-      K_hat: 0.1,
+      K_hat: initialKStar,
       beta_hat: 0,
       next_review: tomorrow,
       interval_days: 1,
@@ -208,6 +263,12 @@ export const CORE_PROFILE_NAMES = [
 export const EXTENDED_PROFILE_NAMES = [
   'Extreme-Over', 'Extreme-Under', 'Fast-Forget-Over',
   'Noisy-Confidence', 'HighAb-Extreme-Over', 'Minimal-Bias',
+  'Crammer',
+];
+
+export const DOMAIN_SPLIT_PROFILE_NAMES = [
+  'Vocab-Over-Grammar-Under', 'Vocab-Under-Grammar-Over',
+  'Vocab-Well-Grammar-Over', 'Both-Over-Asymmetric',
 ];
 
 /**

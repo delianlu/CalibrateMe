@@ -112,6 +112,18 @@ const SimulationControls: React.FC = () => {
         </label>
       </div>
 
+      <div className="form-group">
+        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={config.enable_domain_split}
+            onChange={(e) => setConfig({ enable_domain_split: e.target.checked })}
+            disabled={isRunning}
+          />
+          <span className="form-label" style={{ margin: 0 }}>Domain-Split Calibration</span>
+        </label>
+      </div>
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
         <button
           className="btn btn-primary btn-block"

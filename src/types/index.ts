@@ -36,6 +36,20 @@ export enum SchedulerType {
   DECAY_BASED = 'DECAY_BASED',
 }
 
+export enum ItemType {
+  VOCABULARY = 'VOCABULARY',
+  GRAMMAR = 'GRAMMAR',
+}
+
+// -----------------------------------------------------------------------------
+// Domain-Split Calibration
+// -----------------------------------------------------------------------------
+
+export interface DomainCalibration {
+  beta_hat_vocab: number;
+  beta_hat_grammar: number;
+}
+
 // -----------------------------------------------------------------------------
 // Core Interfaces
 // -----------------------------------------------------------------------------
@@ -60,6 +74,7 @@ export interface SystemBelief {
   beta_hat: number;         // Estimated calibration bias
   confidence_interval: number; // Uncertainty in estimate
   last_updated: Date;
+  domain_calibration?: DomainCalibration; // Domain-specific β̂ values
 }
 
 /**
@@ -68,6 +83,7 @@ export interface SystemBelief {
 export interface Item {
   id: string;
   difficulty: number;       // Item difficulty [0, 1]
+  item_type?: ItemType;     // Domain type for domain-split calibration
   true_state: ItemTrueState;
   system_belief: ItemSystemBelief;
   review_history: ReviewRecord[];
@@ -91,6 +107,7 @@ export interface ItemSystemBelief {
  */
 export interface Response {
   item_id: string;
+  item_type?: ItemType;     // Domain type for domain-split calibration
   correctness: boolean;     // y: correct (true) or incorrect (false)
   confidence: number;       // c: reported confidence [0, 1]
   response_time: number;    // τ: response time in seconds
@@ -130,6 +147,14 @@ export interface LearnerProfileParams {
   alpha: number;
   lambda: number;
   beta_star: number;
+  // Optional overrides for specialized profiles (e.g., Crammer)
+  initial_k_star?: number;
+  rt_base?: number;
+  rt_gamma?: number;
+  confidence_noise_std?: number;
+  // Domain-specific calibration bias (for domain-split profiles)
+  beta_star_vocab?: number;
+  beta_star_grammar?: number;
 }
 
 export interface LearnerProfile {
@@ -176,6 +201,7 @@ export interface SimulationConfig {
   enable_scaffolding: boolean;
   enable_dual_process: boolean;
   enable_difficulty_sequencing: boolean;
+  enable_domain_split: boolean;   // Track β̂ per domain (vocab/grammar)
   random_seed: number | null;
 
   // Model parameters
@@ -196,6 +222,7 @@ export const DEFAULT_SIMULATION_CONFIG: SimulationConfig = {
   enable_scaffolding: true,
   enable_dual_process: true,
   enable_difficulty_sequencing: false,
+  enable_domain_split: false,
   random_seed: null,
   slip_probability: 0.1,
   guess_probability: 0.2,
@@ -231,6 +258,10 @@ export interface SimulationResults {
   K_star_trajectory: number[];
   K_hat_trajectory: number[];
 
+  // Domain-split calibration trajectories (when enabled)
+  beta_hat_vocab_trajectory?: number[];
+  beta_hat_grammar_trajectory?: number[];
+
   // Per-session data
   session_data: SessionData[];
 }
@@ -248,6 +279,9 @@ export interface SessionData {
   mean_K_hat: number;
   ece: number;
   brier: number;
+  // Domain-split calibration data (when enabled)
+  beta_hat_vocab?: number;
+  beta_hat_grammar?: number;
 }
 
 // -----------------------------------------------------------------------------

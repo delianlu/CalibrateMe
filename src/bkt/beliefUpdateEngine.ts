@@ -3,7 +3,7 @@
 // Implements Equation 1 from the project pitch
 // =============================================================================
 
-import { Response, SystemBelief, SimulationConfig } from '../types';
+import { Response, SystemBelief, SimulationConfig, DomainCalibration, ItemType } from '../types';
 import { clip } from '../utils/random';
 
 /**
@@ -139,6 +139,38 @@ export function updateBetaHat(
 
   // Exponential moving average
   return current_beta_hat + learning_rate * (observed_beta - current_beta_hat);
+}
+
+/**
+ * Update domain-specific β̂ values from recent responses
+ * Splits responses by item_type and applies EMA independently
+ */
+export function updateDomainBetaHat(
+  responses: Response[],
+  current: DomainCalibration,
+  learning_rate: number = 0.1
+): DomainCalibration {
+  const vocabResponses = responses.filter(r => r.item_type === ItemType.VOCABULARY).slice(-10);
+  const grammarResponses = responses.filter(r => r.item_type === ItemType.GRAMMAR).slice(-10);
+
+  let beta_hat_vocab = current.beta_hat_vocab;
+  let beta_hat_grammar = current.beta_hat_grammar;
+
+  if (vocabResponses.length >= 3) {
+    const mean_conf = vocabResponses.reduce((s, r) => s + r.confidence, 0) / vocabResponses.length;
+    const mean_acc = vocabResponses.reduce((s, r) => s + (r.correctness ? 1 : 0), 0) / vocabResponses.length;
+    const observed = mean_conf - mean_acc;
+    beta_hat_vocab = beta_hat_vocab + learning_rate * (observed - beta_hat_vocab);
+  }
+
+  if (grammarResponses.length >= 3) {
+    const mean_conf = grammarResponses.reduce((s, r) => s + r.confidence, 0) / grammarResponses.length;
+    const mean_acc = grammarResponses.reduce((s, r) => s + (r.correctness ? 1 : 0), 0) / grammarResponses.length;
+    const observed = mean_conf - mean_acc;
+    beta_hat_grammar = beta_hat_grammar + learning_rate * (observed - beta_hat_grammar);
+  }
+
+  return { beta_hat_vocab, beta_hat_grammar };
 }
 
 /**
