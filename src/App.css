@@ -4586,3 +4586,387 @@ body {
 .schedule-comparison__cell--sm2 {
   background: #EF4444;
 }
+
+/* =============================================================================
+   Chart Export Buttons
+   ============================================================================= */
+
+.export-btn-bar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+*:hover > .export-btn-bar {
+  opacity: 1;
+}
+
+.export-btn {
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.export-btn:hover {
+  background: #4a5568;
+  color: white;
+  border-color: #4a5568;
+}
+
+/* =============================================================================
+   Dark Mode — New Components (Ablation, Sensitivity, Dose-Response, etc.)
+   ============================================================================= */
+
+/* --- Ablation Table --- */
+[data-theme="dark"] .ablation-table-container { background: var(--bg-card); }
+[data-theme="dark"] .ablation-table__header { background: #1a1a2e; border-color: var(--border-color); }
+[data-theme="dark"] .ablation-table__title { color: var(--text-primary); }
+[data-theme="dark"] .ablation-table__subtitle { color: var(--text-muted); }
+[data-theme="dark"] .ablation-table th { background: #1E293B; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .ablation-table td { border-color: var(--border-color); color: var(--text-primary); }
+[data-theme="dark"] .ablation-table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.03); }
+[data-theme="dark"] .ablation-table tr:hover td { background: rgba(99, 102, 241, 0.1); }
+
+[data-theme="dark"] .stat-cell { color: var(--text-primary); }
+[data-theme="dark"] .stat-cell__ci { color: var(--text-muted); }
+[data-theme="dark"] .effect-cell--negligible { background: rgba(148, 163, 184, 0.15); color: #94A3B8; }
+[data-theme="dark"] .effect-cell--small { background: rgba(250, 204, 21, 0.15); color: #FCD34D; }
+[data-theme="dark"] .effect-cell--medium { background: rgba(96, 165, 250, 0.15); color: #93C5FD; }
+[data-theme="dark"] .effect-cell--large { background: rgba(52, 211, 153, 0.15); color: #34D399; }
+
+/* --- Sensitivity Heatmap --- */
+[data-theme="dark"] .sensitivity-container { background: var(--bg-card); }
+[data-theme="dark"] .sensitivity__header { background: #1a1a2e; border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity__title { color: var(--text-primary); }
+[data-theme="dark"] .sensitivity__controls button { background: #334155; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity__controls button.active { background: #6366F1; color: white; }
+[data-theme="dark"] .sensitivity-table th { background: #1E293B; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity-table td { border-color: var(--border-color); }
+[data-theme="dark"] .sensitivity-cell { color: var(--text-primary); }
+
+/* --- Dose-Response Chart --- */
+[data-theme="dark"] .dose-response-container { background: var(--bg-card); }
+[data-theme="dark"] .dose-response__header { background: #1a1a2e; border-color: var(--border-color); }
+[data-theme="dark"] .dose-response__title { color: var(--text-primary); }
+[data-theme="dark"] .dose-response__controls select,
+[data-theme="dark"] .dose-response__controls label { color: var(--text-secondary); }
+[data-theme="dark"] .dose-response__note { color: var(--text-muted); }
+[data-theme="dark"] .recharts-cartesian-axis-tick-value { fill: var(--text-muted) !important; }
+[data-theme="dark"] .recharts-legend-item-text { color: var(--text-secondary) !important; }
+[data-theme="dark"] .recharts-tooltip-wrapper .recharts-default-tooltip { background: #1E293B !important; border-color: var(--border-color) !important; }
+[data-theme="dark"] .recharts-tooltip-label { color: var(--text-primary) !important; }
+[data-theme="dark"] .recharts-tooltip-item { color: var(--text-secondary) !important; }
+
+/* --- Mastery Comparison --- */
+[data-theme="dark"] .mastery-comparison { background: var(--bg-card); }
+[data-theme="dark"] .mastery-comparison__title { color: var(--text-primary); }
+[data-theme="dark"] .mastery-comparison__charts { background: var(--bg-card); }
+
+/* --- Learner Classification --- */
+[data-theme="dark"] .learner-classification { background: var(--bg-card); border-color: var(--border-color); }
+[data-theme="dark"] .learner-classification__title { color: var(--text-primary); }
+[data-theme="dark"] .learner-classification__description { color: var(--text-secondary); }
+[data-theme="dark"] .learner-classification__badge { border-color: var(--border-color); }
+
+/* --- Schedule Comparison --- */
+[data-theme="dark"] .schedule-comparison { background: var(--bg-card); }
+[data-theme="dark"] .schedule-comparison__title { color: var(--text-primary); }
+[data-theme="dark"] .schedule-comparison__item { border-color: var(--border-color); }
+[data-theme="dark"] .schedule-comparison__item-label { color: var(--text-secondary); }
+[data-theme="dark"] .schedule-comparison__timeline { background: #0F172A; }
+
+/* --- Final Report --- */
+[data-theme="dark"] .final-report { background: var(--bg-card); }
+[data-theme="dark"] .final-report__header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+[data-theme="dark"] .final-report__title { color: #F1F5F9; }
+[data-theme="dark"] .final-report__subtitle { color: #CBD5E1; }
+[data-theme="dark"] .final-report-section { border-color: var(--border-color); }
+[data-theme="dark"] .final-report-section h3 { color: var(--text-primary); }
+[data-theme="dark"] .final-report-section p { color: var(--text-secondary); }
+
+[data-theme="dark"] .metric-tile { background: #1E293B; border-color: var(--border-color); }
+[data-theme="dark"] .metric-tile__label { color: var(--text-muted); }
+[data-theme="dark"] .metric-tile__value { color: var(--text-primary); }
+
+[data-theme="dark"] .param-card { background: #1E293B; border-color: var(--border-color); }
+[data-theme="dark"] .param-card__label { color: var(--text-muted); }
+[data-theme="dark"] .param-card__value { color: var(--text-primary); }
+[data-theme="dark"] .param-card__interpretation { color: var(--text-secondary); }
+
+[data-theme="dark"] .strength-card,
+[data-theme="dark"] .weakness-card { background: #1E293B; border-color: var(--border-color); }
+[data-theme="dark"] .strength-card__area,
+[data-theme="dark"] .weakness-card__area { color: var(--text-primary); }
+[data-theme="dark"] .strength-card__evidence,
+[data-theme="dark"] .weakness-card__evidence { color: var(--text-secondary); }
+
+[data-theme="dark"] .comparison-table th { background: #1E293B; color: var(--text-secondary); border-color: var(--border-color); }
+[data-theme="dark"] .comparison-table td { color: var(--text-primary); border-color: var(--border-color); }
+[data-theme="dark"] .comparison-table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.03); }
+
+[data-theme="dark"] .recommendation-list li { color: var(--text-secondary); }
+
+/* --- Export Buttons (dark) --- */
+[data-theme="dark"] .export-btn {
+  background: rgba(30, 41, 59, 0.9);
+  color: #94A3B8;
+  border-color: #475569;
+}
+[data-theme="dark"] .export-btn:hover {
+  background: #475569;
+  color: white;
+  border-color: #64748B;
+}
+
+/* --- Onboarding Card --- */
+[data-theme="dark"] .onboarding-card { background: var(--bg-card); border-color: var(--border-color); }
+[data-theme="dark"] .onboarding-card h2 { color: var(--text-primary); }
+[data-theme="dark"] .onboarding-card p { color: var(--text-secondary); }
+
+/* --- Error Boundary --- */
+[data-theme="dark"] .error-boundary { background: #1E293B; border-color: #991B1B; }
+[data-theme="dark"] .error-boundary h2 { color: #FCA5A5; }
+[data-theme="dark"] .error-boundary p { color: var(--text-secondary); }
+
+/* =============================================================================
+   Accessibility — Focus Styles & Keyboard Navigation
+   ============================================================================= */
+
+/* Focus-visible ring for all buttons */
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: 2px;
+}
+
+/* Export buttons focus */
+.export-btn:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: 2px;
+}
+
+/* Navigation items focus */
+.app-sidebar__item:focus-visible,
+.app-bottomnav__item:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: -2px;
+  border-radius: var(--border-radius-md, 8px);
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-primary-500, #6366F1);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 10000;
+  font-size: var(--font-size-sm);
+  border-radius: 0 0 var(--border-radius-md) 0;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Ensure disabled buttons have no pointer events */
+.btn:disabled {
+  pointer-events: none;
+}
+
+/* High contrast mode: ensure badge text is readable */
+@media (forced-colors: active) {
+  .badge-success,
+  .badge-warning,
+  .badge-error {
+    border: 1px solid;
+  }
+  .sensitivity-cell {
+    border: 1px solid;
+  }
+}
+
+/* Reduced motion: disable transitions */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =============================================================================
+   Demo Overlay — Walkthrough for video presentation
+   ============================================================================= */
+
+.demo-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-500, #6366F1);
+  background: var(--bg-card, white);
+  color: var(--color-primary-500, #6366F1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.15));
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.demo-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.2));
+}
+
+.demo-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: 3px;
+}
+
+.demo-overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.demo-overlay__card {
+  pointer-events: all;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  background: var(--bg-card, white);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--border-radius-lg, 12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  padding: 1.25rem;
+}
+
+.demo-overlay__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-overlay__step-badge {
+  background: var(--color-primary-500, #6366F1);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.demo-overlay__duration {
+  font-size: 0.75rem;
+  color: var(--text-faint, #a0aec0);
+  flex: 1;
+}
+
+.demo-overlay__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-faint, #a0aec0);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.demo-overlay__close:hover {
+  color: var(--text-primary);
+  background: var(--bg-muted, #f7fafc);
+}
+
+.demo-overlay__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.demo-overlay__description {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary, #4a5568);
+}
+
+.demo-overlay__notes {
+  font-size: 0.78rem;
+  color: var(--text-faint, #a0aec0);
+  background: var(--bg-muted, #f7fafc);
+  border-radius: var(--border-radius-sm, 6px);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--color-primary-500, #6366F1);
+}
+
+.demo-overlay__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.demo-overlay__progress {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.demo-overlay__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-color, #e2e8f0);
+  transition: background 0.2s ease;
+}
+
+.demo-overlay__dot--active {
+  background: var(--color-primary-500, #6366F1);
+  width: 8px;
+  height: 8px;
+}
+
+.demo-overlay__dot--done {
+  background: var(--color-success, #38a169);
+}
+
+/* Dark mode */
+[data-theme="dark"] .demo-toggle-btn {
+  background: var(--bg-card);
+  border-color: var(--color-primary-400, #818CF8);
+  color: var(--color-primary-400, #818CF8);
+}
+
+[data-theme="dark"] .demo-overlay__card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .demo-overlay__close:hover {
+  background: var(--bg-muted);
+}
+
+[data-theme="dark"] .demo-overlay__notes {
+  background: var(--bg-muted);
+}

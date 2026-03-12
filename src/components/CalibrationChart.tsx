@@ -24,7 +24,7 @@ const CalibrationChart: React.FC<CalibrationChartProps> = ({
   colors,
 }) => {
   return (
-    <div className="chart-container">
+    <div className="chart-container" role="figure" aria-label={title}>
       <h4 className="chart-title">{title}</h4>
       <ResponsiveContainer width="100%" height={250}>
         <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>

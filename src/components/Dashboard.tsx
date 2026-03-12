@@ -2,7 +2,7 @@
 // Dashboard Component (UPDATED)
 // =============================================================================
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { FileText, ArrowLeft, FlaskConical, Thermometer, Sliders } from 'lucide-react';
 import { useSimulationStore } from '../store/simulationStore';
 import { useAdvancedAnalyticsStore } from '../store/advancedAnalyticsStore';
@@ -18,11 +18,14 @@ import ComparisonView from './ComparisonView';
 import HypothesisResults from './HypothesisResults';
 import ResponseHistory from './ResponseHistory';
 import ProgressBar from './ProgressBar';
-import FinalReport from '../features/analytics/components/FinalReport';
-import AblationTable from '../features/simulation/components/AblationTable';
-import SensitivityHeatmap from '../features/simulation/components/SensitivityHeatmap';
-import DoseResponseChart from '../features/simulation/components/DoseResponseChart';
-import MasteryComparison from '../features/simulation/components/MasteryComparison';
+import ExportableChart from './ExportableChart';
+
+// Lazy-load heavy components only used in specific views
+const FinalReport = React.lazy(() => import('../features/analytics/components/FinalReport'));
+const AblationTable = React.lazy(() => import('../features/simulation/components/AblationTable'));
+const SensitivityHeatmap = React.lazy(() => import('../features/simulation/components/SensitivityHeatmap'));
+const DoseResponseChart = React.lazy(() => import('../features/simulation/components/DoseResponseChart'));
+const MasteryComparison = React.lazy(() => import('../features/simulation/components/MasteryComparison'));
 
 type DashboardView = 'main' | 'report' | 'advanced';
 
@@ -89,7 +92,9 @@ const Dashboard: React.FC = () => {
           <button className="btn btn-secondary btn-sm" onClick={() => setView('main')} style={{ marginBottom: '1rem' }}>
             <ArrowLeft size={14} /> Back to Results
           </button>
-          <FinalReport results={results} params={profile.params} baselineResults={baselineResults} />
+          <Suspense fallback={<div className="card" style={{ padding: '2rem', textAlign: 'center' }}>Loading report...</div>}>
+            <FinalReport results={results} params={profile.params} baselineResults={baselineResults} />
+          </Suspense>
         </div>
       </div>
     );
@@ -166,6 +171,15 @@ const Dashboard: React.FC = () => {
           {advRunning && (
             <div className="card" style={{ padding: '2rem' }}>
               <ProgressBar progress={advProgress} message={advProgressMessage} />
+              <div style={{ textAlign: 'center', marginTop: '0.75rem' }}>
+                <button
+                  className="btn btn-secondary btn-sm"
+                  onClick={advStore.cancel}
+                  style={{ background: '#e53e3e', color: 'white' }}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           )}
 
@@ -177,6 +191,7 @@ const Dashboard: React.FC = () => {
             </div>
           )}
 
+          <Suspense fallback={<div className="card" style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
           {ablationResults && !advRunning && (
             <>
               <AblationTable results={ablationResults} />
@@ -197,6 +212,7 @@ const Dashboard: React.FC = () => {
               <DoseResponseChart report={deltaSweepReport} />
             </div>
           )}
+          </Suspense>
         </div>
       </div>
     );
@@ -261,10 +277,12 @@ const Dashboard: React.FC = () => {
             </div>
 
             {calibrationBins.length > 0 && (
-              <CalibrationCurve
-                bins={calibrationBins}
-                title="Calibration Curve (Confidence vs Accuracy)"
-              />
+              <ExportableChart id="chart-calibration-curve" title="calibration_curve">
+                <CalibrationCurve
+                  bins={calibrationBins}
+                  title="Calibration Curve (Confidence vs Accuracy)"
+                />
+              </ExportableChart>
             )}
 
             <ResponseHistory sessionData={results.session_data} />

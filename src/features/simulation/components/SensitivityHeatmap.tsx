@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { useMemo, useState, useCallback } from 'react';
+import ExportableChart from '../../../components/ExportableChart';
 import { Download, Thermometer } from 'lucide-react';
 import { SensitivityReport, sensitivityToCSV } from '../../../simulation/sensitivityAnalysis';
 import { downloadFile } from '../../../utils/export';
@@ -49,6 +50,7 @@ export default function SensitivityHeatmap({ reports }: SensitivityHeatmapProps)
   if (reports.length === 0) return null;
 
   return (
+    <ExportableChart id="chart-sensitivity" title="sensitivity_heatmap">
     <div className="sensitivity-container">
       <div className="sensitivity__header">
         <h3 className="sensitivity__title">
@@ -60,6 +62,7 @@ export default function SensitivityHeatmap({ reports }: SensitivityHeatmapProps)
             value={selectedParam}
             onChange={e => setSelectedParam(Number(e.target.value))}
             style={{ maxWidth: 220 }}
+            aria-label="Select parameter for sensitivity analysis"
           >
             {reports.map((r, i) => (
               <option key={r.parameterName} value={i}>
@@ -81,12 +84,12 @@ export default function SensitivityHeatmap({ reports }: SensitivityHeatmapProps)
       </p>
 
       <div className="ablation-table-scroll">
-        <table className="sensitivity-table">
+        <table className="sensitivity-table" aria-label={`Sensitivity analysis for ${report?.parameterName ?? 'parameter'}`}>
           <thead>
             <tr>
-              <th>Profile</th>
+              <th scope="col">Profile</th>
               {values.map(v => (
-                <th key={v}>{v.toFixed(v % 1 === 0 ? 0 : 2)}</th>
+                <th scope="col" key={v}>{v.toFixed(v % 1 === 0 ? 0 : 2)}</th>
               ))}
             </tr>
           </thead>
@@ -109,5 +112,6 @@ export default function SensitivityHeatmap({ reports }: SensitivityHeatmapProps)
         </table>
       </div>
     </div>
+    </ExportableChart>
   );
 }

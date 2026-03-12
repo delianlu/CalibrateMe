@@ -68,7 +68,7 @@ const CalibrationCurve: React.FC<CalibrationCurveProps> = ({
   };
 
   return (
-    <div className="chart-container">
+    <div className="chart-container" role="figure" aria-label={title}>
       <h4 className="chart-title">{title}</h4>
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>

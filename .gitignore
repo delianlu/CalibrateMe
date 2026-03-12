@@ -1,5 +1,30 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
 coverage/
 .vite/
+
+# Logs
 *.log
+npm-debug.log*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel/

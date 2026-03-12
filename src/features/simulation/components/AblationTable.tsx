@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { useMemo, useCallback } from 'react';
+import ExportableChart from '../../../components/ExportableChart';
 import { Download, FlaskConical } from 'lucide-react';
 import { AblationResults, ablationToCSV } from '../../../simulation/ablationRunner';
 import { StatisticalResult, EffectSize } from '../../../simulation/statisticalAnalysis';
@@ -64,6 +65,7 @@ export default function AblationTable({ results }: AblationTableProps) {
   }, [results]);
 
   return (
+    <ExportableChart id="chart-ablation" title="ablation_results">
     <div className="ablation-table-container">
       <div className="ablation-table__header">
         <h3 className="ablation-table__title">
@@ -81,16 +83,16 @@ export default function AblationTable({ results }: AblationTableProps) {
         <div key={profile} className="ablation-profile-block">
           <h4 className="ablation-profile-block__title">{profile}</h4>
           <div className="ablation-table-scroll">
-            <table className="ablation-table">
+            <table className="ablation-table" aria-label={`Ablation results for ${profile}`}>
               <thead>
                 <tr>
-                  <th>Condition</th>
-                  <th>7-Day Retention</th>
-                  <th>Final ECE</th>
-                  <th>Time to Mastery</th>
-                  <th>Review Efficiency</th>
-                  <th>d (Ret vs SM-2)</th>
-                  <th>d (ECE vs SM-2)</th>
+                  <th scope="col">Condition</th>
+                  <th scope="col">7-Day Retention</th>
+                  <th scope="col">Final ECE</th>
+                  <th scope="col">Time to Mastery</th>
+                  <th scope="col">Review Efficiency</th>
+                  <th scope="col">d (Ret vs SM-2)</th>
+                  <th scope="col">d (ECE vs SM-2)</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,5 +119,6 @@ export default function AblationTable({ results }: AblationTableProps) {
         </div>
       ))}
     </div>
+    </ExportableChart>
   );
 }

@@ -4,6 +4,7 @@
 // =============================================================================
 
 import { useMemo } from 'react';
+import ExportableChart from '../../../components/ExportableChart';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Legend,
@@ -60,13 +61,14 @@ export default function MasteryComparison({ results }: MasteryComparisonProps) {
   const keyConditions = ['Full CalibrateMe', 'SM-2 Baseline', 'BKT-Only'];
 
   return (
+    <ExportableChart id="chart-mastery" title="mastery_comparison">
     <div className="mastery-comparison">
       <h3 className="mastery-comparison__title">
         <Clock size={18} /> Time-to-Mastery & Review Efficiency
       </h3>
 
       <div className="report-charts-row">
-        <div className="report-chart card">
+        <div className="report-chart card" role="figure" aria-label="Sessions to Mastery comparison chart">
           <h4 className="report-chart__title">Sessions to Mastery (lower is better)</h4>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={masteryData} layout="vertical">
@@ -89,7 +91,7 @@ export default function MasteryComparison({ results }: MasteryComparisonProps) {
           </ResponsiveContainer>
         </div>
 
-        <div className="report-chart card">
+        <div className="report-chart card" role="figure" aria-label="Reviews per Mastered Item comparison chart">
           <h4 className="report-chart__title">Reviews per Mastered Item (lower is better)</h4>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={efficiencyData} layout="vertical">
@@ -113,5 +115,6 @@ export default function MasteryComparison({ results }: MasteryComparisonProps) {
         </div>
       </div>
     </div>
+    </ExportableChart>
   );
 }

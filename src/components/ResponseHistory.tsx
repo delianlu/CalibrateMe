@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { SessionData } from '../types';
 
 interface ResponseHistoryProps {
@@ -6,26 +6,25 @@ interface ResponseHistoryProps {
 }
 
 const ResponseHistory: React.FC<ResponseHistoryProps> = ({ sessionData }) => {
-  // Show last 10 sessions
-  const recentSessions = sessionData.slice(-10);
+  const recentSessions = useMemo(() => sessionData.slice(-10), [sessionData]);
 
   return (
     <div className="card">
       <h3 className="card-title">Session History (Last 10)</h3>
       <div style={{ overflowX: 'auto' }}>
-        <table className="response-table">
+        <table className="response-table" aria-label="Session history">
           <thead>
             <tr>
-              <th>Session</th>
-              <th>Items</th>
-              <th>Correct</th>
-              <th>Accuracy</th>
-              <th>Mean Conf.</th>
-              <th>Type 1</th>
-              <th>Type 2</th>
-              <th>Scaffolds</th>
-              <th>Mean K*</th>
-              <th>ECE</th>
+              <th scope="col">Session</th>
+              <th scope="col">Items</th>
+              <th scope="col">Correct</th>
+              <th scope="col">Accuracy</th>
+              <th scope="col">Mean Conf.</th>
+              <th scope="col">Type 1</th>
+              <th scope="col">Type 2</th>
+              <th scope="col">Scaffolds</th>
+              <th scope="col">Mean K*</th>
+              <th scope="col">ECE</th>
             </tr>
           </thead>
           <tbody>

@@ -40,9 +40,9 @@ const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ results }) => {
   ];
 
   return (
-    <div className="metrics-grid">
+    <div className="metrics-grid" role="list" aria-label="Simulation metrics">
       {metrics.map((metric, index) => (
-        <div key={index} className="metric-card">
+        <div key={index} className="metric-card" role="listitem" aria-label={`${metric.label}: ${metric.value}`}>
           <div className="metric-label">{metric.label}</div>
           <div className={`metric-value ${metric.positive ? 'positive' : ''}`}>
             {metric.value}
