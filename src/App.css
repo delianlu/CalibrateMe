@@ -4808,3 +4808,165 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =============================================================================
+   Demo Overlay — Walkthrough for video presentation
+   ============================================================================= */
+
+.demo-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-500, #6366F1);
+  background: var(--bg-card, white);
+  color: var(--color-primary-500, #6366F1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.15));
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.demo-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg, 0 8px 24px rgba(0, 0, 0, 0.2));
+}
+
+.demo-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-primary-500, #6366F1);
+  outline-offset: 3px;
+}
+
+.demo-overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.demo-overlay__card {
+  pointer-events: all;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  background: var(--bg-card, white);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--border-radius-lg, 12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  padding: 1.25rem;
+}
+
+.demo-overlay__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.demo-overlay__step-badge {
+  background: var(--color-primary-500, #6366F1);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.demo-overlay__duration {
+  font-size: 0.75rem;
+  color: var(--text-faint, #a0aec0);
+  flex: 1;
+}
+
+.demo-overlay__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-faint, #a0aec0);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.demo-overlay__close:hover {
+  color: var(--text-primary);
+  background: var(--bg-muted, #f7fafc);
+}
+
+.demo-overlay__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.demo-overlay__description {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary, #4a5568);
+}
+
+.demo-overlay__notes {
+  font-size: 0.78rem;
+  color: var(--text-faint, #a0aec0);
+  background: var(--bg-muted, #f7fafc);
+  border-radius: var(--border-radius-sm, 6px);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid var(--color-primary-500, #6366F1);
+}
+
+.demo-overlay__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.demo-overlay__progress {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.demo-overlay__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-color, #e2e8f0);
+  transition: background 0.2s ease;
+}
+
+.demo-overlay__dot--active {
+  background: var(--color-primary-500, #6366F1);
+  width: 8px;
+  height: 8px;
+}
+
+.demo-overlay__dot--done {
+  background: var(--color-success, #38a169);
+}
+
+/* Dark mode */
+[data-theme="dark"] .demo-toggle-btn {
+  background: var(--bg-card);
+  border-color: var(--color-primary-400, #818CF8);
+  color: var(--color-primary-400, #818CF8);
+}
+
+[data-theme="dark"] .demo-overlay__card {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .demo-overlay__close:hover {
+  background: var(--bg-muted);
+}
+
+[data-theme="dark"] .demo-overlay__notes {
+  background: var(--bg-muted);
+}

@@ -29,6 +29,7 @@ import { MiniGameContainer } from './features/minigame';
 import { saveSessionToProvider } from './features/api/apiClient';
 import { getRecentResponses } from './features/user/services/storageService';
 import ErrorBoundary from './components/ErrorBoundary';
+import DemoOverlay from './components/DemoOverlay';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
@@ -160,6 +161,10 @@ function App() {
   );
 
   const isDark = profile.preferences.darkMode;
+
+  const handleDemoNavigate = useCallback((demoTab: string) => {
+    setTab(demoTab as AppTab);
+  }, []);
 
   return (
     <div className="app">
@@ -295,6 +300,9 @@ function App() {
         notifications={gamification.pendingNotifications}
         onDismiss={handleDismissNotifications}
       />
+
+      {/* Demo walkthrough overlay */}
+      <DemoOverlay onNavigate={handleDemoNavigate} />
     </div>
   );
 }
