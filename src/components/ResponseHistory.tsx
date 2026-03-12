@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { SessionData } from '../types';
 
 interface ResponseHistoryProps {
@@ -6,8 +6,7 @@ interface ResponseHistoryProps {
 }
 
 const ResponseHistory: React.FC<ResponseHistoryProps> = ({ sessionData }) => {
-  // Show last 10 sessions
-  const recentSessions = sessionData.slice(-10);
+  const recentSessions = useMemo(() => sessionData.slice(-10), [sessionData]);
 
   return (
     <div className="card">

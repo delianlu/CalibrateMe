@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Activity, Target, Brain, Clock } from 'lucide-react';
 import { QuizResponse } from '../../quiz/types';
 import { ItemState } from '../../user/types';
@@ -23,25 +24,27 @@ export default function CalibrationDashboard({
   betaHat = 0,
 }: CalibrationDashboardProps) {
   const totalItems = responses.length;
-  const correctCount = responses.filter(r => r.correctness).length;
-  const accuracy = totalItems > 0 ? correctCount / totalItems : 0;
-  const avgConf =
-    totalItems > 0
-      ? responses.reduce((s, r) => s + r.confidence, 0) / totalItems
-      : 0;
-  const avgRT =
-    totalItems > 0
-      ? responses.reduce((s, r) => s + r.responseTime, 0) / totalItems
-      : 0;
+
+  const { statData } = useMemo(() => {
+    const correctCount = responses.filter(r => r.correctness).length;
+    const acc = totalItems > 0 ? correctCount / totalItems : 0;
+    const conf = totalItems > 0 ? responses.reduce((s, r) => s + r.confidence, 0) / totalItems : 0;
+    const rt = totalItems > 0 ? responses.reduce((s, r) => s + r.responseTime, 0) / totalItems : 0;
+
+    return {
+      accuracy: acc,
+      avgConf: conf,
+      avgRT: rt,
+      statData: [
+        { value: totalItems, label: 'Responses', accent: 'blue' },
+        { value: `${(acc * 100).toFixed(0)}%`, label: 'Accuracy', accent: 'green' },
+        { value: `${conf.toFixed(0)}%`, label: 'Avg Confidence', accent: 'purple' },
+        { value: `${(rt / 1000).toFixed(1)}s`, label: 'Avg RT', accent: 'amber' },
+      ],
+    };
+  }, [responses, totalItems]);
 
   const hasItemData = Object.keys(itemStates).length > 0;
-
-  const statData = [
-    { value: totalItems, label: 'Responses', accent: 'blue' },
-    { value: `${(accuracy * 100).toFixed(0)}%`, label: 'Accuracy', accent: 'green' },
-    { value: `${avgConf.toFixed(0)}%`, label: 'Avg Confidence', accent: 'purple' },
-    { value: `${(avgRT / 1000).toFixed(1)}s`, label: 'Avg RT', accent: 'amber' },
-  ];
 
   return (
     <div className="cal-dashboard">
