@@ -3,7 +3,7 @@
 // Implements Equations 4, 5, 6 from the project pitch
 // =============================================================================
 
-import { Response, TrueLearnerState, Item, SimulationConfig } from '../types';
+import { Response, TrueLearnerState, Item, SimulationConfig, ItemType } from '../types';
 import { SeededRandom, clip } from '../utils/random';
 
 /**
@@ -57,7 +57,8 @@ export function generateResponse(
   item: Item,
   learner_state: TrueLearnerState,
   config: SimulationConfig,
-  random: SeededRandom
+  random: SeededRandom,
+  domainBetaStar?: { vocab: number; grammar: number }
 ): Response {
   const K_star = item.true_state.K_star;
 
@@ -71,9 +72,17 @@ export function generateResponse(
     random
   );
 
+  // Use domain-specific β* when domain split is enabled
+  let beta_star = learner_state.beta_star;
+  if (domainBetaStar && item.item_type) {
+    beta_star = item.item_type === ItemType.VOCABULARY
+      ? domainBetaStar.vocab
+      : domainBetaStar.grammar;
+  }
+
   const confidence = generateConfidence(
     K_star,
-    learner_state.beta_star,
+    beta_star,
     config.confidence_noise_std,
     random
   );
@@ -88,6 +97,7 @@ export function generateResponse(
 
   return {
     item_id: item.id,
+    item_type: item.item_type,
     correctness,
     confidence,
     response_time,

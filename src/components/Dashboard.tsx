@@ -19,6 +19,8 @@ import HypothesisResults from './HypothesisResults';
 import ResponseHistory from './ResponseHistory';
 import ProgressBar from './ProgressBar';
 import ExportableChart from './ExportableChart';
+import CrammerCrashChart from './CrammerCrashChart';
+import DomainCalibrationChart from './DomainCalibrationChart';
 
 // Lazy-load heavy components only used in specific views
 const FinalReport = React.lazy(() => import('../features/analytics/components/FinalReport'));
@@ -243,6 +245,13 @@ const Dashboard: React.FC = () => {
         {results && !simRunning && !comparisonResults && !hypothesisResults && (
           <>
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => window.open(`${window.location.pathname}?splitscreen=true`, '_blank')}
+                style={{ background: '#6366f1', color: 'white' }}
+              >
+                Split-Screen Demo
+              </button>
               <button className="btn btn-secondary btn-sm" onClick={() => setView('advanced')}>
                 <FlaskConical size={14} /> Advanced Analytics
               </button>
@@ -286,6 +295,20 @@ const Dashboard: React.FC = () => {
             )}
 
             <ResponseHistory sessionData={results.session_data} />
+
+            {/* Crammer Crash Analysis — shown when Crammer profile is selected */}
+            {profile?.id === 'Crammer' && (
+              <ExportableChart id="chart-crammer-crash" title="crammer_crash_analysis">
+                <CrammerCrashChart seed={results.config.random_seed ?? 42} />
+              </ExportableChart>
+            )}
+
+            {/* Domain-Split Calibration — shown when domain split is enabled */}
+            {results.config.enable_domain_split && (
+              <ExportableChart id="chart-domain-calibration" title="domain_calibration">
+                <DomainCalibrationChart results={results} />
+              </ExportableChart>
+            )}
           </>
         )}
 

@@ -19,7 +19,7 @@ import { SeededRandom } from '../utils/random';
 import { mean } from '../utils/statistics';
 import { generateResponse } from './responseGenerator';
 import { calculateCalibrationMetrics } from '../calibration/scoringModule';
-import { updateBelief, updateBetaHat } from '../bkt/beliefUpdateEngine';
+import { updateBelief, updateBetaHat, updateDomainBetaHat } from '../bkt/beliefUpdateEngine';
 import { applyForgetting, applyLearning, calculateRetention } from '../memory/forgettingModel';
 import { DualProcessClassifier, getDifficultyBin } from '../dualProcess/classifier';
 import { CalibrateMeScheduler, selectItemsForReview } from '../scheduler/calibrationAwareScheduler';
@@ -43,12 +43,15 @@ function cloneProfile(profile: LearnerProfile): LearnerProfile {
 /**
  * Create initial system belief
  */
-function createInitialBelief(): SystemBelief {
+function createInitialBelief(enableDomainSplit: boolean = false): SystemBelief {
   return {
     K_hat: 0.3,
     beta_hat: 0,
     confidence_interval: 0.2,
     last_updated: new Date(),
+    ...(enableDomainSplit && {
+      domain_calibration: { beta_hat_vocab: 0, beta_hat_grammar: 0 },
+    }),
   };
 }
 
@@ -60,28 +63,42 @@ export function runSimulation(
   config: SimulationConfig = DEFAULT_SIMULATION_CONFIG,
   onProgress?: ProgressCallback
 ): SimulationResults {
+  // Apply profile-level config overrides (e.g., Crammer's faster RT, lower noise)
+  const effectiveConfig: SimulationConfig = {
+    ...config,
+    ...(profile.params.rt_base != null && { rt_base: profile.params.rt_base }),
+    ...(profile.params.rt_gamma != null && { rt_gamma: profile.params.rt_gamma }),
+    ...(profile.params.confidence_noise_std != null && { confidence_noise_std: profile.params.confidence_noise_std }),
+  };
+
   // Initialize random generator
-  const random = new SeededRandom(config.random_seed ?? Date.now());
+  const random = new SeededRandom(effectiveConfig.random_seed ?? Date.now());
 
   // Clone profile to avoid mutation
   const learner = cloneProfile(profile);
 
   // Initialize system belief
-  let systemBelief = createInitialBelief();
+  const domainSplitEnabled = effectiveConfig.enable_domain_split;
+  let systemBelief = createInitialBelief(domainSplitEnabled);
+
+  // Domain-specific β* from profile (for response generation)
+  const domainBetaStar = (domainSplitEnabled && learner.params.beta_star_vocab != null && learner.params.beta_star_grammar != null)
+    ? { vocab: learner.params.beta_star_vocab, grammar: learner.params.beta_star_grammar }
+    : undefined;
 
   // Initialize modules
   const dualProcessClassifier = new DualProcessClassifier();
-  const scaffoldingManager = new AdaptiveScaffoldingManager(config.scaffolding_delta);
+  const scaffoldingManager = new AdaptiveScaffoldingManager(effectiveConfig.scaffolding_delta);
 
   // Initialize scheduler based on type
   let scheduler: SM2Scheduler | BKTOnlyScheduler | DecayBasedScheduler | CalibrateMeScheduler;
 
-  switch (config.scheduler_type) {
+  switch (effectiveConfig.scheduler_type) {
     case SchedulerType.SM2:
       scheduler = new SM2Scheduler();
       break;
     case SchedulerType.BKT_ONLY:
-      scheduler = new BKTOnlyScheduler(learner.params.lambda, config);
+      scheduler = new BKTOnlyScheduler(learner.params.lambda, effectiveConfig);
       break;
     case SchedulerType.DECAY_BASED:
       scheduler = new DecayBasedScheduler();
@@ -91,9 +108,9 @@ export function runSimulation(
       scheduler = new CalibrateMeScheduler(
         learner.params.lambda,
         true,
-        config.enable_dual_process,
+        effectiveConfig.enable_dual_process,
         0.5,
-        config.enable_difficulty_sequencing ?? false
+        effectiveConfig.enable_difficulty_sequencing ?? false
       );
       break;
   }
@@ -101,6 +118,8 @@ export function runSimulation(
   // Tracking variables
   const eceTrajectory: number[] = [];
   const brierTrajectory: number[] = [];
+  const betaHatVocabTrajectory: number[] = [];
+  const betaHatGrammarTrajectory: number[] = [];
   const KStarTrajectory: number[] = [];
   const KHatTrajectory: number[] = [];
   const sessionDataList: SessionData[] = [];
@@ -110,11 +129,11 @@ export function runSimulation(
   let masteryCount = 0;
 
   // Run sessions
-  for (let session = 0; session < config.num_sessions; session++) {
+  for (let session = 0; session < effectiveConfig.num_sessions; session++) {
     // Report progress
     if (onProgress) {
-      const progress = (session / config.num_sessions) * 100;
-      onProgress(progress, `Running session ${session + 1}/${config.num_sessions}`);
+      const progress = (session / effectiveConfig.num_sessions) * 100;
+      onProgress(progress, `Running session ${session + 1}/${effectiveConfig.num_sessions}`);
     }
 
     // Apply forgetting to all items (simulate time passing)
@@ -138,8 +157,8 @@ export function runSimulation(
 
     // Select items for review (coverage-aware for CalibrateMe)
     const itemsToReview = scheduler instanceof CalibrateMeScheduler
-      ? scheduler.selectItems(learner.items, config.items_per_session)
-      : selectItemsForReview(learner.items, config.items_per_session);
+      ? scheduler.selectItems(learner.items, effectiveConfig.items_per_session)
+      : selectItemsForReview(learner.items, effectiveConfig.items_per_session);
 
     // Session tracking
     let correctCount = 0;
@@ -154,8 +173,9 @@ export function runSimulation(
       const response = generateResponse(
         item,
         learner.true_state,
-        config,
-        random
+        effectiveConfig,
+        random,
+        domainBetaStar
       );
 
       // Process with dual-process classifier
@@ -183,10 +203,10 @@ export function runSimulation(
       item.true_state.last_review = new Date();
 
       // Update system belief for BKT-based schedulers
-      if (config.scheduler_type === SchedulerType.CALIBRATEME ||
-          config.scheduler_type === SchedulerType.BKT_ONLY) {
+      if (effectiveConfig.scheduler_type === SchedulerType.CALIBRATEME ||
+          effectiveConfig.scheduler_type === SchedulerType.BKT_ONLY) {
         // Update global belief (used for scheduling and beta_hat)
-        systemBelief = updateBelief(response, systemBelief, config);
+        systemBelief = updateBelief(response, systemBelief, effectiveConfig);
 
         // Also update per-item K̂ using item-local prior (tracks K* better
         // because each item's K̂ evolves based on its own evidence rather
@@ -197,18 +217,26 @@ export function runSimulation(
           confidence_interval: systemBelief.confidence_interval,
           last_updated: systemBelief.last_updated,
         };
-        const updatedItemBelief = updateBelief(response, itemLocalBelief, config);
+        const updatedItemBelief = updateBelief(response, itemLocalBelief, effectiveConfig);
         item.system_belief.K_hat = updatedItemBelief.K_hat;
 
         // Update beta_hat from recent responses
         const recentResponses = allResponses.slice(-20);
         if (recentResponses.length > 0) {
           systemBelief.beta_hat = updateBetaHat(recentResponses, systemBelief.beta_hat);
+
+          // Update domain-specific β̂ when domain split is enabled
+          if (domainSplitEnabled && systemBelief.domain_calibration) {
+            systemBelief.domain_calibration = updateDomainBetaHat(
+              recentResponses,
+              systemBelief.domain_calibration
+            );
+          }
         }
       }
 
       // Apply scaffolding (CalibrateMe only)
-      if (config.enable_scaffolding && config.scheduler_type === SchedulerType.CALIBRATEME) {
+      if (effectiveConfig.enable_scaffolding && effectiveConfig.scheduler_type === SchedulerType.CALIBRATEME) {
         const scaffoldResult = scaffoldingManager.processResponse(
           processedResponse,
           systemBelief.beta_hat,
@@ -246,8 +274,8 @@ export function runSimulation(
     // Propagate global K̂ to unreviewed items: blend stale per-item K̂
     // toward the session-updated global estimate so unreviewed items
     // don't drag down the mean with outdated values.
-    if (config.scheduler_type === SchedulerType.CALIBRATEME ||
-        config.scheduler_type === SchedulerType.BKT_ONLY) {
+    if (effectiveConfig.scheduler_type === SchedulerType.CALIBRATEME ||
+        effectiveConfig.scheduler_type === SchedulerType.BKT_ONLY) {
       const reviewedIds = new Set(itemsToReview.map(i => i.id));
       const blendFactor = 0.15;
       for (const item of learner.items) {
@@ -268,11 +296,17 @@ export function runSimulation(
     KStarTrajectory.push(meanKStar);
 
     // Use mean of per-item K̂ for tracking
-    const meanKHat = (config.scheduler_type === SchedulerType.CALIBRATEME ||
-                      config.scheduler_type === SchedulerType.BKT_ONLY)
+    const meanKHat = (effectiveConfig.scheduler_type === SchedulerType.CALIBRATEME ||
+                      effectiveConfig.scheduler_type === SchedulerType.BKT_ONLY)
       ? mean(learner.items.map(i => i.system_belief.K_hat))
       : systemBelief.K_hat;
     KHatTrajectory.push(meanKHat);
+
+    // Track domain β̂ trajectories
+    if (domainSplitEnabled && systemBelief.domain_calibration) {
+      betaHatVocabTrajectory.push(systemBelief.domain_calibration.beta_hat_vocab);
+      betaHatGrammarTrajectory.push(systemBelief.domain_calibration.beta_hat_grammar);
+    }
 
     // Check mastery (K* > 0.9 sustained for 2 consecutive sessions)
     if (meanKStar > 0.9) {
@@ -298,6 +332,10 @@ export function runSimulation(
       mean_K_hat: meanKHat,
       ece: metrics.ece,
       brier: metrics.brier_score,
+      ...(domainSplitEnabled && systemBelief.domain_calibration && {
+        beta_hat_vocab: systemBelief.domain_calibration.beta_hat_vocab,
+        beta_hat_grammar: systemBelief.domain_calibration.beta_hat_grammar,
+      }),
     });
   }
 
@@ -314,18 +352,22 @@ export function runSimulation(
 
   return {
     profile_id: profile.id,
-    scheduler_type: config.scheduler_type,
-    config,
+    scheduler_type: effectiveConfig.scheduler_type,
+    config: effectiveConfig,
     retention_1day: retention1,
     retention_7day: retention7,
     retention_30day: retention30,
-    time_to_mastery: masteryAchievedSession >= 0 ? masteryAchievedSession : config.num_sessions,
-    review_efficiency: allResponses.length / config.num_items,
+    time_to_mastery: masteryAchievedSession >= 0 ? masteryAchievedSession : effectiveConfig.num_sessions,
+    review_efficiency: allResponses.length / effectiveConfig.num_items,
     total_review_time: allResponses.reduce((s, r) => s + r.response_time, 0),
     ece_trajectory: eceTrajectory,
     brier_trajectory: brierTrajectory,
     K_star_trajectory: KStarTrajectory,
     K_hat_trajectory: KHatTrajectory,
+    ...(domainSplitEnabled && {
+      beta_hat_vocab_trajectory: betaHatVocabTrajectory,
+      beta_hat_grammar_trajectory: betaHatGrammarTrajectory,
+    }),
     session_data: sessionDataList,
   };
 }

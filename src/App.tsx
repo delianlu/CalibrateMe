@@ -30,6 +30,7 @@ import { saveSessionToProvider } from './features/api/apiClient';
 import { getRecentResponses } from './features/user/services/storageService';
 import ErrorBoundary from './components/ErrorBoundary';
 import DemoOverlay from './components/DemoOverlay';
+import SplitScreenDemo from './components/SplitScreenDemo';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
@@ -69,6 +70,12 @@ const pageVariants = {
 };
 
 function App() {
+  // URL parameter: ?splitscreen=true → show full-screen split-screen demo
+  const showSplitScreen = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('splitscreen') === 'true';
+  }, []);
+
   const [tab, setTab] = useState<AppTab>('quiz');
   const [allResponses, setAllResponses] = useState<QuizResponse[]>([]);
   const [gamification, setGamification] = useState<GamificationState>(loadGamification);
@@ -165,6 +172,11 @@ function App() {
   const handleDemoNavigate = useCallback((demoTab: string) => {
     setTab(demoTab as AppTab);
   }, []);
+
+  // Full-screen split-screen demo mode
+  if (showSplitScreen) {
+    return <SplitScreenDemo />;
+  }
 
   return (
     <div className="app">
