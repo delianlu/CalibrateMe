@@ -51,6 +51,9 @@ interface CrammerAnalysis {
   };
   crashDetectionSession_sm2: number;
   crashDetectionSession_calibrateme: number;
+  groundTruthCrashSession: number;
+  warningLeadTime_sm2: number;
+  warningLeadTime_calibrateme: number;
 }
 
 function runCrammerAnalysis(seed: number = 42): CrammerAnalysis {
@@ -92,20 +95,57 @@ function runCrammerAnalysis(seed: number = 42): CrammerAnalysis {
     });
   }
 
-  // Detect "crash" — session where K* drops below 0.4 after being above 0.5
-  let crashDetectionSM2 = -1;
-  let crashDetectionCM = -1;
-
-  // For SM-2: detect when K̂ finally tracks the K* drop (gap narrows)
-  // For CalibrateMe: detect when β̂ exceeds threshold (early warning)
+  // Ground-truth crash: session where K* drops below 0.50 after being above 0.50
+  let groundTruthCrashSession = -1;
   for (let i = 1; i < data.length; i++) {
-    if (crashDetectionSM2 === -1 && data[i].K_hat_sm2 < 0.5 && data[i].K_star < 0.5) {
-      crashDetectionSM2 = i + 1;
-    }
-    if (crashDetectionCM === -1 && data[i].beta_hat > 0.15) {
-      crashDetectionCM = i + 1;
+    if (data[i - 1].K_star >= 0.50 && data[i].K_star < 0.50) {
+      groundTruthCrashSession = i + 1;
+      break;
     }
   }
+
+  // Warning lead time: earliest session BEFORE the crash where each scheduler
+  // fires a "warning signal"
+  let warningSM2 = -1;
+  let warningCM = -1;
+
+  // SM-2 warning: session where SM-2 decreases its scheduled interval
+  // (indicating it noticed poor performance)
+  const sm2Intervals = sm2Results.session_data.map((s: { items_reviewed: number; correct_count: number }) =>
+    s.items_reviewed > 0 ? s.correct_count / s.items_reviewed : 1
+  );
+  for (let i = 1; i < sm2Intervals.length; i++) {
+    if (warningSM2 === -1 && sm2Intervals[i] < sm2Intervals[i - 1] - 0.05) {
+      const session = i + 1;
+      if (groundTruthCrashSession < 0 || session <= groundTruthCrashSession) {
+        warningSM2 = session;
+      }
+    }
+  }
+
+  // CalibrateMe warning: session where β̂ exceeds threshold OR where CalibrateMe
+  // shortens interval below SM-2's for the same item (proxy: accuracy drop detected)
+  const cmAccuracies = cmResults.session_data.map((s: { items_reviewed: number; correct_count: number }) =>
+    s.items_reviewed > 0 ? s.correct_count / s.items_reviewed : 1
+  );
+  for (let i = 1; i < data.length; i++) {
+    if (warningCM === -1 && (data[i].beta_hat > 0.15 || cmAccuracies[i] < cmAccuracies[i - 1] - 0.05)) {
+      const session = i + 1;
+      if (groundTruthCrashSession < 0 || session <= groundTruthCrashSession) {
+        warningCM = session;
+      }
+    }
+  }
+
+  // Compute lead times (positive = detected before crash)
+  const leadTimeSM2 = (groundTruthCrashSession > 0 && warningSM2 > 0)
+    ? groundTruthCrashSession - warningSM2 : 0;
+  const leadTimeCM = (groundTruthCrashSession > 0 && warningCM > 0)
+    ? groundTruthCrashSession - warningCM : 0;
+
+  // For backward compat in the return type, map to the existing fields
+  let crashDetectionSM2 = warningSM2;
+  let crashDetectionCM = warningCM;
 
   return {
     data,
@@ -125,6 +165,9 @@ function runCrammerAnalysis(seed: number = 42): CrammerAnalysis {
     },
     crashDetectionSession_sm2: crashDetectionSM2,
     crashDetectionSession_calibrateme: crashDetectionCM,
+    groundTruthCrashSession,
+    warningLeadTime_sm2: leadTimeSM2,
+    warningLeadTime_calibrateme: leadTimeCM,
   };
 }
 
@@ -151,7 +194,9 @@ Retention (7-day) & ${sm2.retention_7day.toFixed(3)} & ${cm.retention_7day.toFix
 Retention (30-day) & ${sm2.retention_30day.toFixed(3)} & ${cm.retention_30day.toFixed(3)} \\\\
 Time to Mastery & ${sm2.time_to_mastery} & ${cm.time_to_mastery} \\\\
 Final ECE & ${sm2.final_ece.toFixed(3)} & ${cm.final_ece.toFixed(3)} \\\\
-Crash Detection (session) & ${analysis.crashDetectionSession_sm2 > 0 ? analysis.crashDetectionSession_sm2 : 'Never'} & ${analysis.crashDetectionSession_calibrateme > 0 ? analysis.crashDetectionSession_calibrateme : 'Never'} \\\\
+Ground-Truth Crash & \\multicolumn{2}{c}{Session ${analysis.groundTruthCrashSession > 0 ? analysis.groundTruthCrashSession : 'N/A'}} \\\\
+Warning Signal (session) & ${analysis.crashDetectionSession_sm2 > 0 ? analysis.crashDetectionSession_sm2 : 'Never'} & ${analysis.crashDetectionSession_calibrateme > 0 ? analysis.crashDetectionSession_calibrateme : 'Never'} \\\\
+Warning Lead Time & ${analysis.warningLeadTime_sm2} sessions & ${analysis.warningLeadTime_calibrateme} sessions \\\\
 \\bottomrule
 \\end{tabular}
 \\end{table}`;
@@ -184,7 +229,7 @@ const CrammerCrashChart: React.FC<CrammerCrashChartProps> = ({ seed = 42 }) => {
     downloadFile(generateLatexTable(analysis), 'crammer_comparison.tex', 'text/plain');
   };
 
-  const { sm2Results: sm2, calibratemeResults: cm, crashDetectionSession_sm2, crashDetectionSession_calibrateme } = analysis;
+  const { sm2Results: sm2, calibratemeResults: cm, crashDetectionSession_sm2, crashDetectionSession_calibrateme, groundTruthCrashSession, warningLeadTime_sm2, warningLeadTime_calibrateme } = analysis;
 
   return (
     <div className="crammer-crash-chart">
@@ -229,11 +274,15 @@ const CrammerCrashChart: React.FC<CrammerCrashChartProps> = ({ seed = 42 }) => {
             />
             <Legend />
             <ReferenceLine y={0.9} stroke="#94a3b8" strokeDasharray="5 5" label={{ value: 'Mastery', position: 'right', fontSize: 10 }} />
+            <ReferenceLine y={0.5} stroke="#94a3b8" strokeDasharray="2 4" label={{ value: 'K*=0.50', position: 'right', fontSize: 10 }} />
+            {groundTruthCrashSession > 0 && (
+              <ReferenceLine x={groundTruthCrashSession} stroke="#1e293b" strokeWidth={2} strokeDasharray="6 3" label={{ value: 'Crash', position: 'top', fontSize: 10 }} />
+            )}
             {crashDetectionSession_calibrateme > 0 && (
-              <ReferenceLine x={crashDetectionSession_calibrateme} stroke="#22c55e" strokeDasharray="3 3" label={{ value: 'CM detects', position: 'top', fontSize: 10 }} />
+              <ReferenceLine x={crashDetectionSession_calibrateme} stroke="#22c55e" strokeDasharray="3 3" label={{ value: 'CM warns', position: 'top', fontSize: 10 }} />
             )}
             {crashDetectionSession_sm2 > 0 && (
-              <ReferenceLine x={crashDetectionSession_sm2} stroke="#ef4444" strokeDasharray="3 3" label={{ value: 'SM-2 detects', position: 'top', fontSize: 10 }} />
+              <ReferenceLine x={crashDetectionSession_sm2} stroke="#ef4444" strokeDasharray="3 3" label={{ value: 'SM-2 warns', position: 'top', fontSize: 10 }} />
             )}
             <Line type="monotone" dataKey="K_star" stroke="#1e293b" strokeWidth={3} dot={false} name="K* (True)" />
             <Line type="monotone" dataKey="K_hat_sm2" stroke="#ef4444" strokeWidth={2} dot={false} strokeDasharray="5 5" name="K̂ (SM-2)" />
@@ -333,18 +382,38 @@ const CrammerCrashChart: React.FC<CrammerCrashChartProps> = ({ seed = 42 }) => {
                 {((cm.final_ece - sm2.final_ece) * 100).toFixed(1)}%
               </td>
             </tr>
-            <tr>
-              <td style={{ padding: '6px 8px', fontWeight: 'bold' }}>Crash Detection</td>
+            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+              <td style={{ padding: '6px 8px', fontWeight: 'bold' }}>Ground-Truth Crash</td>
+              <td colSpan={3} style={{ textAlign: 'center', padding: '6px 8px' }}>
+                {groundTruthCrashSession > 0 ? `Session ${groundTruthCrashSession} (K* dropped below 0.50)` : 'No crash observed'}
+              </td>
+            </tr>
+            <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
+              <td style={{ padding: '6px 8px' }}>Warning Signal</td>
               <td style={{ textAlign: 'center', padding: '6px 8px' }}>
                 {crashDetectionSession_sm2 > 0 ? `Session ${crashDetectionSession_sm2}` : 'Not detected'}
               </td>
               <td style={{ textAlign: 'center', padding: '6px 8px' }}>
                 {crashDetectionSession_calibrateme > 0 ? `Session ${crashDetectionSession_calibrateme}` : 'Not detected'}
               </td>
-              <td style={{ textAlign: 'center', padding: '6px 8px', color: '#22c55e', fontWeight: 'bold' }}>
-                {crashDetectionSession_sm2 > 0 && crashDetectionSession_calibrateme > 0
-                  ? `${crashDetectionSession_sm2 - crashDetectionSession_calibrateme} sessions earlier`
-                  : '—'}
+              <td style={{ textAlign: 'center', padding: '6px 8px' }}>—</td>
+            </tr>
+            <tr>
+              <td style={{ padding: '6px 8px', fontWeight: 'bold' }}>Warning Lead Time</td>
+              <td style={{ textAlign: 'center', padding: '6px 8px' }}>
+                {warningLeadTime_sm2 > 0 ? `${warningLeadTime_sm2} sessions` : 'None'}
+              </td>
+              <td style={{ textAlign: 'center', padding: '6px 8px' }}>
+                {warningLeadTime_calibrateme > 0 ? `${warningLeadTime_calibrateme} sessions` : 'None'}
+              </td>
+              <td style={{ textAlign: 'center', padding: '6px 8px', fontWeight: 'bold',
+                color: warningLeadTime_calibrateme > warningLeadTime_sm2 ? '#22c55e' :
+                       warningLeadTime_calibrateme === warningLeadTime_sm2 ? '#64748b' : '#ef4444' }}>
+                {warningLeadTime_calibrateme > warningLeadTime_sm2
+                  ? `CM detected ${warningLeadTime_calibrateme - warningLeadTime_sm2} sessions earlier`
+                  : warningLeadTime_calibrateme === warningLeadTime_sm2
+                    ? 'Both detected at same time'
+                    : `SM-2 detected ${warningLeadTime_sm2 - warningLeadTime_calibrateme} sessions earlier`}
               </td>
             </tr>
           </tbody>

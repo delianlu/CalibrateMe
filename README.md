@@ -109,18 +109,29 @@ CalibrateMe evaluates three hypotheses via multi-seed Monte Carlo simulation:
 
 Ablation conditions: Full CalibrateMe, No Dual-Process, No Scaffolding, Calibration Only, SM-2 Baseline, BKT-Only.
 
+## Validating Statistical Implementations
+
+```bash
+npx tsx scripts/validateStatistics.ts
+```
+
+Compares custom implementations of `computeStats`, `computeEffectSize`, and paired t-test statistics against known correct values (pre-computed from R/SciPy). Exits with code 0 if all 8 test cases pass.
+
 ## Reproducing Results
 
 All experiment parameters are frozen in `config/experiment_config.json` (version 1.0.0). To reproduce the full analysis pipeline:
 
 ```bash
-# 1. Run all analyses (ablation, sensitivity, δ sweep, matched scaffold)
+# 1. Validate statistical implementations
+npx tsx scripts/validateStatistics.ts
+
+# 2. Run all analyses (ablation, sensitivity, δ sweep, matched scaffold)
 npx tsx scripts/runAllAnalyses.ts
 
-# 2. Run threshold sensitivity sweep
+# 3. Run threshold sensitivity sweep
 npx tsx scripts/runThresholdSensitivity.ts
 
-# 3. Generate LaTeX tables from CSV results
+# 4. Generate LaTeX tables from CSV results
 npx tsx scripts/generateLatexTables.ts
 ```
 

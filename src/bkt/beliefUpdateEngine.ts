@@ -156,14 +156,17 @@ export function updateDomainBetaHat(
   let beta_hat_vocab = current.beta_hat_vocab;
   let beta_hat_grammar = current.beta_hat_grammar;
 
-  if (vocabResponses.length >= 3) {
+  // Minimum 5 responses per domain provides a more stable EMA estimate
+  // before influencing scheduling (with ~10 items/domain per session,
+  // this threshold is typically met by session 1)
+  if (vocabResponses.length >= 5) {
     const mean_conf = vocabResponses.reduce((s, r) => s + r.confidence, 0) / vocabResponses.length;
     const mean_acc = vocabResponses.reduce((s, r) => s + (r.correctness ? 1 : 0), 0) / vocabResponses.length;
     const observed = mean_conf - mean_acc;
     beta_hat_vocab = beta_hat_vocab + learning_rate * (observed - beta_hat_vocab);
   }
 
-  if (grammarResponses.length >= 3) {
+  if (grammarResponses.length >= 5) {
     const mean_conf = grammarResponses.reduce((s, r) => s + r.confidence, 0) / grammarResponses.length;
     const mean_acc = grammarResponses.reduce((s, r) => s + (r.correctness ? 1 : 0), 0) / grammarResponses.length;
     const observed = mean_conf - mean_acc;
