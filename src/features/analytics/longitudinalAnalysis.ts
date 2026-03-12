@@ -5,6 +5,7 @@
 
 import { SessionData, SimulationResults } from '../../types';
 import { mean, std } from '../../utils/statistics';
+import { ANALYTICS_THRESHOLDS, AnalyticsThresholds } from '../../config/analyticsThresholds';
 
 // -----------------------------------------------------------------------------
 // Types
@@ -114,14 +115,14 @@ function classifyTrend(slope: number, values: number[], higherIsBetter: boolean)
 // Analysis Functions
 // -----------------------------------------------------------------------------
 
-function analyzeLearningVelocity(sessions: SessionData[]): LearningVelocity {
+function analyzeLearningVelocity(sessions: SessionData[], t: AnalyticsThresholds): LearningVelocity {
   // Sessions to 80% accuracy
   const sessionsTo80 = sessions.findIndex(
     s => s.items_reviewed > 0 && (s.correct_count / s.items_reviewed) >= 0.8
   );
 
-  // Sessions to good calibration (ECE < 0.10)
-  const sessionsToGoodCal = sessions.findIndex(s => s.ece < 0.10);
+  // Sessions to good calibration (ECE < threshold)
+  const sessionsToGoodCal = sessions.findIndex(s => s.ece < t.good_calibration_ece);
 
   // Knowledge gain rate: average ΔK* per session during learning phase
   const kStarValues = sessions.map(s => s.mean_K_star);
@@ -137,11 +138,11 @@ function analyzeLearningVelocity(sessions: SessionData[]): LearningVelocity {
   const recentGainRate = recentGains.length > 0 ? mean(recentGains) : 0;
 
   let currentPhase: LearningVelocity['currentPhase'];
-  if (lastKStar >= 0.9) {
+  if (lastKStar >= t.phase_mastered_k_star) {
     currentPhase = 'mastered';
-  } else if (recentGainRate < 0.005 && sessions.length > 5) {
+  } else if (recentGainRate < t.phase_plateau_gain_rate && sessions.length > t.phase_min_sessions_for_plateau) {
     currentPhase = 'plateau';
-  } else if (lastKStar < 0.4) {
+  } else if (lastKStar < t.phase_novice_k_star) {
     currentPhase = 'early-learning';
   } else {
     currentPhase = 'rapid-growth';
@@ -191,7 +192,7 @@ function analyzeCalibrationDrift(sessions: SessionData[]): CalibrationDrift {
   };
 }
 
-function analyzeSessionQuality(sessions: SessionData[]): SessionQuality {
+function analyzeSessionQuality(sessions: SessionData[], t: AnalyticsThresholds): SessionQuality {
   const accuracies = sessions.map(s =>
     s.items_reviewed > 0 ? s.correct_count / s.items_reviewed : 0
   );
@@ -205,8 +206,8 @@ function analyzeSessionQuality(sessions: SessionData[]): SessionQuality {
 
   for (let i = 1; i < accuracies.length; i++) {
     const delta = accuracies[i] - accuracies[i - 1];
-    if (delta < -0.15) regressionSessions.push(i + 1);
-    if (delta > 0.15) breakoutSessions.push(i + 1);
+    if (delta < -(t.regression_threshold_pp / 100)) regressionSessions.push(i + 1);
+    if (delta > (t.breakout_threshold_pp / 100)) breakoutSessions.push(i + 1);
   }
 
   return { accuracyConsistency, regressionSessions, breakoutSessions };
@@ -245,10 +246,11 @@ function generateSummary(report: Omit<LongitudinalReport, 'summary'>): string {
 // Main Export
 // -----------------------------------------------------------------------------
 
-export function analyzeLongitudinal(results: SimulationResults): LongitudinalReport;
-export function analyzeLongitudinal(sessions: SessionData[]): LongitudinalReport;
-export function analyzeLongitudinal(input: SimulationResults | SessionData[]): LongitudinalReport {
+export function analyzeLongitudinal(results: SimulationResults, thresholds?: Partial<AnalyticsThresholds>): LongitudinalReport;
+export function analyzeLongitudinal(sessions: SessionData[], thresholds?: Partial<AnalyticsThresholds>): LongitudinalReport;
+export function analyzeLongitudinal(input: SimulationResults | SessionData[], thresholds?: Partial<AnalyticsThresholds>): LongitudinalReport {
   const sessions = Array.isArray(input) ? input : input.session_data;
+  const t: AnalyticsThresholds = { ...ANALYTICS_THRESHOLDS, ...thresholds };
 
   if (sessions.length === 0) {
     const empty: TrendResult = { slope: 0, direction: 'stable', magnitude: 'negligible', pctChange: 0 };
@@ -276,9 +278,9 @@ export function analyzeLongitudinal(input: SimulationResults | SessionData[]): L
   const accuracyTrend = classifyTrend(linearRegression(accuracyValues).slope, accuracyValues, true);
   const knowledgeTrend = classifyTrend(linearRegression(kStarValues).slope, kStarValues, true);
 
-  const learningVelocity = analyzeLearningVelocity(sessions);
+  const learningVelocity = analyzeLearningVelocity(sessions, t);
   const calibrationDrift = analyzeCalibrationDrift(sessions);
-  const sessionQuality = analyzeSessionQuality(sessions);
+  const sessionQuality = analyzeSessionQuality(sessions, t);
 
   const partial = {
     eceTrend,

@@ -6,6 +6,7 @@
 
 import { SessionData } from '../../types';
 import { mean } from '../../utils/statistics';
+import { ANALYTICS_THRESHOLDS, AnalyticsThresholds } from '../../config/analyticsThresholds';
 
 // -----------------------------------------------------------------------------
 // Types
@@ -128,7 +129,7 @@ function buildConfidenceBinPatterns(sessions: SessionData[]): ConfidenceBinPatte
   return bins;
 }
 
-function analyzeDualProcess(sessions: SessionData[]): DualProcessBreakdown {
+function analyzeDualProcess(sessions: SessionData[], t: AnalyticsThresholds): DualProcessBreakdown {
   const ratios = sessions.map(s => {
     const total = s.type1_count + s.type2_count;
     return total > 0 ? s.type1_count / total : 0;
@@ -143,7 +144,7 @@ function analyzeDualProcess(sessions: SessionData[]): DualProcessBreakdown {
     slope > 0.005 ? 'increasing' :
     slope < -0.005 ? 'decreasing' : 'stable';
 
-  const automatizationSession = ratios.findIndex(r => r > 0.5);
+  const automatizationSession = ratios.findIndex(r => r > t.automatization_type1_ratio);
 
   return {
     type1Ratio,
@@ -152,7 +153,7 @@ function analyzeDualProcess(sessions: SessionData[]): DualProcessBreakdown {
   };
 }
 
-function analyzeEffort(sessions: SessionData[]): EffortAnalysis {
+function analyzeEffort(sessions: SessionData[], t: AnalyticsThresholds): EffortAnalysis {
   const rts = sessions.map(s => s.mean_rt);
   const overallMeanRT = mean(rts);
   const slope = linearSlope(rts);
@@ -161,7 +162,7 @@ function analyzeEffort(sessions: SessionData[]): EffortAnalysis {
     slope < -0.02 ? 'speeding-up' :
     slope > 0.02 ? 'slowing-down' : 'stable';
 
-  const threshold = overallMeanRT * 1.5;
+  const threshold = overallMeanRT * t.high_effort_rt_multiplier;
   const highEffortSessions = sessions
     .filter(s => s.mean_rt > threshold)
     .map(s => s.session_number + 1);
@@ -197,7 +198,9 @@ function generateInsight(report: Omit<PatternReport, 'insight'>): string {
 // Main Export
 // -----------------------------------------------------------------------------
 
-export function analyzePatterns(sessions: SessionData[]): PatternReport {
+export function analyzePatterns(sessions: SessionData[], thresholds?: Partial<AnalyticsThresholds>): PatternReport {
+  const t: AnalyticsThresholds = { ...ANALYTICS_THRESHOLDS, ...thresholds };
+
   if (sessions.length === 0) {
     return {
       confidenceBins: [],
@@ -208,8 +211,8 @@ export function analyzePatterns(sessions: SessionData[]): PatternReport {
   }
 
   const confidenceBins = buildConfidenceBinPatterns(sessions);
-  const dualProcess = analyzeDualProcess(sessions);
-  const effort = analyzeEffort(sessions);
+  const dualProcess = analyzeDualProcess(sessions, t);
+  const effort = analyzeEffort(sessions, t);
 
   const partial = { confidenceBins, dualProcess, effort };
   return { ...partial, insight: generateInsight(partial) };

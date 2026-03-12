@@ -4970,3 +4970,58 @@ body {
 [data-theme="dark"] .demo-overlay__notes {
   background: var(--bg-muted);
 }
+
+/* =============================================================================
+   Heuristic Tooltip — Methodological Honesty Labels
+   ============================================================================= */
+.heuristic-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.heuristic-tooltip__icon {
+  font-size: 0.85em;
+  color: var(--text-faint, #94a3b8);
+  transition: color 0.15s;
+}
+
+.heuristic-tooltip:hover .heuristic-tooltip__icon {
+  color: var(--color-primary-500, #6366F1);
+}
+
+.heuristic-tooltip__popup {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-secondary, #64748b);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: max-content;
+  max-width: 280px;
+  z-index: 50;
+  pointer-events: none;
+  white-space: normal;
+}
+
+[data-theme="dark"] .heuristic-tooltip__popup {
+  background: var(--bg-card, #1e293b);
+  border-color: var(--border-color, #334155);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.heuristic-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--text-faint, #94a3b8);
+  font-style: italic;
+}

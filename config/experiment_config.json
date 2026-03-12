@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2026-03-12T00:00:00Z",
+  "description": "Frozen experiment configuration for IEEE final report",
+  "ablation": {
+    "seeds": 30,
+    "conditions": ["Full CalibrateMe", "No Dual-Process", "No Scaffolding", "Calibration Only", "SM-2 Baseline", "BKT-Only"],
+    "core_profiles": ["High-Over", "Med-Over", "Low-Over", "High-Under", "Med-Under", "Low-Under", "High-Well", "Med-Well", "Low-Well"],
+    "extended_profiles": ["Extreme-Over", "Extreme-Under", "Fast-Forget-Over", "Noisy-Confidence", "HighAb-Extreme-Over", "Minimal-Bias"]
+  },
+  "sensitivity": {
+    "seeds": 10,
+    "profiles": ["Med-Over", "Med-Under", "Med-Well"],
+    "parameters": {
+      "lambda": [0.03, 0.05, 0.10, 0.15, 0.20],
+      "slip_probability": [0.05, 0.10, 0.15, 0.20],
+      "guess_probability": [0.10, 0.20, 0.30],
+      "confidence_noise_std": [0.05, 0.10, 0.15, 0.20],
+      "beta_star": [-0.30, -0.20, -0.10, 0, 0.10, 0.20, 0.30]
+    }
+  },
+  "delta_sweep": {
+    "seeds": 15,
+    "deltas": [0.00, 0.01, 0.02, 0.03, 0.05, 0.08, 0.10, 0.15],
+    "profiles": "all_core"
+  },
+  "matched_scaffold": {
+    "seeds": 30,
+    "profiles": "all_core"
+  },
+  "simulation": {
+    "num_items": 100,
+    "num_sessions": 30,
+    "items_per_session": 20,
+    "default_slip": 0.10,
+    "default_guess": 0.20,
+    "default_confidence_noise": 0.10,
+    "default_scaffolding_delta": 0.03
+  },
+  "analytics_thresholds": {
+    "session_break_minutes": 10,
+    "regression_threshold_pp": 15,
+    "breakout_threshold_pp": 15,
+    "good_calibration_ece": 0.10,
+    "phase_novice_k_star": 0.40,
+    "phase_mastered_k_star": 0.90,
+    "phase_plateau_gain_rate": 0.005,
+    "phase_min_sessions_for_plateau": 5,
+    "automatization_type1_ratio": 0.50,
+    "high_effort_rt_multiplier": 1.5,
+    "alpha_high": 0.25,
+    "alpha_low": 0.15,
+    "lambda_low": 0.07,
+    "lambda_high": 0.12,
+    "beta_well_calibrated": 0.08,
+    "beta_severe": 0.18,
+    "classification_overconfident": 0.10,
+    "classification_underconfident": -0.10
+  },
+  "threshold_sensitivity_sweeps": {
+    "session_break_minutes": [5, 10, 15, 20],
+    "regression_threshold_pp": [10, 15, 20],
+    "good_calibration_ece": [0.05, 0.08, 0.10, 0.12, 0.15],
+    "automatization_type1_ratio": [0.40, 0.50, 0.60],
+    "high_effort_rt_multiplier": [1.25, 1.50, 1.75],
+    "phase_mastered_k_star": [0.85, 0.90, 0.95],
+    "beta_well_calibrated": [0.05, 0.08, 0.10, 0.12]
+  }
+}

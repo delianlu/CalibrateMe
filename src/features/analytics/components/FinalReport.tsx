@@ -18,6 +18,7 @@ import { analyzeLongitudinal, LongitudinalReport } from '../longitudinalAnalysis
 import { analyzePatterns, PatternReport } from '../patternAnalysis';
 import { analyzeLearnerInsights, LearnerInsightsReport } from '../learnerInsights';
 import { analyzeScaffoldingImpact, ScaffoldingReport } from '../scaffoldingImpact';
+import HeuristicTooltip from '../../../components/HeuristicTooltip';
 import { exportToCSV, downloadFile } from '../../../utils/export';
 
 // -----------------------------------------------------------------------------
@@ -65,7 +66,7 @@ function ExecutiveSummary({
       </h3>
       <div className="report-summary-card">
         <div className="report-summary-card__archetype">
-          <span className="report-summary-card__archetype-label">Learner Archetype</span>
+          <span className="report-summary-card__archetype-label">Learner Archetype <HeuristicTooltip label="Archetype is a heuristic label based on estimated parameters (α, β*, λ). It summarizes tendencies, not a diagnosis." /></span>
           <span className="report-summary-card__archetype-value">{insights.archetype}</span>
         </div>
         <p className="report-summary-card__text">{longitudinal.summary}</p>
@@ -197,7 +198,7 @@ function LearningVelocitySection({ longitudinal }: { longitudinal: LongitudinalR
         </div>
         <div className="report-metric-card">
           <Brain size={16} />
-          <span className="report-metric-card__label">Current Phase</span>
+          <span className="report-metric-card__label">Current Phase <HeuristicTooltip label="Phase classification uses heuristic K* thresholds (mastered ≥ 0.90, novice < 0.40). These cut-offs are researcher-chosen." /></span>
           <span
             className="report-metric-card__value"
             style={{ color: phaseColors[lv.currentPhase] ?? 'inherit' }}

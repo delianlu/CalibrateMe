@@ -10,6 +10,8 @@ import {
 } from 'recharts';
 import { UserCheck, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { QuizResponse } from '../../quiz/types';
+import { ANALYTICS_THRESHOLDS } from '../../../config/analyticsThresholds';
+import HeuristicTooltip from '../../../components/HeuristicTooltip';
 
 interface LearnerClassificationProps {
   responses: QuizResponse[];
@@ -25,8 +27,8 @@ interface SessionBin {
 }
 
 function classifyBias(beta: number): { label: string; color: string } {
-  if (beta > 0.1) return { label: 'Overconfident', color: 'var(--color-error)' };
-  if (beta < -0.1) return { label: 'Underconfident', color: 'var(--color-info, #3B82F6)' };
+  if (beta > ANALYTICS_THRESHOLDS.classification_overconfident) return { label: 'Overconfident', color: 'var(--color-error)' };
+  if (beta < ANALYTICS_THRESHOLDS.classification_underconfident) return { label: 'Underconfident', color: 'var(--color-info, #3B82F6)' };
   return { label: 'Well-Calibrated', color: 'var(--color-success)' };
 }
 
@@ -38,7 +40,7 @@ function buildSessionBins(responses: QuizResponse[]): SessionBin[] {
 
   const sorted = [...responses].sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
   const sessions: QuizResponse[][] = [[]];
-  const GAP_MS = 10 * 60 * 1000; // 10 minutes
+  const GAP_MS = ANALYTICS_THRESHOLDS.session_break_minutes * 60 * 1000;
 
   for (const r of sorted) {
     const current = sessions[sessions.length - 1];
@@ -96,6 +98,7 @@ export default function LearnerClassification({ responses, betaHat }: LearnerCla
       <div className="learner-classification__summary">
         <div className="learner-classification__badge" style={{ borderColor: classification.color, color: classification.color }}>
           {classification.label}
+          <HeuristicTooltip label={`Classification uses heuristic thresholds (β̂ > ${ANALYTICS_THRESHOLDS.classification_overconfident} = overconfident, < ${ANALYTICS_THRESHOLDS.classification_underconfident} = underconfident). These are researcher-chosen cut-offs, not ground truth.`} />
         </div>
         <div className="learner-classification__beta">
           <span className="learner-classification__beta-label">β̂ =</span>

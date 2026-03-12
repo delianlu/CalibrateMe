@@ -109,6 +109,23 @@ CalibrateMe evaluates three hypotheses via multi-seed Monte Carlo simulation:
 
 Ablation conditions: Full CalibrateMe, No Dual-Process, No Scaffolding, Calibration Only, SM-2 Baseline, BKT-Only.
 
+## Reproducing Results
+
+All experiment parameters are frozen in `config/experiment_config.json` (version 1.0.0). To reproduce the full analysis pipeline:
+
+```bash
+# 1. Run all analyses (ablation, sensitivity, δ sweep, matched scaffold)
+npx tsx scripts/runAllAnalyses.ts
+
+# 2. Run threshold sensitivity sweep
+npx tsx scripts/runThresholdSensitivity.ts
+
+# 3. Generate LaTeX tables from CSV results
+npx tsx scripts/generateLatexTables.ts
+```
+
+Centralized analytics thresholds are defined in `src/config/analyticsThresholds.ts`. All analytical modules reference this single source of truth, making threshold sensitivity analysis possible without re-running simulations.
+
 ## Generated Results
 
 After running `scripts/runAllAnalyses.ts`:
@@ -123,12 +140,16 @@ results/
 ├── sensitivity_noise.csv
 ├── sensitivity_beta.csv
 ├── delta_sweep.csv
+├── matched_scaffold_comparison.csv
+├── threshold_sensitivity.csv
 ├── summary.json
 └── latex/
     ├── table_ablation.tex
     ├── table_sensitivity.tex
     ├── table_delta.tex
-    └── table_extended.tex
+    ├── table_extended.tex
+    ├── table_threshold_sensitivity.tex
+    └── table_matched_scaffold.tex
 ```
 
 ## License

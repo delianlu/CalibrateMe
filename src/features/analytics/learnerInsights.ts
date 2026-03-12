@@ -6,6 +6,7 @@
 
 import { SimulationResults, SessionData, LearnerProfileParams } from '../../types';
 import { mean } from '../../utils/statistics';
+import { ANALYTICS_THRESHOLDS, AnalyticsThresholds } from '../../config/analyticsThresholds';
 
 // -----------------------------------------------------------------------------
 // Types
@@ -53,11 +54,11 @@ export interface LearnerInsightsReport {
 // Parameter Interpretation
 // -----------------------------------------------------------------------------
 
-function interpretParams(params: LearnerProfileParams): ParameterInterpretation[] {
+function interpretParams(params: LearnerProfileParams, t: AnalyticsThresholds): ParameterInterpretation[] {
   const interpretations: ParameterInterpretation[] = [];
 
   // Learning rate (alpha)
-  const alphaRating = params.alpha >= 0.25 ? 'high' : params.alpha >= 0.15 ? 'average' : 'low';
+  const alphaRating = params.alpha >= t.alpha_high ? 'high' : params.alpha >= t.alpha_low ? 'average' : 'low';
   interpretations.push({
     parameter: 'α (learning rate)',
     value: params.alpha,
@@ -71,7 +72,7 @@ function interpretParams(params: LearnerProfileParams): ParameterInterpretation[
   });
 
   // Forgetting rate (lambda)
-  const lambdaRating = params.lambda <= 0.07 ? 'low' : params.lambda <= 0.12 ? 'average' : 'high';
+  const lambdaRating = params.lambda <= t.lambda_low ? 'low' : params.lambda <= t.lambda_high ? 'average' : 'high';
   interpretations.push({
     parameter: 'λ (forgetting rate)',
     value: params.lambda,
@@ -86,15 +87,15 @@ function interpretParams(params: LearnerProfileParams): ParameterInterpretation[
 
   // Calibration bias (beta_star)
   const absBeta = Math.abs(params.beta_star);
-  const betaLabel = params.beta_star > 0.1 ? 'Overconfident' : params.beta_star < -0.1 ? 'Underconfident' : 'Well-calibrated';
-  const betaRating = absBeta <= 0.08 ? 'high' : absBeta <= 0.18 ? 'average' : 'low';
+  const betaLabel = params.beta_star > t.classification_overconfident ? 'Overconfident' : params.beta_star < t.classification_underconfident ? 'Underconfident' : 'Well-calibrated';
+  const betaRating = absBeta <= t.beta_well_calibrated ? 'high' : absBeta <= t.beta_severe ? 'average' : 'low';
   interpretations.push({
     parameter: 'β* (calibration bias)',
     value: params.beta_star,
     label: betaLabel,
-    interpretation: params.beta_star > 0.1
+    interpretation: params.beta_star > t.classification_overconfident
       ? 'Tends to overestimate knowledge — confidence exceeds actual accuracy.'
-      : params.beta_star < -0.1
+      : params.beta_star < t.classification_underconfident
         ? 'Tends to underestimate knowledge — knows more than they think.'
         : 'Confidence ratings closely match true knowledge level.',
     rating: betaRating,
@@ -109,7 +110,8 @@ function interpretParams(params: LearnerProfileParams): ParameterInterpretation[
 
 function detectStrengthsWeaknesses(
   sessions: SessionData[],
-  params: LearnerProfileParams
+  params: LearnerProfileParams,
+  t: AnalyticsThresholds
 ): { strengths: StrengthWeakness[]; weaknesses: StrengthWeakness[] } {
   const strengths: StrengthWeakness[] = [];
   const weaknesses: StrengthWeakness[] = [];
@@ -141,7 +143,7 @@ function detectStrengthsWeaknesses(
   }
 
   // Calibration
-  if (finalECE < 0.08) {
+  if (finalECE < t.beta_well_calibrated) {
     strengths.push({
       area: 'Calibration',
       type: 'strength',
@@ -159,7 +161,7 @@ function detectStrengthsWeaknesses(
   }
 
   // Knowledge mastery
-  if (finalKStar >= 0.9) {
+  if (finalKStar >= t.phase_mastered_k_star) {
     strengths.push({
       area: 'Knowledge',
       type: 'strength',
@@ -187,14 +189,14 @@ function detectStrengthsWeaknesses(
   }
 
   // Retention
-  if (params.lambda > 0.12) {
+  if (params.lambda > t.lambda_high) {
     weaknesses.push({
       area: 'Retention',
       type: 'weakness',
-      evidence: 'High forgetting rate (λ > 0.12) means knowledge decays quickly.',
+      evidence: `High forgetting rate (λ > ${t.lambda_high}) means knowledge decays quickly.`,
       recommendation: 'Use more frequent, shorter review sessions. Interleave difficult items.',
     });
-  } else if (params.lambda < 0.07) {
+  } else if (params.lambda < t.lambda_low) {
     strengths.push({
       area: 'Retention',
       type: 'strength',
@@ -253,13 +255,14 @@ function generateRecommendations(
 
 function classifyArchetype(
   params: LearnerProfileParams,
-  sessions: SessionData[]
+  sessions: SessionData[],
+  t: AnalyticsThresholds
 ): string {
   const finalKStar = sessions.length > 0 ? sessions[sessions.length - 1].mean_K_star : 0;
-  const isFast = params.alpha >= 0.25;
-  const isOverconf = params.beta_star > 0.1;
-  const isUnderconf = params.beta_star < -0.1;
-  const hasMastered = finalKStar >= 0.9;
+  const isFast = params.alpha >= t.alpha_high;
+  const isOverconf = params.beta_star > t.classification_overconfident;
+  const isUnderconf = params.beta_star < t.classification_underconfident;
+  const hasMastered = finalKStar >= t.phase_mastered_k_star;
 
   if (hasMastered && !isOverconf && !isUnderconf) return 'Calibrated Expert';
   if (hasMastered && isOverconf) return 'Confident Expert';
@@ -268,7 +271,7 @@ function classifyArchetype(
   if (isFast) return 'Quick Learner';
   if (isOverconf) return 'Optimistic Learner';
   if (isUnderconf) return 'Cautious Learner';
-  if (params.lambda > 0.12) return 'High-Decay Learner';
+  if (params.lambda > t.lambda_high) return 'High-Decay Learner';
   return 'Steady Learner';
 }
 
@@ -317,14 +320,16 @@ function compareSchedulers(
 export function analyzeLearnerInsights(
   results: SimulationResults,
   params: LearnerProfileParams,
-  baselineResults?: SimulationResults
+  baselineResults?: SimulationResults,
+  thresholds?: Partial<AnalyticsThresholds>
 ): LearnerInsightsReport {
+  const t: AnalyticsThresholds = { ...ANALYTICS_THRESHOLDS, ...thresholds };
   const sessions = results.session_data;
-  const parameters = interpretParams(params);
-  const { strengths, weaknesses } = detectStrengthsWeaknesses(sessions, params);
+  const parameters = interpretParams(params, t);
+  const { strengths, weaknesses } = detectStrengthsWeaknesses(sessions, params, t);
   const recommendations = generateRecommendations(sessions, params, strengths, weaknesses);
   const comparisons = compareSchedulers(results, baselineResults);
-  const archetype = classifyArchetype(params, sessions);
+  const archetype = classifyArchetype(params, sessions, t);
 
   return {
     parameters,

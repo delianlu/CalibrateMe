@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap } from 'lucide-react';
 import { QuizItem, QuizResponse } from '../types';
+import HeuristicTooltip from '../../../components/HeuristicTooltip';
 
 interface SessionSummaryProps {
   responses: QuizResponse[];
@@ -216,8 +217,9 @@ export default function SessionSummary({
         <div className="session-summary__dual-process">
           <span className="session-summary__section-title">
             <Zap size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
-            Response Patterns
+            Response Patterns <HeuristicTooltip label="Dual-process classification uses response time and confidence heuristics. 'Automatic' = fast + confident + correct. This is an approximation, not a cognitive diagnosis." />
           </span>
+          <p className="heuristic-subtitle">Estimated from timing and confidence patterns</p>
           <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
             <strong>{stats.dualProcess.automatic}</strong> automatic (fast + confident) &middot;{' '}
             <strong>{stats.dualProcess.deliberate}</strong> deliberate (slower / less certain)

@@ -324,6 +324,80 @@ function generateExtendedTable(): string {
 }
 
 // ---------------------------------------------------------------------------
+// Table 5: Threshold Sensitivity Summary
+// ---------------------------------------------------------------------------
+
+function generateThresholdSensitivityTable(): string {
+  const filepath = path.join(RESULTS_DIR, 'threshold_sensitivity.csv');
+  if (!fs.existsSync(filepath)) return '% threshold_sensitivity.csv not found\n';
+
+  const rows = parseCSV(filepath);
+  const parameters = [...new Set(rows.map(r => r.parameter))];
+
+  let tex = `\\begin{table}[t]
+\\centering
+\\scriptsize
+\\setlength{\\tabcolsep}{3pt}
+\\caption{Threshold Sensitivity: Percentage of Variations Causing Label Changes}
+\\label{tab:threshold-sensitivity}
+\\begin{tabular}{lcc}
+\\toprule
+\\textbf{Parameter} & \\textbf{Variations Tested} & \\textbf{\\% Causing Changes} \\\\
+\\midrule\n`;
+
+  for (const param of parameters) {
+    const paramRows = rows.filter(r => r.parameter === param);
+    const changed = paramRows.filter(r => r.changed === 'true').length;
+    const total = paramRows.length;
+    const pct = total > 0 ? ((changed / total) * 100).toFixed(0) : '0';
+    tex += `${param.replace(/_/g, '\\_')} & ${total} & ${pct}\\% \\\\\n`;
+  }
+
+  tex += `\\bottomrule
+\\end{tabular}
+\\end{table}\n`;
+
+  return tex;
+}
+
+// ---------------------------------------------------------------------------
+// Table 6: Matched Scaffold Comparison
+// ---------------------------------------------------------------------------
+
+function generateMatchedScaffoldTable(): string {
+  const filepath = path.join(RESULTS_DIR, 'matched_scaffold_comparison.csv');
+  if (!fs.existsSync(filepath)) return '% matched_scaffold_comparison.csv not found\n';
+
+  const rows = parseCSV(filepath);
+
+  let tex = `\\begin{table}[t]
+\\centering
+\\scriptsize
+\\setlength{\\tabcolsep}{2.5pt}
+\\caption{Matched Scaffold Comparison: Retention Difference (With $-$ Without Scaffolding)}
+\\label{tab:matched-scaffold}
+\\begin{tabular}{lccccc}
+\\toprule
+\\textbf{Profile} & \\textbf{Ret. With} & \\textbf{Ret. Without} & \\textbf{$\\Delta$ Ret.} & \\textbf{Cohen's $d$} & \\textbf{$p$-value} \\\\
+\\midrule\n`;
+
+  for (const r of rows) {
+    const retW = fmtPct(r.retention_with_mean);
+    const retWO = fmtPct(r.retention_without_mean);
+    const diff = fmtPct(r.retention_diff_mean);
+    const d = fmtRaw(r.paired_cohens_d, 3);
+    const p = parseFloat(r.p_value) < 0.001 ? '$<$0.001' : fmtRaw(r.p_value, 3);
+    tex += `${r.profile} & ${retW} & ${retWO} & ${diff} & ${d} & ${p} \\\\\n`;
+  }
+
+  tex += `\\bottomrule
+\\end{tabular}
+\\end{table}\n`;
+
+  return tex;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -335,6 +409,8 @@ function main(): void {
     { name: 'Sensitivity', file: 'table_sensitivity.tex', gen: generateSensitivityTable },
     { name: 'δ Dose-Response', file: 'table_delta.tex', gen: generateDeltaTable },
     { name: 'Extended Profiles', file: 'table_extended.tex', gen: generateExtendedTable },
+    { name: 'Threshold Sensitivity', file: 'table_threshold_sensitivity.tex', gen: generateThresholdSensitivityTable },
+    { name: 'Matched Scaffold', file: 'table_matched_scaffold.tex', gen: generateMatchedScaffoldTable },
   ];
 
   console.log('Generating LaTeX tables from CSV results...\n');
