@@ -28,22 +28,22 @@ const CalibrationChart: React.FC<CalibrationChartProps> = ({
       <h4 className="chart-title">{title}</h4>
       <ResponsiveContainer width="100%" height={250}>
         <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" strokeOpacity={0.5} />
           <XAxis
             dataKey="session"
-            tick={{ fontSize: 12 }}
+            tick={{ fontSize: 12, fill: 'var(--text-muted, #94A3B8)' }}
             tickLine={false}
           />
           <YAxis
             domain={[0, 1]}
-            tick={{ fontSize: 12 }}
+            tick={{ fontSize: 12, fill: 'var(--text-muted, #94A3B8)' }}
             tickLine={false}
             tickFormatter={(v) => v.toFixed(1)}
           />
           <Tooltip
             contentStyle={{
               background: 'white',
-              border: '1px solid #e2e8f0',
+              border: '1px solid var(--border-color, #e2e8f0)',
               borderRadius: '4px',
               fontSize: '12px',
             }}
@@ -57,6 +57,8 @@ const CalibrationChart: React.FC<CalibrationChartProps> = ({
               stroke={colors[index]}
               strokeWidth={2}
               dot={false}
+              isAnimationActive={true}
+              strokeLinecap="round"
             />
           ))}
         </LineChart>

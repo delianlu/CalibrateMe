@@ -186,10 +186,18 @@ const Dashboard: React.FC = () => {
           )}
 
           {!advRunning && !ablationResults && !deltaSweepReport && sensitivityReports.length === 0 && (
-            <div className="card" style={{ textAlign: 'center', padding: '3rem', color: '#718096' }}>
-              <h3 style={{ marginBottom: '1rem' }}>Advanced Analytics</h3>
-              <p>Run multi-seed ablation studies, parameter sensitivity sweeps, and δ dose-response analyses.</p>
-              <p>Results include 95% confidence intervals and Cohen's d effect sizes.</p>
+            <div className="card" style={{ textAlign: 'center', padding: '4rem 3rem' }}>
+              <div style={{
+                width: 72, height: 72, borderRadius: 20,
+                background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.1))',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                margin: '0 auto 1.5rem'
+              }}>
+                <Sliders size={32} style={{ color: '#6366F1' }} />
+              </div>
+              <h3 style={{ marginBottom: '0.75rem', fontFamily: '"Plus Jakarta Sans", sans-serif', fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)' }}>Advanced Analytics</h3>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem', lineHeight: 1.7 }}>Run multi-seed ablation studies, parameter sensitivity sweeps, and δ dose-response analyses.</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: 1.7 }}>Results include 95% confidence intervals and Cohen&apos;s d effect sizes.</p>
             </div>
           )}
 
@@ -323,11 +331,18 @@ const Dashboard: React.FC = () => {
         )}
 
         {!results && !comparisonResults && !hypothesisResults && !simRunning && !error && (
-          <div className="card" style={{ textAlign: 'center', padding: '3rem', color: '#718096' }}>
-            <h3 style={{ marginBottom: '1rem' }}>Welcome to CalibrateMe</h3>
-            <p>Select a learner profile and click "Run Simulation" to see results.</p>
-            <p>Or click "Compare Schedulers" to compare CalibrateMe against baselines.</p>
-            <p>Or click "Run Hypothesis Tests" to evaluate H1/H2/H3 across all 9 profiles.</p>
+          <div className="card" style={{ textAlign: 'center', padding: '4rem 3rem' }}>
+            <div style={{
+              width: 72, height: 72, borderRadius: 20,
+              background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.1))',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              margin: '0 auto 1.5rem'
+            }}>
+              <FlaskConical size={32} style={{ color: '#6366F1' }} />
+            </div>
+            <h3 style={{ marginBottom: '0.75rem', fontFamily: '"Plus Jakarta Sans", sans-serif', fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)' }}>Simulation Lab</h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem', lineHeight: 1.7 }}>Select a learner profile and click &ldquo;Run Simulation&rdquo; to see results.</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: 1.7 }}>Compare schedulers or run hypothesis tests to evaluate H1/H2/H3 across all 9 profiles.</p>
           </div>
         )}
       </div>

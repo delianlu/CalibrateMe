@@ -52,7 +52,7 @@ const CalibrationCurve: React.FC<CalibrationCurveProps> = ({
       return (
         <div style={{
           background: 'white',
-          border: '1px solid #e2e8f0',
+          border: '1px solid var(--border-color, #e2e8f0)',
           borderRadius: '4px',
           padding: '8px 12px',
           fontSize: '12px',
@@ -72,18 +72,20 @@ const CalibrationCurve: React.FC<CalibrationCurveProps> = ({
       <h4 className="chart-title">{title}</h4>
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" strokeOpacity={0.5} />
           <XAxis
             type="number"
             dataKey="confidence"
             domain={[0, 1]}
             tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
+            tick={{ fill: 'var(--text-muted, #94A3B8)' }}
             label={{ value: 'Reported Confidence', position: 'bottom', offset: 0 }}
           />
           <YAxis
             type="number"
             domain={[0, 1]}
             tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
+            tick={{ fill: 'var(--text-muted, #94A3B8)' }}
             label={{ value: 'Actual Accuracy', angle: -90, position: 'insideLeft' }}
           />
           <Tooltip content={<CustomTooltip />} />
@@ -112,13 +114,16 @@ const CalibrationCurve: React.FC<CalibrationCurveProps> = ({
             strokeDasharray="5 5"
             dot={false}
             name="Perfect Calibration"
+            isAnimationActive={true}
+            strokeLinecap="round"
           />
 
           {/* Actual calibration points */}
           <Scatter
             data={chartData}
-            fill="#4299e1"
+            fill="#6366F1"
             name="Learner Calibration"
+            isAnimationActive={true}
           />
 
           {/* Connect points with line */}
@@ -126,10 +131,12 @@ const CalibrationCurve: React.FC<CalibrationCurveProps> = ({
             data={chartData}
             type="monotone"
             dataKey="accuracy"
-            stroke="#4299e1"
+            stroke="#6366F1"
             strokeWidth={2}
-            dot={{ fill: '#4299e1', r: 6 }}
+            dot={{ fill: '#6366F1', r: 6 }}
             name="Calibration Curve"
+            isAnimationActive={true}
+            strokeLinecap="round"
           />
 
           <Legend />
@@ -145,8 +152,8 @@ const CalibrationCurve: React.FC<CalibrationCurveProps> = ({
           fontSize: '12px',
           color: '#718096',
         }}>
-          <span style={{ color: '#38a169' }}>Underconfidence Region</span>
-          <span style={{ color: '#e53e3e' }}>Overconfidence Region</span>
+          <span style={{ color: '#10B981' }}>Underconfidence Region</span>
+          <span style={{ color: '#EF4444' }}>Overconfidence Region</span>
         </div>
       )}
     </div>

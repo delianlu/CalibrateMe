@@ -17,7 +17,7 @@ interface ForgettingCurvesProps {
   maxItems?: number;
 }
 
-const COLORS = ['#4299e1', '#38a169', '#d69e2e', '#e53e3e', '#805ad5'];
+const COLORS = ['#6366F1', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload?.length > 0) {
@@ -75,16 +75,18 @@ export default function ForgettingCurves({
       <h4 className="forgetting-curves__title">Forgetting Curves (Top {chartData.items.length} Items)</h4>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={chartData.points} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" strokeOpacity={0.5} />
           <XAxis
             dataKey="day"
             fontSize={11}
+            tick={{ fill: 'var(--text-muted, #94A3B8)' }}
             label={{ value: 'Days', position: 'bottom', offset: 0, fontSize: 11 }}
           />
           <YAxis
             domain={[0, 1]}
             tickFormatter={v => `${(v * 100).toFixed(0)}%`}
             fontSize={11}
+            tick={{ fill: 'var(--text-muted, #94A3B8)' }}
           />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
@@ -97,6 +99,8 @@ export default function ForgettingCurves({
               strokeWidth={2}
               dot={false}
               name={id}
+              isAnimationActive={true}
+              strokeLinecap="round"
             />
           ))}
         </LineChart>

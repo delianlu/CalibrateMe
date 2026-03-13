@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap } from 'lucide-react';
 import { QuizItem, QuizResponse } from '../types';
 import HeuristicTooltip from '../../../components/HeuristicTooltip';
@@ -166,9 +167,20 @@ export default function SessionSummary({
   const ecePct = calibrationECE !== null ? (calibrationECE * 100).toFixed(1) : null;
 
   return (
-    <div className="session-summary card">
+    <motion.div
+      className="session-summary card"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+    >
       <div className="session-summary__header">
-        <Trophy size={32} className="session-summary__trophy" />
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.2, type: 'spring', stiffness: 200, damping: 12 }}
+        >
+          <Trophy size={36} className="session-summary__trophy" />
+        </motion.div>
         <h2 className="session-summary__title">Session Complete!</h2>
       </div>
 
@@ -287,10 +299,15 @@ export default function SessionSummary({
         </ul>
       </div>
 
-      <button className="btn btn-primary btn-block" onClick={onClose}>
+      <motion.button
+        className="btn btn-primary btn-block btn-lg"
+        onClick={onClose}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+      >
         Continue
         <ArrowRight size={16} style={{ marginLeft: 8 }} />
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   );
 }

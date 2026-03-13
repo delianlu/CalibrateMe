@@ -1,4 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Target, Crosshair } from 'lucide-react';
 import { MiniGameState, MiniGamePhase, TriviAnswer } from '../types';
 import { pickRandomQuestions } from '../questions';
 import MiniGameResults from './MiniGameResults';
@@ -142,25 +144,44 @@ export default function MiniGameContainer({ onClose }: MiniGameContainerProps) {
   if (phase === 'intro') {
     return (
       <div className="minigame">
-        <div className="minigame__intro card">
+        <motion.div
+          className="minigame__intro card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div style={{
+            width: 64, height: 64, borderRadius: 16,
+            background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.1))',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            margin: '0 auto 1.25rem'
+          }}>
+            <Crosshair size={28} style={{ color: 'var(--color-primary-500, #6366F1)' }} />
+          </div>
           <h2>Calibration Training</h2>
           <p>
             <strong>Calibration</strong> is the match between your confidence and your actual accuracy.
-            A well-calibrated person who says "80% confident" should be correct about 80% of the time.
+            A well-calibrated person who says &ldquo;80% confident&rdquo; should be correct about 80% of the time.
           </p>
           <p>
             You will answer <strong>10 trivia questions</strong> and rate how confident you are
             after each one. At the end, we will show you how well-calibrated you were.
           </p>
           <div className="minigame__intro-actions">
-            <button className="btn btn-primary btn-block" onClick={handleStart}>
-              Start
-            </button>
+            <motion.button
+              className="btn btn-primary btn-block btn-lg"
+              onClick={handleStart}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Target size={18} style={{ marginRight: 6 }} />
+              Start Game
+            </motion.button>
             <button className="btn btn-secondary btn-block" onClick={onClose}>
               Back to App
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     );
   }

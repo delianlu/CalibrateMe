@@ -14,6 +14,7 @@ import {
   ResponseType,
   DEFAULT_SIMULATION_CONFIG,
   SystemBelief,
+  ItemType,
 } from '../types';
 import { SeededRandom } from '../utils/random';
 import { mean } from '../utils/statistics';
@@ -85,6 +86,14 @@ export function runSimulation(
   const domainBetaStar = (domainSplitEnabled && learner.params.beta_star_vocab != null && learner.params.beta_star_grammar != null)
     ? { vocab: learner.params.beta_star_vocab, grammar: learner.params.beta_star_grammar }
     : undefined;
+
+  // Randomize item type assignment using seeded RNG (instead of alternating)
+  // to avoid confounding domain with item index or presentation order
+  if (domainSplitEnabled) {
+    for (const item of learner.items) {
+      item.item_type = random.random() < 0.5 ? ItemType.VOCABULARY : ItemType.GRAMMAR;
+    }
+  }
 
   // Initialize modules
   const dualProcessClassifier = new DualProcessClassifier();
