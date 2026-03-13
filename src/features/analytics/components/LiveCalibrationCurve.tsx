@@ -91,7 +91,13 @@ export default function LiveCalibrationCurve({
       <h4 className="live-cal-curve__title">Calibration Curve</h4>
       <ResponsiveContainer width="100%" height={260}>
         <ComposedChart margin={{ top: 10, right: 20, bottom: 25, left: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <defs>
+            <linearGradient id="calCurveGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#6366F1" stopOpacity={0.2} />
+              <stop offset="100%" stopColor="#6366F1" stopOpacity={0.02} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" strokeOpacity={0.5} />
           <XAxis
             type="number"
             dataKey="confidence"
@@ -134,12 +140,16 @@ export default function LiveCalibrationCurve({
             data={chartData}
             type="monotone"
             dataKey="accuracy"
-            stroke="#4299e1"
-            strokeWidth={2}
-            dot={{ fill: '#4299e1', r: 5, strokeWidth: 2, stroke: '#fff' }}
+            stroke="#6366F1"
+            strokeWidth={3}
+            strokeLinecap="round"
+            dot={{ fill: '#6366F1', r: 5, strokeWidth: 2, stroke: '#fff' }}
             legendType="none"
+            isAnimationActive={true}
+            animationDuration={800}
+            animationEasing="ease-out"
           />
-          <Scatter data={chartData} fill="#4299e1" legendType="none" />
+          <Scatter data={chartData} fill="#6366F1" legendType="none" />
         </ComposedChart>
       </ResponsiveContainer>
       <div className="live-cal-curve__legend">

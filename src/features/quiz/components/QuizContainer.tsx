@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion } from 'framer-motion';
+import { Shuffle, BookOpen, PenTool, Zap } from 'lucide-react';
 import { useQuizSession } from '../hooks/useQuizSession';
 import Flashcard from './Flashcard';
 import GrammarExercise from './GrammarExercise';
@@ -15,6 +17,8 @@ import {
 } from '../../scaffolding/scaffoldingEngine';
 import { ScaffoldState } from '../../scaffolding/types';
 import { QuizItem, QuizResponse } from '../types';
+
+const modeIcons = { mixed: Shuffle, vocabulary: BookOpen, grammar: PenTool };
 
 type PracticeMode = 'vocabulary' | 'grammar' | 'mixed';
 
@@ -166,8 +170,13 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
       {showOnboarding && (
         <OnboardingCard onDismiss={() => setShowOnboarding(false)} />
       )}
-      <div className="quiz-start card">
-        <h2 className="quiz-start__title">Practice Mode</h2>
+      <motion.div
+        className="quiz-start card"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <h2 className="quiz-start__title">Ready to Practice?</h2>
         <p className="quiz-start__desc">
           Practice vocabulary and grammar exercises designed for French speakers learning English.
           CalibrateMe tracks your calibration accuracy and adapts the schedule.
@@ -175,38 +184,38 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
 
         {/* Mode selector */}
         <div className="quiz-start__mode-selector" role="radiogroup" aria-label="Practice mode">
-          <button
-            className={`quiz-start__mode-btn ${practiceMode === 'mixed' ? 'quiz-start__mode-btn--active' : ''}`}
-            onClick={() => setPracticeMode('mixed')}
-            role="radio"
-            aria-checked={practiceMode === 'mixed'}
-          >
-            Mixed ({vocabItems.length + grammarItems.length})
-          </button>
-          <button
-            className={`quiz-start__mode-btn ${practiceMode === 'vocabulary' ? 'quiz-start__mode-btn--active' : ''}`}
-            onClick={() => setPracticeMode('vocabulary')}
-            role="radio"
-            aria-checked={practiceMode === 'vocabulary'}
-          >
-            Vocabulary ({vocabItems.length})
-          </button>
-          <button
-            className={`quiz-start__mode-btn ${practiceMode === 'grammar' ? 'quiz-start__mode-btn--active' : ''}`}
-            onClick={() => setPracticeMode('grammar')}
-            role="radio"
-            aria-checked={practiceMode === 'grammar'}
-          >
-            Grammar ({grammarItems.length})
-          </button>
+          {([
+            { mode: 'mixed' as PracticeMode, label: 'Mixed', count: vocabItems.length + grammarItems.length },
+            { mode: 'vocabulary' as PracticeMode, label: 'Vocabulary', count: vocabItems.length },
+            { mode: 'grammar' as PracticeMode, label: 'Grammar', count: grammarItems.length },
+          ] as const).map(({ mode, label, count }, i) => {
+            const Icon = modeIcons[mode];
+            return (
+              <motion.button
+                key={mode}
+                className={`quiz-start__mode-btn ${practiceMode === mode ? 'quiz-start__mode-btn--active' : ''}`}
+                onClick={() => setPracticeMode(mode)}
+                role="radio"
+                aria-checked={practiceMode === mode}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Icon size={16} style={{ marginRight: 6 }} />
+                {label} ({count})
+              </motion.button>
+            );
+          })}
         </div>
 
         <div className="quiz-start__info">
           <span>{Math.min(20, sessionItems.length)} items per session</span>
           <span>{practiceMode === 'vocabulary' ? 'Self-grading mode' : 'Auto-graded'}</span>
         </div>
-        <button
-          className="btn btn-primary btn-block"
+        <motion.button
+          className="btn btn-primary btn-block btn-lg"
           onClick={() => {
             setConfidence(50);
             setFeedbackResult(null);
@@ -214,10 +223,13 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
             startSession(sessionItems);
           }}
           disabled={sessionItems.length === 0}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
+          <Zap size={18} style={{ marginRight: 6 }} />
           {sessionItems.length === 0 ? 'No items loaded' : 'Start Quiz'}
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
       </>
     );
   }

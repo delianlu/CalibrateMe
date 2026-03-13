@@ -121,23 +121,27 @@ export default function SessionHistory({ responses }: SessionHistoryProps) {
       </h4>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={sessionRecords} margin={{ top: 5, right: 20, bottom: 20, left: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" strokeOpacity={0.5} />
           <XAxis
             dataKey="session"
+            tick={{ fill: 'var(--text-muted, #94A3B8)' }}
             label={{ value: 'Session', position: 'bottom', offset: 0, fontSize: 12 }}
           />
           <YAxis
             domain={[0, 0.5]}
             tickFormatter={v => `${(v * 100).toFixed(0)}%`}
+            tick={{ fill: 'var(--text-muted, #94A3B8)' }}
             label={{ value: 'ECE', angle: -90, position: 'insideLeft', fontSize: 12 }}
           />
           <Tooltip content={<CustomTooltip />} />
           <Line
             type="monotone"
             dataKey="ece"
-            stroke="#4F46E5"
+            stroke="#6366F1"
             strokeWidth={2}
-            dot={{ fill: '#4F46E5', r: 4, strokeWidth: 2, stroke: '#fff' }}
+            dot={{ fill: '#6366F1', r: 4, strokeWidth: 2, stroke: '#fff' }}
+            isAnimationActive={true}
+            strokeLinecap="round"
           />
         </LineChart>
       </ResponsiveContainer>

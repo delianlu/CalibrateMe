@@ -31,9 +31,9 @@ function computeECE(responses: QuizResponse[], numBins: number = 5): number {
 }
 
 function getECEColor(ece: number): string {
-  if (ece < 0.1) return '#38a169';  // green
-  if (ece < 0.2) return '#d69e2e';  // yellow
-  return '#e53e3e';                  // red
+  if (ece < 0.1) return '#10B981';  // green
+  if (ece < 0.2) return '#F59E0B';  // amber
+  return '#EF4444';                  // red
 }
 
 function getECELabel(ece: number): string {

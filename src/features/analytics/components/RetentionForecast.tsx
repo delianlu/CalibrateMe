@@ -22,9 +22,9 @@ function predictRetention(kHat: number, lambda: number, days: number): number {
 }
 
 function getBarColor(retention: number): string {
-  if (retention >= 0.8) return '#38a169';
-  if (retention >= 0.6) return '#d69e2e';
-  return '#e53e3e';
+  if (retention >= 0.8) return '#10B981';
+  if (retention >= 0.6) return '#F59E0B';
+  return '#EF4444';
 }
 
 const CustomTooltip = ({ active, payload }: any) => {
@@ -95,16 +95,17 @@ export default function RetentionForecast({
       )}
       <ResponsiveContainer width="100%" height={220}>
         <BarChart data={data} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-          <XAxis dataKey="label" fontSize={11} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" strokeOpacity={0.5} />
+          <XAxis dataKey="label" fontSize={11} tick={{ fill: 'var(--text-muted, #94A3B8)' }} />
           <YAxis
             domain={[0, 1]}
             tickFormatter={v => `${(v * 100).toFixed(0)}%`}
             fontSize={11}
+            tick={{ fill: 'var(--text-muted, #94A3B8)' }}
           />
           <Tooltip content={<CustomTooltip />} />
           <ReferenceLine y={0.85} stroke="#a0aec0" strokeDasharray="3 3" />
-          <Bar dataKey="retention" radius={[4, 4, 0, 0]}>
+          <Bar dataKey="retention" radius={[4, 4, 0, 0]} isAnimationActive={true}>
             {data.map((d, i) => (
               <Cell key={i} fill={getBarColor(d.retention)} />
             ))}

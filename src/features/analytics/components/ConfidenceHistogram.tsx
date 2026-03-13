@@ -22,7 +22,7 @@ interface HistBin {
   incorrect: number;
 }
 
-const BIN_COLORS = ['#fc8181', '#f6ad55', '#faf089', '#9ae6b4', '#68d391'];
+const BIN_COLORS = ['#EF4444', '#F59E0B', '#EAB308', '#22C55E', '#10B981'];
 
 function buildHistogram(responses: QuizResponse[]): HistBin[] {
   const labels = ['0-20%', '21-40%', '41-60%', '61-80%', '81-100%'];
@@ -74,11 +74,11 @@ export default function ConfidenceHistogram({ responses }: ConfidenceHistogramPr
       <h4 className="conf-histogram__title">Confidence Distribution</h4>
       <ResponsiveContainer width="100%" height={200}>
         <BarChart data={data} margin={{ top: 5, right: 10, bottom: 5, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-          <XAxis dataKey="label" fontSize={11} />
-          <YAxis allowDecimals={false} fontSize={11} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" strokeOpacity={0.5} />
+          <XAxis dataKey="label" fontSize={11} tick={{ fill: 'var(--text-muted, #94A3B8)' }} />
+          <YAxis allowDecimals={false} fontSize={11} tick={{ fill: 'var(--text-muted, #94A3B8)' }} />
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="count" radius={[4, 4, 0, 0]}>
+          <Bar dataKey="count" radius={[6, 6, 0, 0]} isAnimationActive={true} animationDuration={600}>
             {data.map((_, i) => (
               <Cell key={i} fill={BIN_COLORS[i]} />
             ))}

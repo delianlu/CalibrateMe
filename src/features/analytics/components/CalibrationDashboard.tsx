@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { Activity, Target, Brain, Clock } from 'lucide-react';
 import { QuizResponse } from '../../quiz/types';
 import { ItemState } from '../../user/types';
@@ -54,10 +55,28 @@ export default function CalibrationDashboard({
       </h2>
 
       {totalItems === 0 && !hasItemData ? (
-        <div className="cal-dashboard__empty card">
-          <Target size={48} style={{ color: 'var(--text-faint)', marginBottom: 12 }} />
+        <motion.div
+          className="cal-dashboard__empty card"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div style={{
+            width: 72, height: 72, borderRadius: 20,
+            background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(139,92,246,0.1))',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            marginBottom: 16, marginLeft: 'auto', marginRight: 'auto'
+          }}>
+            <Target size={32} style={{ color: 'var(--color-primary-500)' }} />
+          </div>
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: 8, color: 'var(--text-primary)' }}>
+            No Analytics Yet
+          </h3>
           <p>Complete a quiz session to see your calibration analytics.</p>
-        </div>
+          <p style={{ fontSize: '0.8rem', marginTop: 8, color: 'var(--text-faint)' }}>
+            Your calibration curve, ECE score, and learning insights will appear here.
+          </p>
+        </motion.div>
       ) : (
         <>
           {/* Quick stats row */}
@@ -66,13 +85,19 @@ export default function CalibrationDashboard({
               {statData.map((stat, i) => {
                 const Icon = statIcons[i];
                 return (
-                  <div key={stat.label} className={`cal-dashboard__stat cal-dashboard__stat--${stat.accent}`}>
+                  <motion.div
+                    key={stat.label}
+                    className={`cal-dashboard__stat cal-dashboard__stat--${stat.accent}`}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
                     <div className="cal-dashboard__stat-icon">
                       <Icon size={16} />
                     </div>
                     <span className="cal-dashboard__stat-value">{stat.value}</span>
                     <span className="cal-dashboard__stat-label">{stat.label}</span>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
