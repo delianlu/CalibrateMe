@@ -2699,6 +2699,10 @@ h1, h2, h3 {
 /* =============================================================================
    34. Gamification -- Achievement List
    ============================================================================= */
+.achievement-list {
+  width: 100%;
+}
+
 .achievement-list__title {
   font-size: var(--font-size-sm);
   font-weight: 700;

@@ -184,7 +184,7 @@ function App() {
       {/* ── Sidebar Navigation (desktop) ── */}
       <aside className="app-sidebar" role="navigation" aria-label="Main navigation">
         <div className="app-sidebar__brand">
-          <div className="app-sidebar__logo">
+          <div className="app-sidebar__brand-logo">
             <GraduationCap size={24} />
           </div>
           <span className="app-sidebar__brand-text">CalibrateMe</span>
@@ -237,7 +237,7 @@ function App() {
       <div className="app-content">
         {/* Top bar */}
         <header className="app-topbar">
-          <div className="app-topbar__left">
+          <div className="app-topbar__title-group">
             <h1 className="app-topbar__title">
               {NAV_ITEMS.find(n => n.id === tab)?.label}
             </h1>
@@ -245,9 +245,9 @@ function App() {
               Metacognitive Calibration in Adaptive Learning
             </span>
           </div>
-          <div className="app-topbar__right">
+          <div className="app-topbar__actions">
             <button
-              className="app-topbar__theme-btn"
+              className="app-topbar__theme-toggle"
               onClick={toggleDarkMode}
               title={isDark ? 'Light mode' : 'Dark mode'}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
