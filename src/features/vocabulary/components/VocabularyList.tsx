@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useVocabulary } from '../hooks/useVocabulary';
 import VocabularyCard from './VocabularyCard';
 import TagFilter from './TagFilter';
@@ -9,6 +10,7 @@ import { academicEnglish } from '../../../data/vocabularyPacks/academic-english'
 import { businessEnglish } from '../../../data/vocabularyPacks/business-english';
 
 const ALL_PACKS = [essentialEnglish, academicEnglish, businessEnglish];
+const PAGE_SIZE = 24;
 
 export default function VocabularyList() {
   const {
@@ -29,6 +31,12 @@ export default function VocabularyList() {
 
   const [showImport, setShowImport] = useState(false);
   const [showExport, setShowExport] = useState(false);
+  const [page, setPage] = useState(0);
+
+  // Reset page when filters change
+  useEffect(() => {
+    setPage(0);
+  }, [filter]);
 
   // Auto-load all built-in packs on mount
   useEffect(() => {
@@ -36,6 +44,12 @@ export default function VocabularyList() {
       loadPack(pack);
     }
   }, [loadPack]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredItems.length / PAGE_SIZE));
+  const pagedItems = useMemo(
+    () => filteredItems.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE),
+    [filteredItems, page]
+  );
 
   return (
     <div className="vocab-list">
@@ -85,13 +99,44 @@ export default function VocabularyList() {
       {/* Items */}
       <div className="vocab-list__items">
         {filteredItems.length === 0 ? (
-          <p className="vocab-list__empty">No items match your filters.</p>
+          <div className="vocab-list__empty-state">
+            <div className="empty-state__icon-container">
+              <BookOpen size={32} style={{ color: 'var(--color-primary-500)' }} />
+            </div>
+            <h3 className="empty-state__title">No Items Found</h3>
+            <p className="empty-state__desc">No vocabulary items match your current filters. Try adjusting your search or loading a word pack.</p>
+          </div>
         ) : (
-          filteredItems.map(item => (
+          pagedItems.map(item => (
             <VocabularyCard key={item.id} item={item} onDelete={deleteItem} />
           ))
         )}
       </div>
+
+      {/* Pagination */}
+      {filteredItems.length > PAGE_SIZE && (
+        <div className="vocab-list__pagination">
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => setPage(p => Math.max(0, p - 1))}
+            disabled={page === 0}
+            aria-label="Previous page"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <span className="vocab-list__page-info">
+            Page {page + 1} of {totalPages}
+          </span>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+            disabled={page >= totalPages - 1}
+            aria-label="Next page"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      )}
 
       {/* Modals */}
       {showImport && (

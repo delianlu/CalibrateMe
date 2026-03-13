@@ -2618,9 +2618,16 @@ h1, h2, h3 {
 
 .xp-bar__header {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 6px;
+}
+
+.xp-bar__header-text {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: baseline;
 }
 
 .xp-bar__level {
@@ -5353,4 +5360,165 @@ h1, h2, h3 {
 [data-theme="dark"] .app-sidebar {
   background: linear-gradient(180deg, #080618 0%, #0c0a1a 50%, #080618 100%);
   border-right: 1px solid rgba(99, 102, 241, 0.06);
+}
+
+/* =============================================================================
+   Reusable MetricTile Component
+   ============================================================================= */
+.metric-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-xl);
+  padding: 1.25rem 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.metric-tile--blue::before { background: var(--gradient-primary); }
+.metric-tile--green::before { background: var(--gradient-success); }
+.metric-tile--purple::before { background: linear-gradient(90deg, #8B5CF6, #6366F1); }
+.metric-tile--amber::before { background: linear-gradient(90deg, #F59E0B, #F97316); }
+
+.metric-tile__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.metric-tile--blue .metric-tile__icon { background: rgba(99, 102, 241, 0.1); color: var(--color-primary-500); }
+.metric-tile--green .metric-tile__icon { background: rgba(16, 185, 129, 0.1); color: var(--color-success); }
+.metric-tile--purple .metric-tile__icon { background: rgba(139, 92, 246, 0.1); color: var(--color-accent); }
+.metric-tile--amber .metric-tile__icon { background: rgba(245, 158, 11, 0.1); color: var(--color-warning); }
+
+.metric-tile__value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.metric-tile__label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+/* =============================================================================
+   Skeleton Loading
+   ============================================================================= */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-muted) 25%, var(--border-color) 50%, var(--bg-muted) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton--mt {
+  margin-top: 8px;
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-xl);
+  padding: 1.25rem;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* =============================================================================
+   Progress Ring
+   ============================================================================= */
+.progress-ring {
+  flex-shrink: 0;
+}
+
+.xp-bar__ring-level {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--color-primary-500);
+}
+
+/* =============================================================================
+   Empty States with Illustrations
+   ============================================================================= */
+.empty-state__icon-container {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.empty-state__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.empty-state__desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.vocab-list__empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+/* =============================================================================
+   Vocabulary Pagination
+   ============================================================================= */
+.vocab-list__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.vocab-list__page-info {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: 600;
 }

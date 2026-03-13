@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Target, Brain, Clock } from 'lucide-react';
+import CountUp from '../../../components/CountUp';
 import { QuizResponse } from '../../quiz/types';
 import { ItemState } from '../../user/types';
 import LiveCalibrationCurve from './LiveCalibrationCurve';
@@ -37,10 +38,10 @@ export default function CalibrationDashboard({
       avgConf: conf,
       avgRT: rt,
       statData: [
-        { value: totalItems, label: 'Responses', accent: 'blue' },
-        { value: `${(acc * 100).toFixed(0)}%`, label: 'Accuracy', accent: 'green' },
-        { value: `${conf.toFixed(0)}%`, label: 'Avg Confidence', accent: 'purple' },
-        { value: `${(rt / 1000).toFixed(1)}s`, label: 'Avg RT', accent: 'amber' },
+        { numValue: totalItems, label: 'Responses', accent: 'blue', suffix: '' },
+        { numValue: acc * 100, label: 'Accuracy', accent: 'green', suffix: '%', decimals: 0 },
+        { numValue: conf, label: 'Avg Confidence', accent: 'purple', suffix: '%', decimals: 0 },
+        { numValue: rt / 1000, label: 'Avg RT', accent: 'amber', suffix: 's', decimals: 1 },
       ],
     };
   }, [responses, totalItems]);
@@ -95,7 +96,12 @@ export default function CalibrationDashboard({
                     <div className="cal-dashboard__stat-icon">
                       <Icon size={16} />
                     </div>
-                    <span className="cal-dashboard__stat-value">{stat.value}</span>
+                    <CountUp
+                      className="cal-dashboard__stat-value"
+                      end={stat.numValue}
+                      suffix={stat.suffix}
+                      decimals={stat.decimals ?? 0}
+                    />
                     <span className="cal-dashboard__stat-label">{stat.label}</span>
                   </motion.div>
                 );
