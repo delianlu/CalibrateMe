@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap } from 'lucide-react';
+import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap, BarChart3 } from 'lucide-react';
 import { QuizItem, QuizResponse } from '../types';
 import HeuristicTooltip from '../../../components/HeuristicTooltip';
+import ProgressRing from '../../../components/ProgressRing';
 
 interface SessionSummaryProps {
   responses: QuizResponse[];
@@ -116,6 +117,12 @@ function classifyDualProcess(responses: QuizResponse[]): { automatic: number; de
   return { automatic, deliberate };
 }
 
+function getAccuracyColor(accuracy: number): string {
+  if (accuracy > 80) return '#22C55E';
+  if (accuracy >= 50) return '#F59E0B';
+  return '#EF4444';
+}
+
 export default function SessionSummary({
   responses,
   items,
@@ -165,6 +172,9 @@ export default function SessionSummary({
   }, [responses, items]);
 
   const ecePct = calibrationECE !== null ? (calibrationECE * 100).toFixed(1) : null;
+  const dualTotal = stats.dualProcess.automatic + stats.dualProcess.deliberate;
+  const autoPct = dualTotal > 0 ? (stats.dualProcess.automatic / dualTotal) * 100 : 0;
+  const delibPct = dualTotal > 0 ? (stats.dualProcess.deliberate / dualTotal) * 100 : 0;
 
   return (
     <motion.div
@@ -184,6 +194,20 @@ export default function SessionSummary({
         <h2 className="session-summary__title">Session Complete!</h2>
       </div>
 
+      {/* Circular Progress Ring */}
+      <div className="session-summary__progress-ring-wrapper">
+        <ProgressRing
+          progress={stats.accuracy}
+          size={120}
+          strokeWidth={8}
+        >
+          <span className="session-summary__ring-value" style={{ color: getAccuracyColor(stats.accuracy) }}>
+            {stats.accuracy.toFixed(0)}%
+          </span>
+          <span className="session-summary__ring-label">Accuracy</span>
+        </ProgressRing>
+      </div>
+
       {/* Stats grid */}
       <div className="session-summary__grid">
         <div className="session-summary__stat session-summary__stat--accent-green">
@@ -194,15 +218,6 @@ export default function SessionSummary({
             {stats.correct}/{stats.total}
           </span>
           <span className="session-summary__stat-label">Correct</span>
-        </div>
-        <div className="session-summary__stat session-summary__stat--accent-blue">
-          <div className="session-summary__stat-icon">
-            <Trophy size={18} />
-          </div>
-          <span className="session-summary__stat-value">
-            {stats.accuracy.toFixed(0)}%
-          </span>
-          <span className="session-summary__stat-label">Accuracy</span>
         </div>
         <div className="session-summary__stat session-summary__stat--accent-purple">
           <div className="session-summary__stat-icon">
@@ -222,9 +237,18 @@ export default function SessionSummary({
           </span>
           <span className="session-summary__stat-label">Avg Response Time</span>
         </div>
+        <div className="session-summary__stat session-summary__stat--accent-blue">
+          <div className="session-summary__stat-icon">
+            <Target size={18} />
+          </div>
+          <span className="session-summary__stat-value">
+            {ecePct !== null ? `${ecePct}%` : '--'}
+          </span>
+          <span className="session-summary__stat-label">Session ECE</span>
+        </div>
       </div>
 
-      {/* Dual-process insight */}
+      {/* Dual-process insight with stacked bar */}
       {(stats.dualProcess.automatic > 0 || stats.dualProcess.deliberate > 0) && (
         <div className="session-summary__dual-process">
           <span className="session-summary__section-title">
@@ -232,9 +256,27 @@ export default function SessionSummary({
             Response Patterns <HeuristicTooltip label="Dual-process classification uses response time and confidence heuristics. 'Automatic' = fast + confident + correct. This is an approximation, not a cognitive diagnosis." />
           </span>
           <p className="heuristic-subtitle">Estimated from timing and confidence patterns</p>
-          <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-            <strong>{stats.dualProcess.automatic}</strong> automatic (fast + confident) &middot;{' '}
-            <strong>{stats.dualProcess.deliberate}</strong> deliberate (slower / less certain)
+          <div className="session-summary__dual-bar" role="img" aria-label={`${stats.dualProcess.automatic} automatic, ${stats.dualProcess.deliberate} deliberate`}>
+            {autoPct > 0 && (
+              <div
+                className="session-summary__dual-bar-segment session-summary__dual-bar-segment--automatic"
+                style={{ width: `${autoPct}%` }}
+              >
+                {autoPct >= 15 && `${stats.dualProcess.automatic}`}
+              </div>
+            )}
+            {delibPct > 0 && (
+              <div
+                className="session-summary__dual-bar-segment session-summary__dual-bar-segment--deliberate"
+                style={{ width: `${delibPct}%` }}
+              >
+                {delibPct >= 15 && `${stats.dualProcess.deliberate}`}
+              </div>
+            )}
+          </div>
+          <p style={{ margin: '6px 0 0', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
+            <strong>{stats.dualProcess.automatic}</strong> automatic &middot;{' '}
+            <strong>{stats.dualProcess.deliberate}</strong> deliberate
           </p>
           {stats.dualProcess.automatic > stats.dualProcess.deliberate && (
             <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--text-faint)' }}>
@@ -299,15 +341,27 @@ export default function SessionSummary({
         </ul>
       </div>
 
-      <motion.button
-        className="btn btn-primary btn-block btn-lg"
-        onClick={onClose}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        Continue
-        <ArrowRight size={16} style={{ marginLeft: 8 }} />
-      </motion.button>
+      <div className="session-summary__action-buttons">
+        <motion.button
+          className="btn btn-primary btn-lg"
+          onClick={onClose}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          Continue Practice
+          <ArrowRight size={16} style={{ marginLeft: 8 }} />
+        </motion.button>
+        <motion.button
+          className="btn btn-secondary btn-lg"
+          onClick={onClose}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          style={{ border: '1.5px solid var(--color-primary-400)', color: 'var(--color-primary-500)', background: 'transparent' }}
+        >
+          <BarChart3 size={16} style={{ marginRight: 6 }} />
+          View Analytics
+        </motion.button>
+      </div>
     </motion.div>
   );
 }

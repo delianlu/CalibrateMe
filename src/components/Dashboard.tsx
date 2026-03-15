@@ -3,7 +3,7 @@
 // =============================================================================
 
 import React, { useState, Suspense } from 'react';
-import { FileText, ArrowLeft, FlaskConical, Thermometer, Sliders } from 'lucide-react';
+import { FileText, ArrowLeft, FlaskConical, Thermometer, Sliders, User, Settings } from 'lucide-react';
 import { useSimulationStore } from '../store/simulationStore';
 import { useAdvancedAnalyticsStore } from '../store/advancedAnalyticsStore';
 import { calculateCalibrationMetrics } from '../calibration/scoringModule';
@@ -30,10 +30,12 @@ const DoseResponseChart = React.lazy(() => import('../features/simulation/compon
 const MasteryComparison = React.lazy(() => import('../features/simulation/components/MasteryComparison'));
 
 type DashboardView = 'main' | 'report' | 'advanced';
+type ResultsTab = 'overview' | 'hypotheses' | 'charts' | 'advanced';
 
 const Dashboard: React.FC = () => {
   const [view, setView] = useState<DashboardView>('main');
   const [selectedSweep, setSelectedSweep] = useState(0);
+  const [resultsTab, setResultsTab] = useState<ResultsTab>('overview');
 
   const simStore = useSimulationStore();
   const advStore = useAdvancedAnalyticsStore();
@@ -252,7 +254,17 @@ const Dashboard: React.FC = () => {
         {/* Single Simulation Results */}
         {results && !simRunning && !comparisonResults && !hypothesisResults && (
           <>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginBottom: '0.75rem' }}>
+            {/* Header badges + actions */}
+            <div className="sim-results__header">
+              {profile && (
+                <span className="sim-results__badge sim-results__badge--profile">
+                  <User size={12} /> {profile.name}
+                </span>
+              )}
+              <span className="sim-results__badge sim-results__badge--scheduler">
+                <Settings size={12} /> {results.config.scheduler_type}
+              </span>
+              <div style={{ flex: 1 }} />
               <button
                 className="btn btn-secondary btn-sm"
                 onClick={() => window.open(`${window.location.pathname}?splitscreen=true`, '_blank')}
@@ -268,54 +280,87 @@ const Dashboard: React.FC = () => {
               </button>
             </div>
 
-            <MetricsDisplay results={results} />
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-              <CalibrationChart
-                title="Knowledge Trajectory"
-                data={results.K_star_trajectory.map((k, i) => ({
-                  session: i + 1,
-                  'True (K*)': k,
-                  'Belief (K̂)': results.K_hat_trajectory[i],
-                }))}
-                dataKeys={['True (K*)', 'Belief (K̂)']}
-                colors={['#38a169', '#4299e1']}
-              />
-              <CalibrationChart
-                title="Calibration Error Over Time"
-                data={results.ece_trajectory.map((e, i) => ({
-                  session: i + 1,
-                  ECE: e,
-                  Brier: results.brier_trajectory[i],
-                }))}
-                dataKeys={['ECE', 'Brier']}
-                colors={['#e53e3e', '#ed8936']}
-              />
+            {/* Tabbed sub-navigation */}
+            <div className="sim-results__tabs">
+              {(['overview', 'charts', 'advanced'] as const).map(t => (
+                <button
+                  key={t}
+                  className={`sim-results__tab ${resultsTab === t ? 'sim-results__tab--active' : ''}`}
+                  onClick={() => setResultsTab(t)}
+                >
+                  {t.charAt(0).toUpperCase() + t.slice(1)}
+                </button>
+              ))}
             </div>
 
-            {calibrationBins.length > 0 && (
-              <ExportableChart id="chart-calibration-curve" title="calibration_curve">
-                <CalibrationCurve
-                  bins={calibrationBins}
-                  title="Calibration Curve (Confidence vs Accuracy)"
-                />
-              </ExportableChart>
+            {resultsTab === 'overview' && (
+              <>
+                <MetricsDisplay results={results} />
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                  <CalibrationChart
+                    title="Knowledge Trajectory"
+                    data={results.K_star_trajectory.map((k, i) => ({
+                      session: i + 1,
+                      'True (K*)': k,
+                      'Belief (K̂)': results.K_hat_trajectory[i],
+                    }))}
+                    dataKeys={['True (K*)', 'Belief (K̂)']}
+                    colors={['#38a169', '#4299e1']}
+                  />
+                  <CalibrationChart
+                    title="Calibration Error Over Time"
+                    data={results.ece_trajectory.map((e, i) => ({
+                      session: i + 1,
+                      ECE: e,
+                      Brier: results.brier_trajectory[i],
+                    }))}
+                    dataKeys={['ECE', 'Brier']}
+                    colors={['#e53e3e', '#ed8936']}
+                  />
+                </div>
+              </>
             )}
 
-            <ResponseHistory sessionData={results.session_data} />
+            {resultsTab === 'charts' && (
+              <>
+                {calibrationBins.length > 0 && (
+                  <ExportableChart id="chart-calibration-curve" title="calibration_curve">
+                    <CalibrationCurve
+                      bins={calibrationBins}
+                      title="Calibration Curve (Confidence vs Accuracy)"
+                    />
+                  </ExportableChart>
+                )}
 
-            {/* Crammer Crash Analysis — shown when Crammer profile is selected */}
-            {profile?.id === 'Crammer' && (
-              <ExportableChart id="chart-crammer-crash" title="crammer_crash_analysis">
-                <CrammerCrashChart seed={results.config.random_seed ?? 42} />
-              </ExportableChart>
+                <ResponseHistory sessionData={results.session_data} />
+
+                {/* Crammer Crash Analysis — shown when Crammer profile is selected */}
+                {profile?.id === 'Crammer' && (
+                  <ExportableChart id="chart-crammer-crash" title="crammer_crash_analysis">
+                    <CrammerCrashChart seed={results.config.random_seed ?? 42} />
+                  </ExportableChart>
+                )}
+
+                {/* Domain-Split Calibration — shown when domain split is enabled */}
+                {results.config.enable_domain_split && (
+                  <ExportableChart id="chart-domain-calibration" title="domain_calibration">
+                    <DomainCalibrationChart results={results} />
+                  </ExportableChart>
+                )}
+              </>
             )}
 
-            {/* Domain-Split Calibration — shown when domain split is enabled */}
-            {results.config.enable_domain_split && (
-              <ExportableChart id="chart-domain-calibration" title="domain_calibration">
-                <DomainCalibrationChart results={results} />
-              </ExportableChart>
+            {resultsTab === 'advanced' && (
+              <div className="card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
+                <FlaskConical size={32} style={{ color: 'var(--color-primary-500)', marginBottom: 12 }} />
+                <p style={{ color: 'var(--text-secondary)', marginBottom: 8 }}>
+                  Use the <strong>Advanced Analytics</strong> button above for ablation studies, sensitivity sweeps, and dose-response analyses.
+                </p>
+                <button className="btn btn-primary btn-sm" onClick={() => setView('advanced')}>
+                  <FlaskConical size={14} /> Open Advanced Analytics
+                </button>
+              </div>
             )}
           </>
         )}

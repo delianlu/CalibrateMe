@@ -10,6 +10,8 @@ import {
   Sun,
   Moon,
   GraduationCap,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import QuizContainer from './features/quiz/components/QuizContainer';
@@ -64,7 +66,7 @@ function loadGamification(): GamificationState {
 }
 
 const pageVariants = {
-  initial: { opacity: 0, y: 12 },
+  initial: { opacity: 0, y: 8 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -8 },
 };
@@ -77,6 +79,9 @@ function App() {
   }, []);
 
   const [tab, setTab] = useState<AppTab>('quiz');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try { return localStorage.getItem('calibrateme_sidebar_collapsed') === 'true'; } catch { return false; }
+  });
   const [allResponses, setAllResponses] = useState<QuizResponse[]>([]);
   const [gamification, setGamification] = useState<GamificationState>(loadGamification);
   const { profile, recordSessionResponses, updatePreferences, exportData, importData, resetAll } =
@@ -113,6 +118,14 @@ function App() {
       profile.preferences.darkMode ? 'dark' : 'light'
     );
   }, [profile.preferences.darkMode]);
+
+  const toggleSidebar = useCallback(() => {
+    setSidebarCollapsed(prev => {
+      const next = !prev;
+      try { localStorage.setItem('calibrateme_sidebar_collapsed', String(next)); } catch { /* noop */ }
+      return next;
+    });
+  }, []);
 
   const toggleDarkMode = useCallback(() => {
     updatePreferences({ darkMode: !profile.preferences.darkMode });
@@ -179,10 +192,10 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app${sidebarCollapsed ? ' app--sidebar-collapsed' : ''}${(tab === 'simulation' || tab === 'analytics') ? ' app--hide-footer' : ''}`}>
       <a href="#main-content" className="skip-link">Skip to main content</a>
       {/* ── Sidebar Navigation (desktop) ── */}
-      <aside className="app-sidebar" role="navigation" aria-label="Main navigation">
+      <aside className={`app-sidebar${sidebarCollapsed ? ' app-sidebar--collapsed' : ''}`} role="navigation" aria-label="Main navigation">
         <div className="app-sidebar__brand">
           <div className="app-sidebar__brand-logo">
             <GraduationCap size={24} />
@@ -206,6 +219,14 @@ function App() {
         </nav>
 
         <div className="app-sidebar__footer">
+          <button
+            className="app-sidebar__collapse-toggle"
+            onClick={toggleSidebar}
+            title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          >
+            {sidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+          </button>
           <button
             className="app-sidebar__theme-toggle"
             onClick={toggleDarkMode}
@@ -267,7 +288,7 @@ function App() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                transition={{ duration: 0.2, ease: 'easeOut' }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 {tab === 'quiz' && (
                   <QuizContainer

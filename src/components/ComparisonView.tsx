@@ -15,6 +15,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { SimulationResults, SchedulerType } from '../types';
+import ChartTooltip from './ChartTooltip';
 
 interface ComparisonViewProps {
   results: Map<SchedulerType, SimulationResults>;
@@ -53,7 +54,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ results }) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" domain={[0, 100]} unit="%" />
             <YAxis type="category" dataKey="name" width={100} />
-            <Tooltip formatter={(value: number) => `${value.toFixed(1)}%`} />
+            <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(1) + '%' : String(v)} />} />
             <Legend />
             <Bar dataKey="1-Day" fill="#38a169" />
             <Bar dataKey="7-Day" fill="#4299e1" />
@@ -70,7 +71,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ results }) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
-            <Tooltip />
+            <Tooltip content={<ChartTooltip />} />
             <Legend />
             <Bar dataKey="Time to Mastery" fill="#ed8936" name="Sessions to Mastery" />
             <Bar dataKey="Review Efficiency" fill="#4299e1" name="Reviews per Item" />
@@ -86,7 +87,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ results }) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis domain={[0, 'auto']} />
-            <Tooltip formatter={(value: number) => `${value.toFixed(2)}%`} />
+            <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(2) + '%' : String(v)} />} />
             <Legend />
             <Bar dataKey="Final ECE" fill="#e53e3e" name="ECE (%)" />
             <Bar dataKey="Final Brier" fill="#fc8181" name="Brier (%)" />

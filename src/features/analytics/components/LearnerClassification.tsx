@@ -12,6 +12,7 @@ import { UserCheck, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { QuizResponse } from '../../quiz/types';
 import { ANALYTICS_THRESHOLDS } from '../../../config/analyticsThresholds';
 import HeuristicTooltip from '../../../components/HeuristicTooltip';
+import ChartTooltip from '../../../components/ChartTooltip';
 
 interface LearnerClassificationProps {
   responses: QuizResponse[];
@@ -130,7 +131,7 @@ export default function LearnerClassification({ responses, betaHat }: LearnerCla
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" />
               <XAxis dataKey="session" tick={{ fontSize: 10 }} />
               <YAxis tick={{ fontSize: 10 }} domain={[-0.3, 0.3]} />
-              <Tooltip formatter={(v: number) => v.toFixed(3)} />
+              <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(3) : String(v)} />} />
               <ReferenceLine y={0} stroke="var(--color-success)" strokeDasharray="4 4" />
               <ReferenceLine y={0.1} stroke="var(--color-error)" strokeDasharray="2 2" opacity={0.5} />
               <ReferenceLine y={-0.1} stroke="var(--color-info, #3B82F6)" strokeDasharray="2 2" opacity={0.5} />

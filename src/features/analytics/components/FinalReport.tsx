@@ -19,6 +19,7 @@ import { analyzePatterns, PatternReport } from '../patternAnalysis';
 import { analyzeLearnerInsights, LearnerInsightsReport } from '../learnerInsights';
 import { analyzeScaffoldingImpact, ScaffoldingReport } from '../scaffoldingImpact';
 import HeuristicTooltip from '../../../components/HeuristicTooltip';
+import ChartTooltip from '../../../components/ChartTooltip';
 import { exportToCSV, downloadFile } from '../../../utils/export';
 
 // -----------------------------------------------------------------------------
@@ -128,7 +129,7 @@ function TrajectoryCharts({ results, longitudinal }: { results: SimulationResult
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" />
               <XAxis dataKey="session" tick={{ fontSize: 11 }} />
               <YAxis domain={[0, 100]} tick={{ fontSize: 11 }} />
-              <Tooltip />
+              <Tooltip content={<ChartTooltip />} />
               <Legend iconSize={10} wrapperStyle={{ fontSize: 11 }} />
               <Area type="monotone" dataKey="K_star" name="True K*" stroke="#6366F1" fill="#6366F133" strokeWidth={2} />
               <Area type="monotone" dataKey="K_hat" name="Estimated K̂" stroke="#8B5CF6" fill="#8B5CF633" strokeWidth={1.5} strokeDasharray="4 2" />
@@ -146,7 +147,7 @@ function TrajectoryCharts({ results, longitudinal }: { results: SimulationResult
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" />
               <XAxis dataKey="session" tick={{ fontSize: 11 }} />
               <YAxis domain={[0, 'auto']} tick={{ fontSize: 11 }} />
-              <Tooltip />
+              <Tooltip content={<ChartTooltip />} />
               <Legend iconSize={10} wrapperStyle={{ fontSize: 11 }} />
               <Line type="monotone" dataKey="ece" name="ECE %" stroke="#EF4444" strokeWidth={2} dot={false} />
               <Line type="monotone" dataKey="brier" name="Brier %" stroke="#F59E0B" strokeWidth={1.5} dot={false} />
@@ -240,7 +241,7 @@ function PatternSection({ patterns }: { patterns: PatternReport }) {
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" />
                 <XAxis dataKey="bin" tick={{ fontSize: 10 }} />
                 <YAxis domain={[0, 100]} tick={{ fontSize: 11 }} />
-                <Tooltip />
+                <Tooltip content={<ChartTooltip />} />
                 <Bar dataKey="accuracy" name="Accuracy %" fill="#6366F1" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

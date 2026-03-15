@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Target, Brain, Clock } from 'lucide-react';
 import CountUp from '../../../components/CountUp';
+import { AnalyticsSkeleton } from '../../../components/Skeleton';
 import { QuizResponse } from '../../quiz/types';
 import { ItemState } from '../../user/types';
 import LiveCalibrationCurve from './LiveCalibrationCurve';
@@ -25,6 +26,14 @@ export default function CalibrationDashboard({
   itemStates = {},
   betaHat = 0,
 }: CalibrationDashboardProps) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Brief skeleton while data hydrates
+    const t = setTimeout(() => setIsLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
+
   const totalItems = responses.length;
 
   const { statData } = useMemo(() => {
@@ -47,6 +56,18 @@ export default function CalibrationDashboard({
   }, [responses, totalItems]);
 
   const hasItemData = Object.keys(itemStates).length > 0;
+
+  if (isLoading) {
+    return (
+      <div className="cal-dashboard">
+        <h2 className="cal-dashboard__title">
+          <Activity size={24} style={{ marginRight: 10, verticalAlign: 'middle' }} />
+          Calibration Analytics
+        </h2>
+        <AnalyticsSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="cal-dashboard">

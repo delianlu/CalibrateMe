@@ -9,6 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import ChartTooltip from './ChartTooltip';
 
 interface CalibrationChartProps {
   title: string;
@@ -40,14 +41,7 @@ const CalibrationChart: React.FC<CalibrationChartProps> = ({
             tickLine={false}
             tickFormatter={(v) => v.toFixed(1)}
           />
-          <Tooltip
-            contentStyle={{
-              background: 'white',
-              border: '1px solid var(--border-color, #e2e8f0)',
-              borderRadius: '4px',
-              fontSize: '12px',
-            }}
-          />
+          <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(3) : String(v)} />} />
           <Legend />
           {dataKeys.map((key, index) => (
             <Line

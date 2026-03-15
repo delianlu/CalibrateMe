@@ -20,6 +20,7 @@ import {
 import { createLearnerProfile } from '../profiles/learnerProfiles';
 import { runSimulation } from '../simulation/simulationEngine';
 import { SchedulerType, SimulationConfig, DEFAULT_SIMULATION_CONFIG } from '../types';
+import ChartTooltip from './ChartTooltip';
 
 interface CrammerChartData {
   session: number;
@@ -268,10 +269,7 @@ const CrammerCrashChart: React.FC<CrammerCrashChartProps> = ({ seed = 42 }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
             <XAxis dataKey="session" tick={{ fontSize: 12 }} tickLine={false} label={{ value: 'Session', position: 'insideBottom', offset: -2, fontSize: 12 }} />
             <YAxis domain={[0, 1]} tick={{ fontSize: 12 }} tickLine={false} tickFormatter={(v: number) => v.toFixed(1)} />
-            <Tooltip
-              contentStyle={{ background: 'white', border: '1px solid #e2e8f0', borderRadius: '4px', fontSize: '12px' }}
-              formatter={(value: number, name: string) => [value.toFixed(3), name]}
-            />
+            <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(3) : String(v)} />} />
             <Legend />
             <ReferenceLine y={0.9} stroke="#94a3b8" strokeDasharray="5 5" label={{ value: 'Mastery', position: 'right', fontSize: 10 }} />
             <ReferenceLine y={0.5} stroke="#94a3b8" strokeDasharray="2 4" label={{ value: 'K*=0.50', position: 'right', fontSize: 10 }} />
@@ -299,10 +297,7 @@ const CrammerCrashChart: React.FC<CrammerCrashChartProps> = ({ seed = 42 }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
             <XAxis dataKey="session" tick={{ fontSize: 12 }} tickLine={false} />
             <YAxis tick={{ fontSize: 12 }} tickLine={false} tickFormatter={(v: number) => v.toFixed(2)} />
-            <Tooltip
-              contentStyle={{ background: 'white', border: '1px solid #e2e8f0', borderRadius: '4px', fontSize: '12px' }}
-              formatter={(value: number) => [value.toFixed(3), 'β̂']}
-            />
+            <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(3) : String(v)} />} />
             <ReferenceLine y={0} stroke="#94a3b8" strokeDasharray="3 3" />
             <ReferenceLine y={0.15} stroke="#f59e0b" strokeDasharray="3 3" label={{ value: 'Overconfidence threshold', position: 'right', fontSize: 10 }} />
             <Area type="monotone" dataKey="beta_hat" fill="#f59e0b" fillOpacity={0.15} stroke="#f59e0b" strokeWidth={2} name="β̂ (observed)" />
@@ -318,10 +313,7 @@ const CrammerCrashChart: React.FC<CrammerCrashChartProps> = ({ seed = 42 }) => {
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
             <XAxis dataKey="session" tick={{ fontSize: 12 }} tickLine={false} />
             <YAxis domain={[0, 0.5]} tick={{ fontSize: 12 }} tickLine={false} tickFormatter={(v: number) => v.toFixed(2)} />
-            <Tooltip
-              contentStyle={{ background: 'white', border: '1px solid #e2e8f0', borderRadius: '4px', fontSize: '12px' }}
-              formatter={(value: number, name: string) => [value.toFixed(3), name]}
-            />
+            <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(3) : String(v)} />} />
             <Legend />
             <Line type="monotone" dataKey="ece_sm2" stroke="#ef4444" strokeWidth={2} dot={false} name="ECE (SM-2)" />
             <Line type="monotone" dataKey="ece_calibrateme" stroke="#22c55e" strokeWidth={2} dot={false} name="ECE (CalibrateMe)" />

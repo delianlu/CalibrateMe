@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Shuffle, BookOpen, PenTool, Zap } from 'lucide-react';
+import CountUp from '../../../components/CountUp';
 import { useQuizSession } from '../hooks/useQuizSession';
 import Flashcard from './Flashcard';
 import GrammarExercise from './GrammarExercise';
@@ -153,6 +154,22 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
     nextItem();
   }, [nextItem]);
 
+  // Quick stats for the practice tab
+  const quickStats = useMemo(() => {
+    const gamificationRaw = localStorage.getItem('calibrateme_gamification');
+    let xp = 0;
+    let streak = 0;
+    if (gamificationRaw) {
+      try {
+        const g = JSON.parse(gamificationRaw);
+        xp = g.xp ?? 0;
+        streak = g.currentStreak ?? 0;
+      } catch { /* ignore */ }
+    }
+    const dueToday = Math.min(20, (vocabulary?.length ?? 0) + (grammarActivities?.length ?? 0));
+    return { dueToday, streak, ece: 0, xp };
+  }, [vocabulary, grammarActivities]);
+
   // ── Not started ──────────────────────────────────────────────────
   if (!session) {
     const vocabItems = vocabulary ?? [];
@@ -170,6 +187,27 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
       {showOnboarding && (
         <OnboardingCard onDismiss={() => setShowOnboarding(false)} />
       )}
+
+      {/* Quick Stats Bar */}
+      <div className="quick-stats-bar">
+        {[
+          { icon: '\u{1F4CA}', value: quickStats.dueToday, label: 'Due Today' },
+          { icon: '\u{1F525}', value: quickStats.streak, label: 'Streak' },
+          { icon: '\u{1F3AF}', value: quickStats.ece, label: 'ECE', suffix: '%', decimals: 1 },
+          { icon: '\u{2B50}', value: quickStats.xp, label: 'XP' },
+        ].map(stat => (
+          <div className="quick-stats-bar__tile" key={stat.label}>
+            <span className="quick-stats-bar__icon">{stat.icon}</span>
+            <CountUp
+              className="quick-stats-bar__value"
+              end={stat.value}
+              suffix={stat.suffix ?? ''}
+              decimals={stat.decimals ?? 0}
+            />
+            <span className="quick-stats-bar__label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
       <motion.div
         className="quiz-start card"
         initial={{ opacity: 0, y: 20 }}
@@ -203,8 +241,8 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Icon size={16} style={{ marginRight: 6 }} />
-                {label} ({count})
+                <Icon size={20} />
+                <span>{label} ({count})</span>
               </motion.button>
             );
           })}

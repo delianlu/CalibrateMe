@@ -10,6 +10,7 @@ import {
   ResponsiveContainer, Legend,
 } from 'recharts';
 import { Download, Sliders } from 'lucide-react';
+import ChartTooltip from '../../../components/ChartTooltip';
 import { DeltaSweepReport, deltaSweepToCSV } from '../../../simulation/deltaSweep';
 import { PROFILE_PARAMS } from '../../../profiles/learnerProfiles';
 import { downloadFile } from '../../../utils/export';
@@ -137,7 +138,7 @@ export default function DoseResponseChart({ report }: DoseResponseChartProps) {
             tick={{ fontSize: 11 }}
           />
           <YAxis tick={{ fontSize: 11 }} />
-          <Tooltip />
+          <Tooltip content={<ChartTooltip />} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
 
           {groupBy === 'calibration' ? (

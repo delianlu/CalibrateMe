@@ -60,6 +60,11 @@ export default function ConfidenceSlider({
       </span>
 
       <div className="confidence-slider__track-wrapper">
+        <div className="confidence-slider__tick-marks" aria-hidden="true">
+          {[25, 50, 75].map(pos => (
+            <div key={pos} className="confidence-slider__tick" style={{ left: `${pos}%` }} />
+          ))}
+        </div>
         <input
           type="range"
           min={0}
@@ -78,10 +83,11 @@ export default function ConfidenceSlider({
           aria-valuemax={100}
           aria-valuenow={value}
           aria-valuetext={`${value}% - ${getConfidenceLabel(value)}`}
-          style={{
-            background: `linear-gradient(to right, ${color} ${value}%, #e2e8f0 ${value}%)`,
-          }}
         />
+        <div className="confidence-slider__zones">
+          <span>Guessing</span>
+          <span>Certain</span>
+        </div>
         <div className="confidence-slider__marks">
           {MARKS.map(mark => (
             <div
