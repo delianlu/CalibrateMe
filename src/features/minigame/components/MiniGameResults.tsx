@@ -142,7 +142,7 @@ export default function MiniGameResults({
   const chartData = useMemo(() => {
     return bins.map(b => ({
       ...b,
-      accuracyPct: b.count > 0 ? b.accuracy * 100 : null,
+      accuracyPct: b.count > 0 ? b.accuracy * 100 : 0,
       perfectPct: b.perfect * 100,
     }));
   }, [bins]);
