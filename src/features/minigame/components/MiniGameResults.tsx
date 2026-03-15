@@ -97,7 +97,7 @@ function getVerdict(answers: TriviAnswer[]): { verdict: Verdict; message: string
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload?.[0]) {
     const d = payload[0].payload as CalibrationBin;
-    if (d.count === 0) return null;
+    if (!d.count || d.avgConfidence === undefined) return null;
     return (
       <div className="chart-tooltip">
         <p><strong>Bin:</strong> {d.label}</p>
