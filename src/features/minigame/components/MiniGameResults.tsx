@@ -94,15 +94,20 @@ function getVerdict(answers: TriviAnswer[]): { verdict: Verdict; message: string
   };
 }
 
+/** Safely format a number; returns '0' if the value is not a finite number. */
+function fmt(v: unknown, digits: number): string {
+  return typeof v === 'number' && isFinite(v) ? v.toFixed(digits) : '0';
+}
+
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload?.[0]) {
-    const d = payload[0].payload as CalibrationBin;
-    if (!d.count || d.avgConfidence === undefined) return null;
+    const d = payload[0].payload;
+    if (!d || !d.count) return null;
     return (
       <div className="chart-tooltip">
         <p><strong>Bin:</strong> {d.label}</p>
-        <p><strong>Avg Confidence:</strong> {d.avgConfidence.toFixed(0)}%</p>
-        <p><strong>Accuracy:</strong> {(d.accuracy * 100).toFixed(0)}%</p>
+        <p><strong>Avg Confidence:</strong> {fmt(d.avgConfidence, 0)}%</p>
+        <p><strong>Accuracy:</strong> {fmt(d.accuracy * 100, 0)}%</p>
         <p><strong>Questions:</strong> {d.count}</p>
       </div>
     );
@@ -133,7 +138,7 @@ export default function MiniGameResults({
     return map;
   }, [questions]);
 
-  // Chart data: only include bins that have answers
+  // Chart data: merge bin accuracy and perfect calibration into a single dataset
   const chartData = useMemo(() => {
     return bins.map(b => ({
       ...b,
@@ -141,14 +146,6 @@ export default function MiniGameResults({
       perfectPct: b.perfect * 100,
     }));
   }, [bins]);
-
-  // Perfect calibration line data for overlay
-  const perfectLineData = useMemo(() => {
-    return BIN_RANGES.map(({ label, perfect }) => ({
-      label,
-      perfectPct: perfect * 100,
-    }));
-  }, []);
 
   const verdictClass =
     verdict === 'overconfident'
@@ -168,12 +165,12 @@ export default function MiniGameResults({
           <span className="minigame-results__score-label">Correct</span>
         </div>
         <div className="minigame-results__score-item">
-          <span className="minigame-results__score-value">{avgConfidence.toFixed(0)}%</span>
+          <span className="minigame-results__score-value">{fmt(avgConfidence, 0)}%</span>
           <span className="minigame-results__score-label">Avg Confidence</span>
         </div>
         <div className="minigame-results__score-item">
           <span className="minigame-results__score-value">
-            {answers.length > 0 ? ((totalCorrect / answers.length) * 100).toFixed(0) : 0}%
+            {answers.length > 0 ? fmt((totalCorrect / answers.length) * 100, 0) : '0'}%
           </span>
           <span className="minigame-results__score-label">Accuracy</span>
         </div>
@@ -198,7 +195,6 @@ export default function MiniGameResults({
 
             {/* Perfect calibration diagonal reference */}
             <Line
-              data={perfectLineData}
               dataKey="perfectPct"
               type="linear"
               stroke="#a0aec0"
