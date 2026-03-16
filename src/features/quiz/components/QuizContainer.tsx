@@ -12,6 +12,7 @@ import SessionSummary from './SessionSummary';
 import OnboardingCard, { hasSeenOnboarding } from './OnboardingCard';
 import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
 import ReflectivePrompt from './ReflectivePrompt';
+import GrammarExplanation from './GrammarExplanation';
 import {
   createScaffoldState,
   processResponse,
@@ -28,6 +29,7 @@ interface QuizContainerProps {
   vocabulary?: QuizItem[];
   grammarActivities?: QuizItem[];
   onSessionComplete?: (responses: QuizResponse[], kHat: number, betaHat: number) => void;
+  onNavigateToCoach?: () => void;
 }
 
 /**
@@ -39,7 +41,7 @@ interface QuizContainerProps {
  *   3. reveal-answer   → Flashcard back + AnswerButtons
  *   4. feedback        → brief flash, scaffold prompt, then auto-advance
  */
-export default function QuizContainer({ vocabulary, grammarActivities, onSessionComplete }: QuizContainerProps) {
+export default function QuizContainer({ vocabulary, grammarActivities, onSessionComplete, onNavigateToCoach }: QuizContainerProps) {
   const {
     session,
     currentItem,
@@ -62,6 +64,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   const [showOnboarding, setShowOnboarding] = useState(!hasSeenOnboarding());
   // Grammar: after user selects an option, show confidence slider before grading
   const [grammarPendingOption, setGrammarPendingOption] = useState<string | null>(null);
+  const [lastGrammarAnswer, setLastGrammarAnswer] = useState<string | null>(null);
   const completedRef = useRef(false);
   // Reflective prompt for confident misses
   const [showReflectivePrompt, setShowReflectivePrompt] = useState(false);
@@ -178,6 +181,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
       submitConfidence(conf); // rate-confidence → reveal-answer
       setFeedbackResult(correct);
       submitAnswer(correct);
+      setLastGrammarAnswer(grammarPendingOption);
       setGrammarPendingOption(null);
 
       if (session) {
@@ -201,6 +205,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
     setFeedbackResult(null);
     setConfidence(50);
     setGrammarPendingOption(null);
+    setLastGrammarAnswer(null);
     nextItem();
   }, [nextItem]);
 
@@ -330,6 +335,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
         items={session.items}
         calibrationECE={sessionStats?.calibrationMetrics?.ece ?? null}
         onClose={endSession}
+        onNavigateToCoach={onNavigateToCoach}
       />
     );
   }
@@ -392,6 +398,16 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
           )}
           {(phase === 'feedback' || phase === 'reveal-answer') && (
             <div className="quiz-active__controls">
+              {/* AI Grammar Explanation for incorrect answers */}
+              {feedbackResult === false && currentItem.question && currentItem.options && currentItem.answer && (
+                <GrammarExplanation
+                  question={currentItem.question}
+                  options={currentItem.options}
+                  userAnswer={lastGrammarAnswer || ''}
+                  correctAnswer={currentItem.answer}
+                  userConfidence={confidence}
+                />
+              )}
               <button className="btn btn-primary btn-block" onClick={handleGrammarNext}>
                 Next
               </button>

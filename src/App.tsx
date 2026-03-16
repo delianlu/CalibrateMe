@@ -296,6 +296,7 @@ function App() {
                     vocabulary={allVocabulary}
                     grammarActivities={grammarActivities}
                     onSessionComplete={handleSessionComplete}
+                    onNavigateToCoach={() => setTab('analytics')}
                   />
                 )}
                 {tab === 'vocabulary' && <VocabularyList />}
