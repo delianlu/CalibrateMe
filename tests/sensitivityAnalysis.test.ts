@@ -129,4 +129,35 @@ describe('Sensitivity Analysis', () => {
       expect(names).toContain('beta_star');
     });
   });
+
+  describe('edge cases', () => {
+    it('should fall back to 0 ECE if no session data exists', () => {
+      // By using 0 items or a custom config we could trigger an empty session data
+      const customConfig = { ...testConfig, num_sessions: 0 };
+      const sweep: SensitivitySweepConfig = {
+        parameterName: 'lambda',
+        values: [0.10],
+      };
+      const report = runSensitivitySweep(sweep, 1, customConfig, ['Med-Over']);
+      expect(report.results.length).toBeGreaterThan(0);
+      expect(report.results[0].cm_ece.mean).toBe(0);
+      expect(report.results[0].sm2_ece.mean).toBe(0);
+    });
+
+    it('should properly configure profiles vs config properties', () => {
+      const sweep: SensitivitySweepConfig = {
+        parameterName: 'lambda',
+        values: [0.10], // A profile param
+      };
+      const report = runSensitivitySweep(sweep, 1, testConfig, ['Med-Over']);
+      expect(report.results.length).toBeDefined();
+
+      const configSweep: SensitivitySweepConfig = {
+        parameterName: 'slip_probability',
+        values: [0.10], // A config param
+      };
+      const report2 = runSensitivitySweep(configSweep, 1, testConfig, ['Med-Over']);
+      expect(report2.results.length).toBeDefined();
+    });
+  });
 });

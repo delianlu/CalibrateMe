@@ -1,4 +1,4 @@
-import { runSimulation } from '../src/simulation/simulationEngine';
+import { runSimulation, runSimulationAsync, runExperiment, runFeatureRemovalTests } from '../src/simulation/simulationEngine';
 import { createLearnerProfile } from '../src/profiles/learnerProfiles';
 import { DEFAULT_SIMULATION_CONFIG, SchedulerType } from '../src/types';
 
@@ -87,6 +87,54 @@ describe('Simulation Engine', () => {
       results.ece_trajectory.forEach(ece => {
         expect(ece).toBeGreaterThanOrEqual(0);
       });
+    });
+
+    it('should support callbacks during runSimulation', () => {
+      const profile = createLearnerProfile('Med-Over', testConfig.num_items);
+      const progressVals: number[] = [];
+      runSimulation(profile, testConfig, (p) => progressVals.push(p));
+      expect(progressVals.length).toBeGreaterThan(0);
+      expect(progressVals[progressVals.length - 1]).toBe(100);
+    });
+  });
+
+  describe('runSimulationAsync', () => {
+    it('should run asynchronously and return results', async () => {
+      const profile = createLearnerProfile('Med-Over', testConfig.num_items);
+      const results = await runSimulationAsync(profile, testConfig);
+      expect(results.profile_id).toBe('Med-Over');
+    });
+  });
+
+  describe('runExperiment', () => {
+    it('should run for multiple schedulers and profiles', () => {
+      const p1 = createLearnerProfile('Med-Over', 5);
+      const schedulers = [SchedulerType.CALIBRATEME, SchedulerType.SM2];
+      const config = { ...testConfig, num_sessions: 2, items_per_session: 3 };
+
+      const resultMap = runExperiment([p1], schedulers, config, 1);
+      
+      expect(resultMap.has('Med-Over')).toBe(true);
+      const profileResults = resultMap.get('Med-Over')!;
+      
+      expect(profileResults.has(SchedulerType.CALIBRATEME)).toBe(true);
+      expect(profileResults.has(SchedulerType.SM2)).toBe(true);
+      
+      const cmResults = profileResults.get(SchedulerType.CALIBRATEME)!;
+      expect(cmResults).toHaveLength(1); // 1 rep
+    });
+  });
+
+  describe('runFeatureRemovalTests', () => {
+    it('should run all conditions for feature ablation', () => {
+      const profile = createLearnerProfile('Med-Over', 5);
+      const config = { ...testConfig, num_sessions: 2, items_per_session: 3 };
+      
+      const resultMap = runFeatureRemovalTests(profile, config, 1);
+      
+      expect(resultMap.has('Full CalibrateMe')).toBe(true);
+      expect(resultMap.has('SM-2 Baseline')).toBe(true);
+      expect(resultMap.get('Full CalibrateMe')!).toHaveLength(1);
     });
   });
 });

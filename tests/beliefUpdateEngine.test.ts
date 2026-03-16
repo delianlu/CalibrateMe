@@ -4,6 +4,8 @@ import {
   likelihoodRT,
   updateBelief,
   updateBetaHat,
+  updateDomainBetaHat,
+  applyBeliefDrift,
 } from '../src/bkt/beliefUpdateEngine';
 import { Response, SystemBelief, DEFAULT_SIMULATION_CONFIG } from '../src/types';
 
@@ -88,6 +90,7 @@ describe('Belief Update Engine', () => {
     it('should detect overconfidence from responses', () => {
       const responses: Response[] = Array(20).fill(null).map((_, i) => ({
         item_id: `${i}`,
+        item_type: 'vocabulary' as any,
         correctness: i < 10, // 50% accuracy
         confidence: 0.8,     // 80% confidence
         response_time: 2,
@@ -96,6 +99,73 @@ describe('Belief Update Engine', () => {
 
       const beta = updateBetaHat(responses, 0);
       expect(beta).toBeGreaterThan(0); // Should detect overconfidence
+    });
+    
+    it('should return current beta_hat if no responses', () => {
+      expect(updateBetaHat([], 0.15)).toBe(0.15);
+    });
+  });
+
+  describe('updateDomainBetaHat', () => {
+    it('should update domain specific beta hats', () => {
+      const responses: Response[] = [
+        ...Array(6).fill(null).map((_, i) => ({
+          item_id: `v${i}`,
+          item_type: 'VOCABULARY' as any,
+          correctness: i < 2, // 33% accuracy
+          confidence: 0.8,    // overconfident
+          response_time: 2,
+          timestamp: new Date(),
+        })),
+        ...Array(6).fill(null).map((_, i) => ({
+          item_id: `g${i}`,
+          item_type: 'GRAMMAR' as any,
+          correctness: i < 5, // 83% accuracy
+          confidence: 0.2,    // underconfident
+          response_time: 2,
+          timestamp: new Date(),
+        }))
+      ];
+      
+      const current = { beta_hat_vocab: 0, beta_hat_grammar: 0 };
+      const updated = updateDomainBetaHat(responses, current, 0.1);
+      
+      expect(updated.beta_hat_vocab).toBeGreaterThan(0);
+      expect(updated.beta_hat_grammar).toBeLessThan(0);
+    });
+    
+    it('should not update if less than 5 responses for a domain', () => {
+      const responses: Response[] = [
+        {
+          item_id: 'v1',
+          item_type: 'VOCABULARY' as any,
+          correctness: true,
+          confidence: 0.9,
+          response_time: 2,
+          timestamp: new Date(),
+        }
+      ];
+      const current = { beta_hat_vocab: 0.2, beta_hat_grammar: 0.1 };
+      const updated = updateDomainBetaHat(responses, current);
+      
+      expect(updated.beta_hat_vocab).toBe(0.2);
+      expect(updated.beta_hat_grammar).toBe(0.1);
+    });
+  });
+
+  describe('applyBeliefDrift', () => {
+    it('should drift belief towards 0.5 over time', () => {
+      const belief: SystemBelief = {
+        K_hat: 0.9,
+        beta_hat: 0.1,
+        confidence_interval: 0.2,
+        last_updated: new Date(),
+      };
+      
+      const drifted = applyBeliefDrift(belief, 0.1, 10);
+      expect(drifted.K_hat).toBeLessThan(0.9);
+      expect(drifted.K_hat).toBeGreaterThan(0.5);
+      expect(drifted.confidence_interval).toBeGreaterThan(0.2);
     });
   });
 });
