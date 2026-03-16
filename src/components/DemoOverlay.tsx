@@ -117,30 +117,24 @@ const DemoOverlay: React.FC<DemoOverlayProps> = ({ onNavigate }) => {
   const current = DEMO_SCRIPT[step];
   const total = DEMO_SCRIPT.length;
 
+  // Navigate to the correct tab whenever step or visibility changes
+  useEffect(() => {
+    if (visible && current.tab && onNavigate) {
+      onNavigate(current.tab);
+    }
+  }, [visible, step, current, onNavigate]);
+
   const next = useCallback(() => {
-    setStep(s => {
-      const nextStep = Math.min(s + 1, total - 1);
-      const nextItem = DEMO_SCRIPT[nextStep];
-      if (nextItem.tab && onNavigate) onNavigate(nextItem.tab);
-      return nextStep;
-    });
-  }, [total, onNavigate]);
+    setStep(s => Math.min(s + 1, total - 1));
+  }, [total]);
 
   const prev = useCallback(() => {
-    setStep(s => {
-      const prevStep = Math.max(s - 1, 0);
-      const prevItem = DEMO_SCRIPT[prevStep];
-      if (prevItem.tab && onNavigate) onNavigate(prevItem.tab);
-      return prevStep;
-    });
-  }, [onNavigate]);
+    setStep(s => Math.max(s - 1, 0));
+  }, []);
 
   const toggle = useCallback(() => {
-    setVisible(v => {
-      if (!v && current.tab && onNavigate) onNavigate(current.tab);
-      return !v;
-    });
-  }, [current, onNavigate]);
+    setVisible(v => !v);
+  }, []);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
