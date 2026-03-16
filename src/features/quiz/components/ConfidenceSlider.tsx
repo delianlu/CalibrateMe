@@ -15,11 +15,18 @@ const MARKS = [
   { value: 100, label: '100%' },
 ];
 
+const CONFIDENCE_ZONES = [
+  { min: 0, max: 25, label: 'Guessing', color: '#EF4444', bg: 'rgba(239, 68, 68, 0.08)' },
+  { min: 26, max: 75, label: 'Unsure', color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.08)' },
+  { min: 76, max: 100, label: 'Confident', color: '#22C55E', bg: 'rgba(34, 197, 94, 0.08)' },
+];
+
+function getConfidenceZone(value: number) {
+  return CONFIDENCE_ZONES.find(z => value >= z.min && value <= z.max) ?? CONFIDENCE_ZONES[1];
+}
+
 function getConfidenceColor(value: number): string {
-  if (value < 30) return '#e53e3e';
-  if (value < 60) return '#dd6b20';
-  if (value < 80) return '#d69e2e';
-  return '#38a169';
+  return getConfidenceZone(value).color;
 }
 
 function getConfidenceLabel(value: number): string {
@@ -38,9 +45,7 @@ function getConfidenceEmoji(value: number): string {
 }
 
 function getZoneTint(value: number): string {
-  if (value < 30) return 'rgba(239, 68, 68, 0.04)';
-  if (value > 70) return 'rgba(34, 197, 94, 0.04)';
-  return 'transparent';
+  return getConfidenceZone(value).bg;
 }
 
 /**
@@ -118,9 +123,22 @@ export default function ConfidenceSlider({
           aria-valuenow={value}
           aria-valuetext={`${value}% - ${getConfidenceLabel(value)}`}
         />
-        <div className="confidence-slider__zones">
-          <span>Guessing</span>
-          <span>Certain</span>
+        <div className="confidence-slider__zone-bar" aria-hidden="true">
+          {CONFIDENCE_ZONES.map(zone => (
+            <div
+              key={zone.label}
+              className={`confidence-slider__zone${value >= zone.min && value <= zone.max ? ' confidence-slider__zone--active' : ''}`}
+              style={{
+                flex: zone.max - zone.min + 1,
+                background: value >= zone.min && value <= zone.max ? zone.bg : 'transparent',
+                borderBottom: `3px solid ${zone.color}`,
+              }}
+            >
+              <span style={{ color: zone.color, fontWeight: value >= zone.min && value <= zone.max ? 700 : 400 }}>
+                {zone.label}
+              </span>
+            </div>
+          ))}
         </div>
         <div className="confidence-slider__marks">
           {MARKS.map(mark => (

@@ -11,6 +11,7 @@ import QuizProgressPath from './QuizProgressPath';
 import SessionSummary from './SessionSummary';
 import OnboardingCard, { hasSeenOnboarding } from './OnboardingCard';
 import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
+import ReflectivePrompt from './ReflectivePrompt';
 import {
   createScaffoldState,
   processResponse,
@@ -62,6 +63,9 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   // Grammar: after user selects an option, show confidence slider before grading
   const [grammarPendingOption, setGrammarPendingOption] = useState<string | null>(null);
   const completedRef = useRef(false);
+  // Reflective prompt for confident misses
+  const [showReflectivePrompt, setShowReflectivePrompt] = useState(false);
+  const pendingAdvanceRef = useRef<(() => void) | null>(null);
   // Real-time calibration feedback
   const [calibrationFeedback, setCalibrationFeedback] = useState<{
     message: string;
@@ -125,16 +129,35 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
         );
       }
 
-      // Auto-advance after feedback (delayed if scaffold prompt shows)
-      setTimeout(() => {
+      // Show reflective prompt for confident misses (confidence >= 75 and wrong)
+      const advance = () => {
         setFeedbackResult(null);
         setCalibrationFeedback(null);
         setConfidence(50);
         nextItem();
-      }, 600);
+      };
+
+      if (confidence >= 75 && !correct) {
+        // Delay briefly to show feedback, then show reflective prompt
+        setTimeout(() => {
+          pendingAdvanceRef.current = advance;
+          setShowReflectivePrompt(true);
+        }, 400);
+      } else {
+        // Auto-advance after feedback
+        setTimeout(advance, 600);
+      }
     },
     [submitAnswer, nextItem, session, confidence]
   );
+
+  const handleReflectiveDismiss = useCallback((_reason: string | null) => {
+    setShowReflectivePrompt(false);
+    if (pendingAdvanceRef.current) {
+      pendingAdvanceRef.current();
+      pendingAdvanceRef.current = null;
+    }
+  }, []);
 
   // Handler for grammar exercise: user selects option, then rates confidence
   const handleGrammarAnswer = useCallback(
@@ -456,6 +479,16 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
           </div>
         </>
       )}
+
+      {/* Reflective prompt for confident misses */}
+      <AnimatePresence>
+        {showReflectivePrompt && (
+          <ReflectivePrompt
+            confidence={confidence}
+            onDismiss={handleReflectiveDismiss}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

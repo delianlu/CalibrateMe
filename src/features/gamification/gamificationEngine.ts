@@ -59,6 +59,20 @@ export function processSession(
     }
   }
 
+  // ── Calibration Streak ─────────────────────────────────────────────
+  let calibrationStreak = state.calibrationStreak ?? 0;
+  let bestCalibrationStreak = state.bestCalibrationStreak ?? 0;
+
+  for (const r of ctx.responses) {
+    const actual = r.correctness ? 100 : 0;
+    if (Math.abs(r.confidence - actual) <= 15) {
+      calibrationStreak++;
+    } else {
+      calibrationStreak = 0;
+    }
+    bestCalibrationStreak = Math.max(bestCalibrationStreak, calibrationStreak);
+  }
+
   // ── XP Calculation ──────────────────────────────────────────────────
   let sessionXP = 0;
 
@@ -121,6 +135,9 @@ export function processSession(
       case 'calibration':
         earned = ctx.sessionECE !== null && ctx.sessionECE <= ach.requirement.threshold;
         break;
+      case 'calibration_streak':
+        earned = bestCalibrationStreak >= ach.requirement.threshold;
+        break;
     }
 
     if (earned) {
@@ -141,6 +158,8 @@ export function processSession(
     achievements: newAchievements,
     dailyStreak,
     longestStreak,
+    calibrationStreak,
+    bestCalibrationStreak,
     lastActivityDate: today,
     pendingNotifications: [...state.pendingNotifications, ...notifications],
   };

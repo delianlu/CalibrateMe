@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Brain,
@@ -27,7 +27,7 @@ import { businessEnglish } from './data/vocabularyPacks/business-english';
 import { getOffGridActivities } from './data/offgridAdapter';
 import { GamificationState, createDefaultGamificationState } from './features/gamification/types';
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
-import { MiniGameContainer } from './features/minigame';
+const MiniGameContainer = lazy(() => import('./features/minigame/components/MiniGameContainer'));
 import { saveSessionToProvider } from './features/api/apiClient';
 import { getRecentResponses } from './features/user/services/storageService';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -317,7 +317,17 @@ function App() {
                     />
                   </>
                 )}
-                {tab === 'minigame' && <MiniGameContainer onClose={() => setTab('quiz')} />}
+                {tab === 'minigame' && (
+                  <Suspense fallback={
+                    <div className="card" style={{ padding: 32, textAlign: 'center' }}>
+                      <div className="skeleton" style={{ width: 64, height: 64, borderRadius: '50%', margin: '0 auto 16px' }} />
+                      <div className="skeleton" style={{ width: '60%', height: 20, margin: '0 auto 12px', borderRadius: 8 }} />
+                      <div className="skeleton" style={{ width: '80%', height: 14, margin: '0 auto', borderRadius: 6 }} />
+                    </div>
+                  }>
+                    <MiniGameContainer onClose={() => setTab('quiz')} />
+                  </Suspense>
+                )}
                 {tab === 'simulation' && <Dashboard />}
               </motion.div>
             </AnimatePresence>

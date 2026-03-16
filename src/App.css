@@ -6313,3 +6313,140 @@ h1, h2, h3 {
   padding: 1rem;
   transition: background 0.3s ease;
 }
+
+/* =============================================================================
+   Confidence Slider — Color-Coded Zone Bar
+   ============================================================================= */
+.confidence-slider__zone-bar {
+  display: flex;
+  gap: 2px;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.confidence-slider__zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+  font-size: 0.7rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+  border-radius: 3px;
+}
+.confidence-slider__zone--active {
+  transform: scaleY(1.1);
+}
+
+/* =============================================================================
+   Reflective Prompt — Confident Misses Modal
+   ============================================================================= */
+.reflective-prompt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.reflective-prompt {
+  max-width: 420px;
+  width: 100%;
+  padding: 1.5rem;
+  text-align: center;
+}
+.reflective-prompt__icon {
+  margin-bottom: 0.75rem;
+}
+.reflective-prompt__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+.reflective-prompt__subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+.reflective-prompt__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.reflective-prompt__option {
+  background: var(--bg-muted);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+}
+.reflective-prompt__option:hover {
+  border-color: var(--color-primary-400);
+  background: var(--color-primary-50);
+}
+.reflective-prompt__option--selected {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-50);
+  font-weight: 600;
+}
+[data-theme="dark"] .reflective-prompt__option:hover,
+[data-theme="dark"] .reflective-prompt__option--selected {
+  background: rgba(99, 102, 241, 0.15);
+}
+.reflective-prompt__continue {
+  margin-top: 0.5rem;
+}
+
+/* =============================================================================
+   Exit Ticket — Post-Session Reflection
+   ============================================================================= */
+.session-summary__exit-ticket {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-left: 3px solid var(--color-primary-500);
+  overflow: hidden;
+}
+.session-summary__exit-ticket-question {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+.session-summary__exit-ticket-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.session-summary__exit-ticket-option {
+  background: var(--bg-muted);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+}
+.session-summary__exit-ticket-option:hover {
+  border-color: var(--color-primary-400);
+}
+.session-summary__exit-ticket-option--selected {
+  border-color: var(--color-primary-500);
+  background: var(--color-primary-50);
+  font-weight: 600;
+}
+[data-theme="dark"] .session-summary__exit-ticket-option:hover {
+  background: rgba(99, 102, 241, 0.1);
+}
+[data-theme="dark"] .session-summary__exit-ticket-option--selected {
+  background: rgba(99, 102, 241, 0.15);
+}

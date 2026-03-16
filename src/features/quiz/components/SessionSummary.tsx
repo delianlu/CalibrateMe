@@ -1,6 +1,6 @@
-import { useMemo, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap, BarChart3 } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap, BarChart3, MessageCircle } from 'lucide-react';
 import { QuizItem, QuizResponse } from '../types';
 import HeuristicTooltip from '../../../components/HeuristicTooltip';
 import ProgressRing from '../../../components/ProgressRing';
@@ -124,6 +124,37 @@ function getAccuracyColor(accuracy: number): string {
   return '#EF4444';
 }
 
+function getExitTicketQuestion(gap: number): string {
+  if (gap > 15) {
+    return 'You consistently overestimated your knowledge this session. Why do you think that was?';
+  }
+  if (gap < -15) {
+    return 'You underestimated yourself this session. What made you less confident than your actual ability?';
+  }
+  return 'Your confidence matched your performance well. What strategies helped you stay calibrated?';
+}
+
+const EXIT_TICKET_OPTIONS: Record<string, string[]> = {
+  overconfident: [
+    'Topics felt familiar but I hadn\'t truly memorized them',
+    'I rushed through without thinking carefully',
+    'I confused similar concepts',
+    'I\'ll try to test myself mentally before rating confidence',
+  ],
+  underconfident: [
+    'I second-guessed myself too much',
+    'The topics were new so I assumed I\'d be wrong',
+    'I\'m naturally cautious with ratings',
+    'I\'ll try to trust my instincts more',
+  ],
+  'well-calibrated': [
+    'I mentally tested myself before rating',
+    'I paid attention to what I truly knew vs. guessed',
+    'Practice is helping me know my own knowledge better',
+    'I was deliberate about each confidence rating',
+  ],
+};
+
 export default function SessionSummary({
   responses,
   items,
@@ -182,6 +213,13 @@ export default function SessionSummary({
       celebrations.wellCalibrated();
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const [exitTicketAnswer, setExitTicketAnswer] = useState<string | null>(null);
+  const [exitTicketDismissed, setExitTicketDismissed] = useState(false);
+
+  const exitTicketType = stats.gap > 15 ? 'overconfident' : stats.gap < -15 ? 'underconfident' : 'well-calibrated';
+  const exitTicketQuestion = getExitTicketQuestion(stats.gap);
+  const exitTicketOptions = EXIT_TICKET_OPTIONS[exitTicketType];
 
   const ecePct = calibrationECE !== null ? (calibrationECE * 100).toFixed(1) : null;
   const dualTotal = stats.dualProcess.automatic + stats.dualProcess.deliberate;
@@ -352,6 +390,49 @@ export default function SessionSummary({
           ))}
         </ul>
       </div>
+
+      {/* Calibration Exit Ticket */}
+      <AnimatePresence>
+        {!exitTicketDismissed && stats.total >= 3 && (
+          <motion.div
+            className="session-summary__exit-ticket card"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="session-summary__section-title">
+              <MessageCircle size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+              Quick Reflection
+            </span>
+            <p className="session-summary__exit-ticket-question">
+              {exitTicketQuestion}
+            </p>
+            <div className="session-summary__exit-ticket-options">
+              {exitTicketOptions.map((opt, i) => (
+                <button
+                  key={i}
+                  className={`session-summary__exit-ticket-option${exitTicketAnswer === opt ? ' session-summary__exit-ticket-option--selected' : ''}`}
+                  onClick={() => setExitTicketAnswer(opt)}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+            {exitTicketAnswer && (
+              <motion.button
+                className="btn btn-secondary btn-sm"
+                onClick={() => setExitTicketDismissed(true)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                style={{ marginTop: 8 }}
+              >
+                Thanks for reflecting!
+              </motion.button>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="session-summary__action-buttons">
         <motion.button
