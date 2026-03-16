@@ -6019,3 +6019,297 @@ h1, h2, h3 {
 .app--hide-footer .app-footer {
   display: none;
 }
+
+/* =============================================================================
+   Feature 2: Bento Grid Analytics Dashboard
+   ============================================================================= */
+.analytics-bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(160px, auto);
+  gap: 16px;
+}
+.analytics-bento__calibration-curve {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.analytics-bento__confidence-dist {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+.analytics-bento__stat-tile {
+  grid-column: span 1;
+}
+.analytics-bento__ece-meter {
+  grid-column: span 2;
+}
+.analytics-bento__ece-trend {
+  grid-column: span 4;
+}
+.analytics-bento__learner-class {
+  grid-column: span 4;
+}
+.analytics-bento__retention {
+  grid-column: span 2;
+}
+.analytics-bento__forgetting {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .analytics-bento {
+    grid-template-columns: 1fr;
+  }
+  .analytics-bento__calibration-curve,
+  .analytics-bento__confidence-dist,
+  .analytics-bento__stat-tile,
+  .analytics-bento__ece-meter,
+  .analytics-bento__ece-trend,
+  .analytics-bento__learner-class,
+  .analytics-bento__retention,
+  .analytics-bento__forgetting {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+/* =============================================================================
+   Feature 3: Glassmorphism Cards
+   ============================================================================= */
+.glass-card {
+  background: rgba(99, 102, 241, 0.08);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+[data-theme="dark"] .glass-card {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================================================================
+   Feature 7: Quiz Progress Path
+   ============================================================================= */
+.quiz-progress-path {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.quiz-progress-path__dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.quiz-progress-path__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-tertiary, #e2e8f0);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.quiz-progress-path__dot--current {
+  border-color: var(--color-primary-500);
+  background: transparent;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+.quiz-progress-path__dot--correct {
+  background: var(--color-success, #22c55e);
+  border-color: var(--color-success, #22c55e);
+}
+.quiz-progress-path__dot--incorrect {
+  background: var(--color-error, #ef4444);
+  border-color: var(--color-error, #ef4444);
+}
+.quiz-progress-path__dot-icon {
+  font-size: 8px;
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+}
+.quiz-progress-path__text {
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+
+/* =============================================================================
+   Feature 8: Calibration Feedback Toast
+   ============================================================================= */
+.calibration-toast {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+.calibration-toast--well-calibrated {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+.calibration-toast--overconfident {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.calibration-toast--underconfident {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+[data-theme="dark"] .calibration-toast--well-calibrated {
+  background: rgba(34, 197, 94, 0.15);
+  color: #86efac;
+}
+[data-theme="dark"] .calibration-toast--overconfident {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+[data-theme="dark"] .calibration-toast--underconfident {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+}
+
+/* =============================================================================
+   Feature 9: Command Palette
+   ============================================================================= */
+.command-palette__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1100;
+}
+[data-theme="dark"] .command-palette__backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+.command-palette {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: var(--border-radius-xl);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 1101;
+  overflow: hidden;
+}
+[data-theme="dark"] .command-palette {
+  background: rgba(30, 27, 75, 0.95);
+  border-color: rgba(129, 140, 248, 0.2);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+.command-palette__input-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  gap: 0.75rem;
+}
+.command-palette__search-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.command-palette__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  outline: none;
+  font-family: var(--font-body);
+}
+.command-palette__input::placeholder {
+  color: var(--text-faint);
+}
+.command-palette__kbd {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--bg-tertiary, #f1f5f9);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.command-palette__list {
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+.command-palette__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+  font-family: var(--font-body);
+}
+.command-palette__item--active {
+  background: rgba(99, 102, 241, 0.08);
+}
+[data-theme="dark"] .command-palette__item--active {
+  background: rgba(99, 102, 241, 0.15);
+}
+.command-palette__item-icon {
+  color: var(--color-primary-500);
+  flex-shrink: 0;
+}
+.command-palette__item-text {
+  display: flex;
+  flex-direction: column;
+}
+.command-palette__item-label {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+.command-palette__item-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.command-palette__empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* =============================================================================
+   Feature 10: Confidence Slider Haptic Feedback
+   ============================================================================= */
+.confidence-slider__emoji {
+  margin-right: 0.25rem;
+  font-size: 1.25rem;
+  vertical-align: middle;
+}
+.confidence-slider__input--snap::-webkit-slider-thumb {
+  transform: scale(1.1);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3), 0 0 0 6px rgba(99, 102, 241, 0.25);
+}
+.confidence-slider {
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  transition: background 0.3s ease;
+}

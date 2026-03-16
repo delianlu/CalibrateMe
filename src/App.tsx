@@ -33,6 +33,7 @@ import { getRecentResponses } from './features/user/services/storageService';
 import ErrorBoundary from './components/ErrorBoundary';
 import DemoOverlay from './components/DemoOverlay';
 import SplitScreenDemo from './components/SplitScreenDemo';
+import CommandPalette from './components/CommandPalette';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
@@ -336,6 +337,13 @@ function App() {
 
       {/* Demo walkthrough overlay */}
       <DemoOverlay onNavigate={handleDemoNavigate} />
+
+      {/* Command palette (Cmd+K) */}
+      <CommandPalette
+        onNavigate={(t) => setTab(t as AppTab)}
+        onToggleDarkMode={toggleDarkMode}
+        isDarkMode={isDark}
+      />
     </div>
   );
 }

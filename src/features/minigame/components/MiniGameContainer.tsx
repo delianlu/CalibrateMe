@@ -4,6 +4,7 @@ import { Target, Crosshair } from 'lucide-react';
 import { MiniGameState, MiniGamePhase, TriviAnswer } from '../types';
 import { pickRandomQuestions } from '../questions';
 import MiniGameResults from './MiniGameResults';
+import { celebrations } from '../../../utils/celebrations';
 
 interface MiniGameContainerProps {
   onClose: () => void; // Return to main app
@@ -145,7 +146,7 @@ export default function MiniGameContainer({ onClose }: MiniGameContainerProps) {
     return (
       <div className="minigame">
         <motion.div
-          className="minigame__intro card"
+          className="minigame__intro card glass-card"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -187,6 +188,24 @@ export default function MiniGameContainer({ onClose }: MiniGameContainerProps) {
   }
 
   // ── Results Phase ──────────────────────────────────────────────────
+  // Fire celebration when entering results phase
+  const hasTriggeredCelebration = useRef(false);
+  useEffect(() => {
+    if (phase === 'results' && !hasTriggeredCelebration.current) {
+      hasTriggeredCelebration.current = true;
+      const correctCount = answers.filter(a => a.correct).length;
+      if (correctCount === answers.length && answers.length > 0) {
+        celebrations.perfectCalibrationGame();
+      } else {
+        const accuracy = answers.length > 0 ? correctCount / answers.length : 0;
+        celebrations.sessionComplete(accuracy);
+      }
+    }
+    if (phase !== 'results') {
+      hasTriggeredCelebration.current = false;
+    }
+  }, [phase, answers]);
+
   if (phase === 'results') {
     return (
       <div className="minigame">

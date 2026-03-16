@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 
 interface ConfidenceSliderProps {
   value: number;
@@ -30,9 +30,22 @@ function getConfidenceLabel(value: number): string {
   return 'Very sure';
 }
 
+function getConfidenceEmoji(value: number): string {
+  if (value < 20) return '🤷';
+  if (value < 50) return '🤔';
+  if (value < 80) return '😊';
+  return '💪';
+}
+
+function getZoneTint(value: number): string {
+  if (value < 30) return 'rgba(239, 68, 68, 0.04)';
+  if (value > 70) return 'rgba(34, 197, 94, 0.04)';
+  return 'transparent';
+}
+
 /**
  * 0-100 confidence slider with color gradient, tick marks,
- * and a submit button.
+ * haptic-like visual feedback, and a submit button.
  */
 export default function ConfidenceSlider({
   value,
@@ -41,16 +54,37 @@ export default function ConfidenceSlider({
   disabled = false,
 }: ConfidenceSliderProps) {
   const [, setIsDragging] = useState(false);
+  const [tickSnap, setTickSnap] = useState(false);
+  const lastTickRef = useRef(-1);
   const color = getConfidenceColor(value);
+  const emoji = useMemo(() => getConfidenceEmoji(value), [value]);
+  const zoneTint = useMemo(() => getZoneTint(value), [value]);
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    onChange(newValue);
+
+    // Tick snap at every 10% mark
+    const currentTick = Math.floor(newValue / 10);
+    if (currentTick !== lastTickRef.current && newValue % 10 === 0) {
+      setTickSnap(true);
+      setTimeout(() => setTickSnap(false), 150);
+    }
+    lastTickRef.current = currentTick;
+  }, [onChange]);
 
   return (
-    <div className="confidence-slider">
+    <div
+      className="confidence-slider"
+      style={{ background: zoneTint, transition: 'background 0.3s ease' }}
+    >
       <div className="confidence-slider__header">
         <span className="confidence-slider__title">How confident are you?</span>
         <span
           className="confidence-slider__value"
           style={{ color }}
         >
+          <span className="confidence-slider__emoji">{emoji}</span>
           {value}%
         </span>
       </div>
@@ -71,13 +105,13 @@ export default function ConfidenceSlider({
           max={100}
           step={1}
           value={value}
-          onChange={e => onChange(Number(e.target.value))}
+          onChange={handleChange}
           onMouseDown={() => setIsDragging(true)}
           onMouseUp={() => setIsDragging(false)}
           onTouchStart={() => setIsDragging(true)}
           onTouchEnd={() => setIsDragging(false)}
           disabled={disabled}
-          className="confidence-slider__input"
+          className={`confidence-slider__input${tickSnap ? ' confidence-slider__input--snap' : ''}`}
           aria-label="Confidence level"
           aria-valuemin={0}
           aria-valuemax={100}

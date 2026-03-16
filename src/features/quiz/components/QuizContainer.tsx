@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Shuffle, BookOpen, PenTool, Zap } from 'lucide-react';
 import CountUp from '../../../components/CountUp';
 import { useQuizSession } from '../hooks/useQuizSession';
@@ -7,7 +7,7 @@ import Flashcard from './Flashcard';
 import GrammarExercise from './GrammarExercise';
 import ConfidenceSlider from './ConfidenceSlider';
 import AnswerButtons from './AnswerButtons';
-import QuizProgress from './QuizProgress';
+import QuizProgressPath from './QuizProgressPath';
 import SessionSummary from './SessionSummary';
 import OnboardingCard, { hasSeenOnboarding } from './OnboardingCard';
 import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
@@ -62,6 +62,11 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   // Grammar: after user selects an option, show confidence slider before grading
   const [grammarPendingOption, setGrammarPendingOption] = useState<string | null>(null);
   const completedRef = useRef(false);
+  // Real-time calibration feedback
+  const [calibrationFeedback, setCalibrationFeedback] = useState<{
+    message: string;
+    type: 'well-calibrated' | 'overconfident' | 'underconfident';
+  } | null>(null);
 
   // Fire onSessionComplete once when session ends
   useEffect(() => {
@@ -85,6 +90,27 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
       setFeedbackResult(correct);
       submitAnswer(correct);
 
+      // Real-time calibration feedback
+      const gap = confidence - (correct ? 100 : 0);
+      if (Math.abs(gap) <= 25) {
+        setCalibrationFeedback({
+          message: `You said ${confidence}% → ${correct ? 'Correct ✓' : 'Incorrect ✗'} — Well calibrated!`,
+          type: 'well-calibrated',
+        });
+      } else if (confidence >= 60 && !correct) {
+        setCalibrationFeedback({
+          message: `You said ${confidence}% → Incorrect ✗ — Overconfident`,
+          type: 'overconfident',
+        });
+      } else if (confidence <= 40 && correct) {
+        setCalibrationFeedback({
+          message: `You said ${confidence}% → Correct ✓ — Underconfident`,
+          type: 'underconfident',
+        });
+      } else {
+        setCalibrationFeedback(null);
+      }
+
       // Process scaffolding
       if (session) {
         const response: QuizResponse = {
@@ -102,6 +128,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
       // Auto-advance after feedback (delayed if scaffold prompt shows)
       setTimeout(() => {
         setFeedbackResult(null);
+        setCalibrationFeedback(null);
         setConfidence(50);
         nextItem();
       }, 600);
@@ -196,7 +223,7 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
           { icon: '\u{1F3AF}', value: quickStats.ece, label: 'ECE', suffix: '%', decimals: 1 },
           { icon: '\u{2B50}', value: quickStats.xp, label: 'XP' },
         ].map(stat => (
-          <div className="quick-stats-bar__tile" key={stat.label}>
+          <div className="quick-stats-bar__tile glass-card" key={stat.label}>
             <span className="quick-stats-bar__icon">{stat.icon}</span>
             <CountUp
               className="quick-stats-bar__value"
@@ -310,9 +337,13 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   // ── Active quiz ──────────────────────────────────────────────────
   return (
     <div className="quiz-active">
-      {/* Top bar: progress + pause */}
+      {/* Top bar: progress path + pause */}
       <div className="quiz-active__top">
-        <QuizProgress current={progress.current} total={progress.total} />
+        <QuizProgressPath
+          current={progress.current}
+          total={progress.total}
+          responses={session.responses}
+        />
         <button className="btn btn-secondary quiz-active__pause" onClick={togglePause}>
           Pause
         </button>
@@ -396,6 +427,21 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
                 >
                   {feedbackResult ? 'Correct!' : 'Incorrect'}
                 </div>
+
+                {/* Real-time calibration feedback */}
+                <AnimatePresence>
+                  {calibrationFeedback && (
+                    <motion.div
+                      className={`calibration-toast calibration-toast--${calibrationFeedback.type}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {calibrationFeedback.message}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {/* Scaffold prompt (after-answer timing) */}
                 {scaffold.activePrompt &&

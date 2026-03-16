@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Target, Brain, Clock, AlertTriangle, Lightbulb, ArrowRight, Zap, BarChart3 } from 'lucide-react';
 import { QuizItem, QuizResponse } from '../types';
 import HeuristicTooltip from '../../../components/HeuristicTooltip';
 import ProgressRing from '../../../components/ProgressRing';
+import { celebrations } from '../../../utils/celebrations';
 
 interface SessionSummaryProps {
   responses: QuizResponse[];
@@ -170,6 +171,17 @@ export default function SessionSummary({
       dualProcess,
     };
   }, [responses, items]);
+
+  // Fire celebration on mount based on accuracy
+  useEffect(() => {
+    const accuracy = stats.total > 0 ? stats.correct / stats.total : 0;
+    celebrations.sessionComplete(accuracy);
+
+    // Well-calibrated bonus celebration
+    if (calibrationECE !== null && calibrationECE < 0.05) {
+      celebrations.wellCalibrated();
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const ecePct = calibrationECE !== null ? (calibrationECE * 100).toFixed(1) : null;
   const dualTotal = stats.dualProcess.automatic + stats.dualProcess.deliberate;
