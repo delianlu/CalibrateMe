@@ -10,6 +10,7 @@ import {
   ResponsiveContainer, Legend,
 } from 'recharts';
 import { Clock } from 'lucide-react';
+import ChartTooltip from '../../../components/ChartTooltip';
 import { AblationResults } from '../../../simulation/ablationRunner';
 
 interface MasteryComparisonProps {
@@ -75,7 +76,7 @@ export default function MasteryComparison({ results }: MasteryComparisonProps) {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" />
               <XAxis type="number" tick={{ fontSize: 10 }} />
               <YAxis dataKey="profile" type="category" tick={{ fontSize: 10 }} width={90} />
-              <Tooltip />
+              <Tooltip content={<ChartTooltip />} />
               <Legend wrapperStyle={{ fontSize: 11 }} />
               {keyConditions.map(condition => (
                 <Bar
@@ -98,7 +99,7 @@ export default function MasteryComparison({ results }: MasteryComparisonProps) {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border-color, #e2e8f0)" />
               <XAxis type="number" tick={{ fontSize: 10 }} />
               <YAxis dataKey="profile" type="category" tick={{ fontSize: 10 }} width={90} />
-              <Tooltip />
+              <Tooltip content={<ChartTooltip />} />
               <Legend wrapperStyle={{ fontSize: 11 }} />
               {keyConditions.map(condition => (
                 <Bar

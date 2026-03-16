@@ -1,6 +1,8 @@
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Target, Brain, Clock } from 'lucide-react';
+import CountUp from '../../../components/CountUp';
+import { AnalyticsSkeleton } from '../../../components/Skeleton';
 import { QuizResponse } from '../../quiz/types';
 import { ItemState } from '../../user/types';
 import LiveCalibrationCurve from './LiveCalibrationCurve';
@@ -24,6 +26,14 @@ export default function CalibrationDashboard({
   itemStates = {},
   betaHat = 0,
 }: CalibrationDashboardProps) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Brief skeleton while data hydrates
+    const t = setTimeout(() => setIsLoading(false), 400);
+    return () => clearTimeout(t);
+  }, []);
+
   const totalItems = responses.length;
 
   const { statData } = useMemo(() => {
@@ -37,15 +47,27 @@ export default function CalibrationDashboard({
       avgConf: conf,
       avgRT: rt,
       statData: [
-        { value: totalItems, label: 'Responses', accent: 'blue' },
-        { value: `${(acc * 100).toFixed(0)}%`, label: 'Accuracy', accent: 'green' },
-        { value: `${conf.toFixed(0)}%`, label: 'Avg Confidence', accent: 'purple' },
-        { value: `${(rt / 1000).toFixed(1)}s`, label: 'Avg RT', accent: 'amber' },
+        { numValue: totalItems, label: 'Responses', accent: 'blue', suffix: '' },
+        { numValue: acc * 100, label: 'Accuracy', accent: 'green', suffix: '%', decimals: 0 },
+        { numValue: conf, label: 'Avg Confidence', accent: 'purple', suffix: '%', decimals: 0 },
+        { numValue: rt / 1000, label: 'Avg RT', accent: 'amber', suffix: 's', decimals: 1 },
       ],
     };
   }, [responses, totalItems]);
 
   const hasItemData = Object.keys(itemStates).length > 0;
+
+  if (isLoading) {
+    return (
+      <div className="cal-dashboard">
+        <h2 className="cal-dashboard__title">
+          <Activity size={24} style={{ marginRight: 10, verticalAlign: 'middle' }} />
+          Calibration Analytics
+        </h2>
+        <AnalyticsSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="cal-dashboard">
@@ -78,68 +100,79 @@ export default function CalibrationDashboard({
           </p>
         </motion.div>
       ) : (
-        <>
-          {/* Quick stats row */}
+        <div className="analytics-bento">
+          {/* Calibration curve - large tile */}
           {totalItems > 0 && (
-            <div className="cal-dashboard__stats">
-              {statData.map((stat, i) => {
-                const Icon = statIcons[i];
-                return (
-                  <motion.div
-                    key={stat.label}
-                    className={`cal-dashboard__stat cal-dashboard__stat--${stat.accent}`}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <div className="cal-dashboard__stat-icon">
-                      <Icon size={16} />
-                    </div>
-                    <span className="cal-dashboard__stat-value">{stat.value}</span>
-                    <span className="cal-dashboard__stat-label">{stat.label}</span>
-                  </motion.div>
-                );
-              })}
+            <div className="analytics-bento__calibration-curve cal-dashboard__chart card">
+              <LiveCalibrationCurve responses={responses} />
             </div>
           )}
 
-          {/* Calibration charts */}
+          {/* Confidence distribution - medium tile */}
           {totalItems > 0 && (
-            <div className="cal-dashboard__charts">
-              <div className="cal-dashboard__chart card">
-                <LiveCalibrationCurve responses={responses} />
-              </div>
-              <div className="cal-dashboard__chart card">
-                <ECEMeter responses={responses} />
-                <ConfidenceHistogram responses={responses} />
-              </div>
+            <div className="analytics-bento__confidence-dist cal-dashboard__chart card">
+              <ConfidenceHistogram responses={responses} />
             </div>
           )}
 
-          {/* ECE trend over sessions */}
+          {/* Quick stats - glass cards */}
+          {totalItems > 0 && statData.map((stat, i) => {
+            const Icon = statIcons[i];
+            return (
+              <motion.div
+                key={stat.label}
+                className={`analytics-bento__stat-tile glass-card cal-dashboard__stat cal-dashboard__stat--${stat.accent}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="cal-dashboard__stat-icon">
+                  <Icon size={16} />
+                </div>
+                <CountUp
+                  className="cal-dashboard__stat-value"
+                  end={stat.numValue}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals ?? 0}
+                />
+                <span className="cal-dashboard__stat-label">{stat.label}</span>
+              </motion.div>
+            );
+          })}
+
+          {/* ECE Meter - wide tile */}
           {totalItems > 0 && (
-            <div className="cal-dashboard__chart card" style={{ marginBottom: 16 }}>
+            <div className="analytics-bento__ece-meter cal-dashboard__chart card">
+              <ECEMeter responses={responses} />
+            </div>
+          )}
+
+          {/* ECE trend over sessions - full width */}
+          {totalItems > 0 && (
+            <div className="analytics-bento__ece-trend cal-dashboard__chart card">
               <SessionHistory responses={responses} />
             </div>
           )}
 
           {/* Learner classification */}
           {totalItems >= 5 && (
-            <LearnerClassification responses={responses} betaHat={betaHat} />
+            <div className="analytics-bento__learner-class">
+              <LearnerClassification responses={responses} betaHat={betaHat} />
+            </div>
           )}
 
           {/* Forecast section */}
           {hasItemData && (
-            <div className="cal-dashboard__forecasts">
-              <div className="cal-dashboard__chart card">
+            <>
+              <div className="analytics-bento__retention cal-dashboard__chart card">
                 <RetentionForecast itemStates={itemStates} />
               </div>
-              <div className="cal-dashboard__chart card">
+              <div className="analytics-bento__forgetting cal-dashboard__chart card">
                 <ForgettingCurves itemStates={itemStates} />
               </div>
-            </div>
+            </>
           )}
-        </>
+        </div>
       )}
     </div>
   );

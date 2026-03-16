@@ -79,5 +79,72 @@ describe('Dual Process Classifier', () => {
       );
       expect(result.brier_score).toBeCloseTo(0.04, 2); // (0.8 - 1)^2 = 0.04
     });
+
+    it('should correctly calculate interval multipliers', () => {
+      expect(classifier.getIntervalMultiplier(ResponseType.TYPE1_AUTOMATIC, false)).toBe(0.5);
+      expect(classifier.getIntervalMultiplier(ResponseType.TYPE2_DELIBERATE, false)).toBe(0.5);
+      expect(classifier.getIntervalMultiplier(ResponseType.TYPE1_AUTOMATIC, true)).toBe(1.2);
+      expect(classifier.getIntervalMultiplier(ResponseType.TYPE2_DELIBERATE, true)).toBe(1.0);
+    });
+
+    it('should clear all stats when reset is called', () => {
+      classifier.processResponse(
+        {
+          item_id: 'test',
+          correctness: true,
+          confidence: 0.8,
+          response_time: 2,
+          timestamp: new Date(),
+        },
+        'medium'
+      );
+      
+      classifier.reset();
+      
+      // Should revert back to default behavior (needs 5 responses again to not be 0 normalized RT)
+      const result = classifier.processResponse(
+        {
+          item_id: 'test',
+          correctness: true,
+          confidence: 0.8,
+          response_time: 2,
+          timestamp: new Date(),
+        },
+        'medium'
+      );
+      expect(result.response_type).toBe(ResponseType.TYPE2_DELIBERATE);
+    });
+
+    it('should classify as Type 1 when fast and highly confident', () => {
+      // Train it so that RT of 2 is very fast (mean = 5, std = 1)
+      for (let i = 0; i < 5; i++) {
+        classifier.processResponse(
+          { item_id: `train-${i}`, correctness: true, confidence: 0.8, response_time: 5, timestamp: new Date() },
+          'easy'
+        );
+      }
+      const result = classifier.processResponse(
+        { item_id: 'test', correctness: true, confidence: 0.9, response_time: 2, timestamp: new Date() },
+        'easy'
+      );
+      expect(result.response_type).toBe(ResponseType.TYPE1_AUTOMATIC);
+    });
+
+    it('should fallback to overall RT when difficulty bin has less than 3 responses', () => {
+      // Total responses = 5 (so normalizeRT can compute), but 'hard' bin has 0
+      for (let i = 0; i < 5; i++) {
+        classifier.processResponse(
+          { item_id: `train-${i}`, correctness: true, confidence: 0.8, response_time: 5, timestamp: new Date() },
+          'easy'
+        );
+      }
+      
+      const result = classifier.processResponse(
+        { item_id: 'test_hard', correctness: true, confidence: 0.8, response_time: 5, timestamp: new Date() },
+        'hard'
+      );
+      // Normalized RT will be ~0 since it matches the global mean
+      expect(result.normalized_rt).toBeCloseTo(0);
+    });
   });
 });

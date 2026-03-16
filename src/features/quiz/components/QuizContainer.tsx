@@ -1,15 +1,17 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Shuffle, BookOpen, PenTool, Zap } from 'lucide-react';
+import CountUp from '../../../components/CountUp';
 import { useQuizSession } from '../hooks/useQuizSession';
 import Flashcard from './Flashcard';
 import GrammarExercise from './GrammarExercise';
 import ConfidenceSlider from './ConfidenceSlider';
 import AnswerButtons from './AnswerButtons';
-import QuizProgress from './QuizProgress';
+import QuizProgressPath from './QuizProgressPath';
 import SessionSummary from './SessionSummary';
 import OnboardingCard, { hasSeenOnboarding } from './OnboardingCard';
 import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
+import ReflectivePrompt from './ReflectivePrompt';
 import {
   createScaffoldState,
   processResponse,
@@ -61,6 +63,14 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   // Grammar: after user selects an option, show confidence slider before grading
   const [grammarPendingOption, setGrammarPendingOption] = useState<string | null>(null);
   const completedRef = useRef(false);
+  // Reflective prompt for confident misses
+  const [showReflectivePrompt, setShowReflectivePrompt] = useState(false);
+  const pendingAdvanceRef = useRef<(() => void) | null>(null);
+  // Real-time calibration feedback
+  const [calibrationFeedback, setCalibrationFeedback] = useState<{
+    message: string;
+    type: 'well-calibrated' | 'overconfident' | 'underconfident';
+  } | null>(null);
 
   // Fire onSessionComplete once when session ends
   useEffect(() => {
@@ -84,6 +94,27 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
       setFeedbackResult(correct);
       submitAnswer(correct);
 
+      // Real-time calibration feedback
+      const gap = confidence - (correct ? 100 : 0);
+      if (Math.abs(gap) <= 25) {
+        setCalibrationFeedback({
+          message: `You said ${confidence}% → ${correct ? 'Correct ✓' : 'Incorrect ✗'} — Well calibrated!`,
+          type: 'well-calibrated',
+        });
+      } else if (confidence >= 60 && !correct) {
+        setCalibrationFeedback({
+          message: `You said ${confidence}% → Incorrect ✗ — Overconfident`,
+          type: 'overconfident',
+        });
+      } else if (confidence <= 40 && correct) {
+        setCalibrationFeedback({
+          message: `You said ${confidence}% → Correct ✓ — Underconfident`,
+          type: 'underconfident',
+        });
+      } else {
+        setCalibrationFeedback(null);
+      }
+
       // Process scaffolding
       if (session) {
         const response: QuizResponse = {
@@ -98,15 +129,35 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
         );
       }
 
-      // Auto-advance after feedback (delayed if scaffold prompt shows)
-      setTimeout(() => {
+      // Show reflective prompt for confident misses (confidence >= 75 and wrong)
+      const advance = () => {
         setFeedbackResult(null);
+        setCalibrationFeedback(null);
         setConfidence(50);
         nextItem();
-      }, 600);
+      };
+
+      if (confidence >= 75 && !correct) {
+        // Delay briefly to show feedback, then show reflective prompt
+        setTimeout(() => {
+          pendingAdvanceRef.current = advance;
+          setShowReflectivePrompt(true);
+        }, 400);
+      } else {
+        // Auto-advance after feedback
+        setTimeout(advance, 600);
+      }
     },
     [submitAnswer, nextItem, session, confidence]
   );
+
+  const handleReflectiveDismiss = useCallback((_reason: string | null) => {
+    setShowReflectivePrompt(false);
+    if (pendingAdvanceRef.current) {
+      pendingAdvanceRef.current();
+      pendingAdvanceRef.current = null;
+    }
+  }, []);
 
   // Handler for grammar exercise: user selects option, then rates confidence
   const handleGrammarAnswer = useCallback(
@@ -153,6 +204,22 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
     nextItem();
   }, [nextItem]);
 
+  // Quick stats for the practice tab
+  const quickStats = useMemo(() => {
+    const gamificationRaw = localStorage.getItem('calibrateme_gamification');
+    let xp = 0;
+    let streak = 0;
+    if (gamificationRaw) {
+      try {
+        const g = JSON.parse(gamificationRaw);
+        xp = g.xp ?? 0;
+        streak = g.currentStreak ?? 0;
+      } catch { /* ignore */ }
+    }
+    const dueToday = Math.min(20, (vocabulary?.length ?? 0) + (grammarActivities?.length ?? 0));
+    return { dueToday, streak, ece: 0, xp };
+  }, [vocabulary, grammarActivities]);
+
   // ── Not started ──────────────────────────────────────────────────
   if (!session) {
     const vocabItems = vocabulary ?? [];
@@ -170,6 +237,27 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
       {showOnboarding && (
         <OnboardingCard onDismiss={() => setShowOnboarding(false)} />
       )}
+
+      {/* Quick Stats Bar */}
+      <div className="quick-stats-bar">
+        {[
+          { icon: '\u{1F4CA}', value: quickStats.dueToday, label: 'Due Today' },
+          { icon: '\u{1F525}', value: quickStats.streak, label: 'Streak' },
+          { icon: '\u{1F3AF}', value: quickStats.ece, label: 'ECE', suffix: '%', decimals: 1 },
+          { icon: '\u{2B50}', value: quickStats.xp, label: 'XP' },
+        ].map(stat => (
+          <div className="quick-stats-bar__tile glass-card" key={stat.label}>
+            <span className="quick-stats-bar__icon">{stat.icon}</span>
+            <CountUp
+              className="quick-stats-bar__value"
+              end={stat.value}
+              suffix={stat.suffix ?? ''}
+              decimals={stat.decimals ?? 0}
+            />
+            <span className="quick-stats-bar__label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
       <motion.div
         className="quiz-start card"
         initial={{ opacity: 0, y: 20 }}
@@ -203,8 +291,8 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Icon size={16} style={{ marginRight: 6 }} />
-                {label} ({count})
+                <Icon size={20} />
+                <span>{label} ({count})</span>
               </motion.button>
             );
           })}
@@ -272,9 +360,13 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   // ── Active quiz ──────────────────────────────────────────────────
   return (
     <div className="quiz-active">
-      {/* Top bar: progress + pause */}
+      {/* Top bar: progress path + pause */}
       <div className="quiz-active__top">
-        <QuizProgress current={progress.current} total={progress.total} />
+        <QuizProgressPath
+          current={progress.current}
+          total={progress.total}
+          responses={session.responses}
+        />
         <button className="btn btn-secondary quiz-active__pause" onClick={togglePause}>
           Pause
         </button>
@@ -359,6 +451,21 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
                   {feedbackResult ? 'Correct!' : 'Incorrect'}
                 </div>
 
+                {/* Real-time calibration feedback */}
+                <AnimatePresence>
+                  {calibrationFeedback && (
+                    <motion.div
+                      className={`calibration-toast calibration-toast--${calibrationFeedback.type}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {calibrationFeedback.message}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 {/* Scaffold prompt (after-answer timing) */}
                 {scaffold.activePrompt &&
                   scaffold.activePrompt.timing === 'after-answer' && (
@@ -372,6 +479,16 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
           </div>
         </>
       )}
+
+      {/* Reflective prompt for confident misses */}
+      <AnimatePresence>
+        {showReflectivePrompt && (
+          <ReflectivePrompt
+            confidence={confidence}
+            onDismiss={handleReflectiveDismiss}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -104,4 +104,28 @@ export const achievements: Achievement[] = [
     category: 'calibration',
     requirement: { type: 'calibration', threshold: 0.05 },
   },
+  {
+    id: 'cal-streak-5',
+    title: 'Calibration Streak',
+    description: '5 accurate confidence predictions in a row',
+    icon: '5',
+    category: 'calibration',
+    requirement: { type: 'calibration_streak', threshold: 5 },
+  },
+  {
+    id: 'cal-streak-10',
+    title: 'Calibration Master',
+    description: '10 accurate confidence predictions in a row!',
+    icon: '★',
+    category: 'calibration',
+    requirement: { type: 'calibration_streak', threshold: 10 },
+  },
+  {
+    id: 'cal-streak-25',
+    title: 'Meta-Cognition Pro',
+    description: '25 accurate confidence predictions in a row!',
+    icon: '♛',
+    category: 'calibration',
+    requirement: { type: 'calibration_streak', threshold: 25 },
+  },
 ];

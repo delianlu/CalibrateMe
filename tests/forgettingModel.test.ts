@@ -3,7 +3,12 @@ import {
   optimalReviewTime,
   calculateRetention,
   applyLearning,
+  daysSinceReview,
+  predictForgottenKnowledge,
+  applyItemForgetting,
+  applyBatchForgetting,
 } from '../src/memory/forgettingModel';
+import { Item, ItemType } from '../src/types';
 
 describe('Forgetting Model', () => {
   describe('applyForgetting', () => {
@@ -87,6 +92,71 @@ describe('Forgetting Model', () => {
       }
       expect(K).toBeGreaterThan(0.99);
       expect(K).toBeLessThanOrEqual(1.0);
+    });
+  });
+
+  describe('daysSinceReview', () => {
+    it('should return 0 if lastReview is null', () => {
+      expect(daysSinceReview(null)).toBe(0);
+    });
+
+    it('should calculate correct days elapsed', () => {
+      const now = new Date('2026-03-16T12:00:00Z');
+      const last = new Date('2026-03-14T12:00:00Z');
+      expect(daysSinceReview(last, now)).toBe(2);
+    });
+  });
+
+  describe('predictForgottenKnowledge', () => {
+    it('should call applyForgetting internally', () => {
+      expect(predictForgottenKnowledge(0.8, 0.1, 5)).toBe(applyForgetting(0.8, 0.1, 5));
+    });
+  });
+
+  describe('applyItemForgetting', () => {
+    it('should not decay if delta is 0', () => {
+      const now = new Date();
+      const item: Item = {
+        id: '1',
+        type: ItemType.VOCABULARY,
+        target: 'test',
+        true_state: { K_star: 0.9, last_review: now },
+      };
+      
+      const result = applyItemForgetting(item, 0.1, now);
+      expect(result).toBe(item); // Should return same reference
+    });
+    
+    it('should decay knowledge if time has passed', () => {
+      const now = new Date('2026-03-16T12:00:00Z');
+      const last = new Date('2026-03-14T12:00:00Z'); // 2 days ago
+      const item: Item = {
+        id: '1',
+        type: ItemType.VOCABULARY,
+        target: 'test',
+        true_state: { K_star: 0.9, last_review: last },
+      };
+      
+      const result = applyItemForgetting(item, 0.1, now);
+      expect(result).not.toBe(item);
+      expect(result.true_state.K_star).toBeLessThan(0.9);
+      expect(result.true_state.K_star).toBe(applyForgetting(0.9, 0.1, 2));
+    });
+  });
+
+  describe('applyBatchForgetting', () => {
+    it('should apply forgetting to an array of items', () => {
+      const now = new Date('2026-03-16T12:00:00Z');
+      const last = new Date('2026-03-14T12:00:00Z');
+      const items: Item[] = [
+        { id: '1', item_type: ItemType.VOCABULARY, target: 'test1', true_state: { K_star: 0.9, last_review: last } } as Item,
+        { id: '2', item_type: ItemType.VOCABULARY, target: 'test2', true_state: { K_star: 0.8, last_review: last } } as Item,
+      ];
+      
+      const results = applyBatchForgetting(items, 0.1, now);
+      expect(results.length).toBe(2);
+      expect(results[0].true_state.K_star).toBeLessThan(0.9);
+      expect(results[1].true_state.K_star).toBeLessThan(0.8);
     });
   });
 });

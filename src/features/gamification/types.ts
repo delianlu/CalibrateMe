@@ -8,6 +8,8 @@ export interface GamificationState {
   achievements: UnlockedAchievement[];
   dailyStreak: number;
   longestStreak: number;
+  calibrationStreak: number; // consecutive well-calibrated predictions
+  bestCalibrationStreak: number;
   lastActivityDate: string | null; // ISO date string (YYYY-MM-DD)
   pendingNotifications: GamificationNotification[];
 }
@@ -22,7 +24,7 @@ export interface Achievement {
 }
 
 export interface AchievementRequirement {
-  type: 'sessions' | 'reviews' | 'streak' | 'accuracy' | 'calibration' | 'mastered_items';
+  type: 'sessions' | 'reviews' | 'streak' | 'accuracy' | 'calibration' | 'mastered_items' | 'calibration_streak';
   threshold: number;
 }
 
@@ -68,6 +70,8 @@ export function createDefaultGamificationState(): GamificationState {
     achievements: [],
     dailyStreak: 0,
     longestStreak: 0,
+    calibrationStreak: 0,
+    bestCalibrationStreak: 0,
     lastActivityDate: null,
     pendingNotifications: [],
   };

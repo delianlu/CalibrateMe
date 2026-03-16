@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { User, Download, Upload, Trash2, BookOpen, Target, Brain, Flame } from 'lucide-react';
 import { UserProfile } from '../types';
+import CountUp from '../../../components/CountUp';
 
 interface ProfileCardProps {
   profile: UserProfile;
@@ -43,24 +44,26 @@ export default function ProfileCard({ profile, onExport, onImport, onReset }: Pr
       <div className="profile-card__stats">
         <div className="profile-card__stat profile-card__stat--accent-blue">
           <BookOpen size={16} className="profile-card__stat-icon" />
-          <span className="profile-card__stat-value">{stats.totalReviews}</span>
+          <CountUp className="profile-card__stat-value" end={stats.totalReviews} />
           <span className="profile-card__stat-label">Total Reviews</span>
         </div>
         <div className="profile-card__stat profile-card__stat--accent-purple">
           <Target size={16} className="profile-card__stat-icon" />
-          <span className="profile-card__stat-value">{stats.totalSessions}</span>
+          <CountUp className="profile-card__stat-value" end={stats.totalSessions} />
           <span className="profile-card__stat-label">Sessions</span>
         </div>
         <div className="profile-card__stat profile-card__stat--accent-green">
           <Brain size={16} className="profile-card__stat-icon" />
-          <span className="profile-card__stat-value">
-            {stats.totalReviews > 0 ? `${Math.round(stats.averageAccuracy * 100)}%` : '--'}
-          </span>
+          {stats.totalReviews > 0 ? (
+            <CountUp className="profile-card__stat-value" end={Math.round(stats.averageAccuracy * 100)} suffix="%" />
+          ) : (
+            <span className="profile-card__stat-value">--</span>
+          )}
           <span className="profile-card__stat-label">Accuracy</span>
         </div>
         <div className="profile-card__stat profile-card__stat--accent-amber">
           <Flame size={16} className="profile-card__stat-icon" />
-          <span className="profile-card__stat-value">{stats.currentStreak}</span>
+          <CountUp className="profile-card__stat-value" end={stats.currentStreak} />
           <span className="profile-card__stat-label">Day Streak</span>
         </div>
       </div>

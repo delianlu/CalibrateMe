@@ -1,4 +1,4 @@
-import { Flame } from 'lucide-react';
+import StreakFlame from '../../../components/StreakFlame';
 
 interface StreakDisplayProps {
   current: number;
@@ -9,7 +9,7 @@ export default function StreakDisplay({ current, longest }: StreakDisplayProps) 
   return (
     <div className="streak-display">
       <div className="streak-display__current">
-        <Flame size={24} className="streak-display__icon" />
+        <StreakFlame streak={current} showLabel={false} />
         <span className="streak-display__number">{current}</span>
         <span className="streak-display__label">Day Streak</span>
       </div>

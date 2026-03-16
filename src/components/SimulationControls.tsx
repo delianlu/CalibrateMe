@@ -126,7 +126,7 @@ const SimulationControls: React.FC = () => {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
         <button
-          className="btn btn-primary btn-block"
+          className="btn btn-block sim-btn-primary"
           onClick={runSimulation}
           disabled={isRunning}
         >
@@ -134,25 +134,23 @@ const SimulationControls: React.FC = () => {
         </button>
 
         <button
-          className="btn btn-secondary btn-block"
+          className="btn btn-block sim-btn-secondary"
           onClick={runComparison}
           disabled={isRunning}
-          style={{ background: '#9f7aea', color: 'white' }}
         >
           Compare All Schedulers
         </button>
 
         <button
-          className="btn btn-secondary btn-block"
+          className="btn btn-block sim-btn-secondary sim-btn-secondary--alt"
           onClick={runHypothesisTests}
           disabled={isRunning}
-          style={{ background: '#d69e2e', color: 'white' }}
         >
           Run Hypothesis Tests (H1/H2/H3)
         </button>
 
         <button
-          className="btn btn-secondary btn-block"
+          className="btn btn-block sim-btn-ghost"
           onClick={reset}
           disabled={isRunning}
         >

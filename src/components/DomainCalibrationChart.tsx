@@ -18,6 +18,7 @@ import {
   Bar,
 } from 'recharts';
 import { SimulationResults } from '../types';
+import ChartTooltip from './ChartTooltip';
 
 interface DomainCalibrationChartProps {
   results: SimulationResults;
@@ -83,10 +84,7 @@ const DomainCalibrationChart: React.FC<DomainCalibrationChartProps> = ({ results
               tickFormatter={(v: number) => v.toFixed(2)}
               domain={[-0.4, 0.4]}
             />
-            <Tooltip
-              contentStyle={{ background: 'white', border: '1px solid #e2e8f0', borderRadius: '4px', fontSize: '12px' }}
-              formatter={(value: number, name: string) => [value.toFixed(3), name]}
-            />
+            <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(3) : String(v)} />} />
             <Legend />
             <ReferenceLine y={0} stroke="#94a3b8" strokeDasharray="3 3" label={{ value: 'Well-calibrated', position: 'right', fontSize: 10 }} />
             <Line type="monotone" dataKey="β̂ Vocabulary" stroke="#6366f1" strokeWidth={2} dot={false} />
@@ -108,10 +106,7 @@ const DomainCalibrationChart: React.FC<DomainCalibrationChartProps> = ({ results
               tickFormatter={(v: number) => v.toFixed(2)}
               domain={[-0.4, 0.4]}
             />
-            <Tooltip
-              contentStyle={{ background: 'white', border: '1px solid #e2e8f0', borderRadius: '4px', fontSize: '12px' }}
-              formatter={(value: number) => [value.toFixed(3), 'β̂']}
-            />
+            <Tooltip content={<ChartTooltip formatter={(v) => typeof v === 'number' ? v.toFixed(3) : String(v)} />} />
             <ReferenceLine y={0} stroke="#94a3b8" strokeDasharray="3 3" />
             <Bar
               dataKey="beta_hat"

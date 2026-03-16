@@ -6,6 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from 'recharts';
 import { TrendingDown, Calendar } from 'lucide-react';
@@ -23,6 +24,7 @@ interface SessionRecord {
   accuracy: number;
   avgConfidence: number;
   ece: number;
+  brier: number;
 }
 
 /** Bin a set of responses into confidence bins and compute ECE */
@@ -44,6 +46,18 @@ function computeECE(responses: QuizResponse[], numBins = 5): number {
     ece += (b.total / n) * Math.abs(b.correct / b.total - b.confSum / b.total);
   }
   return ece;
+}
+
+/** Compute Brier score: mean((confidence - outcome)^2) */
+function computeBrier(responses: QuizResponse[]): number {
+  if (responses.length === 0) return 0;
+  let sum = 0;
+  for (const r of responses) {
+    const conf = r.confidence / 100;
+    const outcome = r.correctness ? 1 : 0;
+    sum += (conf - outcome) ** 2;
+  }
+  return sum / responses.length;
 }
 
 /** Split responses into sessions (groups separated by >10 min gaps) */
@@ -74,7 +88,8 @@ const CustomTooltip = ({ active, payload }: any) => {
     return (
       <div className="chart-tooltip">
         <p><strong>Session {d.session}</strong> ({d.date})</p>
-        <p>ECE: {(d.ece * 100).toFixed(1)}%</p>
+        <p style={{ color: '#6366F1' }}>ECE: {(d.ece * 100).toFixed(1)}%</p>
+        <p style={{ color: '#F59E0B' }}>Brier: {(d.brier * 100).toFixed(1)}%</p>
         <p>Accuracy: {(d.accuracy * 100).toFixed(0)}%</p>
         <p>Avg Confidence: {(d.avgConfidence * 100).toFixed(0)}%</p>
         <p>Items: {d.items}</p>
@@ -93,9 +108,10 @@ export default function SessionHistory({ responses }: SessionHistoryProps) {
       const accuracy = items > 0 ? correct / items : 0;
       const avgConf = items > 0 ? sess.reduce((s, r) => s + r.confidence, 0) / items / 100 : 0;
       const ece = items >= 3 ? computeECE(sess) : 0;
+      const brier = items >= 3 ? computeBrier(sess) : 0;
       const date = sess[0].timestamp.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-      return { session: i + 1, date, items, accuracy, avgConfidence: avgConf, ece } as SessionRecord;
+      return { session: i + 1, date, items, accuracy, avgConfidence: avgConf, ece, brier } as SessionRecord;
     });
   }, [responses]);
 
@@ -134,12 +150,25 @@ export default function SessionHistory({ responses }: SessionHistoryProps) {
             label={{ value: 'ECE', angle: -90, position: 'insideLeft', fontSize: 12 }}
           />
           <Tooltip content={<CustomTooltip />} />
+          <Legend verticalAlign="top" height={28} />
           <Line
             type="monotone"
             dataKey="ece"
+            name="ECE"
             stroke="#6366F1"
             strokeWidth={2}
             dot={{ fill: '#6366F1', r: 4, strokeWidth: 2, stroke: '#fff' }}
+            isAnimationActive={true}
+            strokeLinecap="round"
+          />
+          <Line
+            type="monotone"
+            dataKey="brier"
+            name="Brier"
+            stroke="#F59E0B"
+            strokeWidth={2}
+            strokeDasharray="5 3"
+            dot={{ fill: '#F59E0B', r: 3, strokeWidth: 2, stroke: '#fff' }}
             isAnimationActive={true}
             strokeLinecap="round"
           />
@@ -167,7 +196,8 @@ export default function SessionHistory({ responses }: SessionHistoryProps) {
               <span>Session {s.session} ({s.date})</span>
               <span style={{ display: 'flex', gap: 12 }}>
                 <span>{(s.accuracy * 100).toFixed(0)}% acc</span>
-                <span style={{ fontWeight: 600 }}>ECE {(s.ece * 100).toFixed(1)}%</span>
+                <span style={{ fontWeight: 600, color: '#6366F1' }}>ECE {(s.ece * 100).toFixed(1)}%</span>
+                <span style={{ fontWeight: 600, color: '#F59E0B' }}>Brier {(s.brier * 100).toFixed(1)}%</span>
               </span>
             </div>
           ))}

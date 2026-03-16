@@ -3,6 +3,8 @@ import {
   aggregateBrierScore,
   expectedCalibrationError,
   detectMiscalibration,
+  estimateBetaHat,
+  calculateCalibrationMetrics,
 } from '../src/calibration/scoringModule';
 import { Response, CalibrationType } from '../src/types';
 
@@ -78,6 +80,40 @@ describe('Calibration Scoring Module', () => {
         timestamp: new Date(),
       }));
       expect(detectMiscalibration(responses)).toBe(CalibrationType.UNDERCONFIDENT);
+    });
+  });
+
+  describe('estimateBetaHat', () => {
+    it('should return 0 when no responses', () => {
+      expect(estimateBetaHat([])).toBe(0);
+    });
+
+    it('should calculate correct beta_hat difference', () => {
+      const responses: Response[] = Array(10).fill(null).map((_, i) => ({
+        item_id: `${i}`,
+        correctness: i < 5, // 50% accuracy
+        confidence: 0.8,    // 80% confidence
+        response_time: 2,
+        timestamp: new Date(),
+      }));
+      // beta_hat = meanConfidence - meanAccuracy = 0.8 - 0.5 = 0.3
+      expect(estimateBetaHat(responses)).toBeCloseTo(0.3);
+    });
+  });
+
+  describe('calculateCalibrationMetrics', () => {
+    it('should return complete metrics', () => {
+      const responses: Response[] = [
+        { item_id: '1', correctness: true, confidence: 0.9, response_time: 2, timestamp: new Date() },
+        { item_id: '2', correctness: false, confidence: 0.9, response_time: 2, timestamp: new Date() },
+      ];
+      const metrics = calculateCalibrationMetrics(responses);
+      
+      expect(metrics).toHaveProperty('brier_score');
+      expect(metrics).toHaveProperty('ece');
+      expect(metrics).toHaveProperty('mce');
+      expect(metrics).toHaveProperty('calibration_direction');
+      expect(metrics).toHaveProperty('bin_data');
     });
   });
 });

@@ -151,5 +151,35 @@ describe('Ablation Runner', () => {
       expect(progressValues.length).toBeGreaterThan(0);
       expect(progressValues[progressValues.length - 1]).toBeCloseTo(100, 0);
     });
+
+    it('should handle runs without progress callback', () => {
+      expect(() => {
+        runAblationStudy(1, testConfig, DEFAULT_CONDITIONS.slice(0, 1), ['Med-Over']);
+      }).not.toThrow();
+    });
+  });
+
+  describe('ablationToCSV edge cases', () => {
+    it('should handle null effect sizes gracefully in CSV', () => {
+      // e.g. SM-2 vs SM-2
+      const sm2Result = results.comparisons.find(c => c.condition === 'SM-2 Baseline');
+      expect(sm2Result).toBeDefined();
+      
+      const csv = ablationToCSV({
+        comparisons: [sm2Result!],
+        conditions: ['SM-2 Baseline'],
+        profiles: ['Med-Over'],
+        nSeeds: 2
+      });
+      
+      const rows = csv.split('\n');
+      const dataRow = rows[1].split(',');
+      
+      // The last 4 columns belong to effect sizes and interpretations
+      expect(dataRow[dataRow.length - 1]).toBe('N/A');
+      expect(dataRow[dataRow.length - 2]).toBe('N/A');
+      expect(dataRow[dataRow.length - 3]).toBe('N/A');
+      expect(dataRow[dataRow.length - 4]).toBe('N/A');
+    });
   });
 });

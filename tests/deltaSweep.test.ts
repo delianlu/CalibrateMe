@@ -103,4 +103,21 @@ describe('Delta Sweep', () => {
       }
     });
   });
+
+  describe('edge cases', () => {
+    it('should fall back to 0 ECE if no session data exists', () => {
+      // Setting num_sessions to 0 to trigger the fallback to 0 ECE logic
+      const customConfig = { ...testConfig, num_sessions: 0 };
+      const report = runDeltaSweep([0.05], 1, customConfig, ['Med-Over']);
+      expect(report.results.length).toBeGreaterThan(0);
+      expect(report.results[0].final_ece.mean).toBe(0);
+    });
+
+    it('should work without providing profileNames or progress callback', () => {
+      // Call with undefined profiles
+      const report = runDeltaSweep([0.05], 1, testConfig);
+      expect(report.results.length).toBeGreaterThan(0);
+      expect(report.profiles.length).toBeGreaterThan(0); // Should resolve to all profiles
+    });
+  });
 });

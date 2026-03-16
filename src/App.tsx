@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Brain,
@@ -10,6 +10,8 @@ import {
   Sun,
   Moon,
   GraduationCap,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import QuizContainer from './features/quiz/components/QuizContainer';
@@ -25,12 +27,13 @@ import { businessEnglish } from './data/vocabularyPacks/business-english';
 import { getOffGridActivities } from './data/offgridAdapter';
 import { GamificationState, createDefaultGamificationState } from './features/gamification/types';
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
-import { MiniGameContainer } from './features/minigame';
+const MiniGameContainer = lazy(() => import('./features/minigame/components/MiniGameContainer'));
 import { saveSessionToProvider } from './features/api/apiClient';
 import { getRecentResponses } from './features/user/services/storageService';
 import ErrorBoundary from './components/ErrorBoundary';
 import DemoOverlay from './components/DemoOverlay';
 import SplitScreenDemo from './components/SplitScreenDemo';
+import CommandPalette from './components/CommandPalette';
 import { QuizItem, QuizResponse } from './features/quiz/types';
 import './App.css';
 
@@ -64,7 +67,7 @@ function loadGamification(): GamificationState {
 }
 
 const pageVariants = {
-  initial: { opacity: 0, y: 12 },
+  initial: { opacity: 0, y: 8 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -8 },
 };
@@ -77,6 +80,9 @@ function App() {
   }, []);
 
   const [tab, setTab] = useState<AppTab>('quiz');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try { return localStorage.getItem('calibrateme_sidebar_collapsed') === 'true'; } catch { return false; }
+  });
   const [allResponses, setAllResponses] = useState<QuizResponse[]>([]);
   const [gamification, setGamification] = useState<GamificationState>(loadGamification);
   const { profile, recordSessionResponses, updatePreferences, exportData, importData, resetAll } =
@@ -113,6 +119,14 @@ function App() {
       profile.preferences.darkMode ? 'dark' : 'light'
     );
   }, [profile.preferences.darkMode]);
+
+  const toggleSidebar = useCallback(() => {
+    setSidebarCollapsed(prev => {
+      const next = !prev;
+      try { localStorage.setItem('calibrateme_sidebar_collapsed', String(next)); } catch { /* noop */ }
+      return next;
+    });
+  }, []);
 
   const toggleDarkMode = useCallback(() => {
     updatePreferences({ darkMode: !profile.preferences.darkMode });
@@ -179,12 +193,12 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app${sidebarCollapsed ? ' app--sidebar-collapsed' : ''}${(tab === 'simulation' || tab === 'analytics') ? ' app--hide-footer' : ''}`}>
       <a href="#main-content" className="skip-link">Skip to main content</a>
       {/* ── Sidebar Navigation (desktop) ── */}
-      <aside className="app-sidebar" role="navigation" aria-label="Main navigation">
+      <aside className={`app-sidebar${sidebarCollapsed ? ' app-sidebar--collapsed' : ''}`} role="navigation" aria-label="Main navigation">
         <div className="app-sidebar__brand">
-          <div className="app-sidebar__logo">
+          <div className="app-sidebar__brand-logo">
             <GraduationCap size={24} />
           </div>
           <span className="app-sidebar__brand-text">CalibrateMe</span>
@@ -206,6 +220,14 @@ function App() {
         </nav>
 
         <div className="app-sidebar__footer">
+          <button
+            className="app-sidebar__collapse-toggle"
+            onClick={toggleSidebar}
+            title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          >
+            {sidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+          </button>
           <button
             className="app-sidebar__theme-toggle"
             onClick={toggleDarkMode}
@@ -237,7 +259,7 @@ function App() {
       <div className="app-content">
         {/* Top bar */}
         <header className="app-topbar">
-          <div className="app-topbar__left">
+          <div className="app-topbar__title-group">
             <h1 className="app-topbar__title">
               {NAV_ITEMS.find(n => n.id === tab)?.label}
             </h1>
@@ -245,9 +267,9 @@ function App() {
               Metacognitive Calibration in Adaptive Learning
             </span>
           </div>
-          <div className="app-topbar__right">
+          <div className="app-topbar__actions">
             <button
-              className="app-topbar__theme-btn"
+              className="app-topbar__theme-toggle"
               onClick={toggleDarkMode}
               title={isDark ? 'Light mode' : 'Dark mode'}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -267,7 +289,7 @@ function App() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                transition={{ duration: 0.2, ease: 'easeOut' }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 {tab === 'quiz' && (
                   <QuizContainer
@@ -295,7 +317,17 @@ function App() {
                     />
                   </>
                 )}
-                {tab === 'minigame' && <MiniGameContainer onClose={() => setTab('quiz')} />}
+                {tab === 'minigame' && (
+                  <Suspense fallback={
+                    <div className="card" style={{ padding: 32, textAlign: 'center' }}>
+                      <div className="skeleton" style={{ width: 64, height: 64, borderRadius: '50%', margin: '0 auto 16px' }} />
+                      <div className="skeleton" style={{ width: '60%', height: 20, margin: '0 auto 12px', borderRadius: 8 }} />
+                      <div className="skeleton" style={{ width: '80%', height: 14, margin: '0 auto', borderRadius: 6 }} />
+                    </div>
+                  }>
+                    <MiniGameContainer onClose={() => setTab('quiz')} />
+                  </Suspense>
+                )}
                 {tab === 'simulation' && <Dashboard />}
               </motion.div>
             </AnimatePresence>
@@ -315,6 +347,13 @@ function App() {
 
       {/* Demo walkthrough overlay */}
       <DemoOverlay onNavigate={handleDemoNavigate} />
+
+      {/* Command palette (Cmd+K) */}
+      <CommandPalette
+        onNavigate={(t) => setTab(t as AppTab)}
+        onToggleDarkMode={toggleDarkMode}
+        isDarkMode={isDark}
+      />
     </div>
   );
 }
