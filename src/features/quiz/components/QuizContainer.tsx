@@ -196,8 +196,20 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
           processResponse(prev, response, session.responses.length + 1)
         );
       }
+
+      // Show reflective prompt for confident misses (confidence >= 75 and wrong)
+      if (conf >= 75 && !correct) {
+        pendingAdvanceRef.current = () => {
+          setFeedbackResult(null);
+          setConfidence(50);
+          setGrammarPendingOption(null);
+          setLastGrammarAnswer(null);
+          nextItem();
+        };
+        setShowReflectivePrompt(true);
+      }
     },
-    [currentItem, grammarPendingOption, submitConfidence, submitAnswer, session]
+    [currentItem, grammarPendingOption, submitConfidence, submitAnswer, session, nextItem]
   );
 
   // Advance from grammar feedback to next item
