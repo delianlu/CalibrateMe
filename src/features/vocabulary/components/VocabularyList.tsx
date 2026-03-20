@@ -10,8 +10,9 @@ import KnowledgeGraph from './KnowledgeGraph';
 import { essentialEnglish } from '../../../data/vocabularyPacks/essential-english';
 import { academicEnglish } from '../../../data/vocabularyPacks/academic-english';
 import { businessEnglish } from '../../../data/vocabularyPacks/business-english';
+import { falseFriends } from '../../../data/vocabularyPacks/false-friends';
 
-const ALL_PACKS = [essentialEnglish, academicEnglish, businessEnglish];
+const ALL_PACKS = [essentialEnglish, academicEnglish, businessEnglish, falseFriends];
 const PAGE_SIZE = 24;
 
 export default function VocabularyList() {
