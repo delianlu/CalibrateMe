@@ -32,6 +32,14 @@ export interface FalseCognateInfo {
 
 export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
 
+export type FrenchTrapType = 'false-friend' | 'pronunciation' | 'gender-confusion' | 'spelling' | 'usage-difference' | 'none';
+
+export interface FrenchTrap {
+  type: FrenchTrapType;
+  warning: string;
+  correctUsage: string;
+}
+
 export interface QuizItem {
   id: string;
   word: string;
@@ -41,6 +49,7 @@ export interface QuizItem {
   difficulty: number; // 0-1
   tags: string[];
   cefrLevel?: CEFRLevel;
+  frenchTrap?: FrenchTrap;
 
   // Grammar exercise fields (OffGrid activities)
   itemType?: QuizItemType;
