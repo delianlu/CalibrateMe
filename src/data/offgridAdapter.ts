@@ -75,13 +75,16 @@ export function getOffGridActivitiesByModule(moduleId: string): QuizItem[] {
 }
 
 export const OFFGRID_MODULES = [
-  { id: 'tense-form', name: 'Tense & Form', count: 50 },
-  { id: 'subject-verb-agreement', name: 'Subject-Verb Agreement', count: 40 },
-  { id: 'articles', name: 'Articles', count: 20 },
-  { id: 'plurality', name: 'Plurality', count: 20 },
-  { id: 'word-order', name: 'Word Order', count: 30 },
+  { id: 'tense-form', name: 'Tense & Form', count: 70 },
+  { id: 'subject-verb-agreement', name: 'Subject-Verb Agreement', count: 50 },
+  { id: 'articles', name: 'Articles', count: 40 },
+  { id: 'plurality', name: 'Plurality', count: 30 },
+  { id: 'word-order', name: 'Word Order', count: 40 },
   { id: 'cameroonian-scenarios', name: 'Cameroonian Scenarios', count: 69 },
-  { id: 'prepositions', name: 'Prepositions', count: 30 },
+  { id: 'prepositions', name: 'Prepositions', count: 50 },
   { id: 'false-cognates', name: 'False Cognates', count: 50 },
-  { id: 'auxiliaries', name: 'Auxiliaries', count: 20 },
+  { id: 'auxiliaries', name: 'Auxiliaries', count: 35 },
+  { id: 'conditionals', name: 'Conditionals', count: 30 },
+  { id: 'passive-voice', name: 'Passive Voice', count: 25 },
+  { id: 'reported-speech', name: 'Reported Speech', count: 20 },
 ] as const;
