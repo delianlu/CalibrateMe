@@ -10056,10 +10056,1766 @@
       "feedback": "You spotted it! This comes from French \"Tu as fini...?\". English questions must invert the subject ('you') and the auxiliary ('have'): \"Have you finished...?\".",
       "correction": "Have you",
       "cefrLevel": "B2"
+    },
+    {
+      "id": "c1-cond-1",
+      "type": "multiple-choice",
+      "question": "If I ___ about the scholarship at the University of Buea earlier, I would have applied.",
+      "answer": "had known",
+      "options": [
+        "knew",
+        "had known",
+        "have known",
+        "would know"
+      ],
+      "difficulty": 0.75,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "third conditional",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Third conditional: 'If + past perfect, ... would have + past participle.' We use it for unreal past situations. In French, this would be 'Si j'avais su..., j'aurais postulé.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si j'avais su pour la bourse à l'Université de Buea plus tôt, j'aurais postulé.",
+        "note": "French uses 'si + plus-que-parfait, conditionnel passé' — similar structure to English third conditional."
+      }
+    },
+    {
+      "id": "c1-cond-2",
+      "type": "multiple-choice",
+      "question": "Had the Douala port authorities ___ the shipment on time, the goods wouldn't have spoiled.",
+      "answer": "released",
+      "options": [
+        "release",
+        "released",
+        "been releasing",
+        "releasing"
+      ],
+      "difficulty": 0.8,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "inverted conditional",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Inverted third conditional: 'Had + subject + past participle' replaces 'If + subject + had + past participle.' This is a formal, literary structure.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si les autorités portuaires de Douala avaient libéré la cargaison à temps, les marchandises ne se seraient pas gâtées.",
+        "note": "French doesn't invert like English here — it keeps 'si + plus-que-parfait.'"
+      }
+    },
+    {
+      "id": "c1-cond-3",
+      "type": "multiple-choice",
+      "question": "If the rains ___ earlier this year, the cocoa harvest in the South West would be much better now.",
+      "answer": "had started",
+      "options": [
+        "started",
+        "had started",
+        "would start",
+        "have started"
+      ],
+      "difficulty": 0.78,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "mixed conditional",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Mixed conditional (past condition → present result): 'If + past perfect, ... would + base verb (now).' The past event affects the current situation.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si les pluies avaient commencé plus tôt cette année, la récolte de cacao dans le Sud-Ouest serait bien meilleure maintenant.",
+        "note": "French mirrors this mixed conditional: 'si + plus-que-parfait, conditionnel présent.'"
+      }
+    },
+    {
+      "id": "c1-cond-4",
+      "type": "multiple-choice",
+      "question": "Were the government ___ more in bilingual education, the anglophone crisis might ease.",
+      "answer": "to invest",
+      "options": [
+        "investing",
+        "to invest",
+        "invested",
+        "invest"
+      ],
+      "difficulty": 0.82,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "inverted conditional",
+        "subjunctive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Inverted second conditional with 'were to': 'Were + subject + to + infinitive' is a formal alternative to 'If + subject + past simple.' Very formal register.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si le gouvernement investissait davantage dans l'éducation bilingue, la crise anglophone pourrait s'atténuer.",
+        "note": "French uses 'si + imparfait, conditionnel présent' — no inversion equivalent."
+      }
+    },
+    {
+      "id": "c1-cond-5",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'If I would have studied at ENSET Bambili, I would have become a technical teacher.'",
+      "answer": "If I had studied at ENSET Bambili, I would have become a technical teacher.",
+      "options": [],
+      "difficulty": 0.72,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "third conditional",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Common error: Never use 'would have' in the 'if' clause of a third conditional. Use 'had + past participle' instead. This is a very common mistake influenced by French 'si j'aurais' (which is also incorrect in French!).",
+      "correction": "'If I would have studied' → 'If I had studied'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si j'avais étudié à l'ENSET Bambili, je serais devenu professeur technique.",
+        "note": "The same error exists in informal French ('si j'aurais') — both languages require the past perfect/plus-que-parfait after 'if/si.'"
+      }
+    },
+    {
+      "id": "c1-cond-6",
+      "type": "multiple-choice",
+      "question": "If she ___ more outgoing, she would have made friends more easily in Yaoundé.",
+      "answer": "were",
+      "options": [
+        "was",
+        "were",
+        "had been",
+        "would be"
+      ],
+      "difficulty": 0.76,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "mixed conditional",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Mixed conditional (present condition → past result): 'If + past simple/subjunctive (were), ... would have + past participle.' Her personality (present) affected her past experience.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si elle était plus sociable, elle se serait fait des amis plus facilement à Yaoundé.",
+        "note": "French uses 'si + imparfait, conditionnel passé' for this mixed type."
+      }
+    },
+    {
+      "id": "c1-cond-7",
+      "type": "multiple-choice",
+      "question": "But for the new bridge over the Wouri, Douala's traffic congestion ___ even worse.",
+      "answer": "would be",
+      "options": [
+        "will be",
+        "would be",
+        "would have been",
+        "had been"
+      ],
+      "difficulty": 0.8,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "but for",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'But for' means 'if it were not for' — it introduces an implied conditional. Here, the bridge exists now, so we use 'would be' for the present unreal result.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Sans le nouveau pont sur le Wouri, les embouteillages de Douala seraient encore pires.",
+        "note": "French uses 'sans + noun' where English uses 'but for' — both imply a conditional."
+      }
+    },
+    {
+      "id": "c1-cond-8",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'If the Indomitable Lions would win the AFCON, the whole country will celebrate.'",
+      "answer": "If the Indomitable Lions won/were to win the AFCON, the whole country would celebrate.",
+      "options": [],
+      "difficulty": 0.74,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "second conditional",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Two errors: (1) Don't use 'would' in the 'if' clause — use past simple or 'were to.' (2) The result clause needs 'would,' not 'will,' for hypothetical situations.",
+      "correction": "'would win' → 'won' or 'were to win'; 'will celebrate' → 'would celebrate'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si les Lions Indomptables gagnaient la CAN, tout le pays fêterait.",
+        "note": "French similarly uses imparfait (not conditionnel) after 'si.'"
+      }
+    },
+    {
+      "id": "c1-cond-9",
+      "type": "multiple-choice",
+      "question": "Provided that the Ministry ___ the new curriculum, schools in Bamenda can start using it next term.",
+      "answer": "approves",
+      "options": [
+        "approves",
+        "approved",
+        "would approve",
+        "will approve"
+      ],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "provided that",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Provided that' functions like 'if' for real/likely conditions. Since this is a real possibility, use present simple in the condition clause.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "À condition que le Ministère approuve le nouveau programme, les écoles de Bamenda pourront l'utiliser le trimestre prochain.",
+        "note": "French uses 'à condition que + subjonctif' — note the subjunctive mood required in French but not in English."
+      }
+    },
+    {
+      "id": "c1-cond-10",
+      "type": "multiple-choice",
+      "question": "Should you ___ any difficulties with the visa process at the Yaoundé embassy, do not hesitate to contact me.",
+      "answer": "encounter",
+      "options": [
+        "encounter",
+        "encountered",
+        "have encountered",
+        "encountering"
+      ],
+      "difficulty": 0.78,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "inverted conditional",
+        "formal",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Should you + base verb' is a formal inverted first conditional, equivalent to 'If you should encounter...' Very common in formal letters and business English.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si vous rencontrez des difficultés avec le processus de visa à l'ambassade de Yaoundé, n'hésitez pas à me contacter.",
+        "note": "French doesn't have this inversion — it stays with 'si + présent.'"
+      }
+    },
+    {
+      "id": "c1-cond-11",
+      "type": "multiple-choice",
+      "question": "If it ___ for the community support in Bafoussam, the local hospital would have closed years ago.",
+      "answer": "hadn't been",
+      "options": [
+        "wasn't",
+        "weren't",
+        "hadn't been",
+        "wouldn't be"
+      ],
+      "difficulty": 0.79,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "third conditional",
+        "if it weren't for",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'If it hadn't been for' is the past version of 'if it weren't for.' Since the hospital closing is a past hypothetical (would have closed), we need the past perfect.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Sans le soutien de la communauté à Bafoussam, l'hôpital local aurait fermé il y a des années.",
+        "note": "French uses 'sans + noun' rather than the 'if it hadn't been for' construction."
+      }
+    },
+    {
+      "id": "c1-cond-12",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'Supposing the electricity cut off during the exam, what will we do?'",
+      "answer": "Supposing the electricity cut off during the exam, what would we do?",
+      "options": [],
+      "difficulty": 0.73,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "supposing",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Supposing' introduces a hypothetical scenario, so the result should use 'would,' not 'will.' This is equivalent to a second conditional.",
+      "correction": "'what will we do' → 'what would we do'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "En supposant que l'électricité soit coupée pendant l'examen, que ferions-nous ?",
+        "note": "French uses 'en supposant que + subjonctif' with conditionnel in the result."
+      }
+    },
+    {
+      "id": "c1-cond-13",
+      "type": "multiple-choice",
+      "question": "If the students at the University of Douala ___ to protest, the administration might finally address their concerns.",
+      "answer": "were",
+      "options": [
+        "are",
+        "were",
+        "would be",
+        "will be"
+      ],
+      "difficulty": 0.74,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "second conditional",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Second conditional for hypothetical present/future: 'If + past simple (were), ... might/would + base verb.' 'Were' is preferred over 'was' in formal English for all persons.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si les étudiants de l'Université de Douala manifestaient, l'administration pourrait enfin répondre à leurs préoccupations.",
+        "note": "French parallels with 'si + imparfait, conditionnel présent.'"
+      }
+    },
+    {
+      "id": "c1-cond-14",
+      "type": "multiple-choice",
+      "question": "I wish I ___ Pidgin English more fluently when I lived in Limbe.",
+      "answer": "had spoken",
+      "options": [
+        "spoke",
+        "had spoken",
+        "would speak",
+        "could speak"
+      ],
+      "difficulty": 0.77,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "wish",
+        "past regret",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Wish + past perfect' expresses regret about a past situation. Since the living in Limbe is over, we need 'had spoken' to show the regret is about that past time.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "J'aurais aimé parler le pidgin anglais plus couramment quand je vivais à Limbe.",
+        "note": "French uses 'j'aurais aimé + infinitif' or 'j'aurais voulu' for past wishes — structurally different from English."
+      }
+    },
+    {
+      "id": "c1-cond-15",
+      "type": "multiple-choice",
+      "question": "It's high time the local council ___ the roads in Bamenda.",
+      "answer": "repaired",
+      "options": [
+        "repairs",
+        "repaired",
+        "would repair",
+        "has repaired"
+      ],
+      "difficulty": 0.76,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "it's time",
+        "subjunctive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'It's (high) time + past simple' expresses that something should have happened already. Despite using past tense, it refers to the present/future. This is a subjunctive-like structure.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Il est grand temps que le conseil municipal répare les routes à Bamenda.",
+        "note": "French uses 'il est temps que + subjonctif' — the subjunctive is explicit in French but hidden in English."
+      }
+    },
+    {
+      "id": "c1-cond-16",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'Had I knew about the traffic jam on the Douala-Yaoundé highway, I would have left earlier.'",
+      "answer": "Had I known about the traffic jam on the Douala-Yaoundé highway, I would have left earlier.",
+      "options": [],
+      "difficulty": 0.71,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "inverted conditional",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In inverted conditionals, 'Had + subject + PAST PARTICIPLE.' The past participle of 'know' is 'known,' not 'knew' (which is simple past).",
+      "correction": "'Had I knew' → 'Had I known'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si j'avais su pour l'embouteillage sur l'autoroute Douala-Yaoundé, je serais parti plus tôt.",
+        "note": "French doesn't invert — it keeps 'si + plus-que-parfait.'"
+      }
+    },
+    {
+      "id": "c1-cond-17",
+      "type": "multiple-choice",
+      "question": "On condition that every student ___ the registration fee, the GCE exams will proceed as scheduled.",
+      "answer": "pays",
+      "options": [
+        "pays",
+        "paid",
+        "would pay",
+        "will pay"
+      ],
+      "difficulty": 0.72,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "on condition that",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'On condition that' works like 'if' for real conditions. Use present simple for real/likely future conditions — the same rule as first conditional.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "À condition que chaque étudiant paie les frais d'inscription, les examens du GCE se dérouleront comme prévu.",
+        "note": "French requires subjunctive after 'à condition que' — 'paie' (subjonctif) vs. 'paye' (indicatif)."
+      }
+    },
+    {
+      "id": "c1-cond-18",
+      "type": "multiple-choice",
+      "question": "If only the electricity ___ more reliable in Kumba, small businesses could thrive.",
+      "answer": "were",
+      "options": [
+        "is",
+        "were",
+        "would be",
+        "has been"
+      ],
+      "difficulty": 0.75,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "if only",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'If only + past simple (were)' expresses a wish about an unreal present situation. It's more emphatic than 'I wish.' Result uses 'could/would + base verb.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Si seulement l'électricité était plus fiable à Kumba, les petites entreprises pourraient prospérer.",
+        "note": "French 'si seulement + imparfait' mirrors English 'if only + past simple.'"
+      }
+    },
+    {
+      "id": "c1-cond-19",
+      "type": "multiple-choice",
+      "question": "Assuming the new Kribi deep-sea port ___ fully operational by next year, exports should increase significantly.",
+      "answer": "becomes",
+      "options": [
+        "becomes",
+        "became",
+        "would become",
+        "will become"
+      ],
+      "difficulty": 0.71,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "assuming",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Assuming' for real/likely conditions takes present simple, like first conditional. The scenario is plausible, so we treat it as a real condition.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "En supposant que le nouveau port en eau profonde de Kribi devienne pleinement opérationnel d'ici l'année prochaine, les exportations devraient augmenter considérablement.",
+        "note": "French uses 'en supposant que + subjonctif' — note 'devienne' is subjunctive."
+      }
+    },
+    {
+      "id": "c1-cond-20",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'Unless you will not submit your FSLC results, you cannot register for the entrance exam.'",
+      "answer": "Unless you submit your FSLC results, you cannot register for the entrance exam.",
+      "options": [],
+      "difficulty": 0.73,
+      "category": "grammar",
+      "moduleId": "c1-conditionals",
+      "tags": [
+        "grammar",
+        "conditionals",
+        "unless",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Two errors: (1) 'Unless' already means 'if...not,' so adding 'not' creates a double negative. (2) Don't use 'will' after 'unless' — use present simple.",
+      "correction": "'Unless you will not submit' → 'Unless you submit'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "À moins que vous ne soumettiez vos résultats du FSLC, vous ne pouvez pas vous inscrire à l'examen d'entrée.",
+        "note": "French 'à moins que + ne + subjonctif' — the 'ne' is expletive (doesn't negate), similar to how 'unless' already contains negation."
+      }
+    },
+    {
+      "id": "c1-pass-1",
+      "type": "multiple-choice",
+      "question": "The new highway between Douala and Yaoundé ___ by a Chinese construction firm.",
+      "answer": "is being built",
+      "options": [
+        "is building",
+        "is being built",
+        "has building",
+        "is been built"
+      ],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "present continuous passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Present continuous passive: 'is/are + being + past participle.' The action is happening now. Active: 'A Chinese firm is building the highway.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "La nouvelle autoroute entre Douala et Yaoundé est construite par une entreprise chinoise.",
+        "note": "French passive uses 'être + participe passé.' French has no exact 'is being built' — context or 'est en train d'être construit' conveys the ongoing aspect."
+      }
+    },
+    {
+      "id": "c1-pass-2",
+      "type": "multiple-choice",
+      "question": "The GCE results ___ to have been released by the examination board yesterday.",
+      "answer": "are reported",
+      "options": [
+        "are reported",
+        "are reporting",
+        "have reported",
+        "were reporting"
+      ],
+      "difficulty": 0.78,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "reporting passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Reporting passive: 'Subject + is/are + reported/said/believed + to have + past participle.' Used for unverified or indirect information. Common in formal/academic writing.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les résultats du GCE auraient été publiés par le jury d'examen hier.",
+        "note": "French uses the conditionnel ('auraient été') for reported/unverified information — structurally very different from English."
+      }
+    },
+    {
+      "id": "c1-pass-3",
+      "type": "multiple-choice",
+      "question": "By the time the Minister arrives in Maroua, all arrangements ___ .",
+      "answer": "will have been made",
+      "options": [
+        "will be made",
+        "will have been made",
+        "will be making",
+        "are being made"
+      ],
+      "difficulty": 0.8,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "future perfect passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Future perfect passive: 'will + have + been + past participle.' It expresses completion before a future point. Active: 'They will have made all arrangements.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "D'ici l'arrivée du Ministre à Maroua, tous les préparatifs auront été faits.",
+        "note": "French future perfect passive: 'auront été + participe passé' — parallel structure."
+      }
+    },
+    {
+      "id": "c1-pass-4",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'The suspect is believed to escaped from the Kondengui prison last night.'",
+      "answer": "The suspect is believed to have escaped from the Kondengui prison last night.",
+      "options": [],
+      "difficulty": 0.74,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "reporting passive",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "After 'is believed to,' use 'have + past participle' for past events: 'is believed to have escaped.' The infinitive alone ('to escape') would mean it hasn't happened yet.",
+      "correction": "'to escaped' → 'to have escaped'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le suspect aurait échappé de la prison de Kondengui la nuit dernière.",
+        "note": "French uses conditionnel passé for reported information about past events."
+      }
+    },
+    {
+      "id": "c1-pass-5",
+      "type": "multiple-choice",
+      "question": "The cocoa ___ before it can be exported from the Douala port.",
+      "answer": "needs to be processed",
+      "options": [
+        "needs processing",
+        "needs to be processed",
+        "needs to process",
+        "is needing processed"
+      ],
+      "difficulty": 0.72,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "need + passive infinitive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Needs to be + past participle' is the full passive infinitive form. 'Needs processing' (gerund) is also correct but less formal. Both options convey the passive meaning.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le cacao doit être transformé avant de pouvoir être exporté du port de Douala.",
+        "note": "French uses 'doit être + participe passé' — a straightforward passive construction."
+      }
+    },
+    {
+      "id": "c1-pass-6",
+      "type": "multiple-choice",
+      "question": "It ___ that over 250 languages are spoken in Cameroon.",
+      "answer": "is estimated",
+      "options": [
+        "estimates",
+        "is estimated",
+        "has estimated",
+        "is estimating"
+      ],
+      "difficulty": 0.71,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "impersonal passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Impersonal passive with 'It': 'It + is + past participle + that clause.' Common in academic and formal writing to present facts without naming the source.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "On estime que plus de 250 langues sont parlées au Cameroun.",
+        "note": "French often uses 'on + active verb' where English uses impersonal passive 'it is estimated.'"
+      }
+    },
+    {
+      "id": "c1-pass-7",
+      "type": "multiple-choice",
+      "question": "The students demanded ___ about the schedule change in advance.",
+      "answer": "to be informed",
+      "options": [
+        "to inform",
+        "to be informed",
+        "being informed",
+        "to be informing"
+      ],
+      "difficulty": 0.76,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "passive infinitive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Demand + to be + past participle.' The students want to receive the action (be informed), not perform it. This is a passive infinitive after a reporting verb.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les étudiants ont exigé d'être informés du changement d'emploi du temps à l'avance.",
+        "note": "French uses 'd'être + participe passé' — the passive infinitive structure is similar."
+      }
+    },
+    {
+      "id": "c1-pass-8",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'The market in Mokolo is been renovated since January.'",
+      "answer": "The market in Mokolo has been being renovated since January.",
+      "options": [],
+      "difficulty": 0.83,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "present perfect continuous passive",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Present perfect continuous passive: 'has/have + been + being + past participle.' 'Since January' requires present perfect (continuous). Though this form is rare and often avoided, the correct structure uses 'has been being renovated.' In practice, 'has been under renovation' is preferred.",
+      "correction": "'is been renovated' → 'has been being renovated' (or more naturally: 'has been under renovation')",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le marché de Mokolo est en rénovation depuis janvier.",
+        "note": "French avoids this complex passive — 'est en rénovation depuis' is simpler and preferred."
+      }
+    },
+    {
+      "id": "c1-pass-9",
+      "type": "multiple-choice",
+      "question": "The Anglophone teachers are said ___ on strike next week.",
+      "answer": "to be going",
+      "options": [
+        "to go",
+        "to be going",
+        "going",
+        "to have gone"
+      ],
+      "difficulty": 0.79,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "reporting passive",
+        "future reference",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Are said + to be + -ing' for reported future/planned actions. The continuous infinitive 'to be going' suggests the action is planned/imminent. 'To go' would be more general.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les enseignants anglophones feraient grève la semaine prochaine.",
+        "note": "French uses conditionnel ('feraient') for unverified reported future events."
+      }
+    },
+    {
+      "id": "c1-pass-10",
+      "type": "multiple-choice",
+      "question": "The candidates ___ not to use mobile phones during the Baccalauréat exam.",
+      "answer": "were instructed",
+      "options": [
+        "instructed",
+        "were instructed",
+        "have instructing",
+        "was instructed"
+      ],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "past simple passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Past simple passive: 'were + past participle.' 'Candidates' is plural, so 'were' is correct (not 'was'). Active: 'The invigilators instructed the candidates...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les candidats ont reçu l'instruction de ne pas utiliser de téléphones portables pendant l'examen du Baccalauréat.",
+        "note": "French often restructures passives into active constructions: 'ont reçu l'instruction' (received the instruction)."
+      }
+    },
+    {
+      "id": "c1-pass-11",
+      "type": "multiple-choice",
+      "question": "The bridge over the Sanaga River ___ by the time the rainy season begins.",
+      "answer": "should have been completed",
+      "options": [
+        "should complete",
+        "should have been completed",
+        "should be completing",
+        "should been completed"
+      ],
+      "difficulty": 0.82,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "modal perfect passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Modal perfect passive: 'should + have + been + past participle.' Expresses expectation about a completed action before a deadline. Very common in project management language.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le pont sur le fleuve Sanaga devrait avoir été achevé avant le début de la saison des pluies.",
+        "note": "French: 'devrait avoir été + participe passé' — structurally parallel to English."
+      }
+    },
+    {
+      "id": "c1-pass-12",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'The new bilingual school in Bertoua was building in 2019.'",
+      "answer": "The new bilingual school in Bertoua was built in 2019.",
+      "options": [],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "past simple passive",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Past simple passive requires 'was/were + PAST PARTICIPLE,' not present participle. 'Was building' is active past continuous (the school was building something). 'Was built' is the correct passive.",
+      "correction": "'was building' → 'was built'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "La nouvelle école bilingue de Bertoua a été construite en 2019.",
+        "note": "French past passive: 'a été + participe passé' (passé composé passive)."
+      }
+    },
+    {
+      "id": "c1-pass-13",
+      "type": "multiple-choice",
+      "question": "The President is known ___ several foreign languages fluently.",
+      "answer": "to speak",
+      "options": [
+        "to speak",
+        "speaking",
+        "to be spoken",
+        "for speak"
+      ],
+      "difficulty": 0.74,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "reporting passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Is known + to + infinitive' for current facts. The President actively speaks (not 'to be spoken'). Use 'to have + past participle' only for past completed actions.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le Président est connu pour parler couramment plusieurs langues étrangères.",
+        "note": "French uses 'est connu pour + infinitif' — 'pour' replaces 'to.'"
+      }
+    },
+    {
+      "id": "c1-pass-14",
+      "type": "multiple-choice",
+      "question": "Having ___ of the danger, the villagers near Mount Cameroon evacuated immediately.",
+      "answer": "been warned",
+      "options": [
+        "warned",
+        "been warned",
+        "being warned",
+        "been warning"
+      ],
+      "difficulty": 0.77,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "perfect participle passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Perfect participle passive: 'Having + been + past participle.' Shows the passive action happened before the main verb. The villagers received the warning (passive), then evacuated.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Ayant été prévenus du danger, les villageois près du Mont Cameroun ont évacué immédiatement.",
+        "note": "French mirrors this perfectly: 'ayant été + participe passé.'"
+      }
+    },
+    {
+      "id": "c1-pass-15",
+      "type": "multiple-choice",
+      "question": "The proposal for a new national language policy ___ currently ___ by a parliamentary committee.",
+      "answer": "is ... being reviewed",
+      "options": [
+        "is ... reviewing",
+        "is ... being reviewed",
+        "has ... reviewed",
+        "is ... been reviewed"
+      ],
+      "difficulty": 0.73,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "present continuous passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Present continuous passive with split verb: 'is + currently + being + past participle.' The adverb 'currently' goes between 'is' and 'being.' The proposal receives the review (passive).",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "La proposition pour une nouvelle politique linguistique nationale est actuellement examinée par une commission parlementaire.",
+        "note": "French doesn't need 'being' — 'est actuellement examinée' suffices for the ongoing passive."
+      }
+    },
+    {
+      "id": "c1-pass-16",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'The children were been taken care of by their grandmother in Bafoussam.'",
+      "answer": "The children were being taken care of by their grandmother in Bafoussam.",
+      "options": [],
+      "difficulty": 0.72,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "past continuous passive",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Past continuous passive: 'were + BEING + past participle,' not 'been.' 'Been' is for perfect tenses (have been). 'Being' is for continuous tenses (is/was being).",
+      "correction": "'were been taken' → 'were being taken'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les enfants étaient pris en charge par leur grand-mère à Bafoussam.",
+        "note": "French uses imparfait passive: 'étaient + participe passé' — no need for a 'being' equivalent."
+      }
+    },
+    {
+      "id": "c1-pass-17",
+      "type": "multiple-choice",
+      "question": "The footballer from Cameroon ___ to have been offered a contract by a European club.",
+      "answer": "is rumoured",
+      "options": [
+        "rumours",
+        "is rumoured",
+        "has rumoured",
+        "is rumouring"
+      ],
+      "difficulty": 0.77,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "reporting passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Reporting passive with 'to have been + past participle' for completed past action: 'is rumoured to have been offered.' The offer happened before the rumour.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le footballeur camerounais aurait reçu une offre de contrat d'un club européen.",
+        "note": "French conditionnel passé ('aurait reçu') handles both the passive and the reported/uncertain aspect."
+      }
+    },
+    {
+      "id": "c1-pass-18",
+      "type": "multiple-choice",
+      "question": "The old colonial buildings in Buea deserve ___ as national heritage sites.",
+      "answer": "to be preserved",
+      "options": [
+        "preserving",
+        "to be preserved",
+        "to preserve",
+        "being preserved"
+      ],
+      "difficulty": 0.75,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "deserve + passive infinitive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Deserve + to be + past participle' — the buildings receive preservation (passive). 'Deserve preserving' is also grammatically acceptable but less common in formal writing.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les anciens bâtiments coloniaux de Buea méritent d'être préservés en tant que sites du patrimoine national.",
+        "note": "French: 'méritent d'être + participe passé' — very similar structure."
+      }
+    },
+    {
+      "id": "c1-pass-19",
+      "type": "multiple-choice",
+      "question": "Not much ___ about the impact of climate change on Lake Chad until recently.",
+      "answer": "was known",
+      "options": [
+        "knew",
+        "was known",
+        "has knowing",
+        "was knowing"
+      ],
+      "difficulty": 0.71,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "past simple passive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Past simple passive: 'was + past participle.' 'Not much' is the subject receiving the action of 'knowing.' Active: 'People didn't know much about...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "On ne savait pas grand-chose sur l'impact du changement climatique sur le lac Tchad jusqu'à récemment.",
+        "note": "French prefers active 'on ne savait pas' over passive in this context."
+      }
+    },
+    {
+      "id": "c1-pass-20",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'The ceremony was attended with over 500 guests from across Central Africa.'",
+      "answer": "The ceremony was attended by over 500 guests from across Central Africa.",
+      "options": [],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-passive-voice",
+      "tags": [
+        "grammar",
+        "passive voice",
+        "agent",
+        "preposition",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In passive voice, the agent (doer) is introduced by 'by,' not 'with.' 'With' indicates instrument or accompaniment, not the agent of the action.",
+      "correction": "'attended with' → 'attended by'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "La cérémonie a été suivie par plus de 500 invités de toute l'Afrique centrale.",
+        "note": "French uses 'par' for the agent in passive — equivalent to English 'by.' The error of using 'avec' (with) instead of 'par' (by) also occurs in French learners."
+      }
+    },
+    {
+      "id": "c1-rep-1",
+      "type": "multiple-choice",
+      "question": "The teacher told the students that they ___ their homework by Friday.",
+      "answer": "had to submit",
+      "options": [
+        "must submit",
+        "had to submit",
+        "have to submit",
+        "will submit"
+      ],
+      "difficulty": 0.72,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "modal backshift",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In reported speech, 'must' becomes 'had to' (backshift). Direct: 'You must submit your homework.' → Reported: 'She told them they had to submit...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le professeur a dit aux élèves qu'ils devaient rendre leurs devoirs avant vendredi.",
+        "note": "French also backshifts: 'doivent' (présent) → 'devaient' (imparfait) in reported speech."
+      }
+    },
+    {
+      "id": "c1-rep-2",
+      "type": "multiple-choice",
+      "question": "The governor announced that a new hospital ___ in Garoua the following year.",
+      "answer": "would be built",
+      "options": [
+        "will be built",
+        "would be built",
+        "is built",
+        "was built"
+      ],
+      "difficulty": 0.74,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "future in the past",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Will' becomes 'would' in reported speech (backshift). 'Next year' becomes 'the following year.' Direct: 'A hospital will be built next year.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le gouverneur a annoncé qu'un nouvel hôpital serait construit à Garoua l'année suivante.",
+        "note": "French: futur ('sera') → conditionnel présent ('serait') — same backshift principle."
+      }
+    },
+    {
+      "id": "c1-rep-3",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'She asked me where do I come from in Cameroon.'",
+      "answer": "She asked me where I came from in Cameroon.",
+      "options": [],
+      "difficulty": 0.73,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "reported question",
+        "word order",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Two errors: (1) Reported questions use statement word order, not question order — 'where I came,' not 'where do I come.' (2) Backshift: 'come' → 'came.'",
+      "correction": "'where do I come' → 'where I came'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Elle m'a demandé d'où je venais au Cameroun.",
+        "note": "French reported questions also use statement order and backshift: 'viens' → 'venais.'"
+      }
+    },
+    {
+      "id": "c1-rep-4",
+      "type": "multiple-choice",
+      "question": "The doctor advised the patient ___ more water and rest for a week.",
+      "answer": "to drink",
+      "options": [
+        "drinking",
+        "to drink",
+        "that he drinks",
+        "drink"
+      ],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "advise + infinitive",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Advise + object + to + infinitive' is the standard pattern for reported advice. Direct: 'Drink more water.' → 'The doctor advised him to drink more water.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le médecin a conseillé au patient de boire plus d'eau et de se reposer pendant une semaine.",
+        "note": "French: 'conseiller à qqn de + infinitif' — similar infinitive construction."
+      }
+    },
+    {
+      "id": "c1-rep-5",
+      "type": "multiple-choice",
+      "question": "The headmaster insisted that every student ___ the school uniform properly.",
+      "answer": "wear",
+      "options": [
+        "wears",
+        "wear",
+        "wore",
+        "wearing"
+      ],
+      "difficulty": 0.8,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "subjunctive",
+        "insist",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Insist that + subject + base verb (subjunctive).' No '-s' even with third-person singular. This is the mandative subjunctive, common after verbs like insist, demand, suggest, recommend.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le directeur a insisté pour que chaque élève porte l'uniforme scolaire correctement.",
+        "note": "French uses 'insister pour que + subjonctif' — both languages use subjunctive here, but it's more visible in French ('porte' subj. = 'porte' ind.)."
+      }
+    },
+    {
+      "id": "c1-rep-6",
+      "type": "multiple-choice",
+      "question": "My colleague mentioned that she ___ to Limbe the previous weekend.",
+      "answer": "had travelled",
+      "options": [
+        "travelled",
+        "had travelled",
+        "has travelled",
+        "was travelling"
+      ],
+      "difficulty": 0.75,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "past perfect backshift",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Past simple → past perfect in reported speech. Direct: 'I travelled to Limbe last weekend.' 'Last weekend' → 'the previous weekend.' 'Travelled' → 'had travelled.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Ma collègue a mentionné qu'elle s'était rendue à Limbe le week-end précédent.",
+        "note": "French: passé composé ('s'est rendue') → plus-que-parfait ('s'était rendue') in reported speech."
+      }
+    },
+    {
+      "id": "c1-rep-7",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'The manager warned the employees to not arrive late again.'",
+      "answer": "The manager warned the employees not to arrive late again.",
+      "options": [],
+      "difficulty": 0.71,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "negative infinitive",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In reported speech with infinitives, 'not' goes BEFORE 'to': 'not to arrive,' not 'to not arrive.' (Though 'to not arrive' is increasingly accepted informally, the standard rule is 'not to.')",
+      "correction": "'to not arrive' → 'not to arrive'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le directeur a averti les employés de ne pas arriver en retard à nouveau.",
+        "note": "French: 'de ne pas + infinitif' — negation wraps around 'de' similarly: 'de ne pas arriver.'"
+      }
+    },
+    {
+      "id": "c1-rep-8",
+      "type": "multiple-choice",
+      "question": "The witness denied ___ at the scene of the accident in Bamenda.",
+      "answer": "having been",
+      "options": [
+        "to be",
+        "having been",
+        "to have been",
+        "being been"
+      ],
+      "difficulty": 0.79,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "deny + gerund",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Deny + gerund/having + past participle.' For a past action: 'deny having been' (perfect gerund). 'Deny' is always followed by a gerund, never an infinitive.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le témoin a nié avoir été sur les lieux de l'accident à Bamenda.",
+        "note": "French: 'nier + infinitif passé' (avoir été) — uses infinitive where English uses gerund."
+      }
+    },
+    {
+      "id": "c1-rep-9",
+      "type": "multiple-choice",
+      "question": "The journalist reported that the flood ___ over 200 homes in the Far North region.",
+      "answer": "had destroyed",
+      "options": [
+        "destroyed",
+        "had destroyed",
+        "has destroyed",
+        "was destroying"
+      ],
+      "difficulty": 0.74,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "backshift",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Past simple → past perfect backshift. The destruction happened before the reporting. Direct: 'The flood destroyed over 200 homes.' → 'had destroyed.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le journaliste a rapporté que l'inondation avait détruit plus de 200 maisons dans la région de l'Extrême-Nord.",
+        "note": "French: passé composé → plus-que-parfait in reported speech, same as English."
+      }
+    },
+    {
+      "id": "c1-rep-10",
+      "type": "multiple-choice",
+      "question": "The committee recommended that the project ___ immediately.",
+      "answer": "be started",
+      "options": [
+        "is started",
+        "be started",
+        "was started",
+        "should started"
+      ],
+      "difficulty": 0.81,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "subjunctive",
+        "recommend",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Recommend that + subject + base verb (subjunctive).' Passive subjunctive: 'be started' (not 'is started'). 'Should be started' is the British alternative.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le comité a recommandé que le projet soit lancé immédiatement.",
+        "note": "French: 'recommander que + subjonctif' — 'soit lancé' clearly shows subjunctive form."
+      }
+    },
+    {
+      "id": "c1-rep-11",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'He asked me that if I had ever visited the Waza National Park.'",
+      "answer": "He asked me if I had ever visited the Waza National Park.",
+      "options": [],
+      "difficulty": 0.72,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "reported question",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Don't use 'that' with reported yes/no questions. Use 'if' or 'whether' alone: 'He asked me if...' The word 'that' introduces reported statements, not questions.",
+      "correction": "'asked me that if' → 'asked me if'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Il m'a demandé si j'avais déjà visité le Parc National de Waza.",
+        "note": "French uses 'si' for reported yes/no questions — never combines 'que' and 'si.'"
+      }
+    },
+    {
+      "id": "c1-rep-12",
+      "type": "multiple-choice",
+      "question": "The minister suggested that Cameroon ___ its renewable energy sector.",
+      "answer": "develop",
+      "options": [
+        "develops",
+        "develop",
+        "developed",
+        "would develop"
+      ],
+      "difficulty": 0.79,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "subjunctive",
+        "suggest",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Suggest that + subject + base verb (subjunctive).' No '-s' for third person, no 'should' needed (American English). British English accepts 'should develop.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le ministre a suggéré que le Cameroun développe son secteur des énergies renouvelables.",
+        "note": "French: 'suggérer que + subjonctif' — 'développe' is subjunctive (same form as indicative here)."
+      }
+    },
+    {
+      "id": "c1-rep-13",
+      "type": "multiple-choice",
+      "question": "She complained about ___ kept waiting at the préfecture for three hours.",
+      "answer": "having been",
+      "options": [
+        "being",
+        "having been",
+        "to be",
+        "to have been"
+      ],
+      "difficulty": 0.78,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "complain about + gerund",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Complain about + having been + past participle' for a past passive experience. The perfect gerund ('having been') shows the waiting happened before the complaining.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Elle s'est plainte d'avoir été fait attendre à la préfecture pendant trois heures.",
+        "note": "French: 'se plaindre de + infinitif passé' (d'avoir été) — infinitive where English uses gerund."
+      }
+    },
+    {
+      "id": "c1-rep-14",
+      "type": "multiple-choice",
+      "question": "The parents wanted to know whether their children ___ well at the bilingual school.",
+      "answer": "were doing",
+      "options": [
+        "are doing",
+        "were doing",
+        "do",
+        "did"
+      ],
+      "difficulty": 0.73,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "reported question",
+        "continuous backshift",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Present continuous → past continuous in reported speech. Direct: 'Are our children doing well?' → 'whether their children were doing well.' 'Whether' introduces reported yes/no questions.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les parents voulaient savoir si leurs enfants se débrouillaient bien à l'école bilingue.",
+        "note": "French: 'vouloir savoir si + imparfait' — imparfait replaces présent in reported speech."
+      }
+    },
+    {
+      "id": "c1-rep-15",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'The director told to the staff that the office would close early on Friday.'",
+      "answer": "The director told the staff that the office would close early on Friday.",
+      "options": [],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "tell vs say",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Tell' takes a direct object WITHOUT 'to': 'told the staff' (not 'told to the staff'). Compare with 'say': 'said to the staff.' This is one of the most common errors with reported speech.",
+      "correction": "'told to the staff' → 'told the staff'",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le directeur a dit au personnel que le bureau fermerait tôt vendredi.",
+        "note": "French 'dire à qqn' always uses 'à' — this is why French speakers often add 'to' after 'tell' in English."
+      }
+    },
+    {
+      "id": "c1-rep-16",
+      "type": "multiple-choice",
+      "question": "He wondered how many people ___ the Unity Day celebrations in Buea that year.",
+      "answer": "had attended",
+      "options": [
+        "attended",
+        "had attended",
+        "have attended",
+        "attend"
+      ],
+      "difficulty": 0.76,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "reported question",
+        "backshift",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Wondered' (past) triggers backshift. Direct: 'How many people attended?' → past perfect 'had attended.' 'That year' replaces 'this year.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Il se demandait combien de personnes avaient assisté aux célébrations de la Fête de l'Unité à Buea cette année-là.",
+        "note": "French: passé composé → plus-que-parfait, 'cette année' → 'cette année-là.'"
+      }
+    },
+    {
+      "id": "c1-rep-17",
+      "type": "multiple-choice",
+      "question": "The chairperson proposed that the meeting ___ to the following Monday.",
+      "answer": "be postponed",
+      "options": [
+        "is postponed",
+        "be postponed",
+        "was postponed",
+        "postpones"
+      ],
+      "difficulty": 0.8,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "subjunctive",
+        "propose",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Propose that + subject + base verb (subjunctive).' Passive subjunctive: 'be postponed.' Time shift: 'next Monday' → 'the following Monday.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le président a proposé que la réunion soit reportée au lundi suivant.",
+        "note": "French: 'proposer que + subjonctif' — 'soit reportée' clearly subjunctive."
+      }
+    },
+    {
+      "id": "c1-rep-18",
+      "type": "error-correction",
+      "question": "Find and correct the error: 'She said me that she was planning to open a boutique in Douala.'",
+      "answer": "She told me that she was planning to open a boutique in Douala.",
+      "options": [],
+      "difficulty": 0.7,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "say vs tell",
+        "error-correction",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Say' doesn't take a direct personal object. Either: 'She said (that) she was...' OR 'She told me (that) she was...' Never 'She said me.'",
+      "correction": "'said me' → 'told me' (or 'said to me')",
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Elle m'a dit qu'elle prévoyait d'ouvrir une boutique à Douala.",
+        "note": "French 'dire à qqn' always uses indirect object — this is why the error 'said me' is common among French speakers."
+      }
+    },
+    {
+      "id": "c1-rep-19",
+      "type": "multiple-choice",
+      "question": "The professor urged that every thesis ___ checked for plagiarism before submission.",
+      "answer": "be",
+      "options": [
+        "is",
+        "be",
+        "was",
+        "should"
+      ],
+      "difficulty": 0.82,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "subjunctive",
+        "urge",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Urge that + subject + base verb (subjunctive)': 'that every thesis BE checked.' The subjunctive 'be' is invariable — same for all persons. This is the mandative subjunctive.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Le professeur a insisté pour que chaque thèse soit vérifiée pour plagiat avant soumission.",
+        "note": "French: 'insister pour que + subjonctif' — 'soit vérifiée' is clearly subjunctive."
+      }
+    },
+    {
+      "id": "c1-rep-20",
+      "type": "multiple-choice",
+      "question": "The refugees explained that they ___ their village three days before because of the fighting.",
+      "answer": "had left",
+      "options": [
+        "left",
+        "had left",
+        "have left",
+        "were leaving"
+      ],
+      "difficulty": 0.74,
+      "category": "grammar",
+      "moduleId": "c1-reported-speech",
+      "tags": [
+        "grammar",
+        "reported speech",
+        "backshift",
+        "time expression",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Past simple → past perfect. Direct: 'We left our village three days ago.' → 'had left...three days before.' Time shift: 'ago' → 'before/earlier/previously.'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "french": "Les réfugiés ont expliqué qu'ils avaient quitté leur village trois jours auparavant à cause des combats.",
+        "note": "French: 'il y a' → 'auparavant/avant' in reported speech. Passé composé → plus-que-parfait."
+      }
     }
   ],
   "metadata": {
-    "totalItems": 329,
+    "totalItems": 389,
     "categories": [
       "agreement",
       "articles",
@@ -10084,7 +11840,10 @@
       "cameroonian-scenarios",
       "prepositions",
       "false-cognates",
-      "auxiliaries"
+      "auxiliaries",
+      "c1-conditionals",
+      "c1-passive-voice",
+      "c1-reported-speech"
     ],
     "exportDate": "2026-03-06T21:15:37.206Z",
     "appName": "OffGrid - Francophone English Learning"
