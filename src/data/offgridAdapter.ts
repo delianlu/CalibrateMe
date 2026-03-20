@@ -14,6 +14,7 @@ interface OffGridActivity {
   category: string;
   moduleId: string;
   tags: string[];
+  cefrLevel?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
   sourceLanguage: string;
   targetLanguage: string;
   feedback: string;
@@ -48,6 +49,7 @@ function adaptActivity(activity: OffGridActivity): QuizItem {
     translation: activity.answer,
     difficulty: activity.difficulty,
     tags: activity.tags,
+    cefrLevel: activity.cefrLevel,
     // Grammar-specific fields
     itemType: activity.type,
     question: activity.question,

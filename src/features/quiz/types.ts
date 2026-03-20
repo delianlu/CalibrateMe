@@ -30,6 +30,8 @@ export interface FalseCognateInfo {
   memoryTrick: string;
 }
 
+export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
+
 export interface QuizItem {
   id: string;
   word: string;
@@ -38,6 +40,7 @@ export interface QuizItem {
   example?: string;
   difficulty: number; // 0-1
   tags: string[];
+  cefrLevel?: CEFRLevel;
 
   // Grammar exercise fields (OffGrid activities)
   itemType?: QuizItemType;
