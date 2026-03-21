@@ -1,15 +1,18 @@
 import { useState, useEffect, useMemo } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, Sparkles, Network } from 'lucide-react';
 import { useVocabulary } from '../hooks/useVocabulary';
 import VocabularyCard from './VocabularyCard';
 import TagFilter from './TagFilter';
 import ImportModal from './ImportModal';
 import ExportModal from './ExportModal';
+import AIFlashcardGenerator from './AIFlashcardGenerator';
+import KnowledgeGraph from './KnowledgeGraph';
 import { essentialEnglish } from '../../../data/vocabularyPacks/essential-english';
 import { academicEnglish } from '../../../data/vocabularyPacks/academic-english';
 import { businessEnglish } from '../../../data/vocabularyPacks/business-english';
+import { falseFriends } from '../../../data/vocabularyPacks/false-friends';
 
-const ALL_PACKS = [essentialEnglish, academicEnglish, businessEnglish];
+const ALL_PACKS = [essentialEnglish, academicEnglish, businessEnglish, falseFriends];
 const PAGE_SIZE = 24;
 
 export default function VocabularyList() {
@@ -21,6 +24,7 @@ export default function VocabularyList() {
     totalCount,
     loadPack,
     removePack,
+    addItem,
     deleteItem,
     updateFilter,
     resetFilter,
@@ -31,6 +35,8 @@ export default function VocabularyList() {
 
   const [showImport, setShowImport] = useState(false);
   const [showExport, setShowExport] = useState(false);
+  const [showAIGenerator, setShowAIGenerator] = useState(false);
+  const [showKnowledgeGraph, setShowKnowledgeGraph] = useState(false);
   const [page, setPage] = useState(0);
 
   // Reset page when filters change
@@ -56,6 +62,18 @@ export default function VocabularyList() {
       <div className="vocab-list__header">
         <h2>Vocabulary</h2>
         <div className="vocab-list__actions">
+          <button className="btn btn-primary btn-sm" onClick={() => setShowAIGenerator(true)}>
+            <Sparkles size={14} style={{ marginRight: 4 }} />
+            AI Generate
+          </button>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => setShowKnowledgeGraph(true)}
+            disabled={filteredItems.length === 0}
+          >
+            <Network size={14} style={{ marginRight: 4 }} />
+            Knowledge Graph
+          </button>
           <button className="btn btn-secondary" onClick={() => setShowImport(true)}>
             Import
           </button>
@@ -151,6 +169,34 @@ export default function VocabularyList() {
           itemCount={filteredItems.length}
           onExport={exportItems}
           onClose={() => setShowExport(false)}
+        />
+      )}
+      {showAIGenerator && (
+        <AIFlashcardGenerator
+          onAddCards={(cards) => {
+            for (const card of cards) {
+              addItem({
+                id: card.id,
+                word: card.word,
+                translation: card.translation,
+                difficulty: card.difficulty,
+                tags: card.tags,
+                example: card.example,
+              });
+            }
+          }}
+          onClose={() => setShowAIGenerator(false)}
+        />
+      )}
+      {showKnowledgeGraph && (
+        <KnowledgeGraph
+          words={filteredItems.map(item => ({
+            word: item.word,
+            translation: item.translation,
+            tags: item.tags,
+            mastery: item.difficulty,
+          }))}
+          onClose={() => setShowKnowledgeGraph(false)}
         />
       )}
     </div>

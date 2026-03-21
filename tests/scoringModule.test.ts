@@ -7,6 +7,7 @@ import {
   calculateCalibrationMetrics,
 } from '../src/calibration/scoringModule';
 import { Response, CalibrationType } from '../src/types';
+import { SeededRandom } from '../src/utils/random';
 
 describe('Calibration Scoring Module', () => {
   describe('brierScore', () => {
@@ -41,7 +42,7 @@ describe('Calibration Scoring Module', () => {
     it('should return 0 for perfectly calibrated responses', () => {
       // Create responses where confidence = accuracy in each bin
       const responses: Response[] = [];
-      const rng = new (require('../src/utils/random').SeededRandom)(42);
+      const rng = new SeededRandom(42);
       for (let i = 0; i < 100; i++) {
         const confidence = (i % 10) / 10 + 0.05;
         const correctness = rng.random() < confidence;

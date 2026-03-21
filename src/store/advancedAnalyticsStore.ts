@@ -121,12 +121,16 @@ export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) =>
         });
       } else {
         // Fallback: run on main thread
-        results = await new Promise<AblationResults>((resolve) => {
+        results = await new Promise<AblationResults>((resolve, reject) => {
           setTimeout(() => {
-            const r = runAblationStudy(nSeeds, config, DEFAULT_CONDITIONS, getCoreProfileNames(), (pct, msg) => {
-              set({ progress: pct, progressMessage: msg });
-            });
-            resolve(r);
+            try {
+              const r = runAblationStudy(nSeeds, config, DEFAULT_CONDITIONS, getCoreProfileNames(), (pct, msg) => {
+                set({ progress: pct, progressMessage: msg });
+              });
+              resolve(r);
+            } catch (e) {
+              reject(e);
+            }
           }, 0);
         });
       }
@@ -163,13 +167,17 @@ export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) =>
           w.postMessage({ type: 'sensitivity', sweep, nSeeds, config });
         });
       } else {
-        report = await new Promise<SensitivityReport>((resolve) => {
+        report = await new Promise<SensitivityReport>((resolve, reject) => {
           setTimeout(() => {
-            const profiles = ['Med-Over', 'Med-Under', 'Med-Well'];
-            const r = runSensitivitySweep(sweep, nSeeds, config, profiles, (pct, msg) => {
-              set({ progress: pct, progressMessage: msg });
-            });
-            resolve(r);
+            try {
+              const profiles = ['Med-Over', 'Med-Under', 'Med-Well'];
+              const r = runSensitivitySweep(sweep, nSeeds, config, profiles, (pct, msg) => {
+                set({ progress: pct, progressMessage: msg });
+              });
+              resolve(r);
+            } catch (e) {
+              reject(e);
+            }
           }, 0);
         });
       }
@@ -206,13 +214,17 @@ export const useAdvancedAnalyticsStore = create<AdvancedAnalyticsStore>((set) =>
           w.postMessage({ type: 'deltaSweep', nSeeds, config });
         });
       } else {
-        report = await new Promise<DeltaSweepReport>((resolve) => {
+        report = await new Promise<DeltaSweepReport>((resolve, reject) => {
           setTimeout(() => {
-            const profiles = ['Med-Over', 'Med-Under', 'Med-Well', 'High-Over', 'Low-Over'];
-            const r = runDeltaSweep(DEFAULT_DELTAS, nSeeds, config, profiles, (pct, msg) => {
-              set({ progress: pct, progressMessage: msg });
-            });
-            resolve(r);
+            try {
+              const profiles = ['Med-Over', 'Med-Under', 'Med-Well', 'High-Over', 'Low-Over'];
+              const r = runDeltaSweep(DEFAULT_DELTAS, nSeeds, config, profiles, (pct, msg) => {
+                set({ progress: pct, progressMessage: msg });
+              });
+              resolve(r);
+            } catch (e) {
+              reject(e);
+            }
           }, 0);
         });
       }

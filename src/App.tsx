@@ -24,6 +24,7 @@ import { useUserProfile } from './features/user/hooks/useUserProfile';
 import { essentialEnglish } from './data/vocabularyPacks/essential-english';
 import { academicEnglish } from './data/vocabularyPacks/academic-english';
 import { businessEnglish } from './data/vocabularyPacks/business-english';
+import { falseFriends } from './data/vocabularyPacks/false-friends';
 import { getOffGridActivities } from './data/offgridAdapter';
 import { GamificationState, createDefaultGamificationState } from './features/gamification/types';
 import { processSession, clearNotifications } from './features/gamification/gamificationEngine';
@@ -53,6 +54,7 @@ function getAllVocabulary(): QuizItem[] {
     ...essentialEnglish.items,
     ...academicEnglish.items,
     ...businessEnglish.items,
+    ...falseFriends.items,
   ];
 }
 
@@ -296,6 +298,7 @@ function App() {
                     vocabulary={allVocabulary}
                     grammarActivities={grammarActivities}
                     onSessionComplete={handleSessionComplete}
+                    onNavigateToCoach={() => setTab('analytics')}
                   />
                 )}
                 {tab === 'vocabulary' && <VocabularyList />}

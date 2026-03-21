@@ -12,6 +12,7 @@ import RetentionForecast from './RetentionForecast';
 import ForgettingCurves from './ForgettingCurves';
 import SessionHistory from './SessionHistory';
 import LearnerClassification from './LearnerClassification';
+import CalibrationCoach from './CalibrationCoach';
 
 interface CalibrationDashboardProps {
   responses: QuizResponse[];
@@ -171,6 +172,51 @@ export default function CalibrationDashboard({
                 <ForgettingCurves itemStates={itemStates} />
               </div>
             </>
+          )}
+
+          {/* AI Calibration Coach */}
+          {totalItems >= 3 && (
+            <div className="analytics-bento__coach">
+              <CalibrationCoach
+                betaHat={betaHat}
+                ece={(() => {
+                  const bins: { conf: number; correct: number }[][] = [[], [], [], [], []];
+                  responses.forEach(r => {
+                    const idx = Math.min(4, Math.floor(r.confidence / 20));
+                    bins[idx].push({ conf: r.confidence, correct: r.correctness ? 1 : 0 });
+                  });
+                  let ece = 0;
+                  const n = responses.length;
+                  for (const bin of bins) {
+                    if (bin.length === 0) continue;
+                    const avgConf = bin.reduce((s, b) => s + b.conf, 0) / bin.length / 100;
+                    const avgAcc = bin.reduce((s, b) => s + b.correct, 0) / bin.length;
+                    ece += (bin.length / n) * Math.abs(avgAcc - avgConf);
+                  }
+                  return ece;
+                })()}
+                accuracy={totalItems > 0 ? responses.filter(r => r.correctness).length / totalItems : 0}
+                totalSessions={(() => {
+                  if (responses.length < 2) return 1;
+                  let sessions = 1;
+                  for (let i = 1; i < responses.length; i++) {
+                    const gap = responses[i].timestamp.getTime() - responses[i - 1].timestamp.getTime();
+                    if (gap > 10 * 60 * 1000) sessions++;
+                  }
+                  return sessions;
+                })()}
+                recentTrend="stable"
+                dualProcessRatio={(() => {
+                  if (responses.length < 3) return 0.5;
+                  const rts = responses.map(r => r.responseTime);
+                  const meanRT = rts.reduce((a, b) => a + b, 0) / rts.length;
+                  const auto = responses.filter(r => r.correctness && r.responseTime < meanRT && r.confidence > 70).length;
+                  return auto / responses.length;
+                })()}
+                strengths={[]}
+                weaknesses={[]}
+              />
+            </div>
           )}
         </div>
       )}

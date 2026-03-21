@@ -6,7 +6,7 @@ import offgridData from '../../offgrid-practice-export.json';
 
 interface OffGridActivity {
   id: string;
-  type: 'multiple-choice' | 'error_correction';
+  type: 'multiple-choice' | 'error_correction' | 'sentence-reorder' | 'fill-blank-typing';
   question: string;
   answer: string;
   options: string[];
@@ -14,6 +14,7 @@ interface OffGridActivity {
   category: string;
   moduleId: string;
   tags: string[];
+  cefrLevel?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
   sourceLanguage: string;
   targetLanguage: string;
   feedback: string;
@@ -38,6 +39,7 @@ interface OffGridActivity {
     commonMistake: string;
     memoryTrick: string;
   };
+  acceptableAnswers?: string[];
 }
 
 function adaptActivity(activity: OffGridActivity): QuizItem {
@@ -48,6 +50,7 @@ function adaptActivity(activity: OffGridActivity): QuizItem {
     translation: activity.answer,
     difficulty: activity.difficulty,
     tags: activity.tags,
+    cefrLevel: activity.cefrLevel,
     // Grammar-specific fields
     itemType: activity.type,
     question: activity.question,
@@ -60,6 +63,7 @@ function adaptActivity(activity: OffGridActivity): QuizItem {
     frenchComparison: activity.frenchComparison,
     scenario: activity.scenario,
     falseCognate: activity.falseCognate,
+    acceptableAnswers: activity.acceptableAnswers,
   };
 }
 
@@ -73,13 +77,18 @@ export function getOffGridActivitiesByModule(moduleId: string): QuizItem[] {
 }
 
 export const OFFGRID_MODULES = [
-  { id: 'tense-form', name: 'Tense & Form', count: 50 },
-  { id: 'subject-verb-agreement', name: 'Subject-Verb Agreement', count: 40 },
-  { id: 'articles', name: 'Articles', count: 20 },
-  { id: 'plurality', name: 'Plurality', count: 20 },
-  { id: 'word-order', name: 'Word Order', count: 30 },
+  { id: 'tense-form', name: 'Tense & Form', count: 70 },
+  { id: 'subject-verb-agreement', name: 'Subject-Verb Agreement', count: 50 },
+  { id: 'articles', name: 'Articles', count: 40 },
+  { id: 'plurality', name: 'Plurality', count: 30 },
+  { id: 'word-order', name: 'Word Order', count: 40 },
   { id: 'cameroonian-scenarios', name: 'Cameroonian Scenarios', count: 69 },
-  { id: 'prepositions', name: 'Prepositions', count: 30 },
+  { id: 'prepositions', name: 'Prepositions', count: 50 },
   { id: 'false-cognates', name: 'False Cognates', count: 50 },
-  { id: 'auxiliaries', name: 'Auxiliaries', count: 20 },
+  { id: 'auxiliaries', name: 'Auxiliaries', count: 35 },
+  { id: 'conditionals', name: 'Conditionals', count: 30 },
+  { id: 'passive-voice', name: 'Passive Voice', count: 25 },
+  { id: 'reported-speech', name: 'Reported Speech', count: 20 },
+  { id: 'sentence-reorder', name: 'Sentence Reorder', count: 25 },
+  { id: 'fill-blank-typing', name: 'Fill in the Blank', count: 25 },
 ] as const;

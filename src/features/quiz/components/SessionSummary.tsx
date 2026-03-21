@@ -11,6 +11,7 @@ interface SessionSummaryProps {
   items?: QuizItem[];
   calibrationECE: number | null;
   onClose: () => void;
+  onNavigateToCoach?: () => void;
 }
 
 interface StrugglingItem {
@@ -160,6 +161,7 @@ export default function SessionSummary({
   items,
   calibrationECE,
   onClose,
+  onNavigateToCoach,
 }: SessionSummaryProps) {
   const stats = useMemo(() => {
     const total = responses.length;
@@ -444,6 +446,18 @@ export default function SessionSummary({
           Continue Practice
           <ArrowRight size={16} style={{ marginLeft: 8 }} />
         </motion.button>
+        {onNavigateToCoach && (
+          <motion.button
+            className="btn btn-secondary btn-lg"
+            onClick={onNavigateToCoach}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            style={{ border: '1.5px solid var(--color-primary-400)', color: 'var(--color-primary-500)', background: 'transparent' }}
+          >
+            <Brain size={16} style={{ marginRight: 6 }} />
+            Get AI Coaching
+          </motion.button>
+        )}
         <motion.button
           className="btn btn-secondary btn-lg"
           onClick={onClose}

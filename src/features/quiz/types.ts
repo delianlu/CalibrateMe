@@ -2,7 +2,7 @@
 // Quiz Feature Types
 // =============================================================================
 
-export type QuizItemType = 'vocabulary' | 'multiple-choice' | 'error_correction';
+export type QuizItemType = 'vocabulary' | 'multiple-choice' | 'error_correction' | 'sentence-reorder' | 'fill-blank-typing';
 
 export interface FrenchComparison {
   frenchStructure: string;
@@ -30,6 +30,16 @@ export interface FalseCognateInfo {
   memoryTrick: string;
 }
 
+export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
+
+export type FrenchTrapType = 'false-friend' | 'pronunciation' | 'gender-confusion' | 'spelling' | 'usage-difference' | 'none';
+
+export interface FrenchTrap {
+  type: FrenchTrapType;
+  warning: string;
+  correctUsage: string;
+}
+
 export interface QuizItem {
   id: string;
   word: string;
@@ -38,6 +48,8 @@ export interface QuizItem {
   example?: string;
   difficulty: number; // 0-1
   tags: string[];
+  cefrLevel?: CEFRLevel;
+  frenchTrap?: FrenchTrap;
 
   // Grammar exercise fields (OffGrid activities)
   itemType?: QuizItemType;
@@ -51,6 +63,7 @@ export interface QuizItem {
   frenchComparison?: FrenchComparison;
   scenario?: ScenarioContext;
   falseCognate?: FalseCognateInfo;
+  acceptableAnswers?: string[];
 }
 
 export interface QuizResponse {
