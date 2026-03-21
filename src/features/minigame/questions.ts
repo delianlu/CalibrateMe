@@ -1,13 +1,15 @@
 import { TriviQuestion } from './types';
 
 /**
- * 30 general-knowledge trivia questions designed for calibration training.
+ * 60 general-knowledge trivia questions designed for calibration training.
  *
  * Design principles:
- * - Mix of easy (10), medium (10), hard (10) across 6 categories
+ * - Mix of easy (20), medium (20), hard (20) across 10 categories
  * - Some "trick" questions where the obvious answer is wrong (tests overconfidence)
  * - Some questions where most people know the answer but feel uncertain (tests underconfidence)
  * - Varied difficulty so users naturally give different confidence levels
+ * - Categories: science, geography, history, math, nature, language, psychology,
+ *   technology, music, literature
  */
 export const QUESTION_BANK: TriviQuestion[] = [
   // ─── Easy (10) ────────────────────────────────────────────────────
@@ -251,6 +253,252 @@ export const QUESTION_BANK: TriviQuestion[] = [
     id: 'h10',
     question: 'The Panama Canal connects the Atlantic Ocean to which other ocean?',
     options: ['Indian Ocean', 'Pacific Ocean', 'Arctic Ocean', 'Southern Ocean'],
+    correctIndex: 1,
+    category: 'geography',
+    difficulty: 'hard',
+  },
+
+  // ─── Easy — Wave 2 (10) ─────────────────────────────────────────
+  {
+    id: 'e11',
+    question: 'Which weighs more: a ton of feathers or a ton of bricks?',
+    options: ['Feathers', 'Bricks', 'They weigh the same', 'It depends on the type of feathers'],
+    correctIndex: 2,
+    category: 'science',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e12',
+    question: 'What instrument has 88 keys?',
+    options: ['Guitar', 'Violin', 'Piano', 'Accordion'],
+    correctIndex: 2,
+    category: 'music',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e13',
+    question: 'What is the term for a fear of spiders?',
+    options: ['Claustrophobia', 'Arachnophobia', 'Acrophobia', 'Hydrophobia'],
+    correctIndex: 1,
+    category: 'psychology',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e14',
+    question: 'What does "www" stand for in a website address?',
+    options: ['World Wide Web', 'Western Web Works', 'Wide World Website', 'Web World Wide'],
+    correctIndex: 0,
+    category: 'technology',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e15',
+    question: 'Who wrote "Romeo and Juliet"?',
+    options: ['Charles Dickens', 'William Shakespeare', 'Jane Austen', 'Mark Twain'],
+    correctIndex: 1,
+    category: 'literature',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e16',
+    question: 'What is the boiling point of water at sea level in Celsius?',
+    options: ['90°C', '100°C', '110°C', '120°C'],
+    correctIndex: 1,
+    category: 'science',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e17',
+    question: 'How many strings does a standard guitar have?',
+    options: ['4', '5', '6', '8'],
+    correctIndex: 2,
+    category: 'music',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e18',
+    question: 'What is the binary number system based on?',
+    options: ['0 and 1', '1 and 2', '0 and 9', '1 and 10'],
+    correctIndex: 0,
+    category: 'technology',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e19',
+    question: 'In which direction does the sun rise?',
+    options: ['West', 'North', 'South', 'East'],
+    correctIndex: 3,
+    category: 'geography',
+    difficulty: 'easy',
+  },
+  {
+    id: 'e20',
+    question: 'What colour do you get when you mix red and white?',
+    options: ['Orange', 'Purple', 'Pink', 'Peach'],
+    correctIndex: 2,
+    category: 'science',
+    difficulty: 'easy',
+  },
+
+  // ─── Medium — Wave 2 (10) ───────────────────────────────────────
+  {
+    id: 'm11',
+    question: 'How many time zones does China officially use?',
+    options: ['3', '4', '5', '1'],
+    correctIndex: 3,
+    category: 'geography',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm12',
+    question: 'What is the name of the psychological phenomenon where people in a group are less likely to help someone in need?',
+    options: ['Halo effect', 'Bystander effect', 'Placebo effect', 'Dunning-Kruger effect'],
+    correctIndex: 1,
+    category: 'psychology',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm13',
+    question: 'What programming language was created by Guido van Rossum in 1991?',
+    options: ['Java', 'C++', 'Python', 'Ruby'],
+    correctIndex: 2,
+    category: 'technology',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm14',
+    question: 'Which novel begins with the line "Call me Ishmael"?',
+    options: ['The Great Gatsby', 'Moby-Dick', '1984', 'Don Quixote'],
+    correctIndex: 1,
+    category: 'literature',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm15',
+    question: 'In music, how many notes are in a chromatic scale?',
+    options: ['7', '8', '10', '12'],
+    correctIndex: 3,
+    category: 'music',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm16',
+    question: 'What percentage of the ocean floor has been mapped in high resolution?',
+    options: ['About 5%', 'About 25%', 'About 50%', 'About 75%'],
+    correctIndex: 1,
+    category: 'science',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm17',
+    question: 'What does the psychological term "cognitive dissonance" describe?',
+    options: ['Memory loss under stress', 'Discomfort from holding contradictory beliefs', 'Inability to make decisions', 'Fear of new experiences'],
+    correctIndex: 1,
+    category: 'psychology',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm18',
+    question: 'Which scientist is credited with developing the World Wide Web?',
+    options: ['Vint Cerf', 'Tim Berners-Lee', 'Alan Turing', 'Steve Wozniak'],
+    correctIndex: 1,
+    category: 'technology',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm19',
+    question: 'Who wrote "One Hundred Years of Solitude"?',
+    options: ['Pablo Neruda', 'Jorge Luis Borges', 'Gabriel García Márquez', 'Isabel Allende'],
+    correctIndex: 2,
+    category: 'literature',
+    difficulty: 'medium',
+  },
+  {
+    id: 'm20',
+    question: 'What is the speed of light in a vacuum, approximately?',
+    options: ['300,000 km/s', '150,000 km/s', '500,000 km/s', '1,000,000 km/s'],
+    correctIndex: 0,
+    category: 'science',
+    difficulty: 'medium',
+  },
+
+  // ─── Hard — Wave 2 (10) — includes calibration-testing questions ─
+  {
+    id: 'h11',
+    question: 'Which planet in our solar system rotates on its side with an axial tilt of about 98 degrees?',
+    options: ['Neptune', 'Saturn', 'Uranus', 'Pluto'],
+    correctIndex: 2,
+    category: 'science',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h12',
+    question: 'The Dunning-Kruger effect describes a bias where people with low ability tend to:',
+    options: ['Underestimate their competence', 'Overestimate their competence', 'Accurately assess their competence', 'Refuse to assess their competence'],
+    correctIndex: 1,
+    category: 'psychology',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h13',
+    question: 'What was the first programmable general-purpose electronic computer?',
+    options: ['UNIVAC', 'ENIAC', 'Colossus', 'Z3'],
+    correctIndex: 1,
+    category: 'technology',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h14',
+    question: 'Who wrote "Things Fall Apart"?',
+    options: ['Wole Soyinka', 'Chinua Achebe', 'Ngũgĩ wa Thiong\'o', 'Chimamanda Ngozi Adichie'],
+    correctIndex: 1,
+    category: 'literature',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h15',
+    question: 'In Western music theory, what interval is known as the "devil\'s interval"?',
+    options: ['Minor second', 'Tritone', 'Major seventh', 'Diminished fifth'],
+    correctIndex: 1,
+    category: 'music',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h16',
+    question: 'Approximately how many neurons are in the adult human brain?',
+    options: ['86 million', '860 million', '8.6 billion', '86 billion'],
+    correctIndex: 3,
+    category: 'psychology',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h17',
+    question: 'What is the most widely used database query language?',
+    options: ['NoSQL', 'GraphQL', 'SQL', 'MongoDB'],
+    correctIndex: 2,
+    category: 'technology',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h18',
+    question: 'In which century was "The Tale of Genji", often considered the world\'s first novel, written?',
+    options: ['8th century', '11th century', '14th century', '6th century'],
+    correctIndex: 1,
+    category: 'literature',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h19',
+    question: 'A standard piano keyboard spans how many octaves?',
+    options: ['5', '6', 'Just over 7', '8'],
+    correctIndex: 2,
+    category: 'music',
+    difficulty: 'hard',
+  },
+  {
+    id: 'h20',
+    question: 'Mount Chimborazo in Ecuador is farther from Earth\'s center than Mount Everest. Why?',
+    options: ['It is taller', 'Earth bulges at the equator', 'Ecuador has lower sea level', 'Measurement error in Everest\'s height'],
     correctIndex: 1,
     category: 'geography',
     difficulty: 'hard',
