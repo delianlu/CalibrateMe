@@ -5,6 +5,8 @@ import CountUp from '../../../components/CountUp';
 import { useQuizSession } from '../hooks/useQuizSession';
 import Flashcard from './Flashcard';
 import GrammarExercise from './GrammarExercise';
+import SentenceReorder from './SentenceReorder';
+import FillBlankTyping from './FillBlankTyping';
 import ConfidenceSlider from './ConfidenceSlider';
 import AnswerButtons from './AnswerButtons';
 import QuizProgressPath from './QuizProgressPath';
@@ -177,7 +179,12 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
   const handleGrammarConfidenceSubmit = useCallback(
     (conf: number) => {
       if (!currentItem || grammarPendingOption === null) return;
-      const correct = grammarPendingOption === currentItem.answer;
+      const normalize = (s: string) => s.trim().toLowerCase().replace(/[.,!?;:'"]/g, '');
+      const isFlexibleType = currentItem.itemType === 'sentence-reorder' || currentItem.itemType === 'fill-blank-typing';
+      const correct = isFlexibleType
+        ? normalize(grammarPendingOption) === normalize(currentItem.answer ?? '') ||
+          (currentItem.acceptableAnswers?.some(a => normalize(grammarPendingOption) === normalize(a)) ?? false)
+        : grammarPendingOption === currentItem.answer;
       submitConfidence(conf); // rate-confidence → reveal-answer
       setFeedbackResult(correct);
       submitAnswer(correct);
@@ -374,6 +381,8 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
 
   const phase = session.phase;
   const isGrammarItem = currentItem.itemType === 'multiple-choice' || currentItem.itemType === 'error_correction';
+  const isSentenceReorder = currentItem.itemType === 'sentence-reorder';
+  const isFillBlank = currentItem.itemType === 'fill-blank-typing';
 
   // ── Active quiz ──────────────────────────────────────────────────
   return (
@@ -390,14 +399,28 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
         </button>
       </div>
 
-      {isGrammarItem ? (
-        /* ── Grammar exercise flow ─────────────────────────────── */
+      {(isGrammarItem || isSentenceReorder || isFillBlank) ? (
+        /* ── Grammar / Reorder / Fill-blank exercise flow ──────── */
         <>
-          <GrammarExercise
-            item={currentItem}
-            phase={phase as 'show-word' | 'rate-confidence' | 'reveal-answer' | 'feedback'}
-            onAnswer={handleGrammarAnswer}
-          />
+          {isSentenceReorder ? (
+            <SentenceReorder
+              item={currentItem}
+              phase={phase as 'show-word' | 'rate-confidence' | 'reveal-answer' | 'feedback'}
+              onAnswer={handleGrammarAnswer}
+            />
+          ) : isFillBlank ? (
+            <FillBlankTyping
+              item={currentItem}
+              phase={phase as 'show-word' | 'rate-confidence' | 'reveal-answer' | 'feedback'}
+              onAnswer={handleGrammarAnswer}
+            />
+          ) : (
+            <GrammarExercise
+              item={currentItem}
+              phase={phase as 'show-word' | 'rate-confidence' | 'reveal-answer' | 'feedback'}
+              onAnswer={handleGrammarAnswer}
+            />
+          )}
           {/* Confidence slider for grammar (after selecting option, before grading) */}
           {phase === 'rate-confidence' && grammarPendingOption !== null && (
             <div className="quiz-active__controls">

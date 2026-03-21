@@ -7135,3 +7135,133 @@ h1, h2, h3 {
 .analytics-bento__coach {
   grid-column: 1 / -1;
 }
+
+/* ======================================================================
+   SENTENCE REORDER EXERCISE
+   ====================================================================== */
+
+.sentence-reorder__answer-area {
+  min-height: 3.5rem;
+  padding: 0.75rem;
+  border: 2px dashed var(--border-color, #e2e8f0);
+  border-radius: var(--border-radius-lg, 12px);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  background: var(--bg-secondary, #f8fafc);
+  transition: border-color 0.2s;
+}
+
+.sentence-reorder__placeholder {
+  color: var(--text-tertiary, #94a3b8);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.sentence-reorder__word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sentence-reorder__word {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid var(--border-color, #e2e8f0);
+  background: white;
+  transition: all 0.15s ease;
+}
+
+.sentence-reorder__word:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.sentence-reorder__word--available {
+  background: var(--bg-primary, white);
+  color: var(--text-primary, #1e293b);
+}
+
+.sentence-reorder__word--selected {
+  background: var(--color-primary-light, #eff6ff);
+  border-color: var(--color-primary, #3b82f6);
+  color: var(--color-primary, #3b82f6);
+}
+
+.sentence-reorder__word--correct {
+  border-color: var(--color-success, #10b981);
+  background: var(--color-success-light, #ecfdf5);
+  color: var(--color-success, #10b981);
+}
+
+.sentence-reorder__word--incorrect {
+  border-color: var(--color-error, #ef4444);
+  background: var(--color-error-light, #fef2f2);
+  color: var(--color-error, #ef4444);
+}
+
+/* ======================================================================
+   FILL-BLANK TYPING EXERCISE
+   ====================================================================== */
+
+.fill-blank__input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1rem;
+}
+
+.fill-blank__input {
+  padding: 0.875rem 1rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--border-color, #e2e8f0);
+  border-radius: var(--border-radius-lg, 12px);
+  background: var(--bg-primary, white);
+  color: var(--text-primary, #1e293b);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.fill-blank__input:focus {
+  border-color: var(--color-primary, #3b82f6);
+  box-shadow: 0 0 0 3px var(--color-primary-light, rgba(59,130,246,0.15));
+}
+
+.fill-blank__input--correct {
+  border-color: var(--color-success, #10b981);
+  background: var(--color-success-light, #ecfdf5);
+}
+
+.fill-blank__input--incorrect {
+  border-color: var(--color-error, #ef4444);
+  background: var(--color-error-light, #fef2f2);
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .sentence-reorder__answer-area {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.12);
+}
+
+[data-theme="dark"] .sentence-reorder__word {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .sentence-reorder__word--selected {
+  background: rgba(59,130,246,0.12);
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .fill-blank__input {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+  color: var(--text-primary);
+}

@@ -14894,10 +14894,1752 @@
       "feedback": "Present perfect passive: 'has/have + been + past participle.' 'Already' signals completion. The homework was submitted (it received the action).",
       "correction": null,
       "cefrLevel": "B1"
+    },
+    {
+      "id": "sentence-reorder-1",
+      "type": "sentence-reorder",
+      "question": "morning / every / she / school / to / walks",
+      "answer": "She walks to school every morning",
+      "options": [
+        "morning",
+        "every",
+        "she",
+        "school",
+        "to",
+        "walks"
+      ],
+      "acceptableAnswers": [
+        "Every morning she walks to school"
+      ],
+      "difficulty": 0.2,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "Present Simple",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In English, the basic word order is Subject + Verb + Object/Place + Time. 'She walks to school every morning' follows S-V-Place-Time order.",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "\"Elle marche à l'école chaque matin.\" (Same S-V-O-Time order in this case.)",
+        "englishStructure": "\"She walks to school every morning.\" (S-V-Place-Time is standard.)",
+        "whyDifficult": "At this level, word order is similar. French speakers may place time adverbs first ('Every morning she walks...'), which is acceptable but less common in English.",
+        "visualHighlighting": {
+          "incorrect": "Every morning walks she to school.",
+          "correct": "She walks to school every morning."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-2",
+      "type": "sentence-reorder",
+      "question": "a / has / Douala / big / market",
+      "answer": "Douala has a big market",
+      "options": [
+        "a",
+        "has",
+        "Douala",
+        "big",
+        "market"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.2,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "adjective placement",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In English, adjectives come BEFORE the noun: 'big market', not 'market big'.",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "\"Douala a un grand marché.\" (In French, 'grand' is one of the few adjectives placed before the noun.)",
+        "englishStructure": "\"Douala has a big market.\" (In English, adjectives always come before the noun.)",
+        "whyDifficult": "Most French adjectives follow the noun (une voiture rouge), but English adjectives always precede it. French speakers may write 'a market big' by habit.",
+        "visualHighlighting": {
+          "incorrect": "Douala has a market big.",
+          "correct": "Douala has a big market."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-3",
+      "type": "sentence-reorder",
+      "question": "not / English / does / speak / he",
+      "answer": "He does not speak English",
+      "options": [
+        "not",
+        "English",
+        "does",
+        "speak",
+        "he"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.25,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "negation",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "English negation requires the auxiliary 'does' + 'not' before the base verb: 'He does not speak.' The main verb stays in its base form.",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "\"Il ne parle pas anglais.\" (French wraps the verb with ne...pas.)",
+        "englishStructure": "\"He does not speak English.\" (English uses does + not + base verb.)",
+        "whyDifficult": "French negation surrounds the verb (ne...pas), so French speakers may write 'He not speaks English' or 'He speaks not English' instead of using the do-support.",
+        "visualHighlighting": {
+          "incorrect": "He not speaks English.",
+          "correct": "He does not speak English."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-4",
+      "type": "sentence-reorder",
+      "question": "the / children / playing / are / in / park / the",
+      "answer": "The children are playing in the park",
+      "options": [
+        "the",
+        "children",
+        "playing",
+        "are",
+        "in",
+        "park",
+        "the"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.25,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "Present Continuous",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Present Continuous uses Subject + am/is/are + verb-ing. 'The children are playing in the park.'",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "\"Les enfants jouent dans le parc.\" (French uses simple present for actions happening now.)",
+        "englishStructure": "\"The children are playing in the park.\" (English requires Present Continuous for current actions.)",
+        "whyDifficult": "French has no direct equivalent of the Present Continuous. Speakers may write 'The children play in the park' when describing a current action.",
+        "visualHighlighting": {
+          "incorrect": "The children play in the park.",
+          "correct": "The children are playing in the park."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-5",
+      "type": "sentence-reorder",
+      "question": "like / very / I / Bamenda / much",
+      "answer": "I like Bamenda very much",
+      "options": [
+        "like",
+        "very",
+        "I",
+        "Bamenda",
+        "much"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.2,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "adverb placement",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Very much' comes after the object in English: 'I like Bamenda very much.' Not between the verb and object.",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "\"J'aime beaucoup Bamenda.\" (In French, 'beaucoup' comes between the verb and the object.)",
+        "englishStructure": "\"I like Bamenda very much.\" (In English, 'very much' goes after the object.)",
+        "whyDifficult": "French places adverbs of degree between the verb and object (j'aime beaucoup...), so French speakers may write 'I like very much Bamenda.'",
+        "visualHighlighting": {
+          "incorrect": "I like very much Bamenda.",
+          "correct": "I like Bamenda very much."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-6",
+      "type": "sentence-reorder",
+      "question": "you / where / yesterday / did / go",
+      "answer": "Where did you go yesterday",
+      "options": [
+        "you",
+        "where",
+        "yesterday",
+        "did",
+        "go"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.3,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "question formation",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "English questions use: Question word + auxiliary + subject + verb. 'Where did you go yesterday?'",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "\"Où es-tu allé hier ?\" or \"Tu es allé où hier ?\" (French allows multiple question structures.)",
+        "englishStructure": "\"Where did you go yesterday?\" (English requires strict question word + did + subject + base verb order.)",
+        "whyDifficult": "French allows informal questions without inversion ('Tu es allé où?'), so French speakers may write 'You did go where yesterday?' or 'Where you went yesterday?'",
+        "visualHighlighting": {
+          "incorrect": "Where you went yesterday?",
+          "correct": "Where did you go yesterday?"
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-7",
+      "type": "sentence-reorder",
+      "question": "never / she / been / has / to / Kribi",
+      "answer": "She has never been to Kribi",
+      "options": [
+        "never",
+        "she",
+        "been",
+        "has",
+        "to",
+        "Kribi"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.35,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "adverb placement",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Frequency adverbs like 'never' go between the auxiliary and the main verb: 'has never been.'",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "\"Elle n'est jamais allée à Kribi.\" (French places 'jamais' as part of the ne...jamais negation around the auxiliary.)",
+        "englishStructure": "\"She has never been to Kribi.\" (English places 'never' between auxiliary and past participle.)",
+        "whyDifficult": "French negation (ne...jamais) surrounds the verb differently. Speakers may write 'She never has been' or 'She has been never to Kribi.'",
+        "visualHighlighting": {
+          "incorrect": "She never has been to Kribi.",
+          "correct": "She has never been to Kribi."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-8",
+      "type": "sentence-reorder",
+      "question": "gave / a / me / beautiful / Ngozi / necklace",
+      "answer": "Ngozi gave me a beautiful necklace",
+      "options": [
+        "gave",
+        "a",
+        "me",
+        "beautiful",
+        "Ngozi",
+        "necklace"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.35,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "indirect object",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "With two objects, English puts the indirect object (me) before the direct object (a beautiful necklace): S + V + IO + DO.",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "\"Ngozi m'a donné un beau collier.\" (French uses a pronoun 'm'' before the verb for the indirect object.)",
+        "englishStructure": "\"Ngozi gave me a beautiful necklace.\" (English places the indirect object after the verb, before the direct object.)",
+        "whyDifficult": "French places indirect object pronouns before the verb (m'a donné), but English places them after. French speakers may write 'Ngozi me gave a necklace.'",
+        "visualHighlighting": {
+          "incorrect": "Ngozi me gave a beautiful necklace.",
+          "correct": "Ngozi gave me a beautiful necklace."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-9",
+      "type": "sentence-reorder",
+      "question": "enough / is / old / he / to / drive",
+      "answer": "He is old enough to drive",
+      "options": [
+        "enough",
+        "is",
+        "old",
+        "he",
+        "to",
+        "drive"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.4,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "enough placement",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Enough' comes AFTER adjectives in English: 'old enough', not 'enough old.'",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "\"Il est assez vieux pour conduire.\" (French places 'assez' BEFORE the adjective.)",
+        "englishStructure": "\"He is old enough to drive.\" (English places 'enough' AFTER the adjective.)",
+        "whyDifficult": "French 'assez' comes before the adjective (assez vieux), but English 'enough' comes after (old enough). This reversal is a common source of errors.",
+        "visualHighlighting": {
+          "incorrect": "He is enough old to drive.",
+          "correct": "He is old enough to drive."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-10",
+      "type": "sentence-reorder",
+      "question": "already / the / finished / students / have / exam / the",
+      "answer": "The students have already finished the exam",
+      "options": [
+        "already",
+        "the",
+        "finished",
+        "students",
+        "have",
+        "exam",
+        "the"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.4,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "adverb placement",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Already' typically goes between the auxiliary and past participle: 'have already finished.'",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "\"Les étudiants ont déjà fini l'examen.\" (French also places 'déjà' between auxiliary and past participle.)",
+        "englishStructure": "\"The students have already finished the exam.\" (Same position in English.)",
+        "whyDifficult": "While the position is similar, French speakers sometimes place 'already' at the end ('have finished already the exam') or before the auxiliary.",
+        "visualHighlighting": {
+          "incorrect": "The students already have finished the exam.",
+          "correct": "The students have already finished the exam."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-11",
+      "type": "sentence-reorder",
+      "question": "told / not / the / me / teacher / to / run",
+      "answer": "The teacher told me not to run",
+      "options": [
+        "told",
+        "not",
+        "the",
+        "me",
+        "teacher",
+        "to",
+        "run"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.45,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "reported speech",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In reported commands with negation, 'not' comes before 'to': 'told me not to run.'",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "\"Le professeur m'a dit de ne pas courir.\" (French: de ne pas + infinitive.)",
+        "englishStructure": "\"The teacher told me not to run.\" (English: not to + infinitive.)",
+        "whyDifficult": "French places the negation within 'de ne pas + infinitif', while English uses 'not to + infinitive.' French speakers may write 'told me to not run.'",
+        "visualHighlighting": {
+          "incorrect": "The teacher told me to not run.",
+          "correct": "The teacher told me not to run."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-12",
+      "type": "sentence-reorder",
+      "question": "interesting / what / an / story",
+      "answer": "What an interesting story",
+      "options": [
+        "interesting",
+        "what",
+        "an",
+        "story"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.4,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "exclamations",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "English exclamations follow: 'What + a/an + adjective + noun!' The adjective comes before the noun.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "\"Quelle histoire intéressante !\" (French: Quelle + noun + adjective.)",
+        "englishStructure": "\"What an interesting story!\" (English: What + article + adjective + noun.)",
+        "whyDifficult": "French exclamations place the adjective after the noun (histoire intéressante), and French 'Quel(le)' doesn't need an article. English requires 'a/an' + adjective before noun.",
+        "visualHighlighting": {
+          "incorrect": "What a story interesting!",
+          "correct": "What an interesting story!"
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-13",
+      "type": "sentence-reorder",
+      "question": "carefully / she / the / read / letter / very",
+      "answer": "She read the letter very carefully",
+      "options": [
+        "carefully",
+        "she",
+        "the",
+        "read",
+        "letter",
+        "very"
+      ],
+      "acceptableAnswers": [
+        "She very carefully read the letter"
+      ],
+      "difficulty": 0.45,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "adverb of manner",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Adverbs of manner usually go at the end of the sentence: 'read the letter very carefully.' They can also go before the verb for emphasis.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "\"Elle a lu la lettre très attentivement.\" (French also often places manner adverbs at the end.)",
+        "englishStructure": "\"She read the letter very carefully.\" (Manner adverb at end is most natural.)",
+        "whyDifficult": "French sometimes places short adverbs between auxiliary and participle (a bien lu). French speakers may put longer adverbs between verb and object in English.",
+        "visualHighlighting": {
+          "incorrect": "She read very carefully the letter.",
+          "correct": "She read the letter very carefully."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-14",
+      "type": "sentence-reorder",
+      "question": "so / that / was / tired / he / he / slept / immediately",
+      "answer": "He was so tired that he slept immediately",
+      "options": [
+        "so",
+        "that",
+        "was",
+        "tired",
+        "he",
+        "he",
+        "slept",
+        "immediately"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.5,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "so...that",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "The 'so...that' construction follows: Subject + was + so + adjective + that + clause.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "\"Il était tellement fatigué qu'il s'est endormi immédiatement.\" (French uses 'tellement...que'.)",
+        "englishStructure": "\"He was so tired that he slept immediately.\" (English uses 'so...that'.)",
+        "whyDifficult": "The structure is similar, but French speakers may confuse 'so' with 'very' and omit the 'that' clause, or place 'so' incorrectly.",
+        "visualHighlighting": {
+          "incorrect": "He was tired so that he slept immediately.",
+          "correct": "He was so tired that he slept immediately."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-15",
+      "type": "sentence-reorder",
+      "question": "neither / the / nor / father / mother / the / agreed",
+      "answer": "Neither the father nor the mother agreed",
+      "options": [
+        "neither",
+        "the",
+        "nor",
+        "father",
+        "mother",
+        "the",
+        "agreed"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.5,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "correlative conjunctions",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Neither...nor' pairs two negative elements: 'Neither X nor Y + verb.'",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "\"Ni le père ni la mère n'a accepté.\" (French uses 'ni...ni' with 'ne' before the verb.)",
+        "englishStructure": "\"Neither the father nor the mother agreed.\" (English uses 'neither...nor' without extra negation.)",
+        "whyDifficult": "French requires an additional 'ne' with 'ni...ni', so speakers may add double negation in English: 'Neither the father nor the mother didn't agree.'",
+        "visualHighlighting": {
+          "incorrect": "Neither the father nor the mother didn't agree.",
+          "correct": "Neither the father nor the mother agreed."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-16",
+      "type": "sentence-reorder",
+      "question": "only / did / realize / then / I / my / mistake",
+      "answer": "Only then did I realize my mistake",
+      "options": [
+        "only",
+        "did",
+        "realize",
+        "then",
+        "I",
+        "my",
+        "mistake"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.6,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inversion",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "When 'only then' starts the sentence, English inverts the subject and auxiliary: 'Only then did I realize...'",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "\"C'est seulement alors que j'ai réalisé mon erreur.\" (French uses a cleft construction.)",
+        "englishStructure": "\"Only then did I realize my mistake.\" (English inverts subject and auxiliary after fronted adverbs.)",
+        "whyDifficult": "Subject-auxiliary inversion after negative/restrictive adverbs doesn't exist in French. Speakers may write 'Only then I did realize' or 'Only then I realized.'",
+        "visualHighlighting": {
+          "incorrect": "Only then I realized my mistake.",
+          "correct": "Only then did I realize my mistake."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-17",
+      "type": "sentence-reorder",
+      "question": "had / known / I / if / would / I / have / come / earlier",
+      "answer": "If I had known I would have come earlier",
+      "options": [
+        "had",
+        "known",
+        "I",
+        "if",
+        "would",
+        "I",
+        "have",
+        "come",
+        "earlier"
+      ],
+      "acceptableAnswers": [
+        "I would have come earlier if I had known"
+      ],
+      "difficulty": 0.6,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "third conditional",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Third conditional: 'If + past perfect, would + have + past participle.' Both clause orders are acceptable.",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "\"Si j'avais su, je serais venu plus tôt.\" (French uses si + plus-que-parfait, conditionnel passé.)",
+        "englishStructure": "\"If I had known, I would have come earlier.\" (English uses if + past perfect, would have + past participle.)",
+        "whyDifficult": "French uses 'si + plus-que-parfait' which maps differently. Speakers may confuse tense sequence or write 'If I would have known.'",
+        "visualHighlighting": {
+          "incorrect": "If I would have known, I would have come.",
+          "correct": "If I had known, I would have come earlier."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-18",
+      "type": "sentence-reorder",
+      "question": "not / should / only / have / apologized / he / but / also / paid / the / damage / for",
+      "answer": "Not only should he have apologized but also paid for the damage",
+      "options": [
+        "not",
+        "should",
+        "only",
+        "have",
+        "apologized",
+        "he",
+        "but",
+        "also",
+        "paid",
+        "the",
+        "damage",
+        "for"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.65,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inversion",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Not only' at the start triggers inversion: 'Not only should he have... but also...'",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "\"Non seulement il aurait dû s'excuser, mais aussi payer les dégâts.\" (No inversion in French.)",
+        "englishStructure": "\"Not only should he have apologized, but also paid for the damage.\" (Inversion required after 'Not only'.)",
+        "whyDifficult": "French doesn't invert after 'non seulement', so speakers write normal word order: 'Not only he should have apologized.'",
+        "visualHighlighting": {
+          "incorrect": "Not only he should have apologized.",
+          "correct": "Not only should he have apologized."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-19",
+      "type": "sentence-reorder",
+      "question": "the / built / was / in / which / house / Yaoundé / 1985 / in / was",
+      "answer": "The house which was built in 1985 was in Yaoundé",
+      "options": [
+        "the",
+        "built",
+        "was",
+        "in",
+        "which",
+        "house",
+        "Yaoundé",
+        "1985",
+        "in",
+        "was"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.55,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "relative clause",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Relative clauses come directly after the noun they modify: 'The house which was built in 1985...'",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "\"La maison qui a été construite en 1985 était à Yaoundé.\" (French relative clauses also follow the noun.)",
+        "englishStructure": "\"The house which was built in 1985 was in Yaoundé.\" (Same position.)",
+        "whyDifficult": "The double use of 'was' (relative clause + main verb) and 'in' (year + location) can confuse learners into placing elements in the wrong clause.",
+        "visualHighlighting": {
+          "incorrect": "The house was in Yaoundé which was built in 1985.",
+          "correct": "The house which was built in 1985 was in Yaoundé."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-20",
+      "type": "sentence-reorder",
+      "question": "had / hardly / when / started / the / it / rain / match / to / began",
+      "answer": "Hardly had the match started when it began to rain",
+      "options": [
+        "had",
+        "hardly",
+        "when",
+        "started",
+        "the",
+        "it",
+        "rain",
+        "match",
+        "to",
+        "began"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.7,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inversion",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Hardly' at the start triggers inversion: 'Hardly had + subject + past participle + when...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "\"À peine le match avait-il commencé qu'il s'est mis à pleuvoir.\" (French also inverts with 'à peine' but uses 'que' instead of 'when'.)",
+        "englishStructure": "\"Hardly had the match started when it began to rain.\" (Inversion with 'hardly...when'.)",
+        "whyDifficult": "While French also inverts with 'à peine', the connector differs (que vs when). Speakers may use 'that' instead of 'when' or avoid inversion entirely.",
+        "visualHighlighting": {
+          "incorrect": "Hardly the match had started when it began to rain.",
+          "correct": "Hardly had the match started when it began to rain."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-21",
+      "type": "sentence-reorder",
+      "question": "no / had / sooner / arrived / than / we / the / it / started / ceremony",
+      "answer": "No sooner had we arrived than the ceremony started",
+      "options": [
+        "no",
+        "had",
+        "sooner",
+        "arrived",
+        "than",
+        "we",
+        "the",
+        "it",
+        "started",
+        "ceremony"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.7,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inversion",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'No sooner' triggers inversion: 'No sooner had + subject + past participle + than...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "\"À peine étions-nous arrivés que la cérémonie a commencé.\" (French uses 'à peine...que'.)",
+        "englishStructure": "\"No sooner had we arrived than the ceremony started.\" (English uses 'no sooner...than'.)",
+        "whyDifficult": "The 'no sooner...than' pattern requires inversion and 'than' (not 'that/when'). French speakers may write 'No sooner we had arrived that...'",
+        "visualHighlighting": {
+          "incorrect": "No sooner we had arrived that the ceremony started.",
+          "correct": "No sooner had we arrived than the ceremony started."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-22",
+      "type": "sentence-reorder",
+      "question": "were / to / I / you / would / differently / I / things / do",
+      "answer": "Were I to do things differently I would",
+      "options": [
+        "were",
+        "to",
+        "I",
+        "you",
+        "would",
+        "differently",
+        "I",
+        "things",
+        "do"
+      ],
+      "acceptableAnswers": [
+        "Were I you I would do things differently"
+      ],
+      "difficulty": 0.75,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inverted conditional",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Formal inverted conditionals drop 'if' and invert: 'Were I you, I would do things differently.' This is equivalent to 'If I were you...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "\"Si j'étais toi, je ferais les choses différemment.\" (French never drops 'si' for inversion.)",
+        "englishStructure": "\"Were I you, I would do things differently.\" (Formal English drops 'if' and inverts.)",
+        "whyDifficult": "This inverted conditional structure doesn't exist in French. Speakers may not recognize it or may write 'If were I you...'",
+        "visualHighlighting": {
+          "incorrect": "If were I you, I would do things differently.",
+          "correct": "Were I you, I would do things differently."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-23",
+      "type": "sentence-reorder",
+      "question": "under / should / circumstances / no / leave / you / building / the",
+      "answer": "Under no circumstances should you leave the building",
+      "options": [
+        "under",
+        "should",
+        "circumstances",
+        "no",
+        "leave",
+        "you",
+        "building",
+        "the"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.75,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inversion",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Negative adverbial phrases at the start trigger inversion: 'Under no circumstances should you...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "\"En aucun cas vous ne devez quitter le bâtiment.\" (French uses 'ne...aucun' without inversion.)",
+        "englishStructure": "\"Under no circumstances should you leave the building.\" (English inverts after fronted negative phrase.)",
+        "whyDifficult": "French doesn't require inversion after negative adverbials. Speakers may write 'Under no circumstances you should leave...'",
+        "visualHighlighting": {
+          "incorrect": "Under no circumstances you should leave the building.",
+          "correct": "Under no circumstances should you leave the building."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-24",
+      "type": "sentence-reorder",
+      "question": "little / know / did / about / she / the / consequences",
+      "answer": "Little did she know about the consequences",
+      "options": [
+        "little",
+        "know",
+        "did",
+        "about",
+        "she",
+        "the",
+        "consequences"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.7,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inversion",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Little' at the start with negative meaning triggers inversion: 'Little did she know...'",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "\"Elle ne savait guère les conséquences.\" (French uses 'ne...guère' without inversion.)",
+        "englishStructure": "\"Little did she know about the consequences.\" (Inversion after 'Little'.)",
+        "whyDifficult": "This literary inversion pattern is unique to English. French speakers may write 'Little she knew about the consequences.'",
+        "visualHighlighting": {
+          "incorrect": "Little she knew about the consequences.",
+          "correct": "Little did she know about the consequences."
+        }
+      }
+    },
+    {
+      "id": "sentence-reorder-25",
+      "type": "sentence-reorder",
+      "question": "seldom / such / have / a / performance / I / seen / magnificent",
+      "answer": "Seldom have I seen such a magnificent performance",
+      "options": [
+        "seldom",
+        "such",
+        "have",
+        "a",
+        "performance",
+        "I",
+        "seen",
+        "magnificent"
+      ],
+      "acceptableAnswers": [],
+      "difficulty": 0.75,
+      "category": "Sentence Structure",
+      "moduleId": "sentence-reorder",
+      "tags": [
+        "word order",
+        "inversion",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Seldom' at the start triggers inversion: 'Seldom have I seen...' Note also 'such a + adjective + noun' word order.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "\"Rarement ai-je vu un spectacle aussi magnifique.\" (French can invert with 'rarement' in formal register.)",
+        "englishStructure": "\"Seldom have I seen such a magnificent performance.\" (Inversion required after 'seldom'.)",
+        "whyDifficult": "While French can use similar inversion with 'rarement', it's optional. In English it's obligatory. Speakers may also struggle with 'such a magnificent performance' vs 'a such magnificent performance.'",
+        "visualHighlighting": {
+          "incorrect": "Seldom I have seen a such magnificent performance.",
+          "correct": "Seldom have I seen such a magnificent performance."
+        }
+      }
+    },
+    {
+      "id": "fill-blank-1",
+      "type": "fill-blank-typing",
+      "question": "Amina ___ (to go) to the market in Douala yesterday.",
+      "answer": "went",
+      "options": [],
+      "acceptableAnswers": [
+        "had gone"
+      ],
+      "difficulty": 0.3,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "verb",
+        "Past Simple",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "The correct past tense of 'go' is 'went'. This is an irregular verb — there is no pattern like adding '-ed'. You must memorize it: go → went → gone.",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "Amina est allée au marché hier.",
+        "englishStructure": "Amina went to the market yesterday.",
+        "whyDifficult": "In French, 'aller' uses 'être' as auxiliary in passé composé (est allée). English has no auxiliary — just the irregular past form 'went'. French speakers sometimes write 'goed' by applying regular -ed rules.",
+        "visualHighlighting": {
+          "incorrect": "Amina goed to the market",
+          "correct": "Amina went to the market"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-2",
+      "type": "fill-blank-typing",
+      "question": "She is interested ___ learning about Cameroonian history.",
+      "answer": "in",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.35,
+      "category": "Preposition Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "preposition",
+        "adjective collocation",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In English, we say 'interested in' something. The preposition 'in' always follows 'interested' when talking about what attracts your attention.",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "Elle est intéressée par l'histoire camerounaise.",
+        "englishStructure": "She is interested in Cameroonian history.",
+        "whyDifficult": "French uses 'intéressé par' (literally 'interested by'), so French speakers often write 'interested by' instead of the correct 'interested in'.",
+        "visualHighlighting": {
+          "incorrect": "interested by learning",
+          "correct": "interested in learning"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-3",
+      "type": "fill-blank-typing",
+      "question": "I always arrive ___ school at 7:30 in Bamenda.",
+      "answer": "at",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.25,
+      "category": "Preposition Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "preposition",
+        "place",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "We use 'at' for specific locations or buildings when talking about arrival. 'Arrive at school', 'arrive at the office', 'arrive at the station'.",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "J'arrive à l'école à 7h30.",
+        "englishStructure": "I arrive at school at 7:30.",
+        "whyDifficult": "French uses 'à' for both time and place (arriver à l'école, à 7h30). English distinguishes: 'at school' (place) vs 'at 7:30' (time). French speakers sometimes write 'arrive to school' because 'à' can also mean 'to'.",
+        "visualHighlighting": {
+          "incorrect": "arrive to school",
+          "correct": "arrive at school"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-4",
+      "type": "fill-blank-typing",
+      "question": "My uncle ___ (to buy) a new car last month in Yaoundé.",
+      "answer": "bought",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.35,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "verb",
+        "Past Simple",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "The past tense of 'buy' is 'bought' — an irregular verb. Buy → bought → bought. The spelling changes completely, so memorization is essential.",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "Mon oncle a acheté une nouvelle voiture le mois dernier.",
+        "englishStructure": "My uncle bought a new car last month.",
+        "whyDifficult": "French uses a regular pattern (acheter → a acheté) with auxiliary 'avoir'. English 'buy → bought' is completely irregular with no auxiliary in simple past. French speakers may write 'buyed'.",
+        "visualHighlighting": {
+          "incorrect": "My uncle buyed a new car",
+          "correct": "My uncle bought a new car"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-5",
+      "type": "fill-blank-typing",
+      "question": "Ngozi plays ___ piano every evening after dinner.",
+      "answer": "the",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.3,
+      "category": "Article Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "article",
+        "definite article",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In English, we always use 'the' before musical instruments: 'play the piano', 'play the guitar', 'play the drums'. This is a fixed rule.",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "Ngozi joue du piano chaque soir.",
+        "englishStructure": "Ngozi plays the piano every evening.",
+        "whyDifficult": "French uses the partitive article 'du' (jouer du piano), while English requires the definite article 'the' (play the piano). The French 'du' has no direct English equivalent, leading to confusion about which article to use.",
+        "visualHighlighting": {
+          "incorrect": "plays piano",
+          "correct": "plays the piano"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-6",
+      "type": "fill-blank-typing",
+      "question": "The teacher told the students to ___ (to hand) in their homework by Friday.",
+      "answer": "hand",
+      "options": [],
+      "acceptableAnswers": [
+        "turn"
+      ],
+      "difficulty": 0.5,
+      "category": "Phrasal Verbs",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "phrasal verb",
+        "academic",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Hand in' means to submit or give something to someone in authority. 'Turn in' is also acceptable. These phrasal verbs are very common in school and work settings.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "Le professeur a dit aux élèves de remettre leurs devoirs avant vendredi.",
+        "englishStructure": "The teacher told the students to hand in their homework by Friday.",
+        "whyDifficult": "French uses a single verb 'remettre' (to hand back/submit). English phrasal verbs like 'hand in' combine a simple verb with a particle that changes its meaning. French speakers often try to use a direct translation like 'give' instead of the phrasal verb.",
+        "visualHighlighting": {
+          "incorrect": "to give their homework",
+          "correct": "to hand in their homework"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-7",
+      "type": "fill-blank-typing",
+      "question": "We have been living in Douala ___ 2015.",
+      "answer": "since",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.45,
+      "category": "Preposition Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "preposition",
+        "time",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Use 'since' with a specific point in time (2015, Monday, January). Use 'for' with a duration (5 years, 3 months, a long time).",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "Nous vivons à Douala depuis 2015.",
+        "englishStructure": "We have been living in Douala since 2015.",
+        "whyDifficult": "French uses 'depuis' for both 'since' (point in time) and 'for' (duration): 'depuis 2015' and 'depuis 5 ans'. English strictly distinguishes them. French speakers often confuse 'since' and 'for'.",
+        "visualHighlighting": {
+          "incorrect": "living in Douala for 2015",
+          "correct": "living in Douala since 2015"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-8",
+      "type": "fill-blank-typing",
+      "question": "She ___ (to make) a terrible mistake during the meeting in Yaoundé.",
+      "answer": "made",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.4,
+      "category": "Collocations",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "collocation",
+        "verb-noun",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "In English, we say 'make a mistake', not 'do a mistake'. This is a fixed collocation you must memorize. Similarly: make a decision, make an effort, make progress.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "Elle a fait une terrible erreur pendant la réunion.",
+        "englishStructure": "She made a terrible mistake during the meeting.",
+        "whyDifficult": "French uses 'faire' (to do/make) for 'faire une erreur'. Since 'faire' translates to both 'do' and 'make', French speakers often say 'do a mistake' instead of 'make a mistake'. The make/do distinction does not exist in French.",
+        "visualHighlighting": {
+          "incorrect": "She did a terrible mistake",
+          "correct": "She made a terrible mistake"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-9",
+      "type": "fill-blank-typing",
+      "question": "The children were excited ___ going on a trip to Kribi beach.",
+      "answer": "about",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.4,
+      "category": "Preposition Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "preposition",
+        "adjective collocation",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Excited about' is the correct collocation. We use 'about' after 'excited' to introduce the cause of excitement.",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "Les enfants étaient enthousiastes à l'idée d'aller à la plage de Kribi.",
+        "englishStructure": "The children were excited about going on a trip to Kribi beach.",
+        "whyDifficult": "French uses 'enthousiasmé de/à l'idée de' — prepositions 'de' or 'à'. French speakers often write 'excited of' or 'excited to going' instead of 'excited about going'.",
+        "visualHighlighting": {
+          "incorrect": "excited of going",
+          "correct": "excited about going"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-10",
+      "type": "fill-blank-typing",
+      "question": "He ___ (to catch) the bus just in time this morning.",
+      "answer": "caught",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.35,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "verb",
+        "Past Simple",
+        "A2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Catch' is irregular: catch → caught → caught. 'This morning' tells us the action is completed, so we use Past Simple.",
+      "correction": null,
+      "cefrLevel": "A2",
+      "frenchComparison": {
+        "frenchStructure": "Il a attrapé le bus juste à temps ce matin.",
+        "englishStructure": "He caught the bus just in time this morning.",
+        "whyDifficult": "French 'attraper' follows a regular conjugation pattern (a attrapé). English 'catch → caught' is highly irregular. French speakers may write 'catched' by applying the regular -ed ending.",
+        "visualHighlighting": {
+          "incorrect": "He catched the bus",
+          "correct": "He caught the bus"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-11",
+      "type": "fill-blank-typing",
+      "question": "The project manager asked us to ___ up with a creative solution.",
+      "answer": "come",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.55,
+      "category": "Phrasal Verbs",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "phrasal verb",
+        "business",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Come up with' means to think of or produce an idea or solution. It is a three-part phrasal verb commonly used in professional settings.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "Le chef de projet nous a demandé de trouver une solution créative.",
+        "englishStructure": "The project manager asked us to come up with a creative solution.",
+        "whyDifficult": "French uses the simple verb 'trouver' (to find). English uses a three-part phrasal verb 'come up with' whose meaning cannot be guessed from the individual words. French speakers tend to use 'find' instead of this more natural phrasal verb.",
+        "visualHighlighting": {
+          "incorrect": "to find a creative solution",
+          "correct": "to come up with a creative solution"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-12",
+      "type": "fill-blank-typing",
+      "question": "Despite ___ (to work) hard all semester, Fabrice failed the exam.",
+      "answer": "working",
+      "options": [],
+      "acceptableAnswers": [
+        "having worked"
+      ],
+      "difficulty": 0.55,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "gerund",
+        "preposition + -ing",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "After 'despite', we use a gerund (-ing form): 'despite working'. We can also say 'despite having worked'. Never use an infinitive after 'despite'.",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "Malgré avoir travaillé dur tout le semestre, Fabrice a échoué à l'examen.",
+        "englishStructure": "Despite working hard all semester, Fabrice failed the exam.",
+        "whyDifficult": "French uses the infinitive after 'malgré' (malgré avoir travaillé). English requires a gerund after 'despite' (despite working). French speakers often write 'despite to work' following the French infinitive pattern.",
+        "visualHighlighting": {
+          "incorrect": "Despite to work hard",
+          "correct": "Despite working hard"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-13",
+      "type": "fill-blank-typing",
+      "question": "If I ___ (to know) about the ceremony in Bamenda, I would have attended.",
+      "answer": "had known",
+      "options": [],
+      "acceptableAnswers": [
+        "'d known"
+      ],
+      "difficulty": 0.65,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "conditional",
+        "third conditional",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "This is a third conditional (unreal past). The structure is: If + past perfect (had known), ... would have + past participle. It expresses regret about something that didn't happen.",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "Si j'avais su pour la cérémonie à Bamenda, j'y serais allé.",
+        "englishStructure": "If I had known about the ceremony, I would have attended.",
+        "whyDifficult": "French uses plus-que-parfait (si j'avais su) and conditionnel passé (j'y serais allé). While structurally similar, French speakers often simplify to 'If I knew' (second conditional) instead of 'If I had known' (third conditional), mixing up the two conditional forms.",
+        "visualHighlighting": {
+          "incorrect": "If I knew about the ceremony",
+          "correct": "If I had known about the ceremony"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-14",
+      "type": "fill-blank-typing",
+      "question": "Sandrine depends ___ her older sister for school fees.",
+      "answer": "on",
+      "options": [],
+      "acceptableAnswers": [
+        "upon"
+      ],
+      "difficulty": 0.4,
+      "category": "Preposition Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "preposition",
+        "verb collocation",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Depend on' is the correct collocation. 'Depend upon' is also acceptable but more formal. Never say 'depend of'.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "Sandrine dépend de sa grande sœur pour les frais de scolarité.",
+        "englishStructure": "Sandrine depends on her older sister for school fees.",
+        "whyDifficult": "French uses 'dépendre de' (depend of). English uses 'depend on'. The French preposition 'de' typically translates to 'of', so French speakers frequently write 'depend of' instead of 'depend on'.",
+        "visualHighlighting": {
+          "incorrect": "depends of her sister",
+          "correct": "depends on her sister"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-15",
+      "type": "fill-blank-typing",
+      "question": "The government ___ (to build) a new hospital in Douala by the end of next year.",
+      "answer": "will have built",
+      "options": [],
+      "acceptableAnswers": [
+        "will have constructed"
+      ],
+      "difficulty": 0.6,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "verb",
+        "Future Perfect",
+        "B2"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'By the end of next year' signals the future perfect tense: will have + past participle. It describes an action that will be completed before a specific future time.",
+      "correction": null,
+      "cefrLevel": "B2",
+      "frenchComparison": {
+        "frenchStructure": "Le gouvernement aura construit un nouvel hôpital à Douala d'ici la fin de l'année prochaine.",
+        "englishStructure": "The government will have built a new hospital in Douala by the end of next year.",
+        "whyDifficult": "French future anterior (aura construit) is structurally simpler — two words vs. three in English (will have built). French speakers may write 'will build' (simple future) instead of 'will have built' (future perfect), missing the completed-before-deadline meaning.",
+        "visualHighlighting": {
+          "incorrect": "will build a new hospital",
+          "correct": "will have built a new hospital"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-16",
+      "type": "fill-blank-typing",
+      "question": "I need ___ (a/an) umbrella because it looks like rain.",
+      "answer": "an",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.2,
+      "category": "Article Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "article",
+        "indefinite article",
+        "A1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "Use 'an' before words that start with a vowel sound: an umbrella, an apple, an hour. Use 'a' before consonant sounds: a car, a university.",
+      "correction": null,
+      "cefrLevel": "A1",
+      "frenchComparison": {
+        "frenchStructure": "J'ai besoin d'un parapluie.",
+        "englishStructure": "I need an umbrella.",
+        "whyDifficult": "French does not change 'un/une' based on the following sound — the choice depends on gender (un parapluie, une voiture). English 'a/an' depends on the next sound, not gender. French speakers may write 'a umbrella' because they are not used to changing the article based on the following sound.",
+        "visualHighlighting": {
+          "incorrect": "a umbrella",
+          "correct": "an umbrella"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-17",
+      "type": "fill-blank-typing",
+      "question": "The CEO insisted ___ reviewing every contract before signing.",
+      "answer": "on",
+      "options": [],
+      "acceptableAnswers": [
+        "upon"
+      ],
+      "difficulty": 0.6,
+      "category": "Preposition Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "preposition",
+        "verb + gerund",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Insist on' + gerund (-ing) is the correct pattern. 'Insist upon' is also correct but more formal. You can also say 'insist that + subject + verb'.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "Le PDG a insisté pour examiner chaque contrat avant de signer.",
+        "englishStructure": "The CEO insisted on reviewing every contract before signing.",
+        "whyDifficult": "French uses 'insister pour + infinitif'. English uses 'insist on + gerund'. French speakers often write 'insisted to review' (following French infinitive pattern) instead of 'insisted on reviewing'.",
+        "visualHighlighting": {
+          "incorrect": "insisted to review",
+          "correct": "insisted on reviewing"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-18",
+      "type": "fill-blank-typing",
+      "question": "You had better ___ (to study) for the BEPC exam if you want to pass.",
+      "answer": "study",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.5,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "modal expression",
+        "bare infinitive",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Had better' is followed by the bare infinitive (without 'to'): had better study, had better leave, had better hurry. It expresses strong advice or warning.",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "Tu ferais mieux d'étudier pour le BEPC si tu veux réussir.",
+        "englishStructure": "You had better study for the BEPC exam if you want to pass.",
+        "whyDifficult": "French uses 'ferais mieux de + infinitif' where 'de' precedes the verb. English 'had better' takes a bare infinitive (no 'to'). French speakers often write 'had better to study' adding an unnecessary 'to'.",
+        "visualHighlighting": {
+          "incorrect": "had better to study",
+          "correct": "had better study"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-19",
+      "type": "fill-blank-typing",
+      "question": "Not only ___ she finish the report, but she also prepared the presentation.",
+      "answer": "did",
+      "options": [],
+      "acceptableAnswers": [],
+      "difficulty": 0.75,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "inversion",
+        "emphasis",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "When 'Not only' starts a sentence, we must invert the subject and auxiliary verb: 'Not only did she finish...' This is called subject-auxiliary inversion for emphasis.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "Non seulement elle a terminé le rapport, mais elle a aussi préparé la présentation.",
+        "englishStructure": "Not only did she finish the report, but she also prepared the presentation.",
+        "whyDifficult": "French does not require inversion after 'non seulement' — the subject stays before the verb. English requires subject-auxiliary inversion after negative adverbs at the start of a sentence. French speakers write 'Not only she finished' without the inversion.",
+        "visualHighlighting": {
+          "incorrect": "Not only she finished the report",
+          "correct": "Not only did she finish the report"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-20",
+      "type": "fill-blank-typing",
+      "question": "The information you provided ___ (to be) very helpful for our research.",
+      "answer": "was",
+      "options": [],
+      "acceptableAnswers": [
+        "has been"
+      ],
+      "difficulty": 0.7,
+      "category": "Article Usage",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "uncountable noun",
+        "subject-verb agreement",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Information' is an uncountable noun in English and takes a singular verb: 'the information was'. Never say 'informations' or 'the information were'. For plural, say 'pieces of information'.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "Les informations que vous avez fournies étaient très utiles pour notre recherche.",
+        "englishStructure": "The information you provided was very helpful for our research.",
+        "whyDifficult": "French 'informations' is countable and commonly plural (les informations étaient). English 'information' is always uncountable and singular. French speakers write 'the informations were' applying French plural rules to an English uncountable noun.",
+        "visualHighlighting": {
+          "incorrect": "The informations were very helpful",
+          "correct": "The information was very helpful"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-21",
+      "type": "fill-blank-typing",
+      "question": "Had the rains not stopped, the Bamenda-Douala road ___ (to be) impassable.",
+      "answer": "would have been",
+      "options": [],
+      "acceptableAnswers": [
+        "would've been"
+      ],
+      "difficulty": 0.8,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "conditional",
+        "inverted conditional",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "This is an inverted third conditional: 'Had + subject + past participle' replaces 'If + subject + had + past participle'. The main clause uses 'would have + past participle'. It is a formal, literary structure.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "Si les pluies ne s'étaient pas arrêtées, la route Bamenda-Douala aurait été impraticable.",
+        "englishStructure": "Had the rains not stopped, the road would have been impassable.",
+        "whyDifficult": "French does not have inverted conditionals — 'si' is always present. The English inverted form (Had ... not stopped) is a formal register shift that French speakers rarely encounter. They may also struggle with the three-part verb 'would have been'.",
+        "visualHighlighting": {
+          "incorrect": "the road would be impassable",
+          "correct": "the road would have been impassable"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-22",
+      "type": "fill-blank-typing",
+      "question": "Kofi can't help ___ (to laugh) whenever his friend tells that joke.",
+      "answer": "laughing",
+      "options": [],
+      "acceptableAnswers": [
+        "but laugh"
+      ],
+      "difficulty": 0.55,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "gerund",
+        "idiomatic expression",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Can't help' is followed by a gerund (-ing): 'can't help laughing' means 'cannot stop yourself from laughing'. The alternative 'can't help but laugh' (bare infinitive) is also correct.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "Kofi ne peut pas s'empêcher de rire quand son ami raconte cette blague.",
+        "englishStructure": "Kofi can't help laughing whenever his friend tells that joke.",
+        "whyDifficult": "French uses 's'empêcher de + infinitif'. English uses 'can't help + gerund'. French speakers often write 'can't help to laugh' following the French 'de + infinitive' pattern instead of using the gerund.",
+        "visualHighlighting": {
+          "incorrect": "can't help to laugh",
+          "correct": "can't help laughing"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-23",
+      "type": "fill-blank-typing",
+      "question": "Rarely ___ such a talented musician perform at the Yaoundé Cultural Centre.",
+      "answer": "does one see",
+      "options": [],
+      "acceptableAnswers": [
+        "do we see",
+        "does one hear",
+        "do you see"
+      ],
+      "difficulty": 0.85,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "inversion",
+        "negative adverb",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "When 'rarely' begins a sentence, subject-auxiliary inversion is required: 'Rarely does one see...' This formal structure adds emphasis and is common in written and academic English.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "Rarement voit-on un musicien aussi talentueux se produire au Centre Culturel de Yaoundé.",
+        "englishStructure": "Rarely does one see such a talented musician perform at the Yaoundé Cultural Centre.",
+        "whyDifficult": "While French also has inversion after 'rarement' (voit-on), the English auxiliary 'does' must be inserted: 'Rarely does one see'. French speakers may omit the auxiliary and write 'Rarely one sees' or struggle with which auxiliary to use.",
+        "visualHighlighting": {
+          "incorrect": "Rarely one sees such a talented musician",
+          "correct": "Rarely does one see such a talented musician"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-24",
+      "type": "fill-blank-typing",
+      "question": "She ___ (to look) forward to starting her new job in Douala.",
+      "answer": "is looking",
+      "options": [],
+      "acceptableAnswers": [
+        "looks",
+        "has been looking"
+      ],
+      "difficulty": 0.5,
+      "category": "Phrasal Verbs",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "phrasal verb",
+        "gerund after to",
+        "B1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "'Look forward to' is a phrasal verb where 'to' is a preposition, not part of an infinitive. It must be followed by a gerund: 'look forward to starting' (not 'to start').",
+      "correction": null,
+      "cefrLevel": "B1",
+      "frenchComparison": {
+        "frenchStructure": "Elle a hâte de commencer son nouveau travail à Douala.",
+        "englishStructure": "She is looking forward to starting her new job in Douala.",
+        "whyDifficult": "French uses 'avoir hâte de + infinitif'. In English, 'look forward to' requires a gerund because 'to' here is a preposition. French speakers write 'look forward to start' treating 'to' as the infinitive marker, which is the most common error with this phrasal verb.",
+        "visualHighlighting": {
+          "incorrect": "looking forward to start",
+          "correct": "looking forward to starting"
+        }
+      }
+    },
+    {
+      "id": "fill-blank-25",
+      "type": "fill-blank-typing",
+      "question": "Under no circumstances ___ employees allowed to leave the Douala factory without authorization.",
+      "answer": "are",
+      "options": [],
+      "acceptableAnswers": [
+        "were"
+      ],
+      "difficulty": 0.8,
+      "category": "Verb Conjugation",
+      "moduleId": "fill-blank-typing",
+      "tags": [
+        "inversion",
+        "negative adverb",
+        "C1"
+      ],
+      "sourceLanguage": "en",
+      "targetLanguage": "fr",
+      "feedback": "When 'under no circumstances' starts a sentence, subject-auxiliary inversion is required: 'Under no circumstances are employees allowed...' This formal structure emphasizes the prohibition.",
+      "correction": null,
+      "cefrLevel": "C1",
+      "frenchComparison": {
+        "frenchStructure": "En aucun cas les employés ne sont autorisés à quitter l'usine de Douala sans autorisation.",
+        "englishStructure": "Under no circumstances are employees allowed to leave the factory without authorization.",
+        "whyDifficult": "French places the subject before the verb after 'en aucun cas' (les employés ne sont). English inverts the auxiliary and subject (are employees). French speakers tend to write 'Under no circumstances employees are allowed' keeping normal word order.",
+        "visualHighlighting": {
+          "incorrect": "Under no circumstances employees are allowed",
+          "correct": "Under no circumstances are employees allowed"
+        }
+      }
     }
   ],
   "metadata": {
-    "totalItems": 509,
+    "totalItems": 559,
     "categories": [
       "agreement",
       "articles",
@@ -14911,7 +16653,9 @@
     ],
     "activityTypes": [
       "error_correction",
-      "multiple-choice"
+      "multiple-choice",
+      "sentence-reorder",
+      "fill-blank-typing"
     ],
     "modules": [
       "tense-form",
@@ -14925,7 +16669,9 @@
       "auxiliaries",
       "c1-conditionals",
       "c1-passive-voice",
-      "c1-reported-speech"
+      "c1-reported-speech",
+      "sentence-reorder",
+      "fill-blank-typing"
     ],
     "exportDate": "2026-03-06T21:15:37.206Z",
     "appName": "OffGrid - Francophone English Learning"

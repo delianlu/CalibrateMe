@@ -2,7 +2,7 @@
 // Quiz Feature Types
 // =============================================================================
 
-export type QuizItemType = 'vocabulary' | 'multiple-choice' | 'error_correction';
+export type QuizItemType = 'vocabulary' | 'multiple-choice' | 'error_correction' | 'sentence-reorder' | 'fill-blank-typing';
 
 export interface FrenchComparison {
   frenchStructure: string;
@@ -63,6 +63,7 @@ export interface QuizItem {
   frenchComparison?: FrenchComparison;
   scenario?: ScenarioContext;
   falseCognate?: FalseCognateInfo;
+  acceptableAnswers?: string[];
 }
 
 export interface QuizResponse {

@@ -6,7 +6,7 @@ import offgridData from '../../offgrid-practice-export.json';
 
 interface OffGridActivity {
   id: string;
-  type: 'multiple-choice' | 'error_correction';
+  type: 'multiple-choice' | 'error_correction' | 'sentence-reorder' | 'fill-blank-typing';
   question: string;
   answer: string;
   options: string[];
@@ -39,6 +39,7 @@ interface OffGridActivity {
     commonMistake: string;
     memoryTrick: string;
   };
+  acceptableAnswers?: string[];
 }
 
 function adaptActivity(activity: OffGridActivity): QuizItem {
@@ -62,6 +63,7 @@ function adaptActivity(activity: OffGridActivity): QuizItem {
     frenchComparison: activity.frenchComparison,
     scenario: activity.scenario,
     falseCognate: activity.falseCognate,
+    acceptableAnswers: activity.acceptableAnswers,
   };
 }
 
@@ -87,4 +89,6 @@ export const OFFGRID_MODULES = [
   { id: 'conditionals', name: 'Conditionals', count: 30 },
   { id: 'passive-voice', name: 'Passive Voice', count: 25 },
   { id: 'reported-speech', name: 'Reported Speech', count: 20 },
+  { id: 'sentence-reorder', name: 'Sentence Reorder', count: 25 },
+  { id: 'fill-blank-typing', name: 'Fill in the Blank', count: 25 },
 ] as const;
