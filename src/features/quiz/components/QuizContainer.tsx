@@ -15,6 +15,7 @@ import OnboardingCard, { hasSeenOnboarding } from './OnboardingCard';
 import ScaffoldPromptCard from '../../scaffolding/components/ScaffoldPromptCard';
 import ReflectivePrompt from './ReflectivePrompt';
 import GrammarExplanation from './GrammarExplanation';
+import VocabularyExplanation from './VocabularyExplanation';
 import {
   createScaffoldState,
   processResponse,
@@ -516,6 +517,16 @@ export default function QuizContainer({ vocabulary, grammarActivities, onSession
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                {/* AI Vocabulary Explanation for incorrect answers */}
+                {feedbackResult === false && currentItem.word && currentItem.translation && (
+                  <VocabularyExplanation
+                    word={currentItem.word}
+                    translation={currentItem.translation}
+                    userConfidence={confidence}
+                    tags={currentItem.tags}
+                  />
+                )}
 
                 {/* Scaffold prompt (after-answer timing) */}
                 {scaffold.activePrompt &&
