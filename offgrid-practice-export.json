@@ -9937,7 +9937,7 @@
     },
     {
       "id": "c1-cond-5",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'If I would have studied at ENSET Bambili, I would have become a technical teacher.'",
       "answer": "If I had studied at ENSET Bambili, I would have become a technical teacher.",
       "options": [],
@@ -9948,7 +9948,7 @@
         "grammar",
         "conditionals",
         "third conditional",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10026,7 +10026,7 @@
     },
     {
       "id": "c1-cond-8",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'If the Indomitable Lions would win the AFCON, the whole country will celebrate.'",
       "answer": "If the Indomitable Lions won/were to win the AFCON, the whole country would celebrate.",
       "options": [],
@@ -10037,7 +10037,7 @@
         "grammar",
         "conditionals",
         "second conditional",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10148,7 +10148,7 @@
     },
     {
       "id": "c1-cond-12",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'Supposing the electricity cut off during the exam, what will we do?'",
       "answer": "Supposing the electricity cut off during the exam, what would we do?",
       "options": [],
@@ -10159,7 +10159,7 @@
         "grammar",
         "conditionals",
         "supposing",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10270,7 +10270,7 @@
     },
     {
       "id": "c1-cond-16",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'Had I knew about the traffic jam on the Douala-Yaoundé highway, I would have left earlier.'",
       "answer": "Had I known about the traffic jam on the Douala-Yaoundé highway, I would have left earlier.",
       "options": [],
@@ -10281,7 +10281,7 @@
         "grammar",
         "conditionals",
         "inverted conditional",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10390,7 +10390,7 @@
     },
     {
       "id": "c1-cond-20",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'Unless you will not submit your FSLC results, you cannot register for the entrance exam.'",
       "answer": "Unless you submit your FSLC results, you cannot register for the entrance exam.",
       "options": [],
@@ -10401,7 +10401,7 @@
         "grammar",
         "conditionals",
         "unless",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10510,7 +10510,7 @@
     },
     {
       "id": "c1-pass-4",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'The suspect is believed to escaped from the Kondengui prison last night.'",
       "answer": "The suspect is believed to have escaped from the Kondengui prison last night.",
       "options": [],
@@ -10521,7 +10521,7 @@
         "grammar",
         "passive voice",
         "reporting passive",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10630,7 +10630,7 @@
     },
     {
       "id": "c1-pass-8",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'The market in Mokolo is been renovated since January.'",
       "answer": "The market in Mokolo has been being renovated since January.",
       "options": [],
@@ -10641,7 +10641,7 @@
         "grammar",
         "passive voice",
         "present perfect continuous passive",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10751,7 +10751,7 @@
     },
     {
       "id": "c1-pass-12",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'The new bilingual school in Bertoua was building in 2019.'",
       "answer": "The new bilingual school in Bertoua was built in 2019.",
       "options": [],
@@ -10762,7 +10762,7 @@
         "grammar",
         "passive voice",
         "past simple passive",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10871,7 +10871,7 @@
     },
     {
       "id": "c1-pass-16",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'The children were been taken care of by their grandmother in Bafoussam.'",
       "answer": "The children were being taken care of by their grandmother in Bafoussam.",
       "options": [],
@@ -10882,7 +10882,7 @@
         "grammar",
         "passive voice",
         "past continuous passive",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -10991,7 +10991,7 @@
     },
     {
       "id": "c1-pass-20",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'The ceremony was attended with over 500 guests from across Central Africa.'",
       "answer": "The ceremony was attended by over 500 guests from across Central Africa.",
       "options": [],
@@ -11003,7 +11003,7 @@
         "passive voice",
         "agent",
         "preposition",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -11081,7 +11081,7 @@
     },
     {
       "id": "c1-rep-3",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'She asked me where do I come from in Cameroon.'",
       "answer": "She asked me where I came from in Cameroon.",
       "options": [],
@@ -11093,7 +11093,7 @@
         "reported speech",
         "reported question",
         "word order",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -11203,7 +11203,7 @@
     },
     {
       "id": "c1-rep-7",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'The manager warned the employees to not arrive late again.'",
       "answer": "The manager warned the employees not to arrive late again.",
       "options": [],
@@ -11214,7 +11214,7 @@
         "grammar",
         "reported speech",
         "negative infinitive",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -11324,7 +11324,7 @@
     },
     {
       "id": "c1-rep-11",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'He asked me that if I had ever visited the Waza National Park.'",
       "answer": "He asked me if I had ever visited the Waza National Park.",
       "options": [],
@@ -11335,7 +11335,7 @@
         "grammar",
         "reported speech",
         "reported question",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -11446,7 +11446,7 @@
     },
     {
       "id": "c1-rep-15",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'The director told to the staff that the office would close early on Friday.'",
       "answer": "The director told the staff that the office would close early on Friday.",
       "options": [],
@@ -11457,7 +11457,7 @@
         "grammar",
         "reported speech",
         "tell vs say",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
@@ -11537,7 +11537,7 @@
     },
     {
       "id": "c1-rep-18",
-      "type": "error-correction",
+      "type": "error_correction",
       "question": "Find and correct the error: 'She said me that she was planning to open a boutique in Douala.'",
       "answer": "She told me that she was planning to open a boutique in Douala.",
       "options": [],
@@ -11548,7 +11548,7 @@
         "grammar",
         "reported speech",
         "say vs tell",
-        "error-correction",
+        "error_correction",
         "C1"
       ],
       "sourceLanguage": "en",
