@@ -275,6 +275,7 @@ export interface SessionData {
   type1_count: number;
   type2_count: number;
   scaffolds_delivered: number;
+  beta_star_end?: number;
   mean_K_star: number;
   mean_K_hat: number;
   ece: number;

@@ -337,6 +337,7 @@ export function runSimulation(
       type1_count: type1Count,
       type2_count: type2Count,
       scaffolds_delivered: scaffoldsDelivered,
+      beta_star_end: learner.true_state.beta_star,
       mean_K_star: meanKStar,
       mean_K_hat: meanKHat,
       ece: metrics.ece,
