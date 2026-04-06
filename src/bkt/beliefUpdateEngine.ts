@@ -118,6 +118,9 @@ export function updateBelief(
     beta_hat: current_belief.beta_hat, // Updated separately
     confidence_interval: Math.sqrt(variance) * 1.96,
     last_updated: new Date(),
+    ...(current_belief.domain_calibration && {
+      domain_calibration: current_belief.domain_calibration,
+    }),
   };
 }
 

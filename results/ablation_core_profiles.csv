@@ -1,325 +1,325 @@
 profile,condition,metric,mean,sd,ci95_lower,ci95_upper,n,cohens_d_vs_sm2,effect_interpretation
-Low-Over,Full CalibrateMe,retention_7day,0.220756,0.000525,0.220560,0.220952,30,2.4599,large
-Low-Over,Full CalibrateMe,retention_1day,0.251051,0.001290,0.250569,0.251533,30,N/A,N/A
+Low-Over,Full CalibrateMe,retention_7day,0.220752,0.000524,0.220557,0.220948,30,2.3400,large
+Low-Over,Full CalibrateMe,retention_1day,0.251042,0.001288,0.250561,0.251523,30,N/A,N/A
 Low-Over,Full CalibrateMe,retention_30day,0.200659,0.000017,0.200653,0.200665,30,N/A,N/A
-Low-Over,Full CalibrateMe,final_ece,0.180231,0.077138,0.151422,0.209040,30,0.8202,large
+Low-Over,Full CalibrateMe,final_ece,0.180014,0.076539,0.151428,0.208599,30,0.6329,medium
 Low-Over,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Over,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Over,No Dual-Process,retention_7day,0.220718,0.000499,0.220532,0.220905,30,2.4430,large
-Low-Over,No Dual-Process,retention_1day,0.250959,0.001226,0.250501,0.251417,30,N/A,N/A
+Low-Over,No Dual-Process,retention_7day,0.220724,0.000495,0.220539,0.220909,30,2.3427,large
+Low-Over,No Dual-Process,retention_1day,0.250974,0.001218,0.250519,0.251428,30,N/A,N/A
 Low-Over,No Dual-Process,retention_30day,0.200658,0.000016,0.200652,0.200664,30,N/A,N/A
-Low-Over,No Dual-Process,final_ece,0.177708,0.074121,0.150026,0.205390,30,0.8680,large
+Low-Over,No Dual-Process,final_ece,0.176000,0.073476,0.148559,0.203441,30,0.6985,medium
 Low-Over,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Over,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Over,No Scaffolding,retention_7day,0.220756,0.000523,0.220560,0.220951,30,2.4623,large
-Low-Over,No Scaffolding,retention_1day,0.251051,0.001287,0.250570,0.251531,30,N/A,N/A
+Low-Over,No Scaffolding,retention_7day,0.220755,0.000523,0.220560,0.220951,30,2.3464,large
+Low-Over,No Scaffolding,retention_1day,0.251050,0.001287,0.250569,0.251531,30,N/A,N/A
 Low-Over,No Scaffolding,retention_30day,0.200659,0.000017,0.200653,0.200665,30,N/A,N/A
-Low-Over,No Scaffolding,final_ece,0.185145,0.070227,0.158917,0.211373,30,0.7910,medium
+Low-Over,No Scaffolding,final_ece,0.186313,0.070342,0.160042,0.212583,30,0.5737,medium
 Low-Over,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Over,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Over,Calibration Only,retention_7day,0.220757,0.000521,0.220563,0.220952,30,2.4688,large
-Low-Over,Calibration Only,retention_1day,0.251055,0.001282,0.250576,0.251534,30,N/A,N/A
+Low-Over,Calibration Only,retention_7day,0.220757,0.000521,0.220563,0.220952,30,2.3539,large
+Low-Over,Calibration Only,retention_1day,0.251055,0.001281,0.250576,0.251533,30,N/A,N/A
 Low-Over,Calibration Only,retention_30day,0.200659,0.000017,0.200653,0.200665,30,N/A,N/A
-Low-Over,Calibration Only,final_ece,0.184668,0.069990,0.158529,0.210807,30,0.7984,medium
+Low-Over,Calibration Only,final_ece,0.183265,0.070842,0.156808,0.209723,30,0.6128,medium
 Low-Over,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Over,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Over,SM-2 Baseline,retention_7day,0.219276,0.000670,0.219026,0.219526,30,N/A,N/A
-Low-Over,SM-2 Baseline,retention_1day,0.247411,0.001648,0.246796,0.248026,30,N/A,N/A
-Low-Over,SM-2 Baseline,retention_30day,0.200612,0.000021,0.200604,0.200620,30,N/A,N/A
-Low-Over,SM-2 Baseline,final_ece,0.245258,0.081360,0.214872,0.275644,30,N/A,N/A
+Low-Over,SM-2 Baseline,retention_7day,0.219390,0.000635,0.219152,0.219627,30,N/A,N/A
+Low-Over,SM-2 Baseline,retention_1day,0.247691,0.001563,0.247107,0.248275,30,N/A,N/A
+Low-Over,SM-2 Baseline,retention_30day,0.200616,0.000020,0.200608,0.200623,30,N/A,N/A
+Low-Over,SM-2 Baseline,final_ece,0.228882,0.077871,0.199799,0.257964,30,N/A,N/A
 Low-Over,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Over,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Over,BKT-Only,retention_7day,0.220754,0.000517,0.220561,0.220947,30,2.4711,large
-Low-Over,BKT-Only,retention_1day,0.251047,0.001271,0.250572,0.251522,30,N/A,N/A
-Low-Over,BKT-Only,retention_30day,0.200659,0.000016,0.200653,0.200665,30,N/A,N/A
-Low-Over,BKT-Only,final_ece,0.175427,0.069705,0.149394,0.201460,30,0.9218,large
+Low-Over,BKT-Only,retention_7day,0.220754,0.000521,0.220560,0.220949,30,2.3491,large
+Low-Over,BKT-Only,retention_1day,0.251047,0.001281,0.250569,0.251525,30,N/A,N/A
+Low-Over,BKT-Only,retention_30day,0.200659,0.000017,0.200653,0.200665,30,N/A,N/A
+Low-Over,BKT-Only,final_ece,0.175343,0.066656,0.150449,0.200238,30,0.7387,medium
 Low-Over,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Over,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Under,Full CalibrateMe,retention_7day,0.220729,0.000501,0.220542,0.220917,30,3.7114,large
-Low-Under,Full CalibrateMe,retention_1day,0.250986,0.001233,0.250526,0.251447,30,N/A,N/A
-Low-Under,Full CalibrateMe,retention_30day,0.200658,0.000016,0.200652,0.200664,30,N/A,N/A
-Low-Under,Full CalibrateMe,final_ece,0.197951,0.091561,0.163755,0.232146,30,0.9824,large
+Low-Under,Full CalibrateMe,retention_7day,0.220759,0.000507,0.220570,0.220948,30,3.8688,large
+Low-Under,Full CalibrateMe,retention_1day,0.251058,0.001246,0.250593,0.251524,30,N/A,N/A
+Low-Under,Full CalibrateMe,retention_30day,0.200659,0.000016,0.200653,0.200665,30,N/A,N/A
+Low-Under,Full CalibrateMe,final_ece,0.201401,0.089109,0.168121,0.234680,30,1.0151,large
 Low-Under,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Under,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Under,No Dual-Process,retention_7day,0.220652,0.000519,0.220458,0.220846,30,3.5436,large
-Low-Under,No Dual-Process,retention_1day,0.250795,0.001278,0.250318,0.251272,30,N/A,N/A
-Low-Under,No Dual-Process,retention_30day,0.200656,0.000016,0.200649,0.200662,30,N/A,N/A
-Low-Under,No Dual-Process,final_ece,0.197740,0.091205,0.163677,0.231802,30,0.9860,large
+Low-Under,No Dual-Process,retention_7day,0.220630,0.000514,0.220438,0.220821,30,3.6375,large
+Low-Under,No Dual-Process,retention_1day,0.250741,0.001263,0.250269,0.251212,30,N/A,N/A
+Low-Under,No Dual-Process,retention_30day,0.200655,0.000016,0.200649,0.200661,30,N/A,N/A
+Low-Under,No Dual-Process,final_ece,0.201495,0.092217,0.167055,0.235936,30,1.0000,large
 Low-Under,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Under,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Under,No Scaffolding,retention_7day,0.220745,0.000485,0.220564,0.220926,30,3.7768,large
-Low-Under,No Scaffolding,retention_1day,0.251024,0.001192,0.250578,0.251469,30,N/A,N/A
-Low-Under,No Scaffolding,retention_30day,0.200659,0.000015,0.200653,0.200664,30,N/A,N/A
-Low-Under,No Scaffolding,final_ece,0.244057,0.097046,0.207813,0.280301,30,0.5137,medium
+Low-Under,No Scaffolding,retention_7day,0.220733,0.000503,0.220545,0.220921,30,3.8353,large
+Low-Under,No Scaffolding,retention_1day,0.250996,0.001238,0.250534,0.251458,30,N/A,N/A
+Low-Under,No Scaffolding,retention_30day,0.200658,0.000016,0.200652,0.200664,30,N/A,N/A
+Low-Under,No Scaffolding,final_ece,0.239455,0.091853,0.205150,0.273759,30,0.6244,medium
 Low-Under,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Under,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Under,Calibration Only,retention_7day,0.220687,0.000546,0.220483,0.220891,30,3.5363,large
-Low-Under,Calibration Only,retention_1day,0.250882,0.001344,0.250380,0.251384,30,N/A,N/A
-Low-Under,Calibration Only,retention_30day,0.200657,0.000017,0.200650,0.200663,30,N/A,N/A
-Low-Under,Calibration Only,final_ece,0.239648,0.094999,0.204169,0.275128,30,0.5614,medium
+Low-Under,Calibration Only,retention_7day,0.220660,0.000529,0.220463,0.220858,30,3.6479,large
+Low-Under,Calibration Only,retention_1day,0.250816,0.001302,0.250330,0.251302,30,N/A,N/A
+Low-Under,Calibration Only,retention_30day,0.200656,0.000017,0.200650,0.200662,30,N/A,N/A
+Low-Under,Calibration Only,final_ece,0.242238,0.093137,0.207454,0.277022,30,0.5932,medium
 Low-Under,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Under,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Under,SM-2 Baseline,retention_7day,0.218432,0.000718,0.218164,0.218700,30,N/A,N/A
-Low-Under,SM-2 Baseline,retention_1day,0.245335,0.001765,0.244676,0.245994,30,N/A,N/A
-Low-Under,SM-2 Baseline,retention_30day,0.200585,0.000023,0.200577,0.200594,30,N/A,N/A
-Low-Under,SM-2 Baseline,final_ece,0.297304,0.109876,0.256268,0.338340,30,N/A,N/A
+Low-Under,SM-2 Baseline,retention_7day,0.218422,0.000688,0.218165,0.218679,30,N/A,N/A
+Low-Under,SM-2 Baseline,retention_1day,0.245311,0.001692,0.244679,0.245942,30,N/A,N/A
+Low-Under,SM-2 Baseline,retention_30day,0.200585,0.000022,0.200577,0.200593,30,N/A,N/A
+Low-Under,SM-2 Baseline,final_ece,0.302275,0.108674,0.261688,0.342862,30,N/A,N/A
 Low-Under,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Under,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Under,BKT-Only,retention_7day,0.220747,0.000505,0.220558,0.220936,30,3.7305,large
-Low-Under,BKT-Only,retention_1day,0.251029,0.001242,0.250565,0.251493,30,N/A,N/A
-Low-Under,BKT-Only,retention_30day,0.200659,0.000016,0.200653,0.200665,30,N/A,N/A
-Low-Under,BKT-Only,final_ece,0.235327,0.094457,0.200049,0.270604,30,0.6049,medium
+Low-Under,BKT-Only,retention_7day,0.220755,0.000523,0.220560,0.220951,30,3.8193,large
+Low-Under,BKT-Only,retention_1day,0.251050,0.001286,0.250570,0.251530,30,N/A,N/A
+Low-Under,BKT-Only,retention_30day,0.200659,0.000017,0.200653,0.200665,30,N/A,N/A
+Low-Under,BKT-Only,final_ece,0.237068,0.094871,0.201636,0.272500,30,0.6392,medium
 Low-Under,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Under,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Well,Full CalibrateMe,retention_7day,0.220747,0.000516,0.220554,0.220939,30,3.3426,large
-Low-Well,Full CalibrateMe,retention_1day,0.251028,0.001268,0.250555,0.251502,30,N/A,N/A
-Low-Well,Full CalibrateMe,retention_30day,0.200659,0.000016,0.200653,0.200665,30,N/A,N/A
-Low-Well,Full CalibrateMe,final_ece,0.201408,0.087965,0.168555,0.234261,30,0.1467,negligible
+Low-Well,Full CalibrateMe,retention_7day,0.220750,0.000521,0.220555,0.220945,30,2.9015,large
+Low-Well,Full CalibrateMe,retention_1day,0.251037,0.001282,0.250558,0.251515,30,N/A,N/A
+Low-Well,Full CalibrateMe,retention_30day,0.200659,0.000017,0.200653,0.200665,30,N/A,N/A
+Low-Well,Full CalibrateMe,final_ece,0.204155,0.087956,0.171305,0.237004,30,0.0040,negligible
 Low-Well,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Well,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Well,No Dual-Process,retention_7day,0.220642,0.000483,0.220461,0.220822,30,3.2454,large
-Low-Well,No Dual-Process,retention_1day,0.250770,0.001187,0.250327,0.251213,30,N/A,N/A
-Low-Well,No Dual-Process,retention_30day,0.200655,0.000015,0.200650,0.200661,30,N/A,N/A
-Low-Well,No Dual-Process,final_ece,0.202455,0.082310,0.171714,0.233196,30,0.1391,negligible
+Low-Well,No Dual-Process,retention_7day,0.220625,0.000483,0.220444,0.220805,30,2.7734,large
+Low-Well,No Dual-Process,retention_1day,0.250728,0.001187,0.250285,0.251172,30,N/A,N/A
+Low-Well,No Dual-Process,retention_30day,0.200655,0.000015,0.200649,0.200660,30,N/A,N/A
+Low-Well,No Dual-Process,final_ece,0.202326,0.081740,0.171798,0.232854,30,0.0258,negligible
 Low-Well,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Well,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Well,No Scaffolding,retention_7day,0.220735,0.000511,0.220545,0.220926,30,3.3344,large
-Low-Well,No Scaffolding,retention_1day,0.251001,0.001257,0.250531,0.251471,30,N/A,N/A
-Low-Well,No Scaffolding,retention_30day,0.200658,0.000016,0.200652,0.200664,30,N/A,N/A
-Low-Well,No Scaffolding,final_ece,0.198070,0.089730,0.164559,0.231582,30,0.1838,negligible
+Low-Well,No Scaffolding,retention_7day,0.220751,0.000528,0.220554,0.220948,30,2.8916,large
+Low-Well,No Scaffolding,retention_1day,0.251040,0.001299,0.250555,0.251525,30,N/A,N/A
+Low-Well,No Scaffolding,retention_30day,0.200659,0.000017,0.200653,0.200665,30,N/A,N/A
+Low-Well,No Scaffolding,final_ece,0.203061,0.086352,0.170810,0.235311,30,0.0167,negligible
 Low-Well,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Well,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Well,Calibration Only,retention_7day,0.220628,0.000499,0.220441,0.220814,30,3.1930,large
-Low-Well,Calibration Only,retention_1day,0.250736,0.001227,0.250277,0.251194,30,N/A,N/A
-Low-Well,Calibration Only,retention_30day,0.200655,0.000016,0.200649,0.200661,30,N/A,N/A
-Low-Well,Calibration Only,final_ece,0.196738,0.083515,0.165547,0.227929,30,0.2068,small
+Low-Well,Calibration Only,retention_7day,0.220644,0.000474,0.220467,0.220821,30,2.8175,large
+Low-Well,Calibration Only,retention_1day,0.250776,0.001167,0.250340,0.251212,30,N/A,N/A
+Low-Well,Calibration Only,retention_30day,0.200655,0.000015,0.200650,0.200661,30,N/A,N/A
+Low-Well,Calibration Only,final_ece,0.205589,0.080142,0.175658,0.235519,30,-0.0129,negligible
 Low-Well,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Well,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Well,SM-2 Baseline,retention_7day,0.218545,0.000776,0.218255,0.218834,30,N/A,N/A
-Low-Well,SM-2 Baseline,retention_1day,0.245612,0.001909,0.244900,0.246325,30,N/A,N/A
-Low-Well,SM-2 Baseline,retention_30day,0.200589,0.000025,0.200580,0.200598,30,N/A,N/A
-Low-Well,SM-2 Baseline,final_ece,0.213951,0.082973,0.182962,0.244939,30,N/A,N/A
+Low-Well,SM-2 Baseline,retention_7day,0.218864,0.000757,0.218581,0.219147,30,N/A,N/A
+Low-Well,SM-2 Baseline,retention_1day,0.246398,0.001862,0.245703,0.247093,30,N/A,N/A
+Low-Well,SM-2 Baseline,retention_30day,0.200599,0.000024,0.200590,0.200608,30,N/A,N/A
+Low-Well,SM-2 Baseline,final_ece,0.204508,0.087134,0.171966,0.237051,30,N/A,N/A
 Low-Well,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Well,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Low-Well,BKT-Only,retention_7day,0.220765,0.000510,0.220575,0.220956,30,3.3828,large
-Low-Well,BKT-Only,retention_1day,0.251074,0.001254,0.250606,0.251543,30,N/A,N/A
+Low-Well,BKT-Only,retention_7day,0.220753,0.000505,0.220564,0.220941,30,2.9360,large
+Low-Well,BKT-Only,retention_1day,0.251044,0.001241,0.250580,0.251508,30,N/A,N/A
 Low-Well,BKT-Only,retention_30day,0.200659,0.000016,0.200653,0.200665,30,N/A,N/A
-Low-Well,BKT-Only,final_ece,0.205620,0.089691,0.172123,0.239118,30,0.0964,negligible
+Low-Well,BKT-Only,final_ece,0.200026,0.091328,0.165917,0.234134,30,0.0502,negligible
 Low-Well,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Low-Well,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Over,Full CalibrateMe,retention_7day,0.278597,0.001839,0.277910,0.279283,30,4.1043,large
-Med-Over,Full CalibrateMe,retention_1day,0.343213,0.003350,0.341961,0.344464,30,N/A,N/A
-Med-Over,Full CalibrateMe,retention_30day,0.207880,0.000184,0.207811,0.207949,30,N/A,N/A
-Med-Over,Full CalibrateMe,final_ece,0.196050,0.073534,0.168587,0.223513,30,0.8627,large
+Med-Over,Full CalibrateMe,retention_7day,0.278566,0.001836,0.277880,0.279252,30,3.9401,large
+Med-Over,Full CalibrateMe,retention_1day,0.343157,0.003345,0.341907,0.344406,30,N/A,N/A
+Med-Over,Full CalibrateMe,retention_30day,0.207877,0.000184,0.207808,0.207946,30,N/A,N/A
+Med-Over,Full CalibrateMe,final_ece,0.190608,0.084615,0.159007,0.222210,30,0.7756,medium
 Med-Over,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Over,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Over,No Dual-Process,retention_7day,0.278457,0.001698,0.277823,0.279092,30,4.1642,large
-Med-Over,No Dual-Process,retention_1day,0.342959,0.003094,0.341803,0.344114,30,N/A,N/A
-Med-Over,No Dual-Process,retention_30day,0.207866,0.000170,0.207802,0.207930,30,N/A,N/A
-Med-Over,No Dual-Process,final_ece,0.188597,0.080872,0.158393,0.218801,30,0.9169,large
+Med-Over,No Dual-Process,retention_7day,0.278472,0.001696,0.277839,0.279106,30,4.0159,large
+Med-Over,No Dual-Process,retention_1day,0.342986,0.003091,0.341832,0.344140,30,N/A,N/A
+Med-Over,No Dual-Process,retention_30day,0.207868,0.000170,0.207804,0.207931,30,N/A,N/A
+Med-Over,No Dual-Process,final_ece,0.193477,0.078967,0.163986,0.222969,30,0.7670,medium
 Med-Over,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Over,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Over,No Scaffolding,retention_7day,0.278619,0.001775,0.277956,0.279282,30,4.1744,large
-Med-Over,No Scaffolding,retention_1day,0.343253,0.003234,0.342045,0.344461,30,N/A,N/A
-Med-Over,No Scaffolding,retention_30day,0.207882,0.000178,0.207816,0.207949,30,N/A,N/A
-Med-Over,No Scaffolding,final_ece,0.194916,0.065894,0.170307,0.219526,30,0.9219,large
+Med-Over,No Scaffolding,retention_7day,0.278612,0.001767,0.277952,0.279272,30,4.0232,large
+Med-Over,No Scaffolding,retention_1day,0.343240,0.003220,0.342037,0.344443,30,N/A,N/A
+Med-Over,No Scaffolding,retention_30day,0.207882,0.000177,0.207815,0.207948,30,N/A,N/A
+Med-Over,No Scaffolding,final_ece,0.194687,0.067237,0.169576,0.219799,30,0.8064,large
 Med-Over,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Over,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Over,Calibration Only,retention_7day,0.278577,0.001804,0.277903,0.279250,30,4.1270,large
-Med-Over,Calibration Only,retention_1day,0.343176,0.003286,0.341949,0.344404,30,N/A,N/A
-Med-Over,Calibration Only,retention_30day,0.207878,0.000181,0.207810,0.207946,30,N/A,N/A
-Med-Over,Calibration Only,final_ece,0.197418,0.069987,0.171279,0.223556,30,0.8641,large
+Med-Over,Calibration Only,retention_7day,0.278535,0.001779,0.277871,0.279200,30,3.9746,large
+Med-Over,Calibration Only,retention_1day,0.343100,0.003242,0.341890,0.344311,30,N/A,N/A
+Med-Over,Calibration Only,retention_30day,0.207874,0.000178,0.207807,0.207940,30,N/A,N/A
+Med-Over,Calibration Only,final_ece,0.199162,0.069707,0.173128,0.225196,30,0.7365,medium
 Med-Over,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Over,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Over,SM-2 Baseline,retention_7day,0.270292,0.002193,0.269473,0.271110,30,N/A,N/A
-Med-Over,SM-2 Baseline,retention_1day,0.328079,0.003996,0.326587,0.329572,30,N/A,N/A
-Med-Over,SM-2 Baseline,retention_30day,0.207047,0.000220,0.206965,0.207129,30,N/A,N/A
-Med-Over,SM-2 Baseline,final_ece,0.261131,0.077300,0.232261,0.290000,30,N/A,N/A
+Med-Over,SM-2 Baseline,retention_7day,0.270568,0.002207,0.269744,0.271392,30,N/A,N/A
+Med-Over,SM-2 Baseline,retention_1day,0.328583,0.004021,0.327081,0.330085,30,N/A,N/A
+Med-Over,SM-2 Baseline,retention_30day,0.207075,0.000221,0.206992,0.207158,30,N/A,N/A
+Med-Over,SM-2 Baseline,final_ece,0.255705,0.083249,0.224614,0.286797,30,N/A,N/A
 Med-Over,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Over,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Over,BKT-Only,retention_7day,0.278622,0.001786,0.277955,0.279289,30,4.1658,large
-Med-Over,BKT-Only,retention_1day,0.343258,0.003254,0.342043,0.344473,30,N/A,N/A
-Med-Over,BKT-Only,retention_30day,0.207883,0.000179,0.207816,0.207949,30,N/A,N/A
-Med-Over,BKT-Only,final_ece,0.204016,0.060002,0.181607,0.226425,30,0.8254,large
+Med-Over,BKT-Only,retention_7day,0.278498,0.001717,0.277856,0.279139,30,4.0108,large
+Med-Over,BKT-Only,retention_1day,0.343032,0.003128,0.341864,0.344200,30,N/A,N/A
+Med-Over,BKT-Only,retention_30day,0.207870,0.000172,0.207806,0.207934,30,N/A,N/A
+Med-Over,BKT-Only,final_ece,0.207649,0.059727,0.185343,0.229956,30,0.6633,medium
 Med-Over,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Over,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Under,Full CalibrateMe,retention_7day,0.278464,0.001708,0.277826,0.279102,30,4.8744,large
-Med-Under,Full CalibrateMe,retention_1day,0.342971,0.003112,0.341809,0.344133,30,N/A,N/A
-Med-Under,Full CalibrateMe,retention_30day,0.207867,0.000171,0.207803,0.207931,30,N/A,N/A
-Med-Under,Full CalibrateMe,final_ece,0.215175,0.086714,0.182790,0.247561,30,0.3637,small
+Med-Under,Full CalibrateMe,retention_7day,0.278355,0.001688,0.277725,0.278985,30,4.9000,large
+Med-Under,Full CalibrateMe,retention_1day,0.342772,0.003076,0.341623,0.343921,30,N/A,N/A
+Med-Under,Full CalibrateMe,retention_30day,0.207856,0.000169,0.207793,0.207919,30,N/A,N/A
+Med-Under,Full CalibrateMe,final_ece,0.202328,0.083717,0.171062,0.233594,30,0.4741,small
 Med-Under,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Under,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Under,No Dual-Process,retention_7day,0.277714,0.001545,0.277137,0.278291,30,4.7215,large
-Med-Under,No Dual-Process,retention_1day,0.341604,0.002815,0.340553,0.342655,30,N/A,N/A
-Med-Under,No Dual-Process,retention_30day,0.207792,0.000155,0.207734,0.207849,30,N/A,N/A
-Med-Under,No Dual-Process,final_ece,0.193495,0.072932,0.166256,0.220733,30,0.6682,medium
+Med-Under,No Dual-Process,retention_7day,0.277842,0.001560,0.277259,0.278425,30,4.7947,large
+Med-Under,No Dual-Process,retention_1day,0.341837,0.002843,0.340775,0.342899,30,N/A,N/A
+Med-Under,No Dual-Process,retention_30day,0.207804,0.000156,0.207746,0.207863,30,N/A,N/A
+Med-Under,No Dual-Process,final_ece,0.205848,0.085060,0.174080,0.237616,30,0.4259,small
 Med-Under,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Under,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Under,No Scaffolding,retention_7day,0.278345,0.001759,0.277688,0.279002,30,4.8287,large
-Med-Under,No Scaffolding,retention_1day,0.342754,0.003205,0.341557,0.343951,30,N/A,N/A
-Med-Under,No Scaffolding,retention_30day,0.207855,0.000176,0.207789,0.207921,30,N/A,N/A
-Med-Under,No Scaffolding,final_ece,0.273201,0.096724,0.237077,0.309325,30,-0.2945,small
+Med-Under,No Scaffolding,retention_7day,0.278313,0.001729,0.277667,0.278959,30,4.8744,large
+Med-Under,No Scaffolding,retention_1day,0.342696,0.003151,0.341519,0.343873,30,N/A,N/A
+Med-Under,No Scaffolding,retention_30day,0.207852,0.000173,0.207787,0.207916,30,N/A,N/A
+Med-Under,No Scaffolding,final_ece,0.276957,0.103027,0.238479,0.315435,30,-0.4110,small
 Med-Under,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Under,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Under,Calibration Only,retention_7day,0.278045,0.002026,0.277288,0.278802,30,4.6718,large
-Med-Under,Calibration Only,retention_1day,0.342207,0.003691,0.340829,0.343586,30,N/A,N/A
-Med-Under,Calibration Only,retention_30day,0.207825,0.000203,0.207749,0.207901,30,N/A,N/A
-Med-Under,Calibration Only,final_ece,0.275840,0.087700,0.243086,0.308594,30,-0.3411,small
+Med-Under,Calibration Only,retention_7day,0.278064,0.001989,0.277321,0.278807,30,4.7139,large
+Med-Under,Calibration Only,retention_1day,0.342241,0.003625,0.340888,0.343595,30,N/A,N/A
+Med-Under,Calibration Only,retention_30day,0.207827,0.000199,0.207752,0.207901,30,N/A,N/A
+Med-Under,Calibration Only,final_ece,0.265126,0.094033,0.230007,0.300244,30,-0.2962,small
 Med-Under,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Under,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Under,SM-2 Baseline,retention_7day,0.259770,0.005148,0.257847,0.261692,30,N/A,N/A
-Med-Under,SM-2 Baseline,retention_1day,0.308908,0.009380,0.305404,0.312411,30,N/A,N/A
-Med-Under,SM-2 Baseline,retention_30day,0.205992,0.000516,0.205800,0.206185,30,N/A,N/A
-Med-Under,SM-2 Baseline,final_ece,0.246393,0.084950,0.214666,0.278119,30,N/A,N/A
+Med-Under,SM-2 Baseline,retention_7day,0.261062,0.004697,0.259308,0.262816,30,N/A,N/A
+Med-Under,SM-2 Baseline,retention_1day,0.311262,0.008558,0.308066,0.314458,30,N/A,N/A
+Med-Under,SM-2 Baseline,retention_30day,0.206122,0.000471,0.205946,0.206298,30,N/A,N/A
+Med-Under,SM-2 Baseline,final_ece,0.239960,0.074779,0.212032,0.267888,30,N/A,N/A
 Med-Under,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Under,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Under,BKT-Only,retention_7day,0.278691,0.001685,0.278062,0.279321,30,4.9402,large
-Med-Under,BKT-Only,retention_1day,0.343385,0.003070,0.342239,0.344532,30,N/A,N/A
-Med-Under,BKT-Only,retention_30day,0.207890,0.000169,0.207826,0.207953,30,N/A,N/A
-Med-Under,BKT-Only,final_ece,0.261364,0.083017,0.230359,0.292369,30,-0.1783,negligible
+Med-Under,BKT-Only,retention_7day,0.278651,0.001791,0.277983,0.279320,30,4.9487,large
+Med-Under,BKT-Only,retention_1day,0.343312,0.003263,0.342094,0.344531,30,N/A,N/A
+Med-Under,BKT-Only,retention_30day,0.207886,0.000180,0.207818,0.207953,30,N/A,N/A
+Med-Under,BKT-Only,final_ece,0.271244,0.096556,0.235183,0.307305,30,-0.3623,small
 Med-Under,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Under,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Well,Full CalibrateMe,retention_7day,0.278398,0.001745,0.277747,0.279050,30,4.6816,large
-Med-Well,Full CalibrateMe,retention_1day,0.342851,0.003180,0.341663,0.344039,30,N/A,N/A
-Med-Well,Full CalibrateMe,retention_30day,0.207860,0.000175,0.207795,0.207925,30,N/A,N/A
-Med-Well,Full CalibrateMe,final_ece,0.199583,0.073610,0.172091,0.227074,30,0.2877,small
+Med-Well,Full CalibrateMe,retention_7day,0.278366,0.001683,0.277737,0.278994,30,4.4811,large
+Med-Well,Full CalibrateMe,retention_1day,0.342791,0.003066,0.341646,0.343936,30,N/A,N/A
+Med-Well,Full CalibrateMe,retention_30day,0.207857,0.000169,0.207794,0.207920,30,N/A,N/A
+Med-Well,Full CalibrateMe,final_ece,0.193590,0.080032,0.163700,0.223479,30,0.5112,medium
 Med-Well,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Well,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Well,No Dual-Process,retention_7day,0.277748,0.001650,0.277132,0.278364,30,4.4516,large
-Med-Well,No Dual-Process,retention_1day,0.341667,0.003006,0.340544,0.342789,30,N/A,N/A
-Med-Well,No Dual-Process,retention_30day,0.207795,0.000165,0.207733,0.207857,30,N/A,N/A
-Med-Well,No Dual-Process,final_ece,0.186428,0.074904,0.158454,0.214403,30,0.4502,small
+Med-Well,No Dual-Process,retention_7day,0.277937,0.001693,0.277305,0.278570,30,4.3013,large
+Med-Well,No Dual-Process,retention_1day,0.342011,0.003086,0.340858,0.343163,30,N/A,N/A
+Med-Well,No Dual-Process,retention_30day,0.207814,0.000170,0.207750,0.207877,30,N/A,N/A
+Med-Well,No Dual-Process,final_ece,0.190221,0.078068,0.161065,0.219377,30,0.5573,medium
 Med-Well,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Well,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Well,No Scaffolding,retention_7day,0.278428,0.001774,0.277765,0.279090,30,4.6678,large
-Med-Well,No Scaffolding,retention_1day,0.342904,0.003233,0.341697,0.344112,30,N/A,N/A
-Med-Well,No Scaffolding,retention_30day,0.207863,0.000178,0.207797,0.207929,30,N/A,N/A
-Med-Well,No Scaffolding,final_ece,0.192205,0.081483,0.161773,0.222637,30,0.3635,small
+Med-Well,No Scaffolding,retention_7day,0.278410,0.001771,0.277749,0.279072,30,4.4441,large
+Med-Well,No Scaffolding,retention_1day,0.342873,0.003227,0.341668,0.344078,30,N/A,N/A
+Med-Well,No Scaffolding,retention_30day,0.207861,0.000178,0.207795,0.207928,30,N/A,N/A
+Med-Well,No Scaffolding,final_ece,0.203675,0.077253,0.174823,0.232527,30,0.3976,small
 Med-Well,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Well,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Well,Calibration Only,retention_7day,0.277812,0.001742,0.277162,0.278463,30,4.3989,large
-Med-Well,Calibration Only,retention_1day,0.341783,0.003174,0.340598,0.342968,30,N/A,N/A
-Med-Well,Calibration Only,retention_30day,0.207801,0.000175,0.207736,0.207867,30,N/A,N/A
-Med-Well,Calibration Only,final_ece,0.204341,0.083168,0.173280,0.235402,30,0.2151,small
+Med-Well,Calibration Only,retention_7day,0.277752,0.001710,0.277114,0.278390,30,4.2171,large
+Med-Well,Calibration Only,retention_1day,0.341673,0.003115,0.340510,0.342837,30,N/A,N/A
+Med-Well,Calibration Only,retention_30day,0.207795,0.000171,0.207731,0.207859,30,N/A,N/A
+Med-Well,Calibration Only,final_ece,0.202436,0.087492,0.169760,0.235112,30,0.3893,small
 Med-Well,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Well,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Well,SM-2 Baseline,retention_7day,0.268797,0.002316,0.267932,0.269662,30,N/A,N/A
-Med-Well,SM-2 Baseline,retention_1day,0.325356,0.004221,0.323780,0.326933,30,N/A,N/A
-Med-Well,SM-2 Baseline,retention_30day,0.206898,0.000232,0.206811,0.206984,30,N/A,N/A
-Med-Well,SM-2 Baseline,final_ece,0.222378,0.084507,0.190817,0.253939,30,N/A,N/A
+Med-Well,SM-2 Baseline,retention_7day,0.267291,0.003064,0.266146,0.268435,30,N/A,N/A
+Med-Well,SM-2 Baseline,retention_1day,0.322611,0.005582,0.320527,0.324696,30,N/A,N/A
+Med-Well,SM-2 Baseline,retention_30day,0.206746,0.000307,0.206632,0.206861,30,N/A,N/A
+Med-Well,SM-2 Baseline,final_ece,0.236633,0.088182,0.203699,0.269567,30,N/A,N/A
 Med-Well,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Well,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-Med-Well,BKT-Only,retention_7day,0.278564,0.001718,0.277923,0.279206,30,4.7899,large
-Med-Well,BKT-Only,retention_1day,0.343154,0.003130,0.341985,0.344323,30,N/A,N/A
-Med-Well,BKT-Only,retention_30day,0.207877,0.000172,0.207812,0.207941,30,N/A,N/A
-Med-Well,BKT-Only,final_ece,0.186863,0.075342,0.158724,0.215001,30,0.4436,small
+Med-Well,BKT-Only,retention_7day,0.278535,0.001810,0.277859,0.279211,30,4.4692,large
+Med-Well,BKT-Only,retention_1day,0.343100,0.003297,0.341869,0.344332,30,N/A,N/A
+Med-Well,BKT-Only,retention_30day,0.207874,0.000181,0.207806,0.207942,30,N/A,N/A
+Med-Well,BKT-Only,final_ece,0.184763,0.072692,0.157614,0.211911,30,0.6419,medium
 Med-Well,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 Med-Well,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Over,Full CalibrateMe,retention_7day,0.437347,0.004453,0.435684,0.439010,30,5.0913,large
-High-Over,Full CalibrateMe,retention_1day,0.520385,0.006011,0.518140,0.522630,30,N/A,N/A
-High-Over,Full CalibrateMe,retention_30day,0.275153,0.001410,0.274626,0.275679,30,N/A,N/A
-High-Over,Full CalibrateMe,final_ece,0.201059,0.064557,0.176949,0.225169,30,0.4549,small
+High-Over,Full CalibrateMe,retention_7day,0.437247,0.004603,0.435528,0.438966,30,5.1019,large
+High-Over,Full CalibrateMe,retention_1day,0.520250,0.006213,0.517930,0.522571,30,N/A,N/A
+High-Over,Full CalibrateMe,retention_30day,0.275121,0.001457,0.274577,0.275666,30,N/A,N/A
+High-Over,Full CalibrateMe,final_ece,0.203573,0.060328,0.181042,0.226104,30,0.5103,medium
 High-Over,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Over,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Over,No Dual-Process,retention_7day,0.436861,0.004215,0.435287,0.438435,30,5.1131,large
-High-Over,No Dual-Process,retention_1day,0.519729,0.005689,0.517604,0.521854,30,N/A,N/A
-High-Over,No Dual-Process,retention_30day,0.274999,0.001335,0.274501,0.275497,30,N/A,N/A
-High-Over,No Dual-Process,final_ece,0.210428,0.071954,0.183554,0.237301,30,0.3100,small
+High-Over,No Dual-Process,retention_7day,0.436824,0.004188,0.435259,0.438388,30,5.2399,large
+High-Over,No Dual-Process,retention_1day,0.519678,0.005653,0.517567,0.521790,30,N/A,N/A
+High-Over,No Dual-Process,retention_30day,0.274987,0.001326,0.274492,0.275482,30,N/A,N/A
+High-Over,No Dual-Process,final_ece,0.221016,0.067787,0.195699,0.246333,30,0.2014,small
 High-Over,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Over,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Over,No Scaffolding,retention_7day,0.437257,0.004427,0.435604,0.438910,30,5.0859,large
-High-Over,No Scaffolding,retention_1day,0.520264,0.005976,0.518032,0.522495,30,N/A,N/A
-High-Over,No Scaffolding,retention_30day,0.275124,0.001402,0.274601,0.275648,30,N/A,N/A
-High-Over,No Scaffolding,final_ece,0.218940,0.076715,0.190289,0.247592,30,0.1913,negligible
+High-Over,No Scaffolding,retention_7day,0.437292,0.004418,0.435642,0.438942,30,5.2149,large
+High-Over,No Scaffolding,retention_1day,0.520311,0.005964,0.518084,0.522539,30,N/A,N/A
+High-Over,No Scaffolding,retention_30day,0.275136,0.001399,0.274613,0.275658,30,N/A,N/A
+High-Over,No Scaffolding,final_ece,0.232635,0.081875,0.202056,0.263213,30,0.0149,negligible
 High-Over,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Over,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Over,Calibration Only,retention_7day,0.437226,0.004383,0.435589,0.438863,30,5.1027,large
-High-Over,Calibration Only,retention_1day,0.520222,0.005917,0.518012,0.522432,30,N/A,N/A
-High-Over,Calibration Only,retention_30day,0.275114,0.001388,0.274596,0.275633,30,N/A,N/A
-High-Over,Calibration Only,final_ece,0.242330,0.077244,0.213482,0.271179,30,-0.1092,negligible
+High-Over,Calibration Only,retention_7day,0.437310,0.004393,0.435669,0.438950,30,5.2327,large
+High-Over,Calibration Only,retention_1day,0.520334,0.005930,0.518120,0.522549,30,N/A,N/A
+High-Over,Calibration Only,retention_30day,0.275141,0.001391,0.274621,0.275660,30,N/A,N/A
+High-Over,Calibration Only,final_ece,0.231779,0.079167,0.202212,0.261345,30,0.0276,negligible
 High-Over,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Over,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Over,SM-2 Baseline,retention_7day,0.414080,0.004684,0.412331,0.415830,30,N/A,N/A
-High-Over,SM-2 Baseline,retention_1day,0.488978,0.006322,0.486617,0.491340,30,N/A,N/A
-High-Over,SM-2 Baseline,retention_30day,0.267786,0.001483,0.267232,0.268340,30,N/A,N/A
-High-Over,SM-2 Baseline,final_ece,0.233811,0.078735,0.204406,0.263217,30,N/A,N/A
+High-Over,SM-2 Baseline,retention_7day,0.413727,0.004617,0.412003,0.415452,30,N/A,N/A
+High-Over,SM-2 Baseline,retention_1day,0.488502,0.006233,0.486174,0.490830,30,N/A,N/A
+High-Over,SM-2 Baseline,retention_30day,0.267674,0.001462,0.267128,0.268220,30,N/A,N/A
+High-Over,SM-2 Baseline,final_ece,0.233693,0.057701,0.212143,0.255243,30,N/A,N/A
 High-Over,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Over,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Over,BKT-Only,retention_7day,0.436722,0.004311,0.435112,0.438332,30,5.0302,large
-High-Over,BKT-Only,retention_1day,0.519541,0.005819,0.517368,0.521714,30,N/A,N/A
-High-Over,BKT-Only,retention_30day,0.274955,0.001365,0.274445,0.275465,30,N/A,N/A
-High-Over,BKT-Only,final_ece,0.231969,0.070184,0.205757,0.258181,30,0.0247,negligible
+High-Over,BKT-Only,retention_7day,0.437234,0.004573,0.435526,0.438941,30,5.1156,large
+High-Over,BKT-Only,retention_1day,0.520232,0.006172,0.517927,0.522537,30,N/A,N/A
+High-Over,BKT-Only,retention_30day,0.275117,0.001448,0.274576,0.275658,30,N/A,N/A
+High-Over,BKT-Only,final_ece,0.235775,0.077984,0.206650,0.264900,30,-0.0303,negligible
 High-Over,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Over,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Under,Full CalibrateMe,retention_7day,0.436548,0.004318,0.434936,0.438161,30,7.8874,large
-High-Under,Full CalibrateMe,retention_1day,0.519307,0.005829,0.517130,0.521484,30,N/A,N/A
-High-Under,Full CalibrateMe,retention_30day,0.274900,0.001367,0.274389,0.275411,30,N/A,N/A
-High-Under,Full CalibrateMe,final_ece,0.220796,0.073978,0.193167,0.248424,30,0.7134,medium
+High-Under,Full CalibrateMe,retention_7day,0.436368,0.004144,0.434821,0.437916,30,7.5414,large
+High-Under,Full CalibrateMe,retention_1day,0.519064,0.005594,0.516975,0.521153,30,N/A,N/A
+High-Under,Full CalibrateMe,retention_30day,0.274843,0.001312,0.274353,0.275333,30,N/A,N/A
+High-Under,Full CalibrateMe,final_ece,0.236639,0.084270,0.205167,0.268112,30,0.1720,negligible
 High-Under,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Under,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Under,No Dual-Process,retention_7day,0.434463,0.003634,0.433106,0.435820,30,7.9993,large
-High-Under,No Dual-Process,retention_1day,0.516492,0.004905,0.514660,0.518324,30,N/A,N/A
-High-Under,No Dual-Process,retention_30day,0.274240,0.001151,0.273810,0.274669,30,N/A,N/A
-High-Under,No Dual-Process,final_ece,0.206556,0.057818,0.184962,0.228150,30,0.9813,large
+High-Under,No Dual-Process,retention_7day,0.434620,0.003782,0.433207,0.436032,30,7.4186,large
+High-Under,No Dual-Process,retention_1day,0.516703,0.005106,0.514796,0.518610,30,N/A,N/A
+High-Under,No Dual-Process,retention_30day,0.274289,0.001198,0.273842,0.274736,30,N/A,N/A
+High-Under,No Dual-Process,final_ece,0.196228,0.055872,0.175361,0.217094,30,0.8653,large
 High-Under,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Under,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Under,No Scaffolding,retention_7day,0.436033,0.004230,0.434454,0.437613,30,7.8474,large
-High-Under,No Scaffolding,retention_1day,0.518612,0.005709,0.516479,0.520744,30,N/A,N/A
-High-Under,No Scaffolding,retention_30day,0.274737,0.001339,0.274237,0.275237,30,N/A,N/A
-High-Under,No Scaffolding,final_ece,0.235817,0.082149,0.205136,0.266497,30,0.4984,small
+High-Under,No Scaffolding,retention_7day,0.435906,0.004042,0.434396,0.437415,30,7.5160,large
+High-Under,No Scaffolding,retention_1day,0.518439,0.005456,0.516402,0.520477,30,N/A,N/A
+High-Under,No Scaffolding,retention_30day,0.274696,0.001280,0.274218,0.275174,30,N/A,N/A
+High-Under,No Scaffolding,final_ece,0.250775,0.081304,0.220410,0.281140,30,-0.0136,negligible
 High-Under,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Under,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Under,Calibration Only,retention_7day,0.433650,0.004497,0.431971,0.435330,30,7.0824,large
-High-Under,Calibration Only,retention_1day,0.515395,0.006071,0.513128,0.517662,30,N/A,N/A
-High-Under,Calibration Only,retention_30day,0.273982,0.001424,0.273450,0.274514,30,N/A,N/A
-High-Under,Calibration Only,final_ece,0.252793,0.070137,0.226599,0.278988,30,0.3154,small
+High-Under,Calibration Only,retention_7day,0.433870,0.004452,0.432208,0.435533,30,6.7792,large
+High-Under,Calibration Only,retention_1day,0.515692,0.006009,0.513448,0.517936,30,N/A,N/A
+High-Under,Calibration Only,retention_30day,0.274052,0.001410,0.273525,0.274578,30,N/A,N/A
+High-Under,Calibration Only,final_ece,0.244470,0.064528,0.220370,0.268569,30,0.0802,negligible
 High-Under,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Under,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Under,SM-2 Baseline,retention_7day,0.401968,0.004449,0.400307,0.403630,30,N/A,N/A
-High-Under,SM-2 Baseline,retention_1day,0.472629,0.006006,0.470386,0.474872,30,N/A,N/A
-High-Under,SM-2 Baseline,retention_30day,0.263951,0.001409,0.263424,0.264477,30,N/A,N/A
-High-Under,SM-2 Baseline,final_ece,0.277151,0.083720,0.245884,0.308418,30,N/A,N/A
+High-Under,SM-2 Baseline,retention_7day,0.402054,0.004923,0.400215,0.403892,30,N/A,N/A
+High-Under,SM-2 Baseline,retention_1day,0.472744,0.006645,0.470262,0.475226,30,N/A,N/A
+High-Under,SM-2 Baseline,retention_30day,0.263978,0.001559,0.263395,0.264560,30,N/A,N/A
+High-Under,SM-2 Baseline,final_ece,0.249761,0.067332,0.224615,0.274908,30,N/A,N/A
 High-Under,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Under,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Under,BKT-Only,retention_7day,0.436600,0.004412,0.434952,0.438247,30,7.8159,large
-High-Under,BKT-Only,retention_1day,0.519376,0.005956,0.517152,0.521600,30,N/A,N/A
-High-Under,BKT-Only,retention_30day,0.274916,0.001397,0.274394,0.275438,30,N/A,N/A
-High-Under,BKT-Only,final_ece,0.235704,0.064956,0.211444,0.259963,30,0.5532,medium
+High-Under,BKT-Only,retention_7day,0.436898,0.004352,0.435273,0.438524,30,7.4992,large
+High-Under,BKT-Only,retention_1day,0.519779,0.005875,0.517585,0.521973,30,N/A,N/A
+High-Under,BKT-Only,retention_30day,0.275011,0.001378,0.274496,0.275525,30,N/A,N/A
+High-Under,BKT-Only,final_ece,0.258502,0.093658,0.223523,0.293481,30,-0.1072,negligible
 High-Under,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Under,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Well,Full CalibrateMe,retention_7day,0.436753,0.004115,0.435216,0.438289,30,6.8571,large
-High-Well,Full CalibrateMe,retention_1day,0.519583,0.005554,0.517508,0.521657,30,N/A,N/A
-High-Well,Full CalibrateMe,retention_30day,0.274965,0.001303,0.274478,0.275451,30,N/A,N/A
-High-Well,Full CalibrateMe,final_ece,0.221677,0.069651,0.195664,0.247689,30,0.3989,small
+High-Well,Full CalibrateMe,retention_7day,0.436953,0.004109,0.435418,0.438487,30,5.5455,large
+High-Well,Full CalibrateMe,retention_1day,0.519853,0.005547,0.517781,0.521924,30,N/A,N/A
+High-Well,Full CalibrateMe,retention_30day,0.275028,0.001301,0.274542,0.275514,30,N/A,N/A
+High-Well,Full CalibrateMe,final_ece,0.223102,0.061525,0.200124,0.246080,30,0.4596,small
 High-Well,Full CalibrateMe,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Well,Full CalibrateMe,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Well,No Dual-Process,retention_7day,0.435270,0.003734,0.433875,0.436664,30,6.7922,large
-High-Well,No Dual-Process,retention_1day,0.517581,0.005040,0.515698,0.519463,30,N/A,N/A
-High-Well,No Dual-Process,retention_30day,0.274495,0.001182,0.274053,0.274937,30,N/A,N/A
-High-Well,No Dual-Process,final_ece,0.211168,0.081492,0.180732,0.241603,30,0.5074,medium
+High-Well,No Dual-Process,retention_7day,0.435436,0.003700,0.434055,0.436818,30,5.4170,large
+High-Well,No Dual-Process,retention_1day,0.517806,0.004994,0.515941,0.519671,30,N/A,N/A
+High-Well,No Dual-Process,retention_30day,0.274548,0.001171,0.274110,0.274985,30,N/A,N/A
+High-Well,No Dual-Process,final_ece,0.228654,0.073521,0.201196,0.256112,30,0.3352,small
 High-Well,No Dual-Process,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Well,No Dual-Process,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Well,No Scaffolding,retention_7day,0.436908,0.004086,0.435382,0.438434,30,6.9154,large
-High-Well,No Scaffolding,retention_1day,0.519792,0.005515,0.517733,0.521852,30,N/A,N/A
-High-Well,No Scaffolding,retention_30day,0.275014,0.001294,0.274531,0.275497,30,N/A,N/A
-High-Well,No Scaffolding,final_ece,0.223728,0.070820,0.197278,0.250177,30,0.3651,small
+High-Well,No Scaffolding,retention_7day,0.436876,0.004078,0.435353,0.438400,30,5.5441,large
+High-Well,No Scaffolding,retention_1day,0.519750,0.005505,0.517694,0.521806,30,N/A,N/A
+High-Well,No Scaffolding,retention_30day,0.275004,0.001291,0.274522,0.275486,30,N/A,N/A
+High-Well,No Scaffolding,final_ece,0.224196,0.078362,0.194930,0.253462,30,0.3858,small
 High-Well,No Scaffolding,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Well,No Scaffolding,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Well,Calibration Only,retention_7day,0.435332,0.003894,0.433878,0.436787,30,6.6883,large
-High-Well,Calibration Only,retention_1day,0.517665,0.005257,0.515702,0.519628,30,N/A,N/A
-High-Well,Calibration Only,retention_30day,0.274515,0.001233,0.274054,0.274975,30,N/A,N/A
-High-Well,Calibration Only,final_ece,0.227576,0.087826,0.194775,0.260377,30,0.2710,small
+High-Well,Calibration Only,retention_7day,0.435267,0.003922,0.433802,0.436732,30,5.2936,large
+High-Well,Calibration Only,retention_1day,0.517577,0.005294,0.515600,0.519554,30,N/A,N/A
+High-Well,Calibration Only,retention_30day,0.274494,0.001242,0.274030,0.274958,30,N/A,N/A
+High-Well,Calibration Only,final_ece,0.187965,0.070732,0.161549,0.214382,30,0.9568,large
 High-Well,Calibration Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Well,Calibration Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Well,SM-2 Baseline,retention_7day,0.407205,0.004495,0.405526,0.408884,30,N/A,N/A
-High-Well,SM-2 Baseline,retention_1day,0.479698,0.006068,0.477432,0.481964,30,N/A,N/A
-High-Well,SM-2 Baseline,retention_30day,0.265609,0.001423,0.265077,0.266140,30,N/A,N/A
-High-Well,SM-2 Baseline,final_ece,0.248460,0.064524,0.224362,0.272558,30,N/A,N/A
+High-Well,SM-2 Baseline,retention_7day,0.408419,0.006005,0.406177,0.410662,30,N/A,N/A
+High-Well,SM-2 Baseline,retention_1day,0.481337,0.008106,0.478309,0.484364,30,N/A,N/A
+High-Well,SM-2 Baseline,retention_30day,0.265993,0.001901,0.265283,0.266703,30,N/A,N/A
+High-Well,SM-2 Baseline,final_ece,0.251371,0.061488,0.228407,0.274335,30,N/A,N/A
 High-Well,SM-2 Baseline,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Well,SM-2 Baseline,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
-High-Well,BKT-Only,retention_7day,0.436661,0.004436,0.435004,0.438318,30,6.5963,large
-High-Well,BKT-Only,retention_1day,0.519459,0.005988,0.517223,0.521695,30,N/A,N/A
-High-Well,BKT-Only,retention_30day,0.274936,0.001405,0.274411,0.275460,30,N/A,N/A
-High-Well,BKT-Only,final_ece,0.203513,0.062963,0.179998,0.227029,30,0.7051,medium
+High-Well,BKT-Only,retention_7day,0.436573,0.004290,0.434971,0.438175,30,5.3951,large
+High-Well,BKT-Only,retention_1day,0.519340,0.005790,0.517178,0.521503,30,N/A,N/A
+High-Well,BKT-Only,retention_30day,0.274908,0.001358,0.274400,0.275415,30,N/A,N/A
+High-Well,BKT-Only,final_ece,0.212247,0.071895,0.185396,0.239098,30,0.5849,medium
 High-Well,BKT-Only,time_to_mastery,30.000000,0.000000,30.000000,30.000000,30,N/A,N/A
 High-Well,BKT-Only,review_efficiency,6.000000,0.000000,6.000000,6.000000,30,N/A,N/A
