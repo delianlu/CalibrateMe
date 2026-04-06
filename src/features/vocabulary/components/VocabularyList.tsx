@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { BookOpen, ChevronLeft, ChevronRight, Sparkles, Network } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, Sparkles, Network, Volume2, PenTool } from 'lucide-react';
 import { useVocabulary } from '../hooks/useVocabulary';
 import VocabularyCard from './VocabularyCard';
 import TagFilter from './TagFilter';
@@ -7,6 +7,8 @@ import ImportModal from './ImportModal';
 import ExportModal from './ExportModal';
 import AIFlashcardGenerator from './AIFlashcardGenerator';
 import KnowledgeGraph from './KnowledgeGraph';
+import PronunciationGuide from './PronunciationGuide';
+import AIGrammarExerciseGenerator from './AIGrammarExerciseGenerator';
 import { essentialEnglish } from '../../../data/vocabularyPacks/essential-english';
 import { academicEnglish } from '../../../data/vocabularyPacks/academic-english';
 import { businessEnglish } from '../../../data/vocabularyPacks/business-english';
@@ -37,6 +39,8 @@ export default function VocabularyList() {
   const [showExport, setShowExport] = useState(false);
   const [showAIGenerator, setShowAIGenerator] = useState(false);
   const [showKnowledgeGraph, setShowKnowledgeGraph] = useState(false);
+  const [showPronunciation, setShowPronunciation] = useState(false);
+  const [showGrammarGenerator, setShowGrammarGenerator] = useState(false);
   const [page, setPage] = useState(0);
 
   // Reset page when filters change
@@ -74,6 +78,21 @@ export default function VocabularyList() {
             <Network size={14} style={{ marginRight: 4 }} />
             Knowledge Graph
           </button>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => setShowPronunciation(v => !v)}
+            disabled={filteredItems.length === 0}
+          >
+            <Volume2 size={14} style={{ marginRight: 4 }} />
+            Pronunciation
+          </button>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => setShowGrammarGenerator(v => !v)}
+          >
+            <PenTool size={14} style={{ marginRight: 4 }} />
+            AI Grammar
+          </button>
           <button className="btn btn-secondary" onClick={() => setShowImport(true)}>
             Import
           </button>
@@ -103,6 +122,21 @@ export default function VocabularyList() {
           );
         })}
       </div>
+
+      {/* AI Pronunciation Guide */}
+      {showPronunciation && (
+        <PronunciationGuide
+          words={filteredItems.slice(0, 10).map(item => ({
+            word: item.word,
+            translation: item.translation,
+          }))}
+        />
+      )}
+
+      {/* AI Grammar Exercise Generator */}
+      {showGrammarGenerator && (
+        <AIGrammarExerciseGenerator />
+      )}
 
       {/* Filters */}
       <TagFilter

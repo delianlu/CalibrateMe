@@ -13,6 +13,8 @@ import ForgettingCurves from './ForgettingCurves';
 import SessionHistory from './SessionHistory';
 import LearnerClassification from './LearnerClassification';
 import CalibrationCoach from './CalibrationCoach';
+import ProgressReport from './ProgressReport';
+import StudyPlanGenerator from './StudyPlanGenerator';
 
 interface CalibrationDashboardProps {
   responses: QuizResponse[];
@@ -37,16 +39,50 @@ export default function CalibrationDashboard({
 
   const totalItems = responses.length;
 
-  const { statData } = useMemo(() => {
+  const { statData, computedAccuracy, computedEce, computedSessions, computedDualProcessRatio } = useMemo(() => {
     const correctCount = responses.filter(r => r.correctness).length;
     const acc = totalItems > 0 ? correctCount / totalItems : 0;
     const conf = totalItems > 0 ? responses.reduce((s, r) => s + r.confidence, 0) / totalItems : 0;
     const rt = totalItems > 0 ? responses.reduce((s, r) => s + r.responseTime, 0) / totalItems : 0;
 
+    // Compute ECE
+    const bins: { conf: number; correct: number }[][] = [[], [], [], [], []];
+    responses.forEach(r => {
+      const idx = Math.min(4, Math.floor(r.confidence / 20));
+      bins[idx].push({ conf: r.confidence, correct: r.correctness ? 1 : 0 });
+    });
+    let ece = 0;
+    const n = responses.length;
+    for (const bin of bins) {
+      if (bin.length === 0) continue;
+      const avgConf = bin.reduce((s, b) => s + b.conf, 0) / bin.length / 100;
+      const avgAcc = bin.reduce((s, b) => s + b.correct, 0) / bin.length;
+      ece += (bin.length / n) * Math.abs(avgAcc - avgConf);
+    }
+
+    // Compute session count
+    let sessions = 1;
+    if (responses.length >= 2) {
+      for (let i = 1; i < responses.length; i++) {
+        const gap = responses[i].timestamp.getTime() - responses[i - 1].timestamp.getTime();
+        if (gap > 10 * 60 * 1000) sessions++;
+      }
+    }
+
+    // Compute dual-process ratio
+    let dualProcessRatio = 0.5;
+    if (responses.length >= 3) {
+      const rts = responses.map(r => r.responseTime);
+      const meanRT = rts.reduce((a, b) => a + b, 0) / rts.length;
+      const auto = responses.filter(r => r.correctness && r.responseTime < meanRT && r.confidence > 70).length;
+      dualProcessRatio = auto / responses.length;
+    }
+
     return {
-      accuracy: acc,
-      avgConf: conf,
-      avgRT: rt,
+      computedAccuracy: acc,
+      computedEce: ece,
+      computedSessions: sessions,
+      computedDualProcessRatio: dualProcessRatio,
       statData: [
         { numValue: totalItems, label: 'Responses', accent: 'blue', suffix: '' },
         { numValue: acc * 100, label: 'Accuracy', accent: 'green', suffix: '%', decimals: 0 },
@@ -179,42 +215,49 @@ export default function CalibrationDashboard({
             <div className="analytics-bento__coach">
               <CalibrationCoach
                 betaHat={betaHat}
-                ece={(() => {
-                  const bins: { conf: number; correct: number }[][] = [[], [], [], [], []];
-                  responses.forEach(r => {
-                    const idx = Math.min(4, Math.floor(r.confidence / 20));
-                    bins[idx].push({ conf: r.confidence, correct: r.correctness ? 1 : 0 });
-                  });
-                  let ece = 0;
-                  const n = responses.length;
-                  for (const bin of bins) {
-                    if (bin.length === 0) continue;
-                    const avgConf = bin.reduce((s, b) => s + b.conf, 0) / bin.length / 100;
-                    const avgAcc = bin.reduce((s, b) => s + b.correct, 0) / bin.length;
-                    ece += (bin.length / n) * Math.abs(avgAcc - avgConf);
-                  }
-                  return ece;
-                })()}
-                accuracy={totalItems > 0 ? responses.filter(r => r.correctness).length / totalItems : 0}
-                totalSessions={(() => {
-                  if (responses.length < 2) return 1;
-                  let sessions = 1;
-                  for (let i = 1; i < responses.length; i++) {
-                    const gap = responses[i].timestamp.getTime() - responses[i - 1].timestamp.getTime();
-                    if (gap > 10 * 60 * 1000) sessions++;
-                  }
-                  return sessions;
-                })()}
+                ece={computedEce}
+                accuracy={computedAccuracy}
+                totalSessions={computedSessions}
                 recentTrend="stable"
-                dualProcessRatio={(() => {
-                  if (responses.length < 3) return 0.5;
-                  const rts = responses.map(r => r.responseTime);
-                  const meanRT = rts.reduce((a, b) => a + b, 0) / rts.length;
-                  const auto = responses.filter(r => r.correctness && r.responseTime < meanRT && r.confidence > 70).length;
-                  return auto / responses.length;
-                })()}
+                dualProcessRatio={computedDualProcessRatio}
                 strengths={[]}
                 weaknesses={[]}
+              />
+            </div>
+          )}
+
+          {/* AI Progress Report */}
+          {totalItems >= 5 && (
+            <div className="analytics-bento__progress-report" style={{ gridColumn: '1 / -1' }}>
+              <ProgressReport
+                totalSessions={computedSessions}
+                totalReviews={totalItems}
+                accuracy={computedAccuracy}
+                betaHat={betaHat}
+                ece={computedEce}
+                streakDays={0}
+                masteredItems={Object.values(itemStates).filter(s => s.masteryLevel === 'mastered').length}
+                totalItems={Object.keys(itemStates).length || totalItems}
+                vocabAccuracy={computedAccuracy}
+                grammarAccuracy={computedAccuracy}
+                recentTrend="stable"
+                strongCategories={[]}
+                weakCategories={[]}
+                daysActive={computedSessions}
+              />
+            </div>
+          )}
+
+          {/* AI Study Plan Generator */}
+          {totalItems >= 3 && (
+            <div className="analytics-bento__study-plan" style={{ gridColumn: '1 / -1' }}>
+              <StudyPlanGenerator
+                betaHat={betaHat}
+                ece={computedEce}
+                accuracy={computedAccuracy}
+                totalSessions={computedSessions}
+                weakAreas={[]}
+                strongAreas={[]}
               />
             </div>
           )}
