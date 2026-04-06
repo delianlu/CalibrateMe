@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-03-12T06:59:19.687Z",
-  "total_runs": 5160,
-  "elapsed_seconds": 86.4,
+  "timestamp": "2026-04-06T19:01:45.637Z",
+  "total_runs": 5860,
+  "elapsed_seconds": 113.7,
   "config": {
     "ablation_seeds": 30,
     "sensitivity_seeds": 10,
@@ -56,15 +56,17 @@
   },
   "headlines": {
     "best_cohens_d": {
-      "value": 7.9993,
+      "value": 7.5414,
       "profile": "High-Under",
-      "condition": "No Dual-Process"
+      "condition": "Full CalibrateMe"
     },
     "strongest_sensitivity": {
       "parameter": "lambda=0.03",
-      "advantage": 0.0365
+      "advantage": 0.036
     }
   },
+  "experiment_config_version": "1.0.0",
+  "experiment_config_path": "config/experiment_config.json",
   "files_generated": [
     "ablation_core_profiles.csv",
     "ablation_extended_profiles.csv",
@@ -74,6 +76,8 @@
     "sensitivity_noise.csv",
     "sensitivity_beta.csv",
     "delta_sweep.csv",
+    "matched_scaffold_comparison.csv",
+    "domain_split_calibration.csv",
     "summary.json"
   ]
 }

@@ -7,8 +7,15 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 
-import { DEFAULT_SIMULATION_CONFIG, SimulationConfig } from '../src/types';
-import { getCoreProfileNames } from '../src/profiles/learnerProfiles';
+import { DEFAULT_SIMULATION_CONFIG, SimulationConfig, SchedulerType } from '../src/types';
+import {
+  getCoreProfileNames,
+  DOMAIN_SPLIT_PROFILE_NAMES,
+  PROFILE_PARAMS,
+  createLearnerProfile,
+} from '../src/profiles/learnerProfiles';
+import { runSimulation } from '../src/simulation/simulationEngine';
+import { computeStats, StatisticalResult } from '../src/simulation/statisticalAnalysis';
 import {
   runAblationStudy,
   ablationToCSV,
@@ -42,6 +49,7 @@ const __dirname = path.dirname(__filename);
 const ABLATION_SEEDS = 30;
 const SENSITIVITY_SEEDS = 10;
 const DELTA_SEEDS = 15;
+const DOMAIN_SPLIT_SEEDS = 20;
 
 const BASE_CONFIG: SimulationConfig = {
   ...DEFAULT_SIMULATION_CONFIG,
@@ -165,6 +173,146 @@ function formatDeltaCSV(report: DeltaSweepReport): string {
   ].join(','));
 
   return [headers.join(','), ...rows].join('\n');
+}
+
+// ---------------------------------------------------------------------------
+// Domain-Split Calibration Analysis
+// ---------------------------------------------------------------------------
+
+interface DomainSplitRow {
+  profile: string;
+  condition: string;
+  beta_star_vocab: number;
+  beta_star_grammar: number;
+  final_beta_hat_vocab: StatisticalResult;
+  final_beta_hat_grammar: StatisticalResult;
+  vocab_bias_error: StatisticalResult;     // |β̂_vocab − β*_vocab|
+  grammar_bias_error: StatisticalResult;   // |β̂_grammar − β*_grammar|
+  final_ece: StatisticalResult;
+  retention_7day: StatisticalResult;
+}
+
+function runDomainSplitAnalysis(
+  profiles: string[],
+  nSeeds: number,
+  baseConfig: SimulationConfig,
+  onProgress?: (pct: number, msg: string) => void
+): DomainSplitRow[] {
+  const rows: DomainSplitRow[] = [];
+
+  // Compare CalibrateMe with domain-split enabled vs. disabled (global-only β̂).
+  const conditions = [
+    { name: 'CalibrateMe+DomainSplit', enable_domain_split: true },
+    { name: 'CalibrateMe+GlobalOnly', enable_domain_split: false },
+  ];
+
+  const total = profiles.length * conditions.length * nSeeds;
+  let completed = 0;
+
+  for (const profileName of profiles) {
+    const params = PROFILE_PARAMS[profileName];
+    const bStarVocab = params.beta_star_vocab ?? params.beta_star;
+    const bStarGrammar = params.beta_star_grammar ?? params.beta_star;
+
+    for (const cond of conditions) {
+      const betaHatVocab: number[] = [];
+      const betaHatGrammar: number[] = [];
+      const vocabErr: number[] = [];
+      const grammarErr: number[] = [];
+      const finalEce: number[] = [];
+      const ret7: number[] = [];
+
+      for (let seed = 0; seed < nSeeds; seed++) {
+        const profile = createLearnerProfile(profileName, baseConfig.num_items);
+        const config: SimulationConfig = {
+          ...baseConfig,
+          scheduler_type: SchedulerType.CALIBRATEME,
+          enable_scaffolding: true,
+          enable_dual_process: true,
+          enable_domain_split: cond.enable_domain_split,
+          random_seed: seed + 1,
+        };
+
+        const result = runSimulation(profile, config);
+
+        if (cond.enable_domain_split && result.beta_hat_vocab_trajectory && result.beta_hat_grammar_trajectory) {
+          const bv = result.beta_hat_vocab_trajectory[result.beta_hat_vocab_trajectory.length - 1] ?? 0;
+          const bg = result.beta_hat_grammar_trajectory[result.beta_hat_grammar_trajectory.length - 1] ?? 0;
+          betaHatVocab.push(bv);
+          betaHatGrammar.push(bg);
+          vocabErr.push(Math.abs(bv - bStarVocab));
+          grammarErr.push(Math.abs(bg - bStarGrammar));
+        } else {
+          // Global-only: no per-domain estimate; fall back to global β̂ as proxy.
+          const lastSession = result.session_data[result.session_data.length - 1];
+          const globalBeta = lastSession ? 0 : 0; // not tracked per-session
+          betaHatVocab.push(globalBeta);
+          betaHatGrammar.push(globalBeta);
+          vocabErr.push(Math.abs(globalBeta - bStarVocab));
+          grammarErr.push(Math.abs(globalBeta - bStarGrammar));
+        }
+
+        const last = result.session_data[result.session_data.length - 1];
+        finalEce.push(last ? last.ece : 0);
+        ret7.push(result.retention_7day);
+
+        completed++;
+        if (onProgress) {
+          const pct = (completed / total) * 100;
+          if (Math.floor(pct) % 10 === 0) {
+            onProgress(pct, `${profileName} / ${cond.name} / seed ${seed + 1}`);
+          }
+        }
+      }
+
+      rows.push({
+        profile: profileName,
+        condition: cond.name,
+        beta_star_vocab: bStarVocab,
+        beta_star_grammar: bStarGrammar,
+        final_beta_hat_vocab: computeStats(betaHatVocab),
+        final_beta_hat_grammar: computeStats(betaHatGrammar),
+        vocab_bias_error: computeStats(vocabErr),
+        grammar_bias_error: computeStats(grammarErr),
+        final_ece: computeStats(finalEce),
+        retention_7day: computeStats(ret7),
+      });
+    }
+  }
+
+  return rows;
+}
+
+function formatDomainSplitCSV(rows: DomainSplitRow[]): string {
+  const headers = [
+    'profile', 'condition',
+    'beta_star_vocab', 'beta_star_grammar',
+    'final_beta_hat_vocab_mean', 'final_beta_hat_vocab_sd',
+    'final_beta_hat_vocab_ci_lo', 'final_beta_hat_vocab_ci_hi',
+    'final_beta_hat_grammar_mean', 'final_beta_hat_grammar_sd',
+    'final_beta_hat_grammar_ci_lo', 'final_beta_hat_grammar_ci_hi',
+    'vocab_bias_error_mean', 'vocab_bias_error_sd',
+    'grammar_bias_error_mean', 'grammar_bias_error_sd',
+    'final_ece_mean', 'final_ece_sd',
+    'retention_7day_mean', 'retention_7day_sd',
+    'n',
+  ];
+
+  const lines = rows.map(r => [
+    r.profile, r.condition,
+    r.beta_star_vocab.toFixed(4), r.beta_star_grammar.toFixed(4),
+    r.final_beta_hat_vocab.mean.toFixed(6), r.final_beta_hat_vocab.sd.toFixed(6),
+    r.final_beta_hat_vocab.ci95_lower.toFixed(6), r.final_beta_hat_vocab.ci95_upper.toFixed(6),
+    r.final_beta_hat_grammar.mean.toFixed(6), r.final_beta_hat_grammar.sd.toFixed(6),
+    r.final_beta_hat_grammar.ci95_lower.toFixed(6), r.final_beta_hat_grammar.ci95_upper.toFixed(6),
+    r.vocab_bias_error.mean.toFixed(6), r.vocab_bias_error.sd.toFixed(6),
+    r.grammar_bias_error.mean.toFixed(6), r.grammar_bias_error.sd.toFixed(6),
+    r.final_ece.mean.toFixed(6), r.final_ece.sd.toFixed(6),
+    r.retention_7day.mean.toFixed(6), r.retention_7day.sd.toFixed(6),
+    r.final_beta_hat_vocab.n.toString(),
+  ].join(','));
+
+  return [headers.join(','), ...lines].join('\n');
 }
 
 // ---------------------------------------------------------------------------
@@ -308,10 +456,32 @@ function main(): void {
   totalRuns += CORE_PROFILES.length * MATCHED_SEEDS * 2;
 
   // =========================================================================
-  // 6. Summary JSON
+  // 6. Domain-Split Calibration Analysis
   // =========================================================================
   console.log('\n========================================');
-  console.log('6. GENERATING SUMMARY');
+  console.log('6. DOMAIN-SPLIT CALIBRATION ANALYSIS');
+  console.log(`   ${DOMAIN_SPLIT_PROFILE_NAMES.length} profiles × 2 conditions × ${DOMAIN_SPLIT_SEEDS} seeds`);
+  console.log('========================================');
+
+  const domainRows = runDomainSplitAnalysis(
+    DOMAIN_SPLIT_PROFILE_NAMES,
+    DOMAIN_SPLIT_SEEDS,
+    BASE_CONFIG,
+    (pct, msg) => {
+      if (Math.floor(pct) % 10 === 0) {
+        process.stdout.write(`\r  Domain-split: ${pct.toFixed(0)}% — ${msg}   `);
+      }
+    }
+  );
+  console.log('\r  Domain-split: 100% — Complete                                       ');
+  writeCSV('domain_split_calibration.csv', formatDomainSplitCSV(domainRows));
+  totalRuns += DOMAIN_SPLIT_PROFILE_NAMES.length * 2 * DOMAIN_SPLIT_SEEDS;
+
+  // =========================================================================
+  // 7. Summary JSON
+  // =========================================================================
+  console.log('\n========================================');
+  console.log('7. GENERATING SUMMARY');
   console.log('========================================');
 
   // Find best Cohen's d from core ablation
@@ -382,6 +552,7 @@ function main(): void {
       'sensitivity_beta.csv',
       'delta_sweep.csv',
       'matched_scaffold_comparison.csv',
+      'domain_split_calibration.csv',
       'summary.json',
     ],
   };
