@@ -379,6 +379,7 @@ export function runSimulation(
       beta_hat_grammar_trajectory: betaHatGrammarTrajectory,
     }),
     session_data: sessionDataList,
+    all_responses: allResponses,
   };
 }
 
