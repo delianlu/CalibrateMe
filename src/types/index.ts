@@ -264,6 +264,10 @@ export interface SimulationResults {
 
   // Per-session data
   session_data: SessionData[];
+
+  // Full response history (populated for single-run analyses; omitted in bulk
+  // experiments to save memory)
+  all_responses?: ProcessedResponse[];
 }
 
 export interface SessionData {
