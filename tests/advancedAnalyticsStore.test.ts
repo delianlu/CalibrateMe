@@ -1,39 +1,38 @@
-import { vi } from 'vitest';
 import { useAdvancedAnalyticsStore } from './advancedAnalyticsStore.mock';
 import * as ablationRunner from '../src/simulation/ablationRunner';
 import * as sensitivityAnalysis from '../src/simulation/sensitivityAnalysis';
 import * as deltaSweep from '../src/simulation/deltaSweep';
 import { DEFAULT_SIMULATION_CONFIG } from '../src/types';
 
-vi.mock('../src/simulation/ablationRunner', () => ({
-  runAblationStudy: vi.fn(),
+jest.mock('../src/simulation/ablationRunner', () => ({
+  runAblationStudy: jest.fn(),
   DEFAULT_CONDITIONS: [],
 }));
 
-vi.mock('../src/simulation/sensitivityAnalysis', () => ({
-  runSensitivitySweep: vi.fn(),
+jest.mock('../src/simulation/sensitivityAnalysis', () => ({
+  runSensitivitySweep: jest.fn(),
 }));
 
-vi.mock('../src/simulation/deltaSweep', () => ({
-  runDeltaSweep: vi.fn(),
+jest.mock('../src/simulation/deltaSweep', () => ({
+  runDeltaSweep: jest.fn(),
   DEFAULT_DELTAS: [],
 }));
 
 // Mock learnerProfiles to avoid real profile generation in fallback
-vi.mock('../src/profiles/learnerProfiles', () => ({
-  getCoreProfileNames: vi.fn(() => ['Med-Over']),
+jest.mock('../src/profiles/learnerProfiles', () => ({
+  getCoreProfileNames: jest.fn(() => ['Med-Over']),
 }));
 
 describe('Advanced Analytics Store', () => {
   beforeEach(() => {
     useAdvancedAnalyticsStore.getState().reset();
-    vi.clearAllMocks();
+    jest.clearAllMocks();
   });
 
   describe('runAblation', () => {
     it('runs ablation successfully via fallback', async () => {
       const mockResult = { overall_impact: {} } as any;
-      vi.mocked(ablationRunner.runAblationStudy).mockImplementation((nSeeds, conf, conds, profiles, onProgress) => {
+      jest.mocked(ablationRunner.runAblationStudy).mockImplementation((nSeeds, conf, conds, profiles, onProgress) => {
         onProgress!(50, 'halfway');
         return mockResult;
       });
@@ -50,7 +49,7 @@ describe('Advanced Analytics Store', () => {
     });
 
     it('handles ablation error', async () => {
-      vi.mocked(ablationRunner.runAblationStudy).mockImplementation(() => {
+      jest.mocked(ablationRunner.runAblationStudy).mockImplementation(() => {
         throw new Error('Ablation Error');
       });
 
@@ -65,7 +64,7 @@ describe('Advanced Analytics Store', () => {
   describe('runSensitivity', () => {
     it('runs sensitivity successfully via fallback', async () => {
       const mockReport = { parameterName: 'lambda' } as any;
-      vi.mocked(sensitivityAnalysis.runSensitivitySweep).mockImplementation((sweep, nSeeds, conf, profs, onProgress) => {
+      jest.mocked(sensitivityAnalysis.runSensitivitySweep).mockImplementation((sweep, nSeeds, conf, profs, onProgress) => {
         onProgress!(50, 'running');
         return mockReport;
       });
@@ -79,7 +78,7 @@ describe('Advanced Analytics Store', () => {
     });
 
     it('handles sensitivity error', async () => {
-      vi.mocked(sensitivityAnalysis.runSensitivitySweep).mockImplementation(() => {
+      jest.mocked(sensitivityAnalysis.runSensitivitySweep).mockImplementation(() => {
         throw new Error('Sens Error');
       });
 
@@ -95,7 +94,7 @@ describe('Advanced Analytics Store', () => {
   describe('runDeltaSweep', () => {
     it('runs delta sweep successfully via fallback', async () => {
       const mockReport = { deltas: [] } as any;
-      vi.mocked(deltaSweep.runDeltaSweep).mockImplementation((deltas, nSeeds, conf, profs, onProgress) => {
+      jest.mocked(deltaSweep.runDeltaSweep).mockImplementation((deltas, nSeeds, conf, profs, onProgress) => {
         onProgress!(50, 'running');
         return mockReport;
       });
@@ -108,7 +107,7 @@ describe('Advanced Analytics Store', () => {
     });
 
     it('handles delta sweep error', async () => {
-      vi.mocked(deltaSweep.runDeltaSweep).mockImplementation(() => {
+      jest.mocked(deltaSweep.runDeltaSweep).mockImplementation(() => {
         throw new Error('Delta Error');
       });
 

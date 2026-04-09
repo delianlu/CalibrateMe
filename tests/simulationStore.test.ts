@@ -1,17 +1,16 @@
-import { vi } from 'vitest';
 import { useSimulationStore } from '../src/store/simulationStore';
 import { SchedulerType, DEFAULT_SIMULATION_CONFIG } from '../src/types';
 import * as simulationEngine from '../src/simulation/simulationEngine';
 import * as learnerProfiles from '../src/profiles/learnerProfiles';
 
 // Mock dependencies
-vi.mock('../src/simulation/simulationEngine', () => ({
-  runSimulationAsync: vi.fn(),
+jest.mock('../src/simulation/simulationEngine', () => ({
+  runSimulationAsync: jest.fn(),
 }));
 
-vi.mock('../src/profiles/learnerProfiles', () => ({
-  createLearnerProfile: vi.fn(),
-  getAllProfileNames: vi.fn(() => ['Med-Over', 'High-Well']),
+jest.mock('../src/profiles/learnerProfiles', () => ({
+  createLearnerProfile: jest.fn(),
+  getAllProfileNames: jest.fn(() => ['Med-Over', 'High-Well']),
 }));
 
 describe('Simulation Store', () => {
@@ -21,7 +20,7 @@ describe('Simulation Store', () => {
       selectedProfile: 'Med-Over',
       config: DEFAULT_SIMULATION_CONFIG,
     });
-    vi.clearAllMocks();
+    jest.clearAllMocks();
   });
 
   describe('setters and sync actions', () => {
@@ -86,8 +85,8 @@ describe('Simulation Store', () => {
       const mockProfile = { id: 'Med-Over' };
       const mockResult = { profile_id: 'Med-Over' };
 
-      vi.mocked(learnerProfiles.createLearnerProfile).mockReturnValue(mockProfile as any);
-      vi.mocked(simulationEngine.runSimulationAsync).mockImplementation(async (prof, conf, onProgress) => {
+      jest.mocked(learnerProfiles.createLearnerProfile).mockReturnValue(mockProfile as any);
+      jest.mocked(simulationEngine.runSimulationAsync).mockImplementation(async (prof, conf, onProgress) => {
         onProgress!(50, 'halfway');
         return mockResult as any;
       });
@@ -111,8 +110,8 @@ describe('Simulation Store', () => {
     });
 
     it('handles simulation errors', async () => {
-      vi.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
-      vi.mocked(simulationEngine.runSimulationAsync).mockRejectedValue(new Error('Sim failed'));
+      jest.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
+      jest.mocked(simulationEngine.runSimulationAsync).mockRejectedValue(new Error('Sim failed'));
 
       await useSimulationStore.getState().runSimulation();
 
@@ -126,8 +125,8 @@ describe('Simulation Store', () => {
   describe('runComparison', () => {
     it('runs comparison across all schedulers', async () => {
       const mockProfile = { id: 'Med-Over' };
-      vi.mocked(learnerProfiles.createLearnerProfile).mockReturnValue(mockProfile as any);
-      vi.mocked(simulationEngine.runSimulationAsync).mockResolvedValue({} as any);
+      jest.mocked(learnerProfiles.createLearnerProfile).mockReturnValue(mockProfile as any);
+      jest.mocked(simulationEngine.runSimulationAsync).mockResolvedValue({} as any);
 
       await useSimulationStore.getState().runComparison();
 
@@ -142,8 +141,8 @@ describe('Simulation Store', () => {
     });
 
     it('handles comparison errors', async () => {
-      vi.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
-      vi.mocked(simulationEngine.runSimulationAsync).mockRejectedValue(new Error('Comp failed'));
+      jest.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
+      jest.mocked(simulationEngine.runSimulationAsync).mockRejectedValue(new Error('Comp failed'));
 
       await useSimulationStore.getState().runComparison();
 
@@ -155,8 +154,8 @@ describe('Simulation Store', () => {
 
   describe('runHypothesisTests', () => {
     it('runs hypothesis tests across profiles and schedulers', async () => {
-      vi.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
-      vi.mocked(simulationEngine.runSimulationAsync).mockResolvedValue({} as any);
+      jest.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
+      jest.mocked(simulationEngine.runSimulationAsync).mockResolvedValue({} as any);
 
       await useSimulationStore.getState().runHypothesisTests();
 
@@ -176,8 +175,8 @@ describe('Simulation Store', () => {
     });
 
     it('handles hypothesis errors', async () => {
-      vi.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
-      vi.mocked(simulationEngine.runSimulationAsync).mockRejectedValue(new Error('Hyp failed'));
+      jest.mocked(learnerProfiles.createLearnerProfile).mockReturnValue({} as any);
+      jest.mocked(simulationEngine.runSimulationAsync).mockRejectedValue(new Error('Hyp failed'));
 
       await useSimulationStore.getState().runHypothesisTests();
 
