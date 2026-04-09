@@ -2,7 +2,7 @@
  * Adapter to convert OffGrid practice activities into CalibrateMe QuizItems.
  */
 import { QuizItem } from '../features/quiz/types';
-import offgridData from '../../offgrid-practice-export.json';
+import offgridData from '../../config/offgrid-practice-export.json';
 
 interface OffGridActivity {
   id: string;
