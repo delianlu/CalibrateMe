@@ -6,6 +6,9 @@ dist/
 coverage/
 .vite/
 
+# Generated results (regenerate via scripts/runAllAnalyses.ts)
+results/
+
 # Logs
 *.log
 npm-debug.log*

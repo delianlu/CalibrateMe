@@ -139,28 +139,11 @@ Centralized analytics thresholds are defined in `src/config/analyticsThresholds.
 
 ## Generated Results
 
-After running `scripts/runAllAnalyses.ts`:
+Running `scripts/runAllAnalyses.ts` outputs CSV files, a summary JSON, and LaTeX tables into `results/`. This directory is gitignored — regenerate locally with:
 
-```
-results/
-├── ablation_core_profiles.csv
-├── ablation_extended_profiles.csv
-├── sensitivity_lambda.csv
-├── sensitivity_slip.csv
-├── sensitivity_guess.csv
-├── sensitivity_noise.csv
-├── sensitivity_beta.csv
-├── delta_sweep.csv
-├── matched_scaffold_comparison.csv
-├── threshold_sensitivity.csv
-├── summary.json
-└── latex/
-    ├── table_ablation.tex
-    ├── table_sensitivity.tex
-    ├── table_delta.tex
-    ├── table_extended.tex
-    ├── table_threshold_sensitivity.tex
-    └── table_matched_scaffold.tex
+```bash
+npx tsx scripts/runAllAnalyses.ts
+npx tsx scripts/generateLatexTables.ts
 ```
 
 ## License
